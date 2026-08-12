@@ -1,0 +1,53 @@
+{
+  "original_image": "images/reference/BTM-CH01_reference.jpeg",
+  "crops": [
+    {
+      "shelf_number": 1,
+      "image_path": "images\\shelves\\shelf_1.jpg",
+      "y_start_original": 81,
+      "y_end_original": 365,
+      "width": 800,
+      "height": 284
+    },
+    {
+      "shelf_number": 2,
+      "image_path": "images\\shelves\\shelf_2.jpg",
+      "y_start_original": 365,
+      "y_end_original": 615,
+      "width": 800,
+      "height": 250
+    },
+    {
+      "shelf_number": 3,
+      "image_path": "images\\shelves\\shelf_3.jpg",
+      "y_start_original": 615,
+      "y_end_original": 852,
+      "width": 800,
+      "height": 237
+    },
+    {
+      "shelf_number": 4,
+      "image_path": "images\\shelves\\shelf_4.jpg",
+      "y_start_original": 852,
+      "y_end_original": 1095,
+      "width": 800,
+      "height": 243
+    },
+    {
+      "shelf_number": 5,
+      "image_path": "images\\shelves\\shelf_5.jpg",
+      "y_start_original": 1095,
+      "y_end_original": 1330,
+      "width": 800,
+      "height": 235
+    },
+    {
+      "shelf_number": 6,
+      "image_path": "images\\shelves\\shelf_6.jpg",
+      "y_start_original": 1330,
+      "y_end_original": 1600,
+      "width": 800,
+      "height": 270
+    }
+  ]
+}
