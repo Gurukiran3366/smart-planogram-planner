@@ -1,0 +1,126 @@
+{
+  "rack_id": "BTM-CH01",
+  "category": "beverage_chiller",
+  "rules": [
+    {
+      "rule_id": "CHILLER_SHELF_COMMODITY",
+      "type": "shelf_commodity",
+      "severity": "high",
+      "description": "Each shelf must only contain its assigned product commodity",
+      "shelf_commodity_map": {
+        "1": ["fruit_beverage"],
+        "2": ["energy_drink"],
+        "3": ["soft_drink"],
+        "4": ["milk_beverage"],
+        "5": ["fruit_beverage", "soft_drink"],
+        "6": ["soft_drink", "water"]
+      }
+    },
+    {
+      "rule_id": "CHILLER_COLOUR_FLOW",
+      "type": "colour_zone",
+      "severity": "medium",
+      "description": "Dark packaging should be on the left, light packaging on the right",
+      "logic": {
+        "dark": ["left"],
+        "light": ["right"]
+      }
+    },
+    {
+      "rule_id": "CHILLER_PACK_SIZE_FLOW",
+      "type": "pack_size_zone",
+      "severity": "medium",
+      "description": "Smaller packs on the left, larger packs on the right",
+      "logic": {
+        "small": ["left"],
+        "medium": ["center"],
+        "large": ["right"]
+      }
+    },
+    {
+      "rule_id": "CHILLER_ROW_UNIFORMITY",
+      "type": "row_uniformity",
+      "severity": "low",
+      "description": "Price-point rows (10rs/20rs packs) should maintain similar bottle size and shape",
+      "applies_to_price_points": [10, 20]
+    },
+    {
+      "rule_id": "CHILLER_PRIORITY_PLACEMENT",
+      "type": "priority_visibility",
+      "severity": "medium",
+      "description": "High-margin and fast-moving products should get priority placement on the right/center and middle eye-level zones",
+      "condition": {
+        "is_fast_moving": true,
+        "is_high_margin": true
+      },
+      "preferred_zone": ["right", "center"],
+      "preferred_shelf_area": ["middle", "above_eye_level", "below_eye_level"]
+    },
+    {
+      "rule_id": "CHILLER_TETRA_CORNER",
+      "type": "tetra_pack_corner",
+      "severity": "low",
+      "description": "Tetra packs should be placed at either corner depending on colour balance",
+      "condition": {
+        "package_type": "tetra"
+      },
+      "allowed_zones": ["left", "right"]
+    },
+    {
+      "rule_id": "CHILLER_WATER_PLACEMENT",
+      "type": "water_placement",
+      "severity": "high",
+      "description": "Water bottles must be on the designated bottle shelf, right side",
+      "condition": {
+        "is_water": true
+      },
+      "expected_shelf": 6,
+      "expected_zone": "right"
+    },
+    {
+      "rule_id": "CHILLER_FACING_LOGIC",
+      "type": "facing_allocation",
+      "severity": "medium",
+      "description": "Every product gets 1 facing first; extra facings only for fast-moving products after all products have their primary facing",
+      "logic": {
+        "primary_facing": 1,
+        "extra_facing_condition": {
+          "is_fast_moving": true
+        }
+      }
+    },
+    {
+      "rule_id": "CHILLER_BRAND_MULTI_SIZE",
+      "type": "brand_multi_facing_exception",
+      "severity": "low",
+      "description": "Same brand can have 2 facings across shelves if displaying different pack sizes (e.g., small pack + 750ml/1L pack)",
+      "condition": "different_pack_size_same_brand"
+    },
+    {
+      "rule_id": "CHILLER_OOS_REPLACEMENT",
+      "type": "out_of_stock_replacement",
+      "severity": "medium",
+      "description": "If a product is out of stock, a replacement is acceptable only if it matches commodity, colour logic, and pack-size logic of that shelf/zone",
+      "allowed_if": [
+        "same_shelf_commodity",
+        "matches_colour_logic",
+        "matches_pack_size_logic",
+        "maintains_visual_uniformity"
+      ]
+    }
+  ],
+  "scoring_weights": {
+    "wrong_shelf_commodity": 15,
+    "missing_in_stock_product": 12,
+    "wrong_product_in_shelf": 10,
+    "water_not_on_designated_shelf": 10,
+    "wrong_colour_zone": 5,
+    "wrong_pack_size_zone": 5,
+    "extra_facing_non_fast_moving": 5,
+    "low_or_missing_facing": 4,
+    "minor_position_mismatch": 2
+  },
+  "score_caps": {
+    "if_hard_violation_exists": 8.0
+  }
+}
