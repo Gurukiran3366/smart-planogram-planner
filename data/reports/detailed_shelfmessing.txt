@@ -1,0 +1,79 @@
+======================================================================
+DETAILED CHILLER AUDIT REPORT
+======================================================================
+Rack ID:      BTM-CH01
+Date:         13 August 2026, 16:23
+Source:       data\actual_maps\actual_map_shelfmessing.json
+
+OVERALL SCORE: 6.3/10 — 🟡 NEEDS ATTENTION
+Status:       Several issues to address
+
+Total issues: 20
+  🔴 High:    9
+  🟡 Medium:  11
+  🟢 Low:     0
+  ℹ️  Info:    0
+
+----------------------------------------------------------------------
+📦 Missing Products  (9 issues, -10 points each)
+----------------------------------------------------------------------
+  • Pepsi 1.25L is missing from the chiller
+    → Add Pepsi 1.25L to Shelf 6 (left zone)
+  • Campa Cola 250ml is missing from the chiller
+    → Add Campa Cola 250ml to Shelf 5 (left zone)
+  • Raskik 150ml mango is missing (should appear on multiple shelves)
+    → Add Raskik 150ml mango to Shelf 1 AND Shelf 5
+  • Campa Energy Gold 185ml is missing from the chiller
+    → Add Campa Energy Gold 185ml to Shelf 2 (left zone)
+  • Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle is missing from the chiller
+    → Add Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle to Shelf 5 (left zone)
+  • Maaza 150ml mango is missing from the chiller
+    → Add Maaza 150ml mango to Shelf 1 (left zone)
+  • Campa Energy Berry Kick 250ml is missing from the chiller
+    → Add Campa Energy Berry Kick 250ml to Shelf 5 (left zone)
+  • Paper boat coconut 200ml is missing from the chiller
+    → Add Paper boat coconut 200ml to Shelf 1 (right zone)
+  • Thums Up 250ml is missing from the chiller
+    → Add Thums Up 250ml to Shelf 3 (left zone)
+
+----------------------------------------------------------------------
+👥 Duplicate on Wrong Shelf  (2 issues, -6 points each)
+----------------------------------------------------------------------
+  • Sting Energy 250ml incorrectly duplicated on Shelf 5
+    → Remove extra Sting Energy 250ml from Shelf 5 (correct location: Shelf 2)
+  • Maaza 270ml mango incorrectly duplicated on Shelf 5
+    → Remove extra Maaza 270ml mango from Shelf 5 (correct location: Shelf 1)
+
+----------------------------------------------------------------------
+📦 Partially Missing  (1 issues, -5 points each)
+----------------------------------------------------------------------
+  • Swing pomegranate 270ml present on Shelf 1 but missing from Shelf 5
+    → Also add Swing pomegranate 270ml to Shelf 5 (already on Shelf 1)
+
+----------------------------------------------------------------------
+🎯 Wrong Zone  (6 issues, -4 points each)
+----------------------------------------------------------------------
+  • Sprite 250ml in wrong position on Shelf 3
+    → Move Sprite 250ml on Shelf 3 from center to right
+  • Minute Maid Orange 250ml in wrong position on Shelf 1
+    → Move Minute Maid Orange 250ml on Shelf 1 from left to center
+  • Slice Mango Drink, 1.2L Bottle in wrong position on Shelf 6
+    → Move Slice Mango Drink, 1.2L Bottle on Shelf 6 from center to right
+  • Nandini GoodLife Strawberry Flavoured Milk 200ml in wrong position on Shelf 4
+    → Move Nandini GoodLife Strawberry Flavoured Milk 200ml on Shelf 4 from right to center
+  • Nandini GoodLife Pista Flavoured Milk 180ml in wrong position on Shelf 4
+    → Move Nandini GoodLife Pista Flavoured Milk 180ml on Shelf 4 from center to right
+  • Red Bull Energy Drink 250ml in wrong position on Shelf 2
+    → Move Red Bull Energy Drink 250ml on Shelf 2 from center to right
+
+----------------------------------------------------------------------
+⬆️  Facing Too Low  (2 issues, -3 points each)
+----------------------------------------------------------------------
+  • Amul Kool Cafe 180ml has too few facings on Shelf 4
+    → Increase Amul Kool Cafe 180ml facings on Shelf 4 from 1 to 2
+  • Nandini GoodLife Mango Lassi 180ml has too few facings on Shelf 4
+    → Increase Nandini GoodLife Mango Lassi 180ml facings on Shelf 4 from 1 to 2
+
+======================================================================
+END OF REPORT
+======================================================================

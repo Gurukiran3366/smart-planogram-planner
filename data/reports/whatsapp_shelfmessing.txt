@@ -1,0 +1,33 @@
+━━━━━━━━━━━━━━━━━━━━
+📊 *CHILLER AUDIT*
+Rack: BTM-CH01
+Time: 13 Aug 2026, 16:23
+━━━━━━━━━━━━━━━━━━━━
+
+⭐ *Score: 6.3/10*
+🟡 NEEDS ATTENTION
+_Several issues to address_
+
+📋 *Issues found:* 20
+  🔴 Critical: 9
+  🟡 Moderate: 11
+
+━━━━━━━━━━━━━━━━━━━━
+🎯 *TOP FIXES* (do these first):
+━━━━━━━━━━━━━━━━━━━━
+
+1. 🔴 Add Pepsi 1.25L to Shelf 6 (left zone)
+
+2. 🔴 Add Campa Cola 250ml to Shelf 5 (left zone)
+
+3. 🔴 Add Raskik 150ml mango to Shelf 1 AND Shelf 5
+
+4. 🔴 Add Campa Energy Gold 185ml to Shelf 2 (left zone)
+
+5. 🔴 Add Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle to Shelf 5 (left zone)
+
+_...plus 15 more improvements_
+
+━━━━━━━━━━━━━━━━━━━━
+📸 *Fix top items and resend photo*
+━━━━━━━━━━━━━━━━━━━━

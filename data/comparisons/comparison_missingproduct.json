@@ -1,0 +1,458 @@
+{
+  "rack_id": "BTM-CH01",
+  "compared_at": "2026-08-13T12:02:24.810998",
+  "expected_source": "data/expected_map_BTM_CH01.json",
+  "actual_source": "data/actual_maps/actual_map_missingproduct.json",
+  "violation_counts": {
+    "high": 28,
+    "medium": 13,
+    "low": 0,
+    "info": 0,
+    "total": 41
+  },
+  "violations": [
+    {
+      "type": "missing_product",
+      "severity": "high",
+      "shelf_number": 1,
+      "product_id": "MAAZA_150",
+      "product_name": "Maaza 150ml mango",
+      "expected_zone": "left",
+      "expected_facings": 1,
+      "description": "Missing product: Maaza 150ml mango",
+      "correction": "Add Maaza 150ml mango to Shelf 1 (left zone)"
+    },
+    {
+      "type": "missing_product",
+      "severity": "high",
+      "shelf_number": 1,
+      "product_id": "RASKIK_MANGO_150",
+      "product_name": "Raskik 150ml mango",
+      "expected_zone": "left",
+      "expected_facings": 1,
+      "description": "Missing product: Raskik 150ml mango",
+      "correction": "Add Raskik 150ml mango to Shelf 1 (left zone)"
+    },
+    {
+      "type": "missing_product",
+      "severity": "high",
+      "shelf_number": 1,
+      "product_id": "MINUTE_MAID_ORANGE_250",
+      "product_name": "Minute Maid Orange 250ml",
+      "expected_zone": "center",
+      "expected_facings": 1,
+      "description": "Missing product: Minute Maid Orange 250ml",
+      "correction": "Add Minute Maid Orange 250ml to Shelf 1 (center zone)"
+    },
+    {
+      "type": "missing_product",
+      "severity": "high",
+      "shelf_number": 1,
+      "product_id": "PAPER_BOAT_COCONUT_200",
+      "product_name": "Paper boat coconut 200ml",
+      "expected_zone": "right",
+      "expected_facings": 1,
+      "description": "Missing product: Paper boat coconut 200ml",
+      "correction": "Add Paper boat coconut 200ml to Shelf 1 (right zone)"
+    },
+    {
+      "type": "missing_product",
+      "severity": "high",
+      "shelf_number": 1,
+      "product_id": "SWING_GUAVA_270",
+      "product_name": "Swing guava 270ml",
+      "expected_zone": "right",
+      "expected_facings": 1,
+      "description": "Missing product: Swing guava 270ml",
+      "correction": "Add Swing guava 270ml to Shelf 1 (right zone)"
+    },
+    {
+      "type": "missing_product",
+      "severity": "high",
+      "shelf_number": 2,
+      "product_id": "CAMPA_ENERGY_185",
+      "product_name": "Campa Energy Gold 185ml",
+      "expected_zone": "left",
+      "expected_facings": 1,
+      "description": "Missing product: Campa Energy Gold 185ml",
+      "correction": "Add Campa Energy Gold 185ml to Shelf 2 (left zone)"
+    },
+    {
+      "type": "missing_product",
+      "severity": "high",
+      "shelf_number": 2,
+      "product_id": "REDBULL_SUGARFREE_250",
+      "product_name": "Red Bull Sugarfree 250ml",
+      "expected_zone": "center",
+      "expected_facings": 1,
+      "description": "Missing product: Red Bull Sugarfree 250ml",
+      "correction": "Add Red Bull Sugarfree 250ml to Shelf 2 (center zone)"
+    },
+    {
+      "type": "missing_product",
+      "severity": "high",
+      "shelf_number": 3,
+      "product_id": "THUMSUP_250",
+      "product_name": "Thums Up 250ml",
+      "expected_zone": "left",
+      "expected_facings": 1,
+      "description": "Missing product: Thums Up 250ml",
+      "correction": "Add Thums Up 250ml to Shelf 3 (left zone)"
+    },
+    {
+      "type": "missing_product",
+      "severity": "high",
+      "shelf_number": 3,
+      "product_id": "APPY_FIZZ_250",
+      "product_name": "Appy Fizz 250ml",
+      "expected_zone": "center",
+      "expected_facings": 1,
+      "description": "Missing product: Appy Fizz 250ml",
+      "correction": "Add Appy Fizz 250ml to Shelf 3 (center zone)"
+    },
+    {
+      "type": "missing_product",
+      "severity": "high",
+      "shelf_number": 4,
+      "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+      "product_name": "Nandini GoodLife Strawberry Flavoured Milk 200ml",
+      "expected_zone": "center",
+      "expected_facings": 1,
+      "description": "Missing product: Nandini GoodLife Strawberry Flavoured Milk 200ml",
+      "correction": "Add Nandini GoodLife Strawberry Flavoured Milk 200ml to Shelf 4 (center zone)"
+    },
+    {
+      "type": "missing_product",
+      "severity": "high",
+      "shelf_number": 4,
+      "product_id": "NANDINI_PISTA_FLAVOURED_MILK_180",
+      "product_name": "Nandini GoodLife Pista Flavoured Milk 180ml",
+      "expected_zone": "right",
+      "expected_facings": 1,
+      "description": "Missing product: Nandini GoodLife Pista Flavoured Milk 180ml",
+      "correction": "Add Nandini GoodLife Pista Flavoured Milk 180ml to Shelf 4 (right zone)"
+    },
+    {
+      "type": "missing_product",
+      "severity": "high",
+      "shelf_number": 5,
+      "product_id": "DAILEE_MANGO_180",
+      "product_name": "Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle",
+      "expected_zone": "left",
+      "expected_facings": 1,
+      "description": "Missing product: Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle",
+      "correction": "Add Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle to Shelf 5 (left zone)"
+    },
+    {
+      "type": "missing_product",
+      "severity": "high",
+      "shelf_number": 5,
+      "product_id": "RASKIK_MANGO_150",
+      "product_name": "Raskik 150ml mango",
+      "expected_zone": "center",
+      "expected_facings": 1,
+      "description": "Missing product: Raskik 150ml mango",
+      "correction": "Add Raskik 150ml mango to Shelf 5 (center zone)"
+    },
+    {
+      "type": "missing_product",
+      "severity": "high",
+      "shelf_number": 6,
+      "product_id": "BISLERI_WATER_1000",
+      "product_name": "Bisleri Mineral Water, 1L Bottle",
+      "expected_zone": "right",
+      "expected_facings": 1,
+      "description": "Missing product: Bisleri Mineral Water, 1L Bottle",
+      "correction": "Add Bisleri Mineral Water, 1L Bottle to Shelf 6 (right zone)"
+    },
+    {
+      "type": "wrong_shelf",
+      "severity": "high",
+      "product_id": "MAAZA_270",
+      "product_name": "Maaza 270ml mango",
+      "expected_shelf": 1,
+      "actual_shelf": 2,
+      "description": "Maaza 270ml mango on wrong shelf",
+      "correction": "Move Maaza 270ml mango from Shelf 2 to Shelf 1"
+    },
+    {
+      "type": "wrong_shelf",
+      "severity": "high",
+      "product_id": "THUMSUP_XFORCE_300",
+      "product_name": "Thums up xforce 300ml",
+      "expected_shelf": 2,
+      "actual_shelf": 3,
+      "description": "Thums up xforce 300ml on wrong shelf",
+      "correction": "Move Thums up xforce 300ml from Shelf 3 to Shelf 2"
+    },
+    {
+      "type": "wrong_shelf",
+      "severity": "high",
+      "product_id": "MONSTER_CAN_350",
+      "product_name": "Monster Energy Can 350ml",
+      "expected_shelf": 2,
+      "actual_shelf": 3,
+      "description": "Monster Energy Can 350ml on wrong shelf",
+      "correction": "Move Monster Energy Can 350ml from Shelf 3 to Shelf 2"
+    },
+    {
+      "type": "wrong_shelf",
+      "severity": "high",
+      "product_id": "MONSTER_ULTRA_350",
+      "product_name": "Monster Ultra Can 350ml",
+      "expected_shelf": 2,
+      "actual_shelf": 3,
+      "description": "Monster Ultra Can 350ml on wrong shelf",
+      "correction": "Move Monster Ultra Can 350ml from Shelf 3 to Shelf 2"
+    },
+    {
+      "type": "wrong_shelf",
+      "severity": "high",
+      "product_id": "REDBULL_250",
+      "product_name": "Red Bull Energy Drink 250ml",
+      "expected_shelf": 2,
+      "actual_shelf": 1,
+      "description": "Red Bull Energy Drink 250ml on wrong shelf",
+      "correction": "Move Red Bull Energy Drink 250ml from Shelf 1 to Shelf 2"
+    },
+    {
+      "type": "wrong_shelf",
+      "severity": "high",
+      "product_id": "POWERHORSE_250",
+      "product_name": "Power Horse 250ml",
+      "expected_shelf": 2,
+      "actual_shelf": 3,
+      "description": "Power Horse 250ml on wrong shelf",
+      "correction": "Move Power Horse 250ml from Shelf 3 to Shelf 2"
+    },
+    {
+      "type": "wrong_shelf",
+      "severity": "high",
+      "product_id": "STING_250",
+      "product_name": "Sting Energy 250ml",
+      "expected_shelf": 2,
+      "actual_shelf": 3,
+      "description": "Sting Energy 250ml on wrong shelf",
+      "correction": "Move Sting Energy 250ml from Shelf 3 to Shelf 2"
+    },
+    {
+      "type": "wrong_shelf",
+      "severity": "high",
+      "product_id": "STING_250",
+      "product_name": "Sting Energy 250ml",
+      "expected_shelf": 2,
+      "actual_shelf": 5,
+      "description": "Sting Energy 250ml on wrong shelf",
+      "correction": "Move Sting Energy 250ml from Shelf 5 to Shelf 2"
+    },
+    {
+      "type": "wrong_shelf",
+      "severity": "high",
+      "product_id": "BINDU_FIZZ_250",
+      "product_name": "Bindu Fizz Jeera Masala 250ml",
+      "expected_shelf": 3,
+      "actual_shelf": 1,
+      "description": "Bindu Fizz Jeera Masala 250ml on wrong shelf",
+      "correction": "Move Bindu Fizz Jeera Masala 250ml from Shelf 1 to Shelf 3"
+    },
+    {
+      "type": "wrong_shelf",
+      "severity": "high",
+      "product_id": "CAMPA_ENERGY_BERRY_250",
+      "product_name": "Campa Energy Berry Kick 250ml",
+      "expected_shelf": 5,
+      "actual_shelf": 4,
+      "description": "Campa Energy Berry Kick 250ml on wrong shelf",
+      "correction": "Move Campa Energy Berry Kick 250ml from Shelf 4 to Shelf 5"
+    },
+    {
+      "type": "wrong_shelf",
+      "severity": "high",
+      "product_id": "SWING_270",
+      "product_name": "Swing pomegranate 270ml",
+      "expected_shelf": 5,
+      "actual_shelf": 1,
+      "description": "Swing pomegranate 270ml on wrong shelf",
+      "correction": "Move Swing pomegranate 270ml from Shelf 1 to Shelf 5"
+    },
+    {
+      "type": "wrong_shelf",
+      "severity": "high",
+      "product_id": "SWING_MIXED_FRUIT_200",
+      "product_name": "Paper Boat Swing Mixed Fruit Medley 200ml",
+      "expected_shelf": 5,
+      "actual_shelf": 1,
+      "description": "Paper Boat Swing Mixed Fruit Medley 200ml on wrong shelf",
+      "correction": "Move Paper Boat Swing Mixed Fruit Medley 200ml from Shelf 1 to Shelf 5"
+    },
+    {
+      "type": "wrong_zone",
+      "severity": "medium",
+      "shelf_number": 1,
+      "product_id": "SWING_LYCHEE_270",
+      "product_name": "Swing lychee 270ml",
+      "expected_zone": "right",
+      "actual_zone": "center",
+      "description": "Swing lychee 270ml in wrong position on Shelf 1",
+      "correction": "Move Swing lychee 270ml from center to right on Shelf 1"
+    },
+    {
+      "type": "wrong_zone",
+      "severity": "medium",
+      "shelf_number": 2,
+      "product_id": "MONSTER_CAN_350",
+      "product_name": "Monster Energy Can 350ml",
+      "expected_zone": "left",
+      "actual_zone": "center",
+      "description": "Monster Energy Can 350ml in wrong position on Shelf 2",
+      "correction": "Move Monster Energy Can 350ml from center to left on Shelf 2"
+    },
+    {
+      "type": "wrong_zone",
+      "severity": "medium",
+      "shelf_number": 2,
+      "product_id": "REDBULL_250",
+      "product_name": "Red Bull Energy Drink 250ml",
+      "expected_zone": "right",
+      "actual_zone": "center",
+      "description": "Red Bull Energy Drink 250ml in wrong position on Shelf 2",
+      "correction": "Move Red Bull Energy Drink 250ml from center to right on Shelf 2"
+    },
+    {
+      "type": "wrong_zone",
+      "severity": "medium",
+      "shelf_number": 3,
+      "product_id": "COCACOLA_250",
+      "product_name": "Coca-Cola 250ml",
+      "expected_zone": "left",
+      "actual_zone": "center",
+      "description": "Coca-Cola 250ml in wrong position on Shelf 3",
+      "correction": "Move Coca-Cola 250ml from center to left on Shelf 3"
+    },
+    {
+      "type": "wrong_zone",
+      "severity": "medium",
+      "shelf_number": 3,
+      "product_id": "SPRITE_250",
+      "product_name": "Sprite 250ml",
+      "expected_zone": "right",
+      "actual_zone": "center",
+      "description": "Sprite 250ml in wrong position on Shelf 3",
+      "correction": "Move Sprite 250ml from center to right on Shelf 3"
+    },
+    {
+      "type": "wrong_zone",
+      "severity": "medium",
+      "shelf_number": 4,
+      "product_id": "NANDINI_MANGO_LASSI_180",
+      "product_name": "Nandini GoodLife Mango Lassi 180ml",
+      "expected_zone": "left",
+      "actual_zone": "center",
+      "description": "Nandini GoodLife Mango Lassi 180ml in wrong position on Shelf 4",
+      "correction": "Move Nandini GoodLife Mango Lassi 180ml from center to left on Shelf 4"
+    },
+    {
+      "type": "wrong_zone",
+      "severity": "medium",
+      "shelf_number": 5,
+      "product_id": "POP_ORANGE_250",
+      "product_name": "Bisleri Pop Orange 250ml",
+      "expected_zone": "left",
+      "actual_zone": "center",
+      "description": "Bisleri Pop Orange 250ml in wrong position on Shelf 5",
+      "correction": "Move Bisleri Pop Orange 250ml from center to left on Shelf 5"
+    },
+    {
+      "type": "wrong_zone",
+      "severity": "medium",
+      "shelf_number": 5,
+      "product_id": "LIMONATA_160",
+      "product_name": "Bisleri Limonata 160ml",
+      "expected_zone": "center",
+      "actual_zone": "right",
+      "description": "Bisleri Limonata 160ml in wrong position on Shelf 5",
+      "correction": "Move Bisleri Limonata 160ml from right to center on Shelf 5"
+    },
+    {
+      "type": "wrong_zone",
+      "severity": "medium",
+      "shelf_number": 6,
+      "product_id": "PEPSI_1250",
+      "product_name": "Pepsi 1.25L",
+      "expected_zone": "left",
+      "actual_zone": "right",
+      "description": "Pepsi 1.25L in wrong position on Shelf 6",
+      "correction": "Move Pepsi 1.25L from right to left on Shelf 6"
+    },
+    {
+      "type": "wrong_zone",
+      "severity": "medium",
+      "shelf_number": 6,
+      "product_id": "SLICE_MANGO_1250",
+      "product_name": "Slice Mango Drink, 1.2L Bottle",
+      "expected_zone": "right",
+      "actual_zone": "left",
+      "description": "Slice Mango Drink, 1.2L Bottle in wrong position on Shelf 6",
+      "correction": "Move Slice Mango Drink, 1.2L Bottle from left to right on Shelf 6"
+    },
+    {
+      "type": "low_facing",
+      "severity": "medium",
+      "shelf_number": 3,
+      "product_id": "COCACOLA_250",
+      "product_name": "Coca-Cola 250ml",
+      "expected_facings": 2,
+      "actual_facings": 1,
+      "description": "Coca-Cola 250ml has too few facings on Shelf 3",
+      "correction": "Increase Coca-Cola 250ml facing on Shelf 3 from 1 to 2"
+    },
+    {
+      "type": "low_facing",
+      "severity": "medium",
+      "shelf_number": 4,
+      "product_id": "AMUL_KOOL_CAFE_180",
+      "product_name": "Amul Kool Cafe 180ml",
+      "expected_facings": 2,
+      "actual_facings": 1,
+      "description": "Amul Kool Cafe 180ml has too few facings on Shelf 4",
+      "correction": "Increase Amul Kool Cafe 180ml facing on Shelf 4 from 1 to 2"
+    },
+    {
+      "type": "low_facing",
+      "severity": "medium",
+      "shelf_number": 4,
+      "product_id": "NANDINI_MANGO_LASSI_180",
+      "product_name": "Nandini GoodLife Mango Lassi 180ml",
+      "expected_facings": 2,
+      "actual_facings": 1,
+      "description": "Nandini GoodLife Mango Lassi 180ml has too few facings on Shelf 4",
+      "correction": "Increase Nandini GoodLife Mango Lassi 180ml facing on Shelf 4 from 1 to 2"
+    },
+    {
+      "type": "wrong_commodity_on_shelf",
+      "severity": "high",
+      "shelf_number": 2,
+      "product_id": "COCONUT_WATER_200",
+      "product_name": "CocoNuut Coconut Water 200ml",
+      "actual_commodity": "fruit_beverage",
+      "expected_commodities": [
+        "energy_drink"
+      ],
+      "description": "CocoNuut Coconut Water 200ml (fruit_beverage) doesn't belong on Shelf 2",
+      "correction": "Remove CocoNuut Coconut Water 200ml from Shelf 2 — this shelf is for energy_drink"
+    },
+    {
+      "type": "wrong_commodity_on_shelf",
+      "severity": "high",
+      "shelf_number": 3,
+      "product_id": "COCONUT_WATER_200",
+      "product_name": "CocoNuut Coconut Water 200ml",
+      "actual_commodity": "fruit_beverage",
+      "expected_commodities": [
+        "soft_drink"
+      ],
+      "description": "CocoNuut Coconut Water 200ml (fruit_beverage) doesn't belong on Shelf 3",
+      "correction": "Remove CocoNuut Coconut Water 200ml from Shelf 3 — this shelf is for soft_drink"
+    }
+  ]
+}

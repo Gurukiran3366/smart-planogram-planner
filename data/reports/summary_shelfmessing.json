@@ -1,0 +1,48 @@
+{
+  "rack_id": "BTM-CH01",
+  "audit_date": "2026-08-13T16:23:50.987682",
+  "score": 6.3,
+  "status": "🟡 NEEDS ATTENTION",
+  "status_description": "Several issues to address",
+  "violation_counts": {
+    "high": 9,
+    "medium": 11,
+    "low": 0,
+    "info": 0,
+    "total": 20
+  },
+  "total_expected_products": 46,
+  "top_fixes": [
+    {
+      "priority": 1,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Add Pepsi 1.25L to Shelf 6 (left zone)"
+    },
+    {
+      "priority": 2,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Add Campa Cola 250ml to Shelf 5 (left zone)"
+    },
+    {
+      "priority": 3,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Add Raskik 150ml mango to Shelf 1 AND Shelf 5"
+    },
+    {
+      "priority": 4,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Add Campa Energy Gold 185ml to Shelf 2 (left zone)"
+    },
+    {
+      "priority": 5,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Add Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle to Shelf 5 (left zone)"
+    }
+  ],
+  "source_comparison": "data/comparisons/comparison_shelfmessing.json"
+}

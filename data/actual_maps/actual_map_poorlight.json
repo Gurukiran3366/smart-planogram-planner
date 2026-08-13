@@ -1,0 +1,8 @@
+{
+  "rack_id": "BTM-CH01",
+  "source_image": "images/staff_uploads/poorlight.jpeg",
+  "processed_at": "2026-08-13T00:40:32.739138",
+  "model_used": "gemini-pro-latest",
+  "api_calls_used": 1,
+  "shelves": []
+}

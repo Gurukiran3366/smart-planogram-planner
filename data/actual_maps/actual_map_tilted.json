@@ -1,0 +1,293 @@
+{
+  "rack_id": "BTM-CH01",
+  "source_image": "images\\staff_uploads\\tilted.jpeg",
+  "processed_at": "2026-08-13T00:23:36.675670",
+  "model_used": "gemini-3.5-flash-lite",
+  "api_calls_used": 1,
+  "shelves": [
+    {
+      "shelf_number": 1,
+      "products": [
+        {
+          "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+          "zone": "left",
+          "facings": 5,
+          "confidence": "high"
+        }
+      ],
+      "unknown_items": [],
+      "empty_zones": [],
+      "notes": "Milk beverages stored on shelf 1",
+      "expected_commodities": [
+        "fruit_beverage"
+      ]
+    },
+    {
+      "shelf_number": 2,
+      "products": [
+        {
+          "product_id": "MAAZA_270",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "RASKIK_MANGO_150",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "medium"
+        },
+        {
+          "product_id": "MAAZA_270",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MINUTE_MAID_ORANGE_250",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "FROOTI_300",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SWING_270",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SWING_LYCHEE_270",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "PAPER_BOAT_COCONUT_200",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SWING_GUAVA_270",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        }
+      ],
+      "unknown_items": [],
+      "empty_zones": [],
+      "notes": "",
+      "expected_commodities": [
+        "energy_drink"
+      ]
+    },
+    {
+      "shelf_number": 3,
+      "products": [
+        {
+          "product_id": "CAMPA_ENERGY_185",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "THUMSUP_XFORCE_300",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MONSTER_CAN_350",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MONSTER_ULTRA_350",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "REDBULL_250",
+          "zone": "center",
+          "facings": 2,
+          "confidence": "high"
+        },
+        {
+          "product_id": "POWERHORSE_250",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "STING_250",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        }
+      ],
+      "unknown_items": [],
+      "empty_zones": [],
+      "notes": "",
+      "expected_commodities": [
+        "soft_drink"
+      ]
+    },
+    {
+      "shelf_number": 4,
+      "products": [
+        {
+          "product_id": "BINDU_FIZZ_250",
+          "zone": "left",
+          "facings": 2,
+          "confidence": "high"
+        },
+        {
+          "product_id": "COCACOLA_250",
+          "zone": "left",
+          "facings": 2,
+          "confidence": "high"
+        },
+        {
+          "product_id": "THUMSUP_250",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "medium"
+        },
+        {
+          "product_id": "FANTA_250",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SPRITE_250",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "COCACOLA_ZERO_300",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        }
+      ],
+      "unknown_items": [],
+      "empty_zones": [],
+      "notes": "",
+      "expected_commodities": [
+        "milk_beverage"
+      ]
+    },
+    {
+      "shelf_number": 5,
+      "products": [
+        {
+          "product_id": "NANDINI_MANGO_LASSI_180",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MAX_PROTEIN_CHOCO_BURST_250",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MAX_PROTEIN_BERRY_BLUSH_250",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "NANDINI_PISTA_FLAVOURED_MILK_180",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "NANDINI_MANGO_LASSI_180",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "AMUL_PREMIUM_BUTTERMILK_200",
+          "zone": "right",
+          "facings": 2,
+          "confidence": "high"
+        }
+      ],
+      "unknown_items": [],
+      "empty_zones": [],
+      "notes": "",
+      "expected_commodities": [
+        "fruit_beverage",
+        "soft_drink"
+      ]
+    },
+    {
+      "shelf_number": 6,
+      "products": [
+        {
+          "product_id": "PEPSI_1250",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "COCACOLA_1250",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SEVENUP_1250",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MOUNTAINDEW_1250",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SLICE_MANGO_1250",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "BISLERI_WATER_1000",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        }
+      ],
+      "unknown_items": [],
+      "empty_zones": [],
+      "notes": "",
+      "expected_commodities": [
+        "soft_drink",
+        "water"
+      ]
+    }
+  ]
+}
