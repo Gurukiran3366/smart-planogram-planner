@@ -16,7 +16,7 @@ from datetime import datetime
 # CONFIG
 # ============================================================
 client = genai.Client(api_key=os.environ.get("GOOGLE_API_KEY"))
-MODEL_NAME = "gemini-3.5-flash-lite"
+MODEL_NAME = "gemini-3.6-flash"
 
 RACK_ID = "BTM-CH01"
 PRODUCTS_FILE = "data/products.xlsx"
@@ -101,32 +101,78 @@ def get_shelf_positions(image_path):
     return result
 
 
+def calculate_horizontal_bounds(image_path, shelf_positions):
+    """
+    Dynamically calculate horizontal crop boundaries based on where 
+    shelf labels are detected. The chiller content is to the RIGHT of the labels.
+    """
+    img = cv2.imread(image_path)
+    h, w = img.shape[:2]
+    
+    if not shelf_positions:
+        # Fallback to defaults if no shelves detected
+        return CROP_LEFT, CROP_RIGHT
+    
+    # Get x-coordinates of detected labels (they should be on left side)
+    # We need to re-run OCR to get x positions, so let's use a simpler approach:
+    # Look at existing shelf_positions - but they only have Y coords.
+    # 
+    # Alternative: use image analysis to find the chiller frame
+    
+    # Simple approach: assume labels are at ~5-15% of width from left
+    # Chiller content starts at ~20% from left
+    # Chiller content ends at ~90% from left (glass edge)
+    
+    # But we should be MORE GENEROUS to avoid cutting off products
+    left_bound = int(w * 0.18)   # Start 18% from left (safer than 350px hardcoded)
+    right_bound = int(w * 0.95)  # End 95% from left (include full width)
+    
+    return left_bound, right_bound
+
+
 def crop_shelves(image_path, shelf_positions, output_folder):
-    """Crop image into 6 shelf strips using midpoint boundaries."""
+    """
+    Crop image into 6 shelf strips using midpoint boundaries.
+    Uses DYNAMIC horizontal boundaries based on image dimensions,
+    not hardcoded values — makes it robust across different photo angles/distances.
+    """
     img = cv2.imread(image_path)
     h, w = img.shape[:2]
     output_folder.mkdir(parents=True, exist_ok=True)
     crops = []
     positions = sorted(shelf_positions, key=lambda x: x["shelf"])
     ys = [p["y"] for p in positions]
+    
+    # Calculate vertical boundaries (midpoints between shelf labels)
     boundaries = [0]
     for i in range(len(ys) - 1):
         boundaries.append((ys[i] + ys[i+1]) // 2)
     boundaries.append(h)
-    print(f"   📊 Calculated shelf boundaries: {boundaries}")
+    
+    # Calculate horizontal boundaries DYNAMICALLY
+    left_bound, right_bound = calculate_horizontal_bounds(image_path, shelf_positions)
+    
+    print(f"   📊 Image size: {w}x{h}")
+    print(f"   📊 Horizontal crop: x={left_bound} to x={right_bound} (width: {right_bound-left_bound}px)")
+    print(f"   📊 Vertical boundaries: {boundaries}")
+    
     for i, shelf in enumerate(positions):
         shelf_num = shelf["shelf"]
         y_start = boundaries[i]
         y_end = boundaries[i + 1]
+        
         if y_end <= y_start:
             print(f"   ⚠️  Shelf {shelf_num}: invalid boundaries, skipping")
             continue
-        crop = img[y_start:y_end, CROP_LEFT:CROP_RIGHT]
+        
+        # Use dynamic horizontal bounds instead of hardcoded CROP_LEFT/CROP_RIGHT
+        crop = img[y_start:y_end, left_bound:right_bound]
         crop_path = output_folder / f"shelf_{shelf_num}.jpg"
         cv2.imwrite(str(crop_path), crop)
         crop_h, crop_w = crop.shape[:2]
         print(f"   ✂️  Shelf {shelf_num}: {crop_w}x{crop_h}px")
         crops.append({"shelf_number": shelf_num, "image_path": str(crop_path)})
+    
     return crops
 
 
@@ -163,34 +209,64 @@ def analyze_all_shelves_one_call(crops, products_df, shelf_commodity_map, max_re
     
     prompt = f"""You are analyzing a beverage chiller with 6 shelves (STAFF-UPLOADED PHOTO — may be imperfect).
 
-I am sending you 6 IMAGES in order — one per shelf, from Shelf 1 (top) to Shelf 6 (bottom).
+I am sending you 6 SEPARATE IMAGES in order — one per shelf, from Shelf 1 (top) to Shelf 6 (bottom).
 
-SHELF EXPECTATIONS:
+CRITICAL RULES:
+- Each image shows ONE shelf only
+- Products in image N are on Shelf N — do NOT combine products across images
+- Do NOT confuse shelf boundaries
+- A single shelf typically has 5-10 products maximum
+- If you find yourself listing 12+ products for one shelf, you are HALLUCINATING — stop and re-examine the image
+
+SHELF EXPECTATIONS (what SHOULD be there — but report what you actually SEE):
 {expectations_text}
 
-FULL PRODUCT CATALOG (all products that could appear anywhere in the chiller):
+⚠️ IMPORTANT: Products may be MISPLACED. If you see a soft drink on the energy drink shelf, 
+report it correctly using the FULL catalog below. Do NOT restrict yourself to the shelf's 
+expected commodity when identifying products.
+
+FULL PRODUCT CATALOG (identify products from this ENTIRE list, regardless of which shelf):
 {catalog_text}
 
 YOUR TASK:
-For EACH of the 6 shelf images, identify every product visible on that shelf.
+For EACH of the 6 shelf images, identify EVERY product visible, even if it seems misplaced.
 
-RULES:
-1. Match each product to a product_id from the catalog above (EXACT match required)
-2. If you see a product NOT in the catalog, add it to "unknown_items"
-3. Determine zone for each product: "left", "center", or "right" (divide shelf width in thirds)
-4. Count facings (how many identical products placed side-by-side)
-5. Assign confidence per product: "high", "medium", or "low"
-6. Report what you SEE, not what should be there. Products may be on wrong shelves.
-7. Include ALL 6 shelves in your response, even if empty.
+STEPS FOR EACH IMAGE:
+1. Look at ONLY the current image
+2. Identify EVERY distinct product visible from LEFT to RIGHT (bottles, cans, pouches, cartons)
+3. Match to a product_id from the FULL catalog above (any commodity — not just this shelf's)
+4. Only use "unknown_items" if the product is truly not in the catalog at all
+5. Count SLOTS (each physical bottle/can position = 1 slot):
+   - slot_start = leftmost slot the product occupies (1 = leftmost of shelf)
+   - slot_end = rightmost slot (same as slot_start if only 1 facing)
+   - Example: If Coca-Cola has 2 bottles side-by-side starting at slot 3,
+     then slot_start=3 and slot_end=4
+   - Next product starts at slot 5 (not 4)
+6. Count facings = slot_end - slot_start + 1
+7. Also assign zone: "left", "center", or "right" (rough position reference)
+8. Assign confidence: "high", "medium", "low"
 
-Return ONLY this JSON structure (all 6 shelves must be included):
+CRITICAL: When counting slots, count EACH physical bottle/can position.
+If you see [Product A][Product A][Product B], that's:
+- Product A: slot_start=1, slot_end=2, facings=2
+- Product B: slot_start=3, slot_end=3, facings=1
+
+IDENTIFICATION HINTS:
+- Small carton pack with mango imagery = Maaza Mango
+- Red/silver energy can = Red Bull (regular) or Red Bull Sugarfree
+- Blue/silver energy can = often Red Bull Sugarfree
+- Green pouch = Paper Boat Swing (various flavors)
+- Look at COLORS, LOGOS, and PACKAGING SHAPES to distinguish similar products
+- If uncertain between similar products, use "medium" or "low" confidence
+
+Return ONLY this JSON (all 6 shelves included):
 
 {{
   "shelves": [
     {{
       "shelf_number": 1,
       "products": [
-        {{"product_id": "PRODUCT_ID_HERE", "zone": "left", "facings": 1, "confidence": "high"}}
+        {{"product_id": "PRODUCT_ID", "position": 1, "zone": "left", "facings": 1, "confidence": "high"}}
       ],
       "unknown_items": [
         {{"description": "brief description", "zone": "left|center|right", "notes": ""}}

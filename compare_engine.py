@@ -1,8 +1,13 @@
 # compare_engine.py
 """
-Milestone 4: The Comparison Engine (Enhanced)
+Milestone 4: The Comparison Engine (Complete Production Version)
 Compares expected reference map against actual detected map.
-Deduplicates violations and produces clean, actionable output.
+Features:
+- Slot-based positioning (accounts for facings)
+- Zone tolerance for adjacent zones
+- Out-of-stock awareness
+- Multi-shelf product handling
+- Clean, actionable correction messages
 """
 
 import json
@@ -10,6 +15,7 @@ import sys
 import pandas as pd
 from pathlib import Path
 from datetime import datetime
+from stock_status import load_today_oos
 
 # ============================================================
 # CONFIG
@@ -20,7 +26,25 @@ RULES_FILE = "data/chiller_rules.json"
 COMPARISONS_DIR = Path("data/comparisons")
 
 
+# ============================================================
+# HELPER FUNCTIONS
+# ============================================================
+
+def zones_are_adjacent_or_equal(zone1, zone2):
+    """
+    Check if two zones are the same or adjacent.
+    Zone ordering: left < center < right
+    """
+    if zone1 == zone2:
+        return True
+    zone_order = {"left": 0, "center": 1, "right": 2}
+    if zone1 not in zone_order or zone2 not in zone_order:
+        return False
+    return abs(zone_order[zone1] - zone_order[zone2]) <= 1
+
+
 def load_data(actual_map_file):
+    """Load all required data files."""
     with open(EXPECTED_MAP_FILE, "r", encoding="utf-8") as f:
         expected = json.load(f)
     with open(actual_map_file, "r", encoding="utf-8") as f:
@@ -54,7 +78,7 @@ def get_product_name(pid, product_lookup):
 
 
 def build_expected_index(expected):
-    """Build index: {product_id: [{shelf, zone, facings}, ...]}"""
+    """Build index: {product_id: [{shelf, zone, slot_start, slot_end, facings}, ...]}"""
     index = {}
     for shelf in expected["shelves"]:
         shelf_num = shelf["shelf_number"]
@@ -65,13 +89,15 @@ def build_expected_index(expected):
             index[pid].append({
                 "shelf": shelf_num,
                 "zone": product.get("zone", "unknown"),
+                "slot_start": product.get("slot_start"),
+                "slot_end": product.get("slot_end"),
                 "facings": product.get("facings", 1)
             })
     return index
 
 
 def build_actual_index(actual):
-    """Build index: {product_id: [{shelf, zone, facings, confidence}, ...]}"""
+    """Build index: {product_id: [{shelf, zone, slot_start, slot_end, facings, confidence}, ...]}"""
     index = {}
     for shelf in actual["shelves"]:
         shelf_num = shelf["shelf_number"]
@@ -82,6 +108,8 @@ def build_actual_index(actual):
             index[pid].append({
                 "shelf": shelf_num,
                 "zone": product.get("zone", "unknown"),
+                "slot_start": product.get("slot_start"),
+                "slot_end": product.get("slot_end"),
                 "facings": product.get("facings", 1),
                 "confidence": product.get("confidence", "high")
             })
@@ -89,6 +117,7 @@ def build_actual_index(actual):
 
 
 def get_shelf_commodity_map(rules):
+    """Extract shelf commodity map from rules."""
     for rule in rules["rules"]:
         if rule["rule_id"] == "CHILLER_SHELF_COMMODITY":
             return rule["shelf_commodity_map"]
@@ -96,46 +125,102 @@ def get_shelf_commodity_map(rules):
 
 
 # ============================================================
-# VIOLATION DETECTION FUNCTIONS
+# VIOLATION DETECTION
 # ============================================================
 
 def analyze_product_placement(pid, expected_locations, actual_locations, product_lookup):
     """
     Analyze a single product holistically across all shelves.
-    Handles multi-shelf products correctly (like Raskik on Shelf 1 AND Shelf 5).
-    Produces ONE consolidated violation per issue.
+    Uses slot-based positioning with zone fallback.
+    Handles multi-shelf products, out-of-stock, misplacements.
     """
     violations = []
     product_name = get_product_name(pid, product_lookup)
     
+    # Check OOS status
+    oos_products = load_today_oos()
+    is_out_of_stock = pid in oos_products
+    
     expected_shelves = {loc["shelf"] for loc in expected_locations}
     actual_shelves = {loc["shelf"] for loc in actual_locations}
     
-    # Categorize shelves
-    satisfied_shelves = expected_shelves & actual_shelves  # both expected & actual
-    unsatisfied_shelves = expected_shelves - actual_shelves  # expected but missing
-    unexpected_shelves = actual_shelves - expected_shelves  # actual but not expected
+    satisfied_shelves = expected_shelves & actual_shelves
+    unsatisfied_shelves = expected_shelves - actual_shelves
+    unexpected_shelves = actual_shelves - expected_shelves
     
-    # ─────────────────────────────────────────────────────
-    # For satisfied shelves, check zone + facings
-    # ─────────────────────────────────────────────────────
+    # For satisfied shelves, check position + facings
     for shelf_num in satisfied_shelves:
         exp_loc = next(l for l in expected_locations if l["shelf"] == shelf_num)
         act_loc = next(l for l in actual_locations if l["shelf"] == shelf_num)
         
-        # Zone check
-        if act_loc["zone"] != exp_loc["zone"] and act_loc["zone"] != "unknown":
-            violations.append({
-                "type": "wrong_zone",
-                "severity": "medium",
-                "product_id": pid,
-                "product_name": product_name,
-                "shelf_number": shelf_num,
-                "expected_zone": exp_loc["zone"],
-                "actual_zone": act_loc["zone"],
-                "description": f"{product_name} in wrong position on Shelf {shelf_num}",
-                "correction": f"Move {product_name} on Shelf {shelf_num} from {act_loc['zone']} to {exp_loc['zone']}"
-            })
+        # SLOT-BASED POSITION CHECK
+        exp_slot_start = exp_loc.get("slot_start")
+        act_slot_start = act_loc.get("slot_start")
+        
+        if exp_slot_start is not None and act_slot_start is not None:
+            slot_diff = abs(exp_slot_start - act_slot_start)
+            
+            if slot_diff == 0:
+                pass  # Perfect match
+            elif slot_diff <= 1:
+                violations.append({
+                    "type": "position_minor_shift",
+                    "severity": "low",
+                    "product_id": pid,
+                    "product_name": product_name,
+                    "shelf_number": shelf_num,
+                    "expected_slot": exp_slot_start,
+                    "actual_slot": act_slot_start,
+                    "description": f"{product_name} slightly off position on Shelf {shelf_num}",
+                    "correction": f"Verify {product_name} on Shelf {shelf_num} (at slot {act_slot_start}, expected slot {exp_slot_start})"
+                })
+            elif slot_diff <= 2:
+                direction = "right" if act_slot_start > exp_slot_start else "left"
+                violations.append({
+                    "type": "wrong_position",
+                    "severity": "medium",
+                    "product_id": pid,
+                    "product_name": product_name,
+                    "shelf_number": shelf_num,
+                    "expected_slot": exp_slot_start,
+                    "actual_slot": act_slot_start,
+                    "description": f"{product_name} in wrong position on Shelf {shelf_num}",
+                    "correction": f"Move {product_name} on Shelf {shelf_num} from slot {act_slot_start} to slot {exp_slot_start} ({direction} by {slot_diff} slots)"
+                })
+            else:
+                direction = "right" if act_slot_start > exp_slot_start else "left"
+                violations.append({
+                    "type": "wrong_position",
+                    "severity": "high",
+                    "product_id": pid,
+                    "product_name": product_name,
+                    "shelf_number": shelf_num,
+                    "expected_slot": exp_slot_start,
+                    "actual_slot": act_slot_start,
+                    "description": f"{product_name} significantly misplaced on Shelf {shelf_num}",
+                    "correction": f"Move {product_name} on Shelf {shelf_num} from slot {act_slot_start} to slot {exp_slot_start} ({direction} by {slot_diff} slots)"
+                })
+        else:
+            # Fallback to zone check if slot info missing
+            if act_loc.get("zone") != exp_loc.get("zone") and act_loc.get("zone") != "unknown":
+                if zones_are_adjacent_or_equal(exp_loc.get("zone", ""), act_loc.get("zone", "")):
+                    severity = "low"
+                    correction = f"Verify {product_name} position on Shelf {shelf_num}"
+                else:
+                    severity = "medium"
+                    correction = f"Move {product_name} on Shelf {shelf_num} from {act_loc['zone']} to {exp_loc['zone']}"
+                
+                violations.append({
+                    "type": "wrong_zone",
+                    "severity": severity,
+                    "product_id": pid,
+                    "product_name": product_name,
+                    "shelf_number": shelf_num,
+                    "expected_zone": exp_loc.get("zone"),
+                    "actual_zone": act_loc.get("zone"),
+                    "description": f"{product_name} position issue on Shelf {shelf_num}",
+                    "correction": correction
+                })
         
         # Facing check
         if act_loc["facings"] < exp_loc["facings"]:
@@ -165,11 +250,8 @@ def analyze_product_placement(pid, expected_locations, actual_locations, product
                     "correction": f"Reduce {product_name} facings on Shelf {shelf_num} from {act_loc['facings']} to {exp_loc['facings']}"
                 })
     
-    # ─────────────────────────────────────────────────────
     # Handle misplacement — consolidated single message
-    # ─────────────────────────────────────────────────────
     if unexpected_shelves and unsatisfied_shelves:
-        # Product is on wrong shelf(es) AND missing from expected — ONE move message
         wrong_shelves_str = ", ".join(f"Shelf {s}" for s in sorted(unexpected_shelves))
         correct_shelves = sorted(unsatisfied_shelves)
         
@@ -181,7 +263,7 @@ def analyze_product_placement(pid, expected_locations, actual_locations, product
         else:
             targets_str = " OR ".join(f"Shelf {s}" for s in correct_shelves)
             correction = f"Move {product_name} from {wrong_shelves_str} to {targets_str}"
-            description = f"{product_name} is on wrong shelf (product belongs on multiple shelves)"
+            description = f"{product_name} is on wrong shelf (belongs on multiple shelves)"
         
         violations.append({
             "type": "wrong_shelf",
@@ -195,7 +277,6 @@ def analyze_product_placement(pid, expected_locations, actual_locations, product
         })
     
     elif unexpected_shelves and not unsatisfied_shelves:
-        # Product is on all expected shelves + extra shelves — remove extras
         wrong_shelves_str = ", ".join(f"Shelf {s}" for s in sorted(unexpected_shelves))
         correct_shelves_str = ", ".join(f"Shelf {s}" for s in sorted(expected_shelves))
         
@@ -211,42 +292,67 @@ def analyze_product_placement(pid, expected_locations, actual_locations, product
         })
     
     elif unsatisfied_shelves and not unexpected_shelves and not satisfied_shelves:
-        # Product entirely missing — ONE message
-        if len(unsatisfied_shelves) == 1:
-            shelf = list(unsatisfied_shelves)[0]
-            exp_loc = next(l for l in expected_locations if l["shelf"] == shelf)
-            correction = f"Add {product_name} to Shelf {shelf} ({exp_loc['zone']} zone)"
-            description = f"{product_name} is missing from the chiller"
-        else:
+        # Product not detected anywhere
+        if is_out_of_stock:
             shelves_str = " AND ".join(f"Shelf {s}" for s in sorted(unsatisfied_shelves))
-            correction = f"Add {product_name} to {shelves_str}"
-            description = f"{product_name} is missing (should appear on multiple shelves)"
-        
-        violations.append({
-            "type": "missing_product",
-            "severity": "high",
-            "product_id": pid,
-            "product_name": product_name,
-            "expected_shelves": sorted(unsatisfied_shelves),
-            "description": description,
-            "correction": correction
-        })
+            violations.append({
+                "type": "expected_but_out_of_stock",
+                "severity": "info",
+                "product_id": pid,
+                "product_name": product_name,
+                "expected_shelves": sorted(unsatisfied_shelves),
+                "description": f"{product_name} is out of stock (marked by staff)",
+                "correction": f"⚠️ {product_name} is OOS — consider substitution on {shelves_str}"
+            })
+        else:
+            if len(unsatisfied_shelves) == 1:
+                shelf = list(unsatisfied_shelves)[0]
+                exp_loc = next(l for l in expected_locations if l["shelf"] == shelf)
+                zone = exp_loc["zone"]
+                description = f"{product_name} not detected — expected on Shelf {shelf}"
+                correction = f"Verify {product_name} on Shelf {shelf} ({zone} zone). If missing, add it. If out of stock, mark as OOS."
+            else:
+                shelves_str = " AND ".join(f"Shelf {s}" for s in sorted(unsatisfied_shelves))
+                description = f"{product_name} not detected — expected on multiple shelves"
+                correction = f"Verify {product_name} on {shelves_str}. If missing, add it. If out of stock, mark as OOS."
+            
+            violations.append({
+                "type": "missing_product",
+                "severity": "high",
+                "product_id": pid,
+                "product_name": product_name,
+                "expected_shelves": sorted(unsatisfied_shelves),
+                "description": description,
+                "correction": correction
+            })
     
     elif unsatisfied_shelves and satisfied_shelves:
-        # Product on some expected shelves but not all
-        missing_shelves_str = " AND ".join(f"Shelf {s}" for s in sorted(unsatisfied_shelves))
-        present_shelves_str = ", ".join(f"Shelf {s}" for s in sorted(satisfied_shelves))
-        
-        violations.append({
-            "type": "missing_product_partial",
-            "severity": "medium",
-            "product_id": pid,
-            "product_name": product_name,
-            "missing_from_shelves": sorted(unsatisfied_shelves),
-            "present_on_shelves": sorted(satisfied_shelves),
-            "description": f"{product_name} present on {present_shelves_str} but missing from {missing_shelves_str}",
-            "correction": f"Also add {product_name} to {missing_shelves_str} (already on {present_shelves_str})"
-        })
+        # Partial placement
+        if is_out_of_stock:
+            missing_shelves_str = " AND ".join(f"Shelf {s}" for s in sorted(unsatisfied_shelves))
+            present_shelves_str = ", ".join(f"Shelf {s}" for s in sorted(satisfied_shelves))
+            violations.append({
+                "type": "expected_but_out_of_stock",
+                "severity": "info",
+                "product_id": pid,
+                "product_name": product_name,
+                "description": f"{product_name} is OOS — only on {present_shelves_str}",
+                "correction": f"⚠️ {product_name} OOS — cannot add to {missing_shelves_str}"
+            })
+        else:
+            missing_shelves_str = " AND ".join(f"Shelf {s}" for s in sorted(unsatisfied_shelves))
+            present_shelves_str = ", ".join(f"Shelf {s}" for s in sorted(satisfied_shelves))
+            
+            violations.append({
+                "type": "missing_product_partial",
+                "severity": "medium",
+                "product_id": pid,
+                "product_name": product_name,
+                "missing_from_shelves": sorted(unsatisfied_shelves),
+                "present_on_shelves": sorted(satisfied_shelves),
+                "description": f"{product_name} present on {present_shelves_str} but not detected on {missing_shelves_str}",
+                "correction": f"Verify {product_name} on {missing_shelves_str} (already confirmed on {present_shelves_str}). Add if missing."
+            })
     
     return violations
 
@@ -256,7 +362,6 @@ def detect_unauthorized_products(actual_index, expected_index, shelf_commodity_m
     violations = []
     
     for pid, actual_locations in actual_index.items():
-        # Skip if this product is expected somewhere
         if pid in expected_index:
             continue
         
@@ -268,7 +373,6 @@ def detect_unauthorized_products(actual_index, expected_index, shelf_commodity_m
             product_name = get_product_name(pid, product_lookup)
             
             if attrs is None:
-                # Product not in catalog at all
                 violations.append({
                     "type": "unknown_product",
                     "severity": "medium",
@@ -293,13 +397,12 @@ def detect_unauthorized_products(actual_index, expected_index, shelf_commodity_m
                     "description": f"{product_name} ({actual_commodity}) doesn't belong on Shelf {shelf_num}",
                     "correction": f"Remove {product_name} from Shelf {shelf_num} — this shelf is for {', '.join(allowed_commodities)}"
                 })
-            # else: it's a valid substitute for shelf commodity, don't flag
     
     return violations
 
 
 def detect_low_confidence_items(actual_index, product_lookup):
-    """Info-level items that need human verification."""
+    """Info-level items needing manual verification."""
     warnings = []
     for pid, locations in actual_index.items():
         for loc in locations:
@@ -322,6 +425,7 @@ def detect_low_confidence_items(actual_index, product_lookup):
 # ============================================================
 
 def compare_maps(actual_map_file):
+    """Main function: run all checks and return violation list."""
     print(f"\n{'='*70}")
     print(f"COMPARING: {actual_map_file}")
     print(f"    against: {EXPECTED_MAP_FILE}")
@@ -342,14 +446,13 @@ def compare_maps(actual_map_file):
     
     all_violations = []
     
-    print("🔍 Analyzing expected products (placement, zone, facings)...")
-    all_expected_pids = set(expected_index.keys())
-    for pid in all_expected_pids:
+    print("🔍 Analyzing expected products (placement, position, facings)...")
+    for pid in set(expected_index.keys()):
         exp_locs = expected_index[pid]
         act_locs = actual_index.get(pid, [])
         violations = analyze_product_placement(pid, exp_locs, act_locs, product_lookup)
         all_violations.extend(violations)
-    print(f"   Analyzed {len(all_expected_pids)} expected products\n")
+    print(f"   Analyzed {len(expected_index)} expected products\n")
     
     print("🔍 Detecting unauthorized products...")
     unauth = detect_unauthorized_products(actual_index, expected_index, shelf_commodity_map, product_lookup)

@@ -29,6 +29,7 @@ VIOLATION_WEIGHTS = {
     "low_facing": 3,
     "excess_facing_non_fast_moving": 2,
     "unknown_product": 2,
+    "expected_but_out_of_stock": 0,  # ← NEW: no penalty for OOS
     "low_confidence_detection": 0
 }
 
@@ -44,7 +45,8 @@ PRIORITY_ORDER = {
     "low_facing": 7,
     "excess_facing_non_fast_moving": 8,
     "unknown_product": 9,
-    "low_confidence_detection": 10
+    "expected_but_out_of_stock": 10,  # ← NEW
+    "low_confidence_detection": 11
 }
 
 # Score thresholds and status
@@ -85,6 +87,10 @@ def calculate_score(violations, total_expected_products=46):
     problem_products = set()
     
     for v in violations:
+        # OOS is expected behavior, not a problem
+        if v["type"] == "expected_but_out_of_stock":
+            continue
+        
         # These violations mean the product isn't properly placed
         blocking_violations = [
             "missing_product",

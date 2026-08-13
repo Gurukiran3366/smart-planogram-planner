@@ -10,67 +10,85 @@
       ],
       "products": [
         {
-          "product_id": "MAAZA_150",
+          "product_id": "MAAZA_MANGO_150",
           "zone": "left",
           "facings": 1,
           "confidence": "high",
-          "notes": "150ml carton pack on the far left"
+          "notes": "150ml carton pack on the far left",
+          "slot_start": 1,
+          "slot_end": 1
         },
         {
           "product_id": "RASKIK_MANGO_150",
           "zone": "left",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 2,
+          "slot_end": 2
         },
         {
-          "product_id": "MAAZA_270",
+          "product_id": "MAAZA_MANGO_270",
           "zone": "left",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 3,
+          "slot_end": 3
         },
         {
           "product_id": "MINUTE_MAID_ORANGE_250",
           "zone": "center",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 4,
+          "slot_end": 4
         },
         {
           "product_id": "FROOTI_300",
           "zone": "center",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 5,
+          "slot_end": 5
         },
         {
-          "product_id": "SWING_270",
+          "product_id": "SWING_POMEGRANATE_270",
           "zone": "center",
           "facings": 1,
           "confidence": "high",
-          "notes": "Paper Boat Swing Pomegranate"
+          "notes": "Paper Boat Swing Pomegranate",
+          "slot_start": 6,
+          "slot_end": 6
         },
         {
           "product_id": "SWING_LYCHEE_270",
           "zone": "right",
           "facings": 1,
           "confidence": "high",
-          "notes": "Paper Boat Swing Lychee"
+          "notes": "Paper Boat Swing Lychee",
+          "slot_start": 7,
+          "slot_end": 7
         },
         {
           "product_id": "PAPER_BOAT_COCONUT_200",
           "zone": "right",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 8,
+          "slot_end": 8
         },
         {
           "product_id": "SWING_GUAVA_270",
           "zone": "right",
           "facings": 1,
           "confidence": "high",
-          "notes": "Green pouch on the far right"
+          "notes": "Green pouch on the far right",
+          "slot_start": 9,
+          "slot_end": 9
         }
       ],
       "unknown_items": [],
@@ -83,60 +101,76 @@
       ],
       "products": [
         {
-          "product_id": "CAMPA_ENERGY_185",
+          "product_id": "CAMPA_ENERGY_gold_185",
           "zone": "left",
           "facings": 1,
           "confidence": "high",
-          "notes": "Campa Energy Gold Boost can"
+          "notes": "Campa Energy Gold Boost can",
+          "slot_start": 1,
+          "slot_end": 1
         },
         {
           "product_id": "THUMSUP_XFORCE_300",
           "zone": "left",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 2,
+          "slot_end": 2
         },
         {
           "product_id": "MONSTER_CAN_350",
           "zone": "left",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 3,
+          "slot_end": 3
         },
         {
           "product_id": "MONSTER_ULTRA_350",
           "zone": "center",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 4,
+          "slot_end": 4
         },
         {
           "product_id": "REDBULL_SUGARFREE_250",
           "zone": "center",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 5,
+          "slot_end": 5
         },
         {
           "product_id": "REDBULL_250",
           "zone": "right",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 6,
+          "slot_end": 6
         },
         {
           "product_id": "POWERHORSE_250",
           "zone": "right",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 7,
+          "slot_end": 7
         },
         {
           "product_id": "STING_250",
           "zone": "right",
           "facings": 1,
           "confidence": "high",
-          "notes": "Sting energy bottle with red cap"
+          "notes": "Sting energy bottle with red cap",
+          "slot_start": 8,
+          "slot_end": 8
         }
       ],
       "unknown_items": [],
@@ -153,49 +187,63 @@
           "zone": "left",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 1,
+          "slot_end": 1
         },
         {
           "product_id": "THUMSUP_250",
           "zone": "left",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 2,
+          "slot_end": 2
         },
         {
           "product_id": "COCACOLA_250",
           "zone": "left",
           "facings": 2,
           "confidence": "high",
-          "notes": "two PET bottles side-by-side"
+          "notes": "two PET bottles side-by-side",
+          "slot_start": 3,
+          "slot_end": 4
         },
         {
           "product_id": "APPY_FIZZ_250",
           "zone": "center",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 5,
+          "slot_end": 5
         },
         {
           "product_id": "FANTA_250",
           "zone": "center",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 6,
+          "slot_end": 6
         },
         {
           "product_id": "SPRITE_250",
           "zone": "right",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 7,
+          "slot_end": 7
         },
         {
           "product_id": "COCACOLA_ZERO_300",
           "zone": "right",
           "facings": 1,
           "confidence": "high",
-          "notes": "Coca-Cola Zero Sugar 300ml can"
+          "notes": "Coca-Cola Zero Sugar 300ml can",
+          "slot_start": 8,
+          "slot_end": 8
         }
       ],
       "unknown_items": [],
@@ -212,49 +260,63 @@
           "zone": "left",
           "facings": 2,
           "confidence": "high",
-          "notes": "Two bottles on the far left"
+          "notes": "Two bottles on the far left",
+          "slot_start": 1,
+          "slot_end": 2
         },
         {
           "product_id": "NANDINI_MANGO_LASSI_180",
           "zone": "left",
-          "facings": 2,
+          "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 3,
+          "slot_end": 3
         },
         {
           "product_id": "MAX_PROTEIN_CHOCO_BURST_250",
           "zone": "center",
           "facings": 1,
           "confidence": "medium",
-          "notes": "Max Protein Coffee Crush variant matched to dark Max Protein catalog entry"
+          "notes": "Max Protein Coffee Crush variant matched to dark Max Protein catalog entry",
+          "slot_start": 4,
+          "slot_end": 4
         },
         {
           "product_id": "MAX_PROTEIN_BERRY_BLUSH_250",
           "zone": "center",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 5,
+          "slot_end": 5
         },
         {
           "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
           "zone": "center",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 6,
+          "slot_end": 6
         },
         {
           "product_id": "NANDINI_PISTA_FLAVOURED_MILK_180",
           "zone": "right",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 7,
+          "slot_end": 7
         },
         {
           "product_id": "AMUL_PREMIUM_BUTTERMILK_200",
           "zone": "right",
           "facings": 1,
           "confidence": "high",
-          "notes": "Tetra pak carton on the far right"
+          "notes": "Tetra pak carton on the far right",
+          "slot_start": 8,
+          "slot_end": 8
         }
       ],
       "unknown_items": [],
@@ -272,63 +334,72 @@
           "zone": "left",
           "facings": 1,
           "confidence": "high",
-          "notes": "Dark soda bottle with Campa label"
+          "notes": "Dark soda bottle with Campa label",
+          "slot_start": 1,
+          "slot_end": 1
         },
         {
           "product_id": "CAMPA_ENERGY_BERRY_250",
           "zone": "left",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 2,
+          "slot_end": 2
         },
         {
           "product_id": "POP_ORANGE_250",
           "zone": "left",
           "facings": 1,
           "confidence": "high",
-          "notes": "Yellow/orange bottle with Bisleri Pop label"
-        },
-        {
-          "product_id": "SWING_270",
-          "zone": "left",
-          "facings": 1,
-          "confidence": "medium",
-          "notes": "Paper Boat Swing PET bottle"
+          "notes": "Yellow/orange bottle with Bisleri Pop label",
+          "slot_start": 3,
+          "slot_end": 3
         },
         {
           "product_id": "DAILEE_MANGO_180",
           "zone": "left",
           "facings": 1,
           "confidence": "medium",
-          "notes": ""
+          "notes": "",
+          "slot_start": 4,
+          "slot_end": 4
         },
         {
           "product_id": "RASKIK_MANGO_150",
           "zone": "center",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 5,
+          "slot_end": 5
         },
         {
           "product_id": "RASKIK_NIMBU_PANI_160",
           "zone": "center",
           "facings": 1,
           "confidence": "high",
-          "notes": "Raskik/Raskin Nimbu Pani yellow bottle with green cap"
+          "notes": "Raskik/Raskin Nimbu Pani yellow bottle with green cap",
+          "slot_start": 6,
+          "slot_end": 6
         },
         {
           "product_id": "LIMONATA_160",
           "zone": "center",
           "facings": 2,
           "confidence": "high",
-          "notes": "Bisleri Limonata clear bottles with green labels"
+          "notes": "Bisleri Limonata clear bottles with green labels",
+          "slot_start": 7,
+          "slot_end": 8
         },
         {
           "product_id": "SWING_MIXED_FRUIT_200",
           "zone": "right",
           "facings": 1,
           "confidence": "high",
-          "notes": "Paper Boat Swing green pouch on the far right"
+          "notes": "Paper Boat Swing green pouch on the far right",
+          "slot_start": 9,
+          "slot_end": 9
         }
       ],
       "unknown_items": [],
@@ -346,42 +417,54 @@
           "zone": "left",
           "facings": 1,
           "confidence": "high",
-          "notes": "Pepsi 1.25L bottle"
+          "notes": "Pepsi 1.25L bottle",
+          "slot_start": 1,
+          "slot_end": 1
         },
         {
           "product_id": "COCACOLA_1250",
           "zone": "left",
           "facings": 1,
           "confidence": "high",
-          "notes": "Coca-Cola 1.25L bottle"
+          "notes": "Coca-Cola 1.25L bottle",
+          "slot_start": 2,
+          "slot_end": 2
         },
         {
           "product_id": "SEVENUP_1250",
           "zone": "center",
           "facings": 1,
           "confidence": "high",
-          "notes": "7Up 1.25L bottle"
+          "notes": "7Up 1.25L bottle",
+          "slot_start": 3,
+          "slot_end": 3
         },
         {
           "product_id": "MOUNTAINDEW_1250",
           "zone": "center",
           "facings": 1,
           "confidence": "high",
-          "notes": "Mountain Dew 1.25L bottle"
+          "notes": "Mountain Dew 1.25L bottle",
+          "slot_start": 4,
+          "slot_end": 4
         },
         {
           "product_id": "SLICE_MANGO_1250",
           "zone": "right",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 5,
+          "slot_end": 5
         },
         {
           "product_id": "BISLERI_WATER_1000",
           "zone": "right",
           "facings": 1,
           "confidence": "high",
-          "notes": ""
+          "notes": "",
+          "slot_start": 6,
+          "slot_end": 6
         }
       ],
       "unknown_items": [],
