@@ -1,0 +1,9 @@
+{
+  "audit_id": "20260813_210731",
+  "timestamp": "2026-08-13T21:08:16.777550",
+  "image_path": "images/staff_uploads/shelfmessing.jpeg",
+  "status": "ERROR",
+  "actual_map_file": "data\\actual_maps\\actual_map_shelfmessing.json",
+  "comparison_file": null,
+  "error_message": "name 'zones_are_adjacent_or_equal' is not defined"
+}

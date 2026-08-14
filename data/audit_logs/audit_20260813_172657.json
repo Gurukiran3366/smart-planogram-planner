@@ -1,0 +1,17 @@
+{
+  "audit_id": "20260813_172657",
+  "timestamp": "2026-08-13T17:27:51.758992",
+  "image_path": "temp_uploads\\audit_20260813_172647.jpg",
+  "status": "SUCCESS",
+  "actual_map_file": "data\\actual_maps\\actual_map_audit_20260813_172647.json",
+  "comparison_file": "data\\comparisons\\comparison_audit_20260813_172647.json",
+  "score": 5.5,
+  "score_status": "🟠 POOR",
+  "violation_counts": {
+    "high": 12,
+    "medium": 12,
+    "low": 0,
+    "info": 0,
+    "total": 24
+  }
+}

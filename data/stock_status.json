@@ -1,0 +1,27 @@
+{
+  "2026-08-14": {
+    "out_of_stock": [
+      "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+      "FROOTI_200",
+      "THUMSUP_250",
+      "DIET_COKE_300",
+      "NANDINI_CHOCOLATE_MILKSHAKE_180",
+      "COCONUT_WATER_200",
+      "TATA_COPPER_PLUS_1000",
+      "PEPSI_CAN_300"
+    ],
+    "updated_at": "2026-08-14T18:24:30.567452"
+  },
+  "2026-08-13": {
+    "out_of_stock": [
+      "NANDINI_CHOCOLATE_MILKSHAKE_180",
+      "PEPSI_CAN_300",
+      "DIET_COKE_300",
+      "THUMSUP_250",
+      "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+      "APPY_FIZZ_250",
+      "TATA_COPPER_PLUS_1000"
+    ],
+    "updated_at": "2026-08-13T18:33:56.376797"
+  }
+}

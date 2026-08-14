@@ -1,0 +1,48 @@
+{
+  "rack_id": "BTM-CH01",
+  "audit_date": "2026-08-13T18:35:12.350651",
+  "score": 5.2,
+  "status": "🟠 POOR",
+  "status_description": "Major reorganization needed",
+  "violation_counts": {
+    "high": 12,
+    "medium": 14,
+    "low": 0,
+    "info": 2,
+    "total": 28
+  },
+  "total_expected_products": 46,
+  "top_fixes": [
+    {
+      "priority": 1,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Add Maaza 150 to Shelf 1 (left zone) — check stock first"
+    },
+    {
+      "priority": 2,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Add Swing 270 to Shelf 1 AND Shelf 5 — check stock first"
+    },
+    {
+      "priority": 3,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Add Paper Boat Swing Mixed Fruit Medley 200ml to Shelf 5 (right zone) — check stock first"
+    },
+    {
+      "priority": 4,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Add Red Bull Sugarfree 250ml to Shelf 2 (center zone) — check stock first"
+    },
+    {
+      "priority": 5,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Add Minute Maid Orange 250ml to Shelf 1 (center zone) — check stock first"
+    }
+  ],
+  "source_comparison": "data\\comparisons\\comparison_audit_20260813_183416.json"
+}

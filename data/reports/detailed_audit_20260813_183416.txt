@@ -1,0 +1,99 @@
+======================================================================
+DETAILED CHILLER AUDIT REPORT
+======================================================================
+Rack ID:      BTM-CH01
+Date:         13 August 2026, 18:35
+Source:       data\actual_maps\actual_map_audit_20260813_183416.json
+
+OVERALL SCORE: 5.2/10 — 🟠 POOR
+Status:       Major reorganization needed
+
+Total issues: 28
+  🔴 High:    12
+  🟡 Medium:  14
+  🟢 Low:     0
+  ℹ️  Info:    2
+
+----------------------------------------------------------------------
+📦 Missing Products  (6 issues, -10 points each)
+----------------------------------------------------------------------
+  • Maaza 150 is missing
+    → Add Maaza 150 to Shelf 1 (left zone) — check stock first
+  • Swing 270 is missing (should be on multiple shelves)
+    → Add Swing 270 to Shelf 1 AND Shelf 5 — check stock first
+  • Paper Boat Swing Mixed Fruit Medley 200ml is missing
+    → Add Paper Boat Swing Mixed Fruit Medley 200ml to Shelf 5 (right zone) — check stock first
+  • Red Bull Sugarfree 250ml is missing
+    → Add Red Bull Sugarfree 250ml to Shelf 2 (center zone) — check stock first
+  • Minute Maid Orange 250ml is missing
+    → Add Minute Maid Orange 250ml to Shelf 1 (center zone) — check stock first
+  • Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle is missing
+    → Add Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle to Shelf 5 (left zone) — check stock first
+
+----------------------------------------------------------------------
+🔀 Wrong Shelf Placement  (6 issues, -8 points each)
+----------------------------------------------------------------------
+  • Paper boat coconut 200ml is on wrong shelf
+    → Move Paper boat coconut 200ml from Shelf 2 to Shelf 1 (right zone)
+  • Swing guava 270ml is on wrong shelf
+    → Move Swing guava 270ml from Shelf 5 to Shelf 1 (right zone)
+  • Nandini GoodLife Strawberry Flavoured Milk 200ml is on wrong shelf
+    → Move Nandini GoodLife Strawberry Flavoured Milk 200ml from Shelf 3 to Shelf 4 (center zone)
+  • Raskik 150ml mango is on wrong shelf
+    → Move Raskik 150ml mango from Shelf 3 to Shelf 1 (left zone)
+  • Amul Kool Cafe 180ml is on wrong shelf
+    → Move Amul Kool Cafe 180ml from Shelf 2 to Shelf 4 (left zone)
+  • Campa Energy Gold 185ml is on wrong shelf
+    → Move Campa Energy Gold 185ml from Shelf 4 to Shelf 2 (left zone)
+
+----------------------------------------------------------------------
+👥 Duplicate on Wrong Shelf  (3 issues, -6 points each)
+----------------------------------------------------------------------
+  • Campa Cola 250ml incorrectly duplicated on Shelf 4
+    → Remove extra Campa Cola 250ml from Shelf 4 (correct location: Shelf 5)
+  • Bindu Fizz Jeera Masala 250ml incorrectly duplicated on Shelf 1
+    → Remove extra Bindu Fizz Jeera Masala 250ml from Shelf 1 (correct location: Shelf 3)
+  • Maaza 270ml mango incorrectly duplicated on Shelf 5
+    → Remove extra Maaza 270ml mango from Shelf 5 (correct location: Shelf 1)
+
+----------------------------------------------------------------------
+🎯 Wrong Zone  (9 issues, -4 points each)
+----------------------------------------------------------------------
+  • Coca-Cola Soft Drink 1.25L in wrong position on Shelf 6
+    → Move Coca-Cola Soft Drink 1.25L on Shelf 6 from center to left
+  • Bisleri Mineral Water, 1L Bottle in wrong position on Shelf 6
+    → Move Bisleri Mineral Water, 1L Bottle on Shelf 6 from left to right
+  • Red Bull Energy Drink 250ml in wrong position on Shelf 2
+    → Move Red Bull Energy Drink 250ml on Shelf 2 from center to right
+  • Sprite 250ml in wrong position on Shelf 3
+    → Move Sprite 250ml on Shelf 3 from center to right
+  • Slice Mango Drink, 1.2L Bottle in wrong position on Shelf 6
+    → Move Slice Mango Drink, 1.2L Bottle on Shelf 6 from left to right
+  • Swing lychee 270ml in wrong position on Shelf 1
+    → Move Swing lychee 270ml on Shelf 1 from center to right
+  • Bisleri Limonata 160ml in wrong position on Shelf 5
+    → Move Bisleri Limonata 160ml on Shelf 5 from right to center
+  • Pepsi 1.25L in wrong position on Shelf 6
+    → Move Pepsi 1.25L on Shelf 6 from right to left
+  • 7Up Soft Drink 1.25L in wrong position on Shelf 6
+    → Move 7Up Soft Drink 1.25L on Shelf 6 from right to center
+
+----------------------------------------------------------------------
+⬆️  Facing Too Low  (2 issues, -3 points each)
+----------------------------------------------------------------------
+  • Coca-Cola 250ml has too few facings on Shelf 3
+    → Increase Coca-Cola 250ml facings on Shelf 3 from 1 to 2
+  • Nandini GoodLife Mango Lassi 180ml has too few facings on Shelf 4
+    → Increase Nandini GoodLife Mango Lassi 180ml facings on Shelf 4 from 1 to 2
+
+----------------------------------------------------------------------
+expected_but_out_of_stock  (2 issues, -0 points each)
+----------------------------------------------------------------------
+  • Appy Fizz 250ml is out of stock (marked by staff)
+    → ⚠️ Appy Fizz 250ml is OOS — consider substitution on Shelf 3
+  • Thums Up 250ml is out of stock (marked by staff)
+    → ⚠️ Thums Up 250ml is OOS — consider substitution on Shelf 3
+
+======================================================================
+END OF REPORT
+======================================================================

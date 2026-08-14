@@ -1,0 +1,48 @@
+{
+  "rack_id": "BTM-CH01",
+  "audit_date": "2026-08-14T18:27:14.030577",
+  "score": 5.9,
+  "status": "🟠 POOR",
+  "status_description": "Major reorganization needed",
+  "violation_counts": {
+    "high": 8,
+    "medium": 8,
+    "low": 7,
+    "info": 1,
+    "total": 24
+  },
+  "total_expected_products": 45,
+  "top_fixes": [
+    {
+      "priority": 1,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Verify Maaza 150ml mango on Shelf 1 (left zone). If missing, add it. If out of stock, mark as OOS."
+    },
+    {
+      "priority": 2,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Verify Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle on Shelf 5 (left zone). If missing, add it. If out of stock, mark as OOS."
+    },
+    {
+      "priority": 3,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Verify Appy Fizz 250ml on Shelf 3 (center zone). If missing, add it. If out of stock, mark as OOS."
+    },
+    {
+      "priority": 4,
+      "type": "wrong_shelf",
+      "severity": "high",
+      "correction": "Move Nandini GoodLife Strawberry Flavoured Milk 200ml from Shelf 3 to Shelf 4 (center zone)"
+    },
+    {
+      "priority": 5,
+      "type": "wrong_shelf",
+      "severity": "high",
+      "correction": "Move Paper boat coconut 200ml from Shelf 2 to Shelf 1 (right zone)"
+    }
+  ],
+  "source_comparison": "data\\comparisons\\comparison_audit_20260814_182542.json"
+}

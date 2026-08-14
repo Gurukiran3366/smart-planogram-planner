@@ -1,0 +1,33 @@
+━━━━━━━━━━━━━━━━━━━━
+📊 *CHILLER AUDIT*
+Rack: BTM-CH01
+Time: 13 Aug 2026, 18:35
+━━━━━━━━━━━━━━━━━━━━
+
+⭐ *Score: 5.2/10*
+🟠 POOR
+_Major reorganization needed_
+
+📋 *Issues found:* 28
+  🔴 Critical: 12
+  🟡 Moderate: 14
+
+━━━━━━━━━━━━━━━━━━━━
+🎯 *TOP FIXES* (do these first):
+━━━━━━━━━━━━━━━━━━━━
+
+1. 🔴 Add Maaza 150 to Shelf 1 (left zone) — check stock first
+
+2. 🔴 Add Swing 270 to Shelf 1 AND Shelf 5 — check stock first
+
+3. 🔴 Add Paper Boat Swing Mixed Fruit Medley 200ml to Shelf 5 (right zone) — check stock first
+
+4. 🔴 Add Red Bull Sugarfree 250ml to Shelf 2 (center zone) — check stock first
+
+5. 🔴 Add Minute Maid Orange 250ml to Shelf 1 (center zone) — check stock first
+
+_...plus 23 more improvements_
+
+━━━━━━━━━━━━━━━━━━━━
+📸 *Fix top items and resend photo*
+━━━━━━━━━━━━━━━━━━━━

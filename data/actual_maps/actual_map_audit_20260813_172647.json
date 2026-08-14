@@ -1,0 +1,347 @@
+{
+  "rack_id": "BTM-CH01",
+  "source_image": "temp_uploads\\audit_20260813_172647.jpg",
+  "processed_at": "2026-08-13T17:27:51.706585",
+  "model_used": "gemini-3.6-flash",
+  "api_calls_used": 1,
+  "shelves": [
+    {
+      "shelf_number": 1,
+      "products": [
+        {
+          "product_id": "BINDU_FIZZ_250",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MAAZA_270",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MINUTE_MAID_ORANGE_250",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "FROOTI_300",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SWING_270",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SWING_LYCHEE_270",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "REDBULL_250",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SWING_MIXED_FRUIT_200",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        }
+      ],
+      "unknown_items": [],
+      "empty_zones": [],
+      "notes": "Shelf contains a mix of Fruit Beverages, Soft Drinks, and Energy Drinks.",
+      "expected_commodities": [
+        "fruit_beverage"
+      ]
+    },
+    {
+      "shelf_number": 2,
+      "products": [
+        {
+          "product_id": "AMUL_KOOL_CAFE_180",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "THUMSUP_XFORCE_300",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MONSTER_CAN_350",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MONSTER_ULTRA_350",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "REDBULL_SUGARFREE_250",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "PAPER_BOAT_COCONUT_200",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "POWERHORSE_250",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "STING_250",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        }
+      ],
+      "unknown_items": [],
+      "empty_zones": [],
+      "notes": "Shelf contains primarily Energy Drinks along with coffee and coconut beverages.",
+      "expected_commodities": [
+        "energy_drink"
+      ]
+    },
+    {
+      "shelf_number": 3,
+      "products": [
+        {
+          "product_id": "BINDU_FIZZ_250",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "RASKIK_MANGO_150",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "COCACOLA_250",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SPRITE_250",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "FANTA_250",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "COCACOLA_250",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "COCACOLA_ZERO_300",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        }
+      ],
+      "unknown_items": [],
+      "empty_zones": [],
+      "notes": "Shelf contains primarily Soft Drinks.",
+      "expected_commodities": [
+        "soft_drink"
+      ]
+    },
+    {
+      "shelf_number": 4,
+      "products": [
+        {
+          "product_id": "NANDINI_CHOCOLATE_MILKSHAKE_180",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "CAMPA_ENERGY_185",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "NANDINI_MANGO_LASSI_180",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MAX_PROTEIN_CHOCO_BURST_250",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MAX_PROTEIN_BERRY_BLUSH_250",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "CAMPA_COLA_250",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "NANDINI_MANGO_LASSI_180",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "NANDINI_PISTA_FLAVOURED_MILK_180",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "AMUL_PREMIUM_BUTTERMILK_200",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        }
+      ],
+      "unknown_items": [],
+      "empty_zones": [],
+      "notes": "Shelf contains primarily Milk Beverages.",
+      "expected_commodities": [
+        "milk_beverage"
+      ]
+    },
+    {
+      "shelf_number": 5,
+      "products": [
+        {
+          "product_id": "CAMPA_ENERGY_BERRY_250",
+          "zone": "left",
+          "facings": 2,
+          "confidence": "high"
+        },
+        {
+          "product_id": "POP_ORANGE_250",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "RASKIK_MANGO_150",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "RASKIK_NIMBU_PANI_160",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "LIMONATA_160",
+          "zone": "center",
+          "facings": 2,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SWING_MIXED_FRUIT_200",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        }
+      ],
+      "unknown_items": [],
+      "empty_zones": [],
+      "notes": "Shelf contains Fruit Beverages and Soft Drinks.",
+      "expected_commodities": [
+        "fruit_beverage",
+        "soft_drink"
+      ]
+    },
+    {
+      "shelf_number": 6,
+      "products": [
+        {
+          "product_id": "BISLERI_WATER_1000",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SLICE_MANGO_1250",
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "COCACOLA_1250",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MOUNTAINDEW_1250",
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SEVENUP_1250",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "PEPSI_1250",
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        }
+      ],
+      "unknown_items": [],
+      "empty_zones": [],
+      "notes": "Shelf contains large bottles of Soft Drinks, Fruit Drink, and Water.",
+      "expected_commodities": [
+        "soft_drink",
+        "water"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "audit_id": "20260813_170006",
+  "timestamp": "2026-08-13T17:01:06.659823",
+  "image_path": "temp_uploads\\audit_20260813_165945.jpg",
+  "status": "REJECTED_AI_UNRELIABLE",
+  "actual_map_file": "data\\actual_maps\\actual_map_audit_20260813_165945.json",
+  "comparison_file": null,
+  "validation": {
+    "status": "REJECT",
+    "actual_map_file": "data\\actual_maps\\actual_map_audit_20260813_165945.json",
+    "total_products": 63,
+    "warnings": [
+      {
+        "type": "duplicate_products_same_shelf",
+        "shelf": 2,
+        "duplicates": [
+          "COCONUT_WATER_200"
+        ],
+        "message": "Shelf 2 has duplicate detections: ['COCONUT_WATER_200'] (should use facings=2 instead)"
+      },
+      {
+        "type": "duplicate_products_same_shelf",
+        "shelf": 3,
+        "duplicates": [
+          "COCACOLA_250"
+        ],
+        "message": "Shelf 3 has duplicate detections: ['COCACOLA_250'] (should use facings=2 instead)"
+      },
+      {
+        "type": "duplicate_products_same_shelf",
+        "shelf": 5,
+        "duplicates": [
+          "LIMONATA_160"
+        ],
+        "message": "Shelf 5 has duplicate detections: ['LIMONATA_160'] (should use facings=2 instead)"
+      }
+    ],
+    "critical_issues": [
+      {
+        "type": "impossible_product_count",
+        "shelf": 2,
+        "detected_count": 17,
+        "message": "Shelf 2 has 17 products detected — physically unlikely (max 12). AI likely mixed shelves."
+      },
+      {
+        "type": "impossible_product_count",
+        "shelf": 3,
+        "detected_count": 15,
+        "message": "Shelf 3 has 15 products detected — physically unlikely (max 12). AI likely mixed shelves."
+      }
+    ]
+  }
+}

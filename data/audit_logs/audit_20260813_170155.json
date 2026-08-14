@@ -1,0 +1,90 @@
+{
+  "audit_id": "20260813_170155",
+  "timestamp": "2026-08-13T17:02:47.693552",
+  "image_path": "temp_uploads\\audit_20260813_170154.jpg",
+  "status": "REJECTED_AI_UNRELIABLE",
+  "actual_map_file": "data\\actual_maps\\actual_map_audit_20260813_170154.json",
+  "comparison_file": null,
+  "validation": {
+    "status": "REJECT",
+    "actual_map_file": "data\\actual_maps\\actual_map_audit_20260813_170154.json",
+    "total_products": 79,
+    "warnings": [
+      {
+        "type": "duplicate_products_same_shelf",
+        "shelf": 1,
+        "duplicates": [
+          "FROOTI_200"
+        ],
+        "message": "Shelf 1 has duplicate detections: ['FROOTI_200'] (should use facings=2 instead)"
+      },
+      {
+        "type": "duplicate_products_same_shelf",
+        "shelf": 2,
+        "duplicates": [
+          "MAAZA_270"
+        ],
+        "message": "Shelf 2 has duplicate detections: ['MAAZA_270'] (should use facings=2 instead)"
+      },
+      {
+        "type": "duplicate_products_same_shelf",
+        "shelf": 3,
+        "duplicates": [
+          "COCACOLA_250"
+        ],
+        "message": "Shelf 3 has duplicate detections: ['COCACOLA_250'] (should use facings=2 instead)"
+      },
+      {
+        "type": "duplicate_products_same_shelf",
+        "shelf": 4,
+        "duplicates": [
+          "AMUL_KOOL_CAFE_180",
+          "NANDINI_MANGO_LASSI_180"
+        ],
+        "message": "Shelf 4 has duplicate detections: ['AMUL_KOOL_CAFE_180', 'NANDINI_MANGO_LASSI_180'] (should use facings=2 instead)"
+      },
+      {
+        "type": "duplicate_products_same_shelf",
+        "shelf": 5,
+        "duplicates": [
+          "SWING_MIXED_FRUIT_200",
+          "LIMONATA_160",
+          "DAILEE_MANGO_180",
+          "RASKIK_NIMBU_PANI_160"
+        ],
+        "message": "Shelf 5 has duplicate detections: ['SWING_MIXED_FRUIT_200', 'LIMONATA_160', 'DAILEE_MANGO_180', 'RASKIK_NIMBU_PANI_160'] (should use facings=2 instead)"
+      }
+    ],
+    "critical_issues": [
+      {
+        "type": "impossible_product_count",
+        "shelf": 2,
+        "detected_count": 16,
+        "message": "Shelf 2 has 16 products detected — physically unlikely (max 12). AI likely mixed shelves."
+      },
+      {
+        "type": "impossible_product_count",
+        "shelf": 3,
+        "detected_count": 14,
+        "message": "Shelf 3 has 14 products detected — physically unlikely (max 12). AI likely mixed shelves."
+      },
+      {
+        "type": "impossible_product_count",
+        "shelf": 4,
+        "detected_count": 17,
+        "message": "Shelf 4 has 17 products detected — physically unlikely (max 12). AI likely mixed shelves."
+      },
+      {
+        "type": "impossible_product_count",
+        "shelf": 5,
+        "detected_count": 17,
+        "message": "Shelf 5 has 17 products detected — physically unlikely (max 12). AI likely mixed shelves."
+      },
+      {
+        "type": "total_count_impossibly_high",
+        "total_detected": 79,
+        "message": "Total 79 products across all shelves — impossible. AI clearly hallucinated."
+      }
+    ]
+  }
+}

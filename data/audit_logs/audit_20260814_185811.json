@@ -1,0 +1,17 @@
+{
+  "audit_id": "20260814_185811",
+  "timestamp": "2026-08-14T18:59:38.810306",
+  "image_path": "images/staff_uploads/shelfmessing.jpeg",
+  "status": "SUCCESS",
+  "actual_map_file": "data\\actual_maps\\actual_map_shelfmessing.json",
+  "comparison_file": "data\\comparisons\\comparison_shelfmessing.json",
+  "score": 9.8,
+  "score_status": "🌟 EXCELLENT",
+  "violation_counts": {
+    "high": 1,
+    "medium": 1,
+    "low": 10,
+    "info": 1,
+    "total": 13
+  }
+}

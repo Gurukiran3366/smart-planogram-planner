@@ -1,7 +1,13 @@
-# process_staff_photo_v2.py
+# process_staff_photo.py
+"""
+Processes staff-uploaded chiller photos through the audit pipeline.
+Uses OCR for shelf detection, dynamic cropping, and Gemini AI for product identification.
+"""
+
 import os
 import sys
 import json
+import base64
 import cv2
 import time
 import easyocr
@@ -24,10 +30,7 @@ RULES_FILE = "data/chiller_rules.json"
 OUTPUT_DIR = Path("data/actual_maps")
 DEBUG_DIR = Path("images/staff_processing")
 
-# Crop settings
-CROP_LEFT = 350
-CROP_RIGHT = 1150
-
+# Fallback shelf Y-positions if OCR completely fails
 FALLBACK_SHELF_YS = [96, 380, 630, 867, 1110, 1345]
 
 COMMODITY_LABELS = {
@@ -38,6 +41,11 @@ COMMODITY_LABELS = {
     "fruit_soft_10rs": "Small ₹10 packs",
     "water": "Water bottles"
 }
+
+
+def encode_image(image_path):
+    with open(image_path, "rb") as f:
+        return base64.b64encode(f.read()).decode("utf-8")
 
 
 def check_image_quality(image_path):
@@ -101,59 +109,76 @@ def get_shelf_positions(image_path):
     return result
 
 
-def calculate_horizontal_bounds(image_path, shelf_positions):
+def calculate_horizontal_bounds(image_path):
     """
-    Dynamically calculate horizontal crop boundaries based on where 
-    shelf labels are detected. The chiller content is to the RIGHT of the labels.
+    Calculate horizontal crop boundaries based on image width.
+    Uses percentage-based bounds that work across different photo distances.
     """
     img = cv2.imread(image_path)
     h, w = img.shape[:2]
     
-    if not shelf_positions:
-        # Fallback to defaults if no shelves detected
-        return CROP_LEFT, CROP_RIGHT
-    
-    # Get x-coordinates of detected labels (they should be on left side)
-    # We need to re-run OCR to get x positions, so let's use a simpler approach:
-    # Look at existing shelf_positions - but they only have Y coords.
-    # 
-    # Alternative: use image analysis to find the chiller frame
-    
-    # Simple approach: assume labels are at ~5-15% of width from left
-    # Chiller content starts at ~20% from left
-    # Chiller content ends at ~90% from left (glass edge)
-    
-    # But we should be MORE GENEROUS to avoid cutting off products
-    left_bound = int(w * 0.18)   # Start 18% from left (safer than 350px hardcoded)
-    right_bound = int(w * 0.95)  # End 95% from left (include full width)
+    # Chiller content is roughly between 18% and 95% of image width
+    left_bound = int(w * 0.18)
+    right_bound = int(w * 0.95)
     
     return left_bound, right_bound
 
 
 def crop_shelves(image_path, shelf_positions, output_folder):
     """
-    Crop image into 6 shelf strips using midpoint boundaries.
-    Uses DYNAMIC horizontal boundaries based on image dimensions,
-    not hardcoded values — makes it robust across different photo angles/distances.
+    Crop image into 6 shelf strips using improved boundary calculation.
+    
+    Key improvement: Shelf labels are typically at the TOP-LEFT of each shelf frame.
+    So each shelf's content is BELOW its label, extending down to just BEFORE the next label.
+    
+    Boundary logic:
+    - Shelf N top: N's label Y position (with small upward padding to catch product tops)
+    - Shelf N bottom: N+1's label Y position (with small padding to not include next label)
+    - Shelf 6 bottom: image bottom
+    - Shelf 1 top: extend upward to include tall products above label
     """
     img = cv2.imread(image_path)
     h, w = img.shape[:2]
     output_folder.mkdir(parents=True, exist_ok=True)
     crops = []
     positions = sorted(shelf_positions, key=lambda x: x["shelf"])
-    ys = [p["y"] for p in positions]
     
-    # Calculate vertical boundaries (midpoints between shelf labels)
-    boundaries = [0]
-    for i in range(len(ys) - 1):
-        boundaries.append((ys[i] + ys[i+1]) // 2)
-    boundaries.append(h)
-    
-    # Calculate horizontal boundaries DYNAMICALLY
-    left_bound, right_bound = calculate_horizontal_bounds(image_path, shelf_positions)
+    # Calculate horizontal boundaries
+    left_bound, right_bound = calculate_horizontal_bounds(image_path)
     
     print(f"   📊 Image size: {w}x{h}")
     print(f"   📊 Horizontal crop: x={left_bound} to x={right_bound} (width: {right_bound-left_bound}px)")
+    
+    # Calculate shelf content boundaries
+    # Key insight: shelf labels are placed at approximately the TOP of each shelf's frame
+    # But products extend BELOW the label into the shelf space
+    # So we need to shift boundaries DOWNWARD from label positions
+    
+    LABEL_TO_CONTENT_OFFSET = 20   # Label is ~20px above the actual shelf content
+    PRODUCT_HEIGHT_ESTIMATE = 100  # Products can be up to 100px tall above their base
+    
+    boundaries = []
+    
+    # For Shelf 1: extend upward to capture full product height
+    # Products on Shelf 1 sit ON the shelf, tops extend upward from the shelf floor
+    # The S-1 label is on the shelf frame (top of shelf), products are BELOW label going into shelf space
+    # Actually, looking at your photo — products fill the space BETWEEN shelves
+    # So Shelf 1 content = from top of image (0) to just above Shelf 2 label
+    shelf1_top = 0
+    boundaries.append(shelf1_top)
+    
+    # For internal shelves: content is between consecutive labels
+    # Each shelf's content starts at its label position and ends at next label position
+    for i in range(len(positions) - 1):
+        # Boundary between shelf N and shelf N+1
+        # Place it just above shelf N+1's label
+        next_label_y = positions[i + 1]["y"]
+        boundary = next_label_y - 10  # 10px above next label to not include it
+        boundaries.append(boundary)
+    
+    # Last shelf extends to image bottom
+    boundaries.append(h)
+    
     print(f"   📊 Vertical boundaries: {boundaries}")
     
     for i, shelf in enumerate(positions):
@@ -161,16 +186,19 @@ def crop_shelves(image_path, shelf_positions, output_folder):
         y_start = boundaries[i]
         y_end = boundaries[i + 1]
         
+        # Safety: ensure valid range
+        y_start = max(0, y_start)
+        y_end = min(h, y_end)
+        
         if y_end <= y_start:
-            print(f"   ⚠️  Shelf {shelf_num}: invalid boundaries, skipping")
+            print(f"   ⚠️  Shelf {shelf_num}: invalid boundaries [{y_start}:{y_end}], skipping")
             continue
         
-        # Use dynamic horizontal bounds instead of hardcoded CROP_LEFT/CROP_RIGHT
         crop = img[y_start:y_end, left_bound:right_bound]
         crop_path = output_folder / f"shelf_{shelf_num}.jpg"
         cv2.imwrite(str(crop_path), crop)
         crop_h, crop_w = crop.shape[:2]
-        print(f"   ✂️  Shelf {shelf_num}: {crop_w}x{crop_h}px")
+        print(f"   ✂️  Shelf {shelf_num}: {crop_w}x{crop_h}px (y={y_start}-{y_end})")
         crops.append({"shelf_number": shelf_num, "image_path": str(crop_path)})
     
     return crops
@@ -192,12 +220,11 @@ def build_full_catalog_text(products_df):
 
 def analyze_all_shelves_one_call(crops, products_df, shelf_commodity_map, max_retries=3):
     """
-    Send ALL 6 shelf images in ONE Gemini API call.
-    6x cheaper and faster than making per-shelf calls.
+    Send ALL 6 shelf images in ONE API call.
+    Uses slot-based positioning (each physical bottle position = 1 slot).
     """
     catalog_text = build_full_catalog_text(products_df)
     
-    # Build shelf-by-shelf expectations
     shelf_expectations = []
     for crop in sorted(crops, key=lambda x: x["shelf_number"]):
         shelf_num = crop["shelf_number"]
@@ -214,9 +241,8 @@ I am sending you 6 SEPARATE IMAGES in order — one per shelf, from Shelf 1 (top
 CRITICAL RULES:
 - Each image shows ONE shelf only
 - Products in image N are on Shelf N — do NOT combine products across images
-- Do NOT confuse shelf boundaries
-- A single shelf typically has 5-10 products maximum
-- If you find yourself listing 12+ products for one shelf, you are HALLUCINATING — stop and re-examine the image
+- A single shelf typically has 5-10 unique products maximum
+- If you find yourself listing 12+ products for one shelf, you are HALLUCINATING
 
 SHELF EXPECTATIONS (what SHOULD be there — but report what you actually SEE):
 {expectations_text}
@@ -229,35 +255,31 @@ FULL PRODUCT CATALOG (identify products from this ENTIRE list, regardless of whi
 {catalog_text}
 
 YOUR TASK:
-For EACH of the 6 shelf images, identify EVERY product visible, even if it seems misplaced.
+For EACH of the 6 shelf images, identify EVERY product visible, even if misplaced.
 
 STEPS FOR EACH IMAGE:
 1. Look at ONLY the current image
-2. Identify EVERY distinct product visible from LEFT to RIGHT (bottles, cans, pouches, cartons)
-3. Match to a product_id from the FULL catalog above (any commodity — not just this shelf's)
-4. Only use "unknown_items" if the product is truly not in the catalog at all
+2. Identify EVERY distinct product visible from LEFT to RIGHT
+3. Match to a product_id from the FULL catalog above (any commodity)
+4. Only use "unknown_items" if the product is truly not in the catalog
+
 5. Count SLOTS (each physical bottle/can position = 1 slot):
    - slot_start = leftmost slot the product occupies (1 = leftmost of shelf)
    - slot_end = rightmost slot (same as slot_start if only 1 facing)
    - Example: If Coca-Cola has 2 bottles side-by-side starting at slot 3,
      then slot_start=3 and slot_end=4
    - Next product starts at slot 5 (not 4)
-6. Count facings = slot_end - slot_start + 1
-7. Also assign zone: "left", "center", or "right" (rough position reference)
-8. Assign confidence: "high", "medium", "low"
 
-CRITICAL: When counting slots, count EACH physical bottle/can position.
-If you see [Product A][Product A][Product B], that's:
-- Product A: slot_start=1, slot_end=2, facings=2
-- Product B: slot_start=3, slot_end=3, facings=1
+6. Count facings = slot_end - slot_start + 1
+7. Also assign zone: "left", "center", or "right"
+8. Assign confidence: "high", "medium", "low"
 
 IDENTIFICATION HINTS:
 - Small carton pack with mango imagery = Maaza Mango
 - Red/silver energy can = Red Bull (regular) or Red Bull Sugarfree
 - Blue/silver energy can = often Red Bull Sugarfree
 - Green pouch = Paper Boat Swing (various flavors)
-- Look at COLORS, LOGOS, and PACKAGING SHAPES to distinguish similar products
-- If uncertain between similar products, use "medium" or "low" confidence
+- If uncertain, use "medium" or "low" confidence
 
 Return ONLY this JSON (all 6 shelves included):
 
@@ -266,7 +288,7 @@ Return ONLY this JSON (all 6 shelves included):
     {{
       "shelf_number": 1,
       "products": [
-        {{"product_id": "PRODUCT_ID", "position": 1, "zone": "left", "facings": 1, "confidence": "high"}}
+        {{"product_id": "PRODUCT_ID", "slot_start": 1, "slot_end": 1, "zone": "left", "facings": 1, "confidence": "high"}}
       ],
       "unknown_items": [
         {{"description": "brief description", "zone": "left|center|right", "notes": ""}}
@@ -283,16 +305,13 @@ Return ONLY this JSON (all 6 shelves included):
 }}
 """
     
-    # Build the multi-image content for Gemini
-    # Gemini accepts a list where you can interleave text and images
+    # Build multi-image content
     contents = [prompt]
-    
     for crop in sorted(crops, key=lambda x: x["shelf_number"]):
         shelf_num = crop["shelf_number"]
-        contents.append(f"\n--- Image below is SHELF {shelf_num} ---")
+        contents.append(f"\n=== IMAGE FOR SHELF {shelf_num} — analyze THIS image for Shelf {shelf_num} products only ===")
         contents.append(Image.open(crop["image_path"]))
     
-    # Make the single API call with retry
     for attempt in range(1, max_retries + 1):
         try:
             print(f"   🚀 Sending 6 shelf images in ONE API call to {MODEL_NAME}...")
@@ -308,13 +327,11 @@ Return ONLY this JSON (all 6 shelves included):
         except Exception as e:
             error_str = str(e)
             is_retryable = any(code in error_str for code in ["503", "429", "500", "502", "504", "UNAVAILABLE", "RESOURCE_EXHAUSTED"])
-            
             if is_retryable and attempt < max_retries:
-                # For quota errors, wait longer
                 if "RESOURCE_EXHAUSTED" in error_str or "429" in error_str:
-                    wait_time = 30 * attempt  # 30s, 60s, 90s
+                    wait_time = 30 * attempt
                 else:
-                    wait_time = 2 ** attempt  # 2s, 4s, 8s
+                    wait_time = 2 ** attempt
                 print(f"      ⏳ Attempt {attempt} failed ({error_str[:100]}...)")
                 print(f"      ⏳ Retrying in {wait_time} seconds...")
                 time.sleep(wait_time)
@@ -324,6 +341,7 @@ Return ONLY this JSON (all 6 shelves included):
 
 
 def process_photo(image_path):
+    """Main pipeline: photo → actual_map.json"""
     print(f"\n{'='*70}")
     print(f"PROCESSING: {image_path}")
     print(f"{'='*70}\n")
@@ -355,14 +373,13 @@ def process_photo(image_path):
     crops = crop_shelves(image_path, shelf_positions, debug_folder)
     print(f"   ✅ Created {len(crops)} shelf crops")
     
-    # Step 5: ONE API call for all shelves
+    # Step 5: One API call for all shelves
     print(f"\n📋 Step 5: Analyzing ALL shelves in ONE API call to {MODEL_NAME}")
     all_shelves = []
     try:
         result = analyze_all_shelves_one_call(crops, products_df, shelf_commodity_map)
         all_shelves = result.get("shelves", [])
         
-        # Enrich with expected_commodities and print summary
         for shelf in all_shelves:
             shelf_num = shelf["shelf_number"]
             shelf["expected_commodities"] = shelf_commodity_map[str(shelf_num)]
@@ -405,7 +422,6 @@ if __name__ == "__main__":
         upload_dir = Path("images/staff_uploads")
         photos = sorted(upload_dir.glob("*.jp*g")) + sorted(upload_dir.glob("*.png"))
         print(f"Processing all {len(photos)} test photos...")
-        print(f"💰 Total API calls needed: {len(photos)} (previously {len(photos)*6})")
         for photo in photos:
             process_photo(str(photo))
     else:

@@ -1,0 +1,48 @@
+{
+  "rack_id": "BTM-CH01",
+  "audit_date": "2026-08-13T17:27:51.753696",
+  "score": 5.5,
+  "status": "🟠 POOR",
+  "status_description": "Major reorganization needed",
+  "violation_counts": {
+    "high": 12,
+    "medium": 12,
+    "low": 0,
+    "info": 0,
+    "total": 24
+  },
+  "total_expected_products": 46,
+  "top_fixes": [
+    {
+      "priority": 1,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Add Maaza 150ml mango to Shelf 1 (left zone)"
+    },
+    {
+      "priority": 2,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Add Appy Fizz 250ml to Shelf 3 (center zone)"
+    },
+    {
+      "priority": 3,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Add Thums Up 250ml to Shelf 3 (left zone)"
+    },
+    {
+      "priority": 4,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Add Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle to Shelf 5 (left zone)"
+    },
+    {
+      "priority": 5,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Add Swing guava 270ml to Shelf 1 (right zone)"
+    }
+  ],
+  "source_comparison": "data\\comparisons\\comparison_audit_20260813_172647.json"
+}

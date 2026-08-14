@@ -2,77 +2,59 @@
 DETAILED CHILLER AUDIT REPORT
 ======================================================================
 Rack ID:      BTM-CH01
-Date:         13 August 2026, 16:23
+Date:         14 August 2026, 18:59
 Source:       data\actual_maps\actual_map_shelfmessing.json
 
-OVERALL SCORE: 6.3/10 — 🟡 NEEDS ATTENTION
-Status:       Several issues to address
+OVERALL SCORE: 9.8/10 — 🌟 EXCELLENT
+Status:       Rack meets high standards
 
-Total issues: 20
-  🔴 High:    9
-  🟡 Medium:  11
-  🟢 Low:     0
-  ℹ️  Info:    0
-
-----------------------------------------------------------------------
-📦 Missing Products  (9 issues, -10 points each)
-----------------------------------------------------------------------
-  • Pepsi 1.25L is missing from the chiller
-    → Add Pepsi 1.25L to Shelf 6 (left zone)
-  • Campa Cola 250ml is missing from the chiller
-    → Add Campa Cola 250ml to Shelf 5 (left zone)
-  • Raskik 150ml mango is missing (should appear on multiple shelves)
-    → Add Raskik 150ml mango to Shelf 1 AND Shelf 5
-  • Campa Energy Gold 185ml is missing from the chiller
-    → Add Campa Energy Gold 185ml to Shelf 2 (left zone)
-  • Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle is missing from the chiller
-    → Add Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle to Shelf 5 (left zone)
-  • Maaza 150ml mango is missing from the chiller
-    → Add Maaza 150ml mango to Shelf 1 (left zone)
-  • Campa Energy Berry Kick 250ml is missing from the chiller
-    → Add Campa Energy Berry Kick 250ml to Shelf 5 (left zone)
-  • Paper boat coconut 200ml is missing from the chiller
-    → Add Paper boat coconut 200ml to Shelf 1 (right zone)
-  • Thums Up 250ml is missing from the chiller
-    → Add Thums Up 250ml to Shelf 3 (left zone)
+Total issues: 13
+  🔴 High:    1
+  🟡 Medium:  1
+  🟢 Low:     10
+  ℹ️  Info:    1
 
 ----------------------------------------------------------------------
-👥 Duplicate on Wrong Shelf  (2 issues, -6 points each)
+📦 Missing Products  (1 issues, -10 points each)
 ----------------------------------------------------------------------
-  • Sting Energy 250ml incorrectly duplicated on Shelf 5
-    → Remove extra Sting Energy 250ml from Shelf 5 (correct location: Shelf 2)
-  • Maaza 270ml mango incorrectly duplicated on Shelf 5
-    → Remove extra Maaza 270ml mango from Shelf 5 (correct location: Shelf 1)
+  • Maaza 150ml mango not detected — expected on Shelf 1
+    → Verify Maaza 150ml mango on Shelf 1 (left zone). If missing, add it. If out of stock, mark as OOS.
 
 ----------------------------------------------------------------------
-📦 Partially Missing  (1 issues, -5 points each)
+expected_but_out_of_stock  (1 issues, -0 points each)
 ----------------------------------------------------------------------
-  • Swing pomegranate 270ml present on Shelf 1 but missing from Shelf 5
-    → Also add Swing pomegranate 270ml to Shelf 5 (already on Shelf 1)
+  • Thums Up 250ml is out of stock (marked by staff)
+    → ⚠️ Thums Up 250ml is OOS — consider substitution on Shelf 3
 
 ----------------------------------------------------------------------
-🎯 Wrong Zone  (6 issues, -4 points each)
+position_minor_shift  (10 issues, -0 points each)
 ----------------------------------------------------------------------
-  • Sprite 250ml in wrong position on Shelf 3
-    → Move Sprite 250ml on Shelf 3 from center to right
-  • Minute Maid Orange 250ml in wrong position on Shelf 1
-    → Move Minute Maid Orange 250ml on Shelf 1 from left to center
-  • Slice Mango Drink, 1.2L Bottle in wrong position on Shelf 6
-    → Move Slice Mango Drink, 1.2L Bottle on Shelf 6 from center to right
+  • Maaza 270ml mango slightly off position on Shelf 1
+    → Verify Maaza 270ml mango on Shelf 1 (at slot 2, expected slot 3)
+  • Frooti Mango 300ml slightly off position on Shelf 1
+    → Verify Frooti Mango 300ml on Shelf 1 (at slot 4, expected slot 5)
+  • Swing lychee 270ml slightly off position on Shelf 1
+    → Verify Swing lychee 270ml on Shelf 1 (at slot 6, expected slot 7)
+  • Paper boat coconut 200ml slightly off position on Shelf 1
+    → Verify Paper boat coconut 200ml on Shelf 1 (at slot 7, expected slot 8)
+  • Nandini GoodLife Pista Flavoured Milk 180ml slightly off position on Shelf 4
+    → Verify Nandini GoodLife Pista Flavoured Milk 180ml on Shelf 4 (at slot 6, expected slot 7)
+  • Raskik 150ml mango slightly off position on Shelf 1
+    → Verify Raskik 150ml mango on Shelf 1 (at slot 1, expected slot 2)
+  • Swing guava 270ml slightly off position on Shelf 1
+    → Verify Swing guava 270ml on Shelf 1 (at slot 8, expected slot 9)
+  • Minute Maid Orange 250ml slightly off position on Shelf 1
+    → Verify Minute Maid Orange 250ml on Shelf 1 (at slot 3, expected slot 4)
+  • Swing pomegranate 270ml slightly off position on Shelf 1
+    → Verify Swing pomegranate 270ml on Shelf 1 (at slot 5, expected slot 6)
+  • Amul Premium Spiced Buttermilk 200ml slightly off position on Shelf 4
+    → Verify Amul Premium Spiced Buttermilk 200ml on Shelf 4 (at slot 9, expected slot 8)
+
+----------------------------------------------------------------------
+wrong_position  (1 issues, -0 points each)
+----------------------------------------------------------------------
   • Nandini GoodLife Strawberry Flavoured Milk 200ml in wrong position on Shelf 4
-    → Move Nandini GoodLife Strawberry Flavoured Milk 200ml on Shelf 4 from right to center
-  • Nandini GoodLife Pista Flavoured Milk 180ml in wrong position on Shelf 4
-    → Move Nandini GoodLife Pista Flavoured Milk 180ml on Shelf 4 from center to right
-  • Red Bull Energy Drink 250ml in wrong position on Shelf 2
-    → Move Red Bull Energy Drink 250ml on Shelf 2 from center to right
-
-----------------------------------------------------------------------
-⬆️  Facing Too Low  (2 issues, -3 points each)
-----------------------------------------------------------------------
-  • Amul Kool Cafe 180ml has too few facings on Shelf 4
-    → Increase Amul Kool Cafe 180ml facings on Shelf 4 from 1 to 2
-  • Nandini GoodLife Mango Lassi 180ml has too few facings on Shelf 4
-    → Increase Nandini GoodLife Mango Lassi 180ml facings on Shelf 4 from 1 to 2
+    → Move Nandini GoodLife Strawberry Flavoured Milk 200ml on Shelf 4 from slot 8 to slot 6 (right by 2 slots)
 
 ======================================================================
 END OF REPORT
