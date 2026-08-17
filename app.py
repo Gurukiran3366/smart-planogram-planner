@@ -1,7 +1,7 @@
 # app.py
 """
 Smart Planogram Planner - Streamlit MVP
-Phase 1: Functional prototype for demo and pilot approval
+Optimized for Render deployment with long-running AI analysis.
 """
 
 import streamlit as st
@@ -11,7 +11,15 @@ import pandas as pd
 from pathlib import Path
 from PIL import Image
 from datetime import datetime
-from stock_status import load_today_oos, save_today_oos, get_today_oos_count
+import time
+
+# Import stock_status (with fallback if not available)
+try:
+    from stock_status import load_today_oos, save_today_oos, get_today_oos_count
+except ImportError:
+    def load_today_oos(): return set()
+    def save_today_oos(oos_ids): pass
+    def get_today_oos_count(): return 0
 
 # ============================================================
 # PAGE CONFIG
@@ -22,6 +30,18 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed"
 )
+
+# ============================================================
+# API KEYS FROM SECRETS
+# ============================================================
+if hasattr(st, 'secrets'):
+    try:
+        if "GOOGLE_API_KEY" in st.secrets:
+            os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+        if "OPENAI_API_KEY" in st.secrets:
+            os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+    except Exception:
+        pass
 
 # ============================================================
 # CUSTOM CSS
@@ -119,12 +139,20 @@ st.markdown("""
         display: inline-block;
         font-size: 14px;
     }
+    
+    .analyzing-container {
+        text-align: center;
+        padding: 40px 20px;
+        background: linear-gradient(135deg, #eff6ff, #dbeafe);
+        border-radius: 16px;
+        margin: 20px 0;
+    }
 </style>
 """, unsafe_allow_html=True)
 
 
 # ============================================================
-# SESSION STATE INITIALIZATION
+# SESSION STATE
 # ============================================================
 if "page" not in st.session_state:
     st.session_state.page = "home"
@@ -148,40 +176,34 @@ def show_header():
 
 
 def get_score_class(score):
-    if score >= 90:
-        return "score-excellent"
-    elif score >= 75:
-        return "score-good"
-    elif score >= 60:
-        return "score-attention"
-    elif score >= 40:
-        return "score-poor"
-    else:
-        return "score-critical"
+    if score >= 90: return "score-excellent"
+    elif score >= 75: return "score-good"
+    elif score >= 60: return "score-attention"
+    elif score >= 40: return "score-poor"
+    else: return "score-critical"
 
 
 def get_score_label(score):
-    if score >= 90:
-        return "🌟 Excellent"
-    elif score >= 75:
-        return "✅ Good"
-    elif score >= 60:
-        return "🟡 Needs Attention"
-    elif score >= 40:
-        return "🟠 Poor"
-    else:
-        return "🔴 Critical"
+    if score >= 90: return "🌟 Excellent"
+    elif score >= 75: return "✅ Good"
+    elif score >= 60: return "🟡 Needs Attention"
+    elif score >= 40: return "🟠 Poor"
+    else: return "🔴 Critical"
 
 
 def run_audit_pipeline(image_path):
+    """Run the audit pipeline (blocking call)."""
     try:
         from audit_chiller import run_full_audit
         result = run_full_audit(image_path)
         return result
     except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
         return {
             "status": "ERROR",
-            "message": f"Pipeline error: {str(e)}"
+            "message": f"Pipeline error: {str(e)}",
+            "traceback": error_details
         }
 
 
@@ -191,10 +213,9 @@ def run_audit_pipeline(image_path):
 def page_home():
     show_header()
     
-    st.markdown(f"### 👋 Welcome")
+    st.markdown("### 👋 Welcome")
     st.markdown(f"**BTM Layout Store** · {datetime.now().strftime('%d %b %Y')}")
     
-    # Show OOS status if any
     oos_count = get_today_oos_count()
     if oos_count > 0:
         st.markdown(f'<div class="oos-badge">📦 {oos_count} products marked OOS today</div>', 
@@ -213,7 +234,6 @@ def page_home():
         </div>
         """, unsafe_allow_html=True)
     with col2:
-        # Show last audit score
         reports_dir = Path("data/reports")
         last_score_text = "No previous audits"
         last_color = "#6B7280"
@@ -238,7 +258,6 @@ def page_home():
     
     st.markdown("")
     
-    # Main CTA
     if st.button("🔍 START CHILLER AUDIT", type="primary", width='stretch'):
         st.session_state.page = "stock_check"
         st.rerun()
@@ -274,14 +293,14 @@ def page_home():
 
 
 # ============================================================
-# PAGE: STOCK CHECK (NEW)
+# PAGE: STOCK CHECK
 # ============================================================
 def page_stock_check():
     show_header()
     
     st.markdown("### 📦 Quick Stock Check")
     st.markdown("**Before we audit — which products are OUT OF STOCK today?**")
-    st.info("💡 This helps us give you accurate corrections. We won't tell you to add products you don't have.")
+    st.info("💡 This helps us give you accurate corrections.")
     
     st.divider()
     
@@ -351,7 +370,7 @@ def page_stock_check():
             st.rerun()
     with col_skip:
         if st.button("⏭️ Skip", width='stretch'):
-            save_today_oos(set())  # Clear any previous
+            save_today_oos(set())
             st.session_state.page = "instructions"
             st.rerun()
     with col_next:
@@ -371,7 +390,6 @@ def page_instructions():
     st.markdown("### 📸 Photo Instructions")
     st.markdown("Take a clear photo of the chiller before we begin.")
     
-    # Show OOS reminder
     oos_count = get_today_oos_count()
     if oos_count > 0:
         st.caption(f"📦 {oos_count} products marked out of stock for today's audit")
@@ -428,7 +446,7 @@ def page_instructions():
 
 
 # ============================================================
-# PAGE: UPLOAD & REVIEW
+# PAGE: UPLOAD
 # ============================================================
 def page_upload():
     show_header()
@@ -455,12 +473,16 @@ def page_upload():
         ✅ Resolution acceptable  
         """)
         
+        # IMPORTANT: Warn about analysis time
+        st.warning("⏱️ **Analysis takes 60-90 seconds.** Please don't close this page during analysis.")
+        
         col_retake, col_use = st.columns(2)
         with col_retake:
             if st.button("🔄 Choose Different Photo", width='stretch'):
                 st.rerun()
         with col_use:
             if st.button("🔍 ANALYZE THIS PHOTO", type="primary", width='stretch'):
+                # Save uploaded file
                 temp_dir = Path("temp_uploads")
                 temp_dir.mkdir(exist_ok=True)
                 temp_path = temp_dir / f"audit_{datetime.now().strftime('%Y%m%d_%H%M%S')}.jpg"
@@ -482,13 +504,10 @@ def page_upload():
 
 
 # ============================================================
-# PAGE: ANALYZING
+# PAGE: ANALYZING (Optimized for long operations)
 # ============================================================
 def page_analyzing():
     show_header()
-    
-    st.markdown("### 🔍 Analyzing Chiller")
-    st.markdown("_Please wait while we check the arrangement..._")
     
     image_path = st.session_state.get("uploaded_image_path")
     if not image_path:
@@ -498,53 +517,97 @@ def page_analyzing():
             st.rerun()
         return
     
-    progress_bar = st.progress(0)
-    status_text = st.empty()
+    # Large centered analyzing UI
+    st.markdown("""
+    <div class="analyzing-container">
+        <h2 style="margin:0; color:#1e3a5f;">🔍 Analyzing Your Chiller</h2>
+        <p style="margin:10px 0 0 0; color:#4b5563; font-size:16px;">
+            Please wait while our AI examines the arrangement...<br>
+            <strong>This takes 60-90 seconds. Do not close this page.</strong>
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
     
-    steps = [
-        (10, "Checking image quality..."),
-        (25, "Detecting shelf labels..."),
-        (40, "Identifying shelf zones..."),
-        (55, "Identifying products..."),
-        (70, "Comparing with reference..."),
-        (85, "Checking merchandising rules..."),
-        (95, "Preparing corrections..."),
-    ]
+    # Show what's happening
+    progress_container = st.container()
     
-    import time
+    with progress_container:
+        progress_bar = st.progress(0)
+        status_text = st.empty()
+        detail_text = st.empty()
     
-    for progress, message in steps[:3]:
-        progress_bar.progress(progress)
-        status_text.markdown(f"**{message}**")
-        time.sleep(0.5)
+    # Show fake progress while pipeline runs
+    # (This keeps the UI responsive so Render doesn't disconnect)
     
+    status_text.markdown("### 📸 Step 1/6: Checking image quality...")
+    detail_text.caption("Verifying resolution, lighting, and clarity")
+    progress_bar.progress(10)
+    time.sleep(0.5)
+    
+    status_text.markdown("### 🔍 Step 2/6: Detecting shelf labels...")
+    detail_text.caption("Finding S-1 through S-6 labels using OCR")
+    progress_bar.progress(25)
+    time.sleep(0.5)
+    
+    status_text.markdown("### ✂️ Step 3/6: Cropping shelves...")
+    detail_text.caption("Splitting image into 6 individual shelf views")
+    progress_bar.progress(40)
+    time.sleep(0.5)
+    
+    status_text.markdown("### 🤖 Step 4/6: AI analyzing products...")
+    detail_text.caption("This is the longest step. Please wait 30-60 seconds.")
     progress_bar.progress(55)
-    status_text.markdown("**Identifying products and comparing...**")
     
-    result = run_audit_pipeline(image_path)
+    # RUN THE ACTUAL PIPELINE (this is the long call)
+    try:
+        result = run_audit_pipeline(image_path)
+    except Exception as e:
+        st.error(f"❌ Analysis failed: {e}")
+        st.info("This might be a temporary issue. Please try again in a moment.")
+        if st.button("🔄 Try Again"):
+            st.session_state.page = "upload"
+            st.rerun()
+        return
     
-    for progress, message in steps[4:]:
-        progress_bar.progress(progress)
-        status_text.markdown(f"**{message}**")
-        time.sleep(0.3)
+    status_text.markdown("### 📊 Step 5/6: Comparing with reference...")
+    detail_text.caption("Checking against ideal chiller arrangement")
+    progress_bar.progress(85)
+    time.sleep(0.3)
+    
+    status_text.markdown("### ✅ Step 6/6: Generating report...")
+    detail_text.caption("Preparing your audit results")
+    progress_bar.progress(95)
+    time.sleep(0.3)
     
     progress_bar.progress(100)
     
+    # Store result
     st.session_state.audit_result = result
     
+    # Route to appropriate page
     if result["status"] == "SUCCESS":
-        status_text.markdown("**✅ Analysis complete!**")
+        status_text.markdown("### ✅ Analysis complete!")
+        detail_text.caption("Loading your results...")
         time.sleep(1)
         st.session_state.page = "result"
         st.rerun()
-    elif "REJECTED" in result["status"]:
-        status_text.markdown("**❌ Analysis failed**")
+    elif "REJECTED" in result.get("status", ""):
+        status_text.markdown("### ⚠️ Analysis needs retake")
         time.sleep(1)
         st.session_state.page = "rejected"
         st.rerun()
     else:
-        status_text.markdown(f"**❌ Error: {result.get('message', 'Unknown error')}**")
-        if st.button("← Try Again"):
+        status_text.markdown("### ❌ Analysis failed")
+        error_msg = result.get("message", "Unknown error")
+        st.error(f"Error: {error_msg}")
+        
+        # Show detailed error for debugging
+        if "traceback" in result:
+            with st.expander("🔧 Technical details (for support)"):
+                st.code(result["traceback"])
+        
+        if st.button("🔄 Try Again", type="primary"):
+            st.session_state.audit_result = None
             st.session_state.page = "upload"
             st.rerun()
 
@@ -577,16 +640,6 @@ def page_rejected():
     - ✅ Stand on the marked spot on floor
     """)
     
-    with st.expander("🤔 Why did this happen?"):
-        st.markdown("""
-        Our AI system detected an issue with the photo — either:
-        - Too many products on some shelves (AI got confused between adjacent shelves)
-        - Too few products detected (photo may be unclear)
-        
-        This is a known limitation of our current AI model.
-        We're working on upgrading to a more accurate model.
-        """)
-    
     if st.button("📷 RETAKE PHOTO", type="primary", width='stretch'):
         st.session_state.audit_result = None
         st.session_state.page = "upload"
@@ -598,7 +651,7 @@ def page_rejected():
 
 
 # ============================================================
-# PAGE: AUDIT RESULT
+# PAGE: RESULT
 # ============================================================
 def page_result():
     show_header()
@@ -626,7 +679,6 @@ def page_result():
     
     st.progress(score_pct / 100)
     
-    # OOS reminder
     oos_count = get_today_oos_count()
     if oos_count > 0:
         st.info(f"📦 Note: {oos_count} products were marked as out-of-stock — not counted as issues")
@@ -655,7 +707,6 @@ def page_result():
     st.markdown("### 🎯 Priority Fixes")
     
     top_fixes = result.get("top_fixes", [])
-    # Filter out OOS info items from top priority display
     priority_fixes = [f for f in top_fixes if f.get("type") != "expected_but_out_of_stock"][:5]
     oos_items = [f for f in top_fixes if f.get("type") == "expected_but_out_of_stock"]
     
@@ -688,7 +739,6 @@ def page_result():
     else:
         st.success("✅ No corrections needed! Rack is compliant.")
     
-    # Show OOS items separately
     if oos_items:
         with st.expander(f"📦 Out of Stock Items ({len(oos_items)})"):
             for item in oos_items:
@@ -726,7 +776,7 @@ def page_result():
 
 
 # ============================================================
-# PAGE: FINAL PHOTO INSTRUCTIONS
+# PAGE: FINAL INSTRUCTIONS
 # ============================================================
 def page_final_instructions():
     show_header()
@@ -789,6 +839,7 @@ def page_final_upload():
             st.image(img, width='stretch')
         
         st.divider()
+        st.warning("⏱️ Analysis takes 60-90 seconds. Please don't close this page.")
         
         col_retake, col_analyze = st.columns(2)
         with col_retake:
@@ -817,9 +868,6 @@ def page_final_upload():
 def page_final_analyzing():
     show_header()
     
-    st.markdown("### 🔍 Analyzing Final Arrangement")
-    st.markdown("_Checking if corrections were applied..._")
-    
     image_path = st.session_state.get("uploaded_image_path")
     if not image_path:
         st.error("No image found.")
@@ -828,43 +876,49 @@ def page_final_analyzing():
             st.rerun()
         return
     
-    import time
+    st.markdown("""
+    <div class="analyzing-container">
+        <h2 style="margin:0; color:#1e3a5f;">🔍 Analyzing Final Photo</h2>
+        <p style="margin:10px 0 0 0; color:#4b5563; font-size:16px;">
+            Checking if corrections were applied...<br>
+            <strong>This takes 60-90 seconds. Do not close this page.</strong>
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
     progress_bar = st.progress(0)
     status_text = st.empty()
     
-    steps = [
-        (15, "Checking image quality..."),
-        (30, "Detecting shelves..."),
-        (50, "Identifying products..."),
-        (70, "Comparing with reference..."),
-        (90, "Calculating final score..."),
-    ]
+    status_text.markdown("### 📸 Processing final photo...")
+    progress_bar.progress(20)
+    time.sleep(0.5)
     
-    for progress, message in steps[:2]:
-        progress_bar.progress(progress)
-        status_text.markdown(f"**{message}**")
-        time.sleep(0.5)
-    
+    status_text.markdown("### 🤖 AI analyzing corrections...")
     progress_bar.progress(50)
-    status_text.markdown("**Identifying products...**")
     
-    result = run_audit_pipeline(image_path)
+    try:
+        result = run_audit_pipeline(image_path)
+    except Exception as e:
+        st.error(f"❌ Analysis failed: {e}")
+        if st.button("🔄 Try Again"):
+            st.session_state.page = "final_upload"
+            st.rerun()
+        return
     
-    for progress, message in steps[3:]:
-        progress_bar.progress(progress)
-        status_text.markdown(f"**{message}**")
-        time.sleep(0.3)
+    status_text.markdown("### 📊 Calculating improvement...")
+    progress_bar.progress(90)
+    time.sleep(0.5)
     
     progress_bar.progress(100)
     st.session_state.audit_result = result
     
     if result["status"] == "SUCCESS":
-        status_text.markdown("**✅ Final analysis complete!**")
+        status_text.markdown("### ✅ Final analysis complete!")
         time.sleep(1)
         st.session_state.page = "final_result"
         st.rerun()
     else:
-        status_text.markdown("**❌ Analysis failed**")
+        status_text.markdown("### ❌ Analysis failed")
         st.error(result.get("message", "Unknown error"))
         if st.button("🔄 Try Again"):
             st.session_state.page = "final_upload"

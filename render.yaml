@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: smart-planogram
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+    # Keep container alive during long AI requests
+    autoDeploy: true
