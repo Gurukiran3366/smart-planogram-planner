@@ -1,0 +1,17 @@
+{
+  "audit_id": "20260827_004559",
+  "timestamp": "2026-08-27T00:46:46.693249",
+  "image_path": "C:\\smart-planogram-planner\\images\\staff_uploads\\wrongshelf.jpeg",
+  "status": "SUCCESS",
+  "actual_map_file": "data\\actual_maps\\actual_map_wrongshelf.json",
+  "comparison_file": "data\\comparisons\\comparison_wrongshelf.json",
+  "score": 7.4,
+  "score_status": "🟡 NEEDS ATTENTION",
+  "violation_counts": {
+    "high": 12,
+    "medium": 6,
+    "low": 1,
+    "info": 0,
+    "total": 19
+  }
+}

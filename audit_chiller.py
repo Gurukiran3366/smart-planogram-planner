@@ -1,7 +1,7 @@
 # audit_chiller.py
 """
-MAIN AUDIT PIPELINE — Milestone 5 Complete
-The single entry point that runs the full audit end-to-end.
+MAIN AUDIT PIPELINE — Production Orchestrator
+The application entry point that runs the complete audit and physical-action pipeline.
 
 Flow:
   1. Image quality check (fail-fast)
@@ -33,151 +33,185 @@ from scoring_engine import generate_audit_report
 AUDIT_LOG_DIR = Path("data/audit_logs")
 
 
-def run_full_audit(image_path):
-    """
-    End-to-end audit pipeline with fail-fast validation at every stage.
-    Returns dict with status and either report OR rejection message.
-    """
+def run_full_audit(image_path, expected_map=None, rules=None):
+    """Production application entry point for the complete planogram pipeline."""
+    import subprocess
+    import sys
+
     audit_start = datetime.now()
     audit_id = audit_start.strftime("%Y%m%d_%H%M%S")
-    photo_name = Path(image_path).stem
-    
-    print(f"\n{'#'*70}")
-    print(f"# STARTING AUDIT")
+    root = Path(__file__).resolve().parent
+    photo = Path(image_path).resolve()
+    expected = Path(expected_map).resolve() if expected_map else root / "data" / "expected_map_BTM_CH01.json"
+    rules_path = Path(rules).resolve() if rules else root / "data" / "merchandising_rules_v2.json"
+
+    actual = root / "data" / "actual_maps" / "actual_map_wrongshelf.json"
+    analysis = root / "data" / "analyses" / "analysis_actual_map_wrongshelf.json"
+    misplacements = root / "data" / "analyses" / "misplacements_v2_analysis_actual_map_wrongshelf.json"
+    corrections = root / "data" / "analyses" / "corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json"
+    occurrences = root / "data" / "analyses" / "occurrences_corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json"
+    rearrangements = root / "data" / "analyses" / "rearrangements_corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json"
+    cycles = root / "data" / "analyses" / "cycles_corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json"
+    dependencies = root / "data" / "analyses" / "dependencies_occurrences_corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json"
+    final_recommendations = root / "data" / "analyses" / "final_recommendations_corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json"
+    staff_actions = root / "data" / "analyses" / f"staff_actions_{photo.stem}.json"
+    staff_message = root / "data" / "reports" / f"staff_actions_{photo.stem}.txt"
+
+    def fail(status, message, actual_file=None, comparison_file=None, extra=None):
+        return {
+            "status": status,
+            "audit_id": audit_id,
+            "message": message,
+            "duration_seconds": (datetime.now() - audit_start).total_seconds(),
+            "actual_map_file": str(actual_file) if actual_file else None,
+            "comparison_file": str(comparison_file) if comparison_file else None,
+            "log_saved": save_audit_log(audit_id, image_path, status,
+                str(actual_file) if actual_file else None,
+                str(comparison_file) if comparison_file else None,
+                extra if extra is not None else message),
+        }
+
+    def stage(label, args):
+        print("\n" + "=" * 78)
+        print(label)
+        print("=" * 78)
+        print("$ " + " ".join(str(x) for x in args))
+        proc = subprocess.run(args, cwd=root)
+        if proc.returncode != 0:
+            raise RuntimeError(f"{label} failed with exit code {proc.returncode}")
+
+    if not photo.exists():
+        return fail("REJECTED_IMAGE_QUALITY", f"Photo not found: {photo}")
+    if not expected.exists():
+        return fail("ERROR", f"Expected map not found: {expected}")
+    if not rules_path.exists():
+        return fail("ERROR", f"Merchandising rules not found: {rules_path}")
+
+    print("\n" + "#" * 70)
+    print("# SMART PLANOGRAM — PRODUCTION AUDIT PIPELINE")
     print(f"# Audit ID: {audit_id}")
-    print(f"# Image: {image_path}")
-    print(f"{'#'*70}\n")
-    
-    # ═════════════════════════════════════════════════════════
-    # STAGE 1-3: Image processing + AI analysis
-    # (These are handled inside process_photo)
-    # ═════════════════════════════════════════════════════════
-    print("┌" + "─"*68 + "┐")
-    print("│ STAGE 1-3: IMAGE PROCESSING + AI ANALYSIS                          │")
-    print("└" + "─"*68 + "┘")
-    
+    print(f"# Image: {photo}")
+    print("#" * 70)
+
+    # 1. Photo -> actual map. Keep the existing AI/image-processing implementation.
     try:
-        actual_map_file = process_photo(image_path)
-        if actual_map_file is None:
-            return {
-                "status": "REJECTED_IMAGE_QUALITY",
-                "audit_id": audit_id,
-                "message": build_rejection_message([
-                    "Image quality check failed",
-                    "Photo may be blurry, too dark, or too low resolution"
-                ]),
-                "log_saved": save_audit_log(audit_id, image_path, "REJECTED_IMAGE_QUALITY", None, None, None)
-            }
+        actual_result = process_photo(str(photo))
+        if actual_result is None:
+            return fail("REJECTED_IMAGE_QUALITY", build_rejection_message([
+                "Image quality check failed",
+                "Photo may be blurry, too dark, or too low resolution",
+            ]))
     except Exception as e:
-        return {
-            "status": "ERROR",
-            "audit_id": audit_id,
-            "message": f"System error during image processing: {e}",
-            "log_saved": save_audit_log(audit_id, image_path, "ERROR", None, None, str(e))
-        }
-    
-    # ═════════════════════════════════════════════════════════
-    # STAGE 4: Sanity validation on AI output
-    # ═════════════════════════════════════════════════════════
-    print("\n┌" + "─"*68 + "┐")
-    print("│ STAGE 4: SANITY VALIDATION (AI hallucination check)                │")
-    print("└" + "─"*68 + "┘")
-    
-    validation = validate_actual_map(str(actual_map_file))
-    
+        return fail("ERROR", f"System error during image processing: {e}", extra=str(e))
+
+    produced_actual = Path(actual_result)
+    if produced_actual.exists() and produced_actual.resolve() != actual.resolve():
+        actual.parent.mkdir(parents=True, exist_ok=True)
+        actual.write_text(produced_actual.read_text(encoding="utf-8"), encoding="utf-8")
+    if not actual.exists():
+        return fail("ERROR", f"Actual map was not created: {actual}")
+
+    # 2. Validate the AI output before any downstream decisioning.
+    try:
+        validation = validate_actual_map(str(actual))
+    except Exception as e:
+        return fail("ERROR", f"System error during sanity validation: {e}", actual, extra=str(e))
     if validation["status"] == "REJECT":
-        rejection_msg = get_staff_rejection_message(validation)
-        print(f"\n❌ AI output failed sanity check — audit REJECTED")
-        print(f"   Reasons:")
-        for issue in validation["critical_issues"]:
-            print(f"     → {issue['message']}")
-        
-        return {
-            "status": "REJECTED_AI_UNRELIABLE",
-            "audit_id": audit_id,
-            "message": rejection_msg,
-            "validation_details": validation,
-            "log_saved": save_audit_log(
-                audit_id, image_path, "REJECTED_AI_UNRELIABLE",
-                str(actual_map_file), None, validation
-            )
-        }
-    
-    warning_level = validation["status"]
-    print(f"\n✅ Sanity check {warning_level}")
-    if warning_level == "WARNING":
-        print(f"   Note: {len(validation['warnings'])} warnings detected but proceeding")
-    
-    # ═════════════════════════════════════════════════════════
-    # STAGE 5: Comparison against reference
-    # ═════════════════════════════════════════════════════════
-    print("\n┌" + "─"*68 + "┐")
-    print("│ STAGE 5: COMPARISON AGAINST REFERENCE                              │")
-    print("└" + "─"*68 + "┘")
-    
+        return fail("REJECTED_AI_UNRELIABLE", get_staff_rejection_message(validation), actual, extra=validation)
+
     try:
-        comparison_result = compare_maps(str(actual_map_file))
-        
-        # Locate the saved comparison file
-        comparison_file = Path("data/comparisons") / f"comparison_{photo_name}.json"
-        
-        if not comparison_file.exists():
-            raise FileNotFoundError(f"Comparison file not created: {comparison_file}")
+        # 3. Actual map -> shelf analysis
+        stage("3/9 ACTUAL MAP -> SHELF ANALYSIS", [sys.executable, "shelf_analyzer.py", str(actual)])
+        # 4. Shelf analysis -> misplacements
+        stage("4/9 SHELF ANALYSIS -> MISPLACEMENTS", [sys.executable, "misplacement_detector_v2.py", str(analysis), "--actual", str(actual), "--expected", str(expected), "--rules", str(rules_path), "--output", str(misplacements)])
+        # 5. Misplacements -> corrections
+        stage("5/9 MISPLACEMENTS -> CORRECTIONS", [sys.executable, "correction_engine_v2.py", str(misplacements), "--actual", str(actual), "--expected", str(expected), "--rules", str(rules_path)])
+        # 6. Occurrence resolution
+        stage("6/9 OCCURRENCE RESOLUTION", [sys.executable, "occurrence_resolver.py", str(corrections), "--actual", str(actual), "--expected", str(expected), "--rules", str(rules_path)])
+        # 7. Rearrangement planning and cycle planning
+        stage("7/9 REARRANGEMENT PLANNING", [sys.executable, "rearrangement_planner.py", str(corrections), "--actual", str(actual), "--expected", str(expected), "--rules", str(rules_path)])
+        stage("7/9 CYCLE PLANNING", [sys.executable, "cycle_planner.py", str(corrections), "--actual", str(actual), "--expected", str(expected), "--rules", str(rules_path)])
+        # 8. Dependency / physical action planning
+        stage("8/9 DEPENDENCY / PHYSICAL ACTION PLANNING", [sys.executable, "dependency_planner.py", str(occurrences), "--corrections", str(corrections), "--rearrangements", str(rearrangements), "--cycles", str(cycles)])
+        # 9. Final staff-facing normalization
+        stage("9/9 FINAL STAFF ACTION NORMALIZATION", [sys.executable, "staff_action_normalizer.py", "--rack", "BTM-CH01", "--occurrences", str(occurrences), "--rearrangements", str(rearrangements), "--dependencies", str(dependencies), "--final-recommendations", str(final_recommendations), "--output", str(staff_actions), "--staff-output", str(staff_message)])
     except Exception as e:
-        return {
-            "status": "ERROR",
-            "audit_id": audit_id,
-            "message": f"System error during comparison: {e}",
-            "log_saved": save_audit_log(audit_id, image_path, "ERROR", str(actual_map_file), None, str(e))
-        }
-    
-    # ═════════════════════════════════════════════════════════
-    # STAGE 6: Scoring + staff-friendly report
-    # ═════════════════════════════════════════════════════════
-    print("\n┌" + "─"*68 + "┐")
-    print("│ STAGE 6: SCORING + REPORT GENERATION                               │")
-    print("└" + "─"*68 + "┘")
-    
+        return fail("ERROR", f"System error during action-planning pipeline: {e}", actual, extra=str(e))
+
+    # Preserve the legacy score/report contract used by the current Streamlit UI.
+    # compare_maps() writes the comparison using the actual-map stem,
+    # e.g. actual_map_wrongshelf.json -> comparison_wrongshelf.json.
+    comparison_dir = root / "data" / "comparisons"
+    comparison_file = comparison_dir / (
+        f"comparison_{Path(actual).stem.replace("actual_map_", "")}.json"
+    )
+
     try:
+        compare_maps(str(actual))
+
+        # The comparison engine may use its own output naming convention.
+        # First use the deterministic expected path, then fall back to the
+        # newest comparison file if the engine chose a different name.
+        if not comparison_file.exists():
+            candidates = sorted(
+                comparison_dir.glob("comparison_*.json"),
+                key=lambda x: x.stat().st_mtime,
+                reverse=True,
+            )
+            if candidates:
+                comparison_file = candidates[0]
+            else:
+                raise FileNotFoundError(
+                    f"Comparison file not created: {comparison_file}"
+                )
+
         report_summary = generate_audit_report(str(comparison_file))
     except Exception as e:
-        return {
-            "status": "ERROR",
-            "audit_id": audit_id,
-            "message": f"System error during scoring: {e}",
-            "log_saved": save_audit_log(audit_id, image_path, "ERROR", str(actual_map_file), str(comparison_file), str(e))
-        }
-    
-    # ═════════════════════════════════════════════════════════
-    # AUDIT COMPLETE
-    # ═════════════════════════════════════════════════════════
-    audit_duration = (datetime.now() - audit_start).total_seconds()
-    
-    print(f"\n{'#'*70}")
-    print(f"# ✅ AUDIT COMPLETE in {audit_duration:.1f} seconds")
-    print(f"# Score: {report_summary['score']}/10 — {report_summary['status']}")
-    print(f"{'#'*70}\n")
-    
-    # Read the WhatsApp message that was generated
-    whatsapp_file = Path("data/reports") / f"whatsapp_{photo_name}.txt"
-    whatsapp_msg = whatsapp_file.read_text(encoding="utf-8") if whatsapp_file.exists() else ""
-    
-    return {
+        return fail("ERROR", f"System error during scoring/report generation: {e}", actual, comparison_file, str(e))
+
+    staff_data = {}
+    if staff_actions.exists():
+        try:
+            staff_data = json.loads(staff_actions.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    staff_text = staff_message.read_text(encoding="utf-8") if staff_message.exists() else ""
+    duration = (datetime.now() - audit_start).total_seconds()
+
+    result = {
         "status": "SUCCESS",
         "audit_id": audit_id,
         "score": report_summary["score"],
         "score_status": report_summary["status"],
         "violation_counts": report_summary["violation_counts"],
         "top_fixes": report_summary["top_fixes"],
-        "whatsapp_message": whatsapp_msg,
-        "duration_seconds": audit_duration,
+        "whatsapp_message": staff_text,
+        "staff_actions": staff_data.get("safe_actions", []),
+        "review_required": staff_data.get("review_required", []),
+        "staff_action_report": staff_data,
+        "staff_action_message": staff_text,
+        "actual_map_file": str(actual),
+        "analysis_file": str(analysis),
+        "misplacements_file": str(misplacements),
+        "corrections_file": str(corrections),
+        "occurrences_file": str(occurrences),
+        "rearrangements_file": str(rearrangements),
+        "cycles_file": str(cycles),
+        "dependencies_file": str(dependencies),
+        "final_recommendations_file": str(final_recommendations),
+        "staff_actions_file": str(staff_actions),
+        "duration_seconds": duration,
         "validation_warnings": validation.get("warnings", []),
-        "log_saved": save_audit_log(
-            audit_id, image_path, "SUCCESS",
-            str(actual_map_file), str(comparison_file), report_summary
-        )
     }
+    result["log_saved"] = save_audit_log(audit_id, image_path, "SUCCESS", str(actual), str(comparison_file), result)
 
+    print("\n" + "#" * 70)
+    print(f"# AUDIT COMPLETE — {duration:.1f}s")
+    print(f"# Score: {result['score']}/10 — {result['score_status']}")
+    print(f"# Safe actions: {len(result['staff_actions'])}")
+    print(f"# Manual reviews: {len(result['review_required'])}")
+    print("#" * 70)
+    return result
 
 def build_rejection_message(reasons):
     """Build a generic rejection message when image quality fails."""

@@ -1,0 +1,17 @@
+{
+  "audit_id": "20260827_111303",
+  "timestamp": "2026-08-27T11:13:51.442793",
+  "image_path": "temp_uploads\\audit_20260827_111257.jpg",
+  "status": "SUCCESS",
+  "actual_map_file": "C:\\smart-planogram-planner\\data\\actual_maps\\actual_map_wrongshelf.json",
+  "comparison_file": "C:\\smart-planogram-planner\\data\\comparisons\\comparison_wrongshelf.json",
+  "score": 7.5,
+  "score_status": "SUCCESS",
+  "violation_counts": {
+    "high": 14,
+    "medium": 3,
+    "low": 2,
+    "info": 1,
+    "total": 20
+  }
+}

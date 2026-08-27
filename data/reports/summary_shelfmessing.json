@@ -1,15 +1,15 @@
 {
   "rack_id": "BTM-CH01",
-  "audit_date": "2026-08-14T18:59:38.806810",
-  "score": 9.8,
+  "audit_date": "2026-08-22T14:29:35.414049",
+  "score": 9.6,
   "status": "🌟 EXCELLENT",
   "status_description": "Rack meets high standards",
   "violation_counts": {
-    "high": 1,
+    "high": 2,
     "medium": 1,
-    "low": 10,
-    "info": 1,
-    "total": 13
+    "low": 6,
+    "info": 0,
+    "total": 9
   },
   "total_expected_products": 45,
   "top_fixes": [
@@ -17,13 +17,13 @@
       "priority": 1,
       "type": "missing_product",
       "severity": "high",
-      "correction": "Verify Maaza 150ml mango on Shelf 1 (left zone). If missing, add it. If out of stock, mark as OOS."
+      "correction": "Verify Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle on Shelf 5 (left zone). If missing, add it. If out of stock, mark as OOS."
     },
     {
       "priority": 2,
-      "type": "expected_but_out_of_stock",
-      "severity": "info",
-      "correction": "⚠️ Thums Up 250ml is OOS — consider substitution on Shelf 3"
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Verify Thums Up 250ml on Shelf 3 (left zone). If missing, add it. If out of stock, mark as OOS."
     },
     {
       "priority": 3,
@@ -35,13 +35,13 @@
       "priority": 4,
       "type": "position_minor_shift",
       "severity": "low",
-      "correction": "Verify Maaza 270ml mango on Shelf 1 (at slot 2, expected slot 3)"
+      "correction": "Verify Nandini GoodLife Pista Flavoured Milk 180ml on Shelf 4 (at slot 6, expected slot 7)"
     },
     {
       "priority": 5,
       "type": "position_minor_shift",
       "severity": "low",
-      "correction": "Verify Frooti Mango 300ml on Shelf 1 (at slot 4, expected slot 5)"
+      "correction": "Verify Paper Boat Swing Mixed Fruit Medley 200ml on Shelf 5 (at slot 8, expected slot 9)"
     }
   ],
   "source_comparison": "data\\comparisons\\comparison_shelfmessing.json"

@@ -1,0 +1,83 @@
+{
+  "engine": "cycle_planner",
+  "engine_version": "1.0",
+  "rack": "BTM-CH01",
+  "sources": {
+    "corrections": "C:\\smart-planogram-planner\\data\\analyses\\corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+    "actual": "C:\\smart-planogram-planner\\data\\actual_maps\\actual_map_wrongshelf.json",
+    "expected": "C:\\smart-planogram-planner\\data\\expected_map_BTM_CH01.json",
+    "rules": "C:\\smart-planogram-planner\\data\\merchandising_rules_v2.json"
+  },
+  "summary": {
+    "rearrangement_candidates_received": 8,
+    "graph_edges_proven": 5,
+    "safe_cycles": 0,
+    "rejected_cycles": 0,
+    "unresolved_products": 8
+  },
+  "decision": "REVIEW_NO_SAFE_CYCLE",
+  "recommendation": "REVIEW / NO SAFE CYCLE PROVEN",
+  "safe_cycles": [],
+  "rejected_cycles": [],
+  "graph_issues": [
+    {
+      "product_id": "raskik_mango_150",
+      "reason": "Expected-map occurrence is missing or ambiguous."
+    },
+    {
+      "product_id": "raskik_mango_150",
+      "reason": "Actual occurrence is missing or duplicated; cycle cannot be proven."
+    }
+  ],
+  "unresolved_products": [
+    {
+      "product_id": "amul_kool_cafe_180",
+      "type": "REVIEW_REARRANGEMENT",
+      "status": "BLOCKED",
+      "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized."
+    },
+    {
+      "product_id": "campa_energy_gold_185",
+      "type": "REVIEW_REARRANGEMENT",
+      "status": "BLOCKED",
+      "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized."
+    },
+    {
+      "product_id": "nandini_strawberry_flavoured_milk_200",
+      "type": "REVIEW_REARRANGEMENT",
+      "status": "BLOCKED",
+      "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized."
+    },
+    {
+      "product_id": "paper_boat_coconut_200",
+      "type": "REVIEW_REARRANGEMENT",
+      "status": "BLOCKED",
+      "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized."
+    },
+    {
+      "product_id": "raskik_mango_150",
+      "type": "REVIEW_REARRANGEMENT",
+      "status": "BLOCKED",
+      "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized."
+    },
+    {
+      "product_id": "redbull_250",
+      "type": "REVIEW_REARRANGEMENT",
+      "status": "BLOCKED",
+      "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized."
+    },
+    {
+      "product_id": "swing_guava_270",
+      "type": "REVIEW_REARRANGEMENT",
+      "status": "BLOCKED",
+      "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized."
+    },
+    {
+      "product_id": "swing_mixed_fruit_200",
+      "type": "REVIEW_REARRANGEMENT",
+      "status": "BLOCKED",
+      "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized."
+    }
+  ],
+  "safety_boundary": "Only exact 3+ product cycles are automatically recommended. Every edge must map a product's current location exactly to the next product's expected location. Direct swaps remain the responsibility of rearrangement_planner.py. Ambiguous duplicates, partial chains, and cycles requiring a new destination remain REVIEW."
+}

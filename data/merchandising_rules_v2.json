@@ -1,0 +1,759 @@
+{
+  "schema_version": "1.0",
+  "rack_id": "BTM-CH01",
+  "rule_source": {
+    "merchandising_rule_source": "User-provided chiller merchandising rules",
+    "product_source": "Uploaded chiller product list Excel",
+    "product_source_file": "9e7a838d-0121-4d18-9c2b-63fad1fa024f.xlsx",
+    "preferred_order_is": "preferred_not_mandatory"
+  },
+  "global_rules": {
+    "analysis_mode": "whole_shelf",
+    "product_order_mode": "preferred",
+    "objective": "maximize_overall_merchandising_compliance",
+    "correction_principle": "Recommend the minimum physically executable set of actions that improves overall shelf compliance without creating a higher-priority violation.",
+    "never_add_product_without_valid_space": true,
+    "never_recommend_action_that_creates_a_higher_priority_violation": true,
+    "prefer_minimum_physical_movements": true,
+    "analyze_whole_shelf_before_recommending": true,
+    "do_not_treat_preferred_order_as_exact_slot_order": true,
+    "unknown_data_policy": "When required catalog or sales data is unavailable, mark the condition as unknown/review rather than inventing a value or forcing a correction."
+  },
+  "shelves": {
+    "1": {
+      "shelf_name": "Fruit Beverages",
+      "allowed_commodities": [
+        "fruit_beverage"
+      ],
+      "capacity_units": 9,
+      "price_rule": {
+        "type": "preferred_group",
+        "value": 20,
+        "label": "₹20 pack",
+        "hard": false,
+        "exception": "Do not force a ₹20-only correction when the catalog/reference explicitly contains another price point; flag data/rule conflict for review.",
+        "allow_approved_price_exceptions": true,
+        "violation_action": "review_only"
+      },
+      "colour_sequence": {
+        "enabled": true,
+        "order": [
+          "orange",
+          "red",
+          "white"
+        ],
+        "hard": false,
+        "interpretation": "Prefer left-to-right progression; do not break a higher-priority hard rule to improve colour order."
+      },
+      "facing_rule": {
+        "standard_facings": 1,
+        "max_facings": 1,
+        "extra_facing_allowed": false,
+        "fast_moving_status_source": "unavailable",
+        "unknown_fast_moving_policy": "Do not remove an extra facing solely because fast-moving status is unknown. Flag for review when a second facing requires fast-moving justification."
+      },
+      "special_rules": [
+        {
+          "rule_id": "S1_FLAVOUR_GROUP",
+          "type": "group_same_flavour",
+          "hard": false,
+          "enabled": true
+        },
+        {
+          "rule_id": "S1_TETRA_CORNERS",
+          "type": "tetra_pack_corner_only",
+          "hard": true,
+          "allowed_positions": [
+            "first",
+            "last"
+          ]
+        }
+      ],
+      "preferred_products": [
+        {
+          "product_id": "MAAZA_MANGO_150",
+          "preferred_rank": 1,
+          "preferred_facings": 1,
+          "rule_list_name": "Maaza, 135ml Tetra Pak",
+          "notes": "Catalog lists 150ml; merchandising source says 135ml. Treat as same intended rule item only after product-master confirmation."
+        },
+        {
+          "product_id": "RASKIK_MANGO_150",
+          "preferred_rank": 2,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "MINUTE_MAID_ORANGE_250",
+          "preferred_rank": 3,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "MAAZA_MANGO_270",
+          "preferred_rank": 4,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "FROOTI_300",
+          "preferred_rank": 5,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "SWING_POMEGRANATE_270",
+          "preferred_rank": 6,
+          "preferred_facings": 1,
+          "rule_list_name": "Paper Boat Swing+ Juicier Drink, Zesty Pomegranate, 250ml",
+          "notes": "Catalog lists 270ml; merchandising source says 250ml."
+        },
+        {
+          "product_id": "SWING_LYCHEE_270",
+          "preferred_rank": 7,
+          "preferred_facings": 1,
+          "rule_list_name": "Paper Boat Swing+ Juicer Drink, Lush Lychee, 250ml",
+          "notes": "Catalog lists 270ml; merchandising source says 250ml."
+        },
+        {
+          "product_id": "PAPER_BOAT_COCONUT_200",
+          "preferred_rank": 8,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "SWING_GUAVA_270",
+          "preferred_rank": 9,
+          "preferred_facings": 1,
+          "rule_list_name": "Paper Boat Swing Yummy Guava Juice, 125ml Spout Pouch",
+          "notes": "Catalog ID says 270 but catalog pack_size_ml is 125 and package_type is tetra; product master needs cleanup."
+        }
+      ],
+      "analysis_notes": [
+        "Preferred list is not mandatory slot order.",
+        "Tetra products should be evaluated against corner positions before exact order.",
+        "A missing SKU must not automatically produce ADD when the shelf is full."
+      ],
+      "package_placement_rule": {
+        "corner_only": false,
+        "package_types": [],
+        "positions": []
+      },
+      "preferred_order_is_soft_preference": true,
+      "exact_slot_is_not_mandatory": true
+    },
+    "2": {
+      "shelf_name": "Energy Drinks",
+      "allowed_commodities": [
+        "energy_drink"
+      ],
+      "capacity_units": 9,
+      "price_rule": {
+        "type": "preferred_group",
+        "hard": false,
+        "allow_approved_price_exceptions": true,
+        "violation_action": "review_only"
+      },
+      "colour_sequence": {
+        "enabled": true,
+        "order": [
+          "black",
+          "red",
+          "silver",
+          "blue",
+          "red"
+        ],
+        "hard": false
+      },
+      "facing_rule": {
+        "standard_facings": 1,
+        "max_facings": 1,
+        "extra_facing_allowed": false,
+        "fast_moving_status_source": "unavailable",
+        "unknown_fast_moving_policy": "Do not remove an extra facing solely because fast-moving status is unknown. Flag for review when a second facing requires fast-moving justification."
+      },
+      "special_rules": [
+        {
+          "rule_id": "S2_BRAND_FLAVOUR_GROUP",
+          "type": "group_same_brand_or_flavour",
+          "hard": false,
+          "enabled": true
+        }
+      ],
+      "preferred_products": [
+        {
+          "product_id": "CAMPA_ENERGY_gold_185",
+          "preferred_rank": 1,
+          "preferred_facings": 1,
+          "rule_list_name": "Campa Energy Drink, Gold Boost, 185ml Tin"
+        },
+        {
+          "product_id": "THUMSUP_XFORCE_300",
+          "preferred_rank": 2,
+          "preferred_facings": 1,
+          "rule_list_name": "Thums Up, 300ml Can"
+        },
+        {
+          "product_id": "MONSTER_CAN_350",
+          "preferred_rank": 3,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "MONSTER_ULTRA_350",
+          "preferred_rank": 4,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "DIET_COKE_300",
+          "preferred_rank": 5,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "REDBULL_SUGARFREE_250",
+          "preferred_rank": 6,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "REDBULL_250",
+          "preferred_rank": 7,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "POWERHORSE_250",
+          "preferred_rank": 8,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "STING_250",
+          "preferred_rank": 9,
+          "preferred_facings": 1
+        }
+      ],
+      "analysis_notes": [
+        "Preferred order may move when needed to improve colour or brand grouping."
+      ],
+      "package_placement_rule": {
+        "corner_only": false,
+        "package_types": [],
+        "positions": []
+      },
+      "preferred_order_is_soft_preference": true,
+      "exact_slot_is_not_mandatory": true
+    },
+    "3": {
+      "shelf_name": "Soft Drinks",
+      "allowed_commodities": [
+        "soft_drink"
+      ],
+      "capacity_units": 9,
+      "price_rule": {
+        "type": "preferred_group",
+        "value": 20,
+        "label": "₹20 pack",
+        "hard": false,
+        "allow_approved_price_exceptions": true,
+        "violation_action": "review_only"
+      },
+      "colour_sequence": {
+        "enabled": true,
+        "order": [
+          "black",
+          "orange",
+          "green",
+          "white"
+        ],
+        "hard": false
+      },
+      "facing_rule": {
+        "standard_facings": 1,
+        "max_facings_non_fast_moving": 1,
+        "extra_facing_allowed_for_fast_moving": true,
+        "max_facings_fast_moving": 2,
+        "fast_moving_status_source": "unavailable",
+        "unknown_fast_moving_policy": "Do not remove an extra facing solely because fast-moving status is unknown. Flag for review when a second facing requires fast-moving justification."
+      },
+      "special_rules": [
+        {
+          "rule_id": "S3_FLAVOUR_GROUP",
+          "type": "group_same_flavour",
+          "hard": false,
+          "enabled": true
+        },
+        {
+          "rule_id": "S3_FAST_MOVING_SECOND_FACING",
+          "type": "extra_facing_for_fast_selling",
+          "hard": false,
+          "enabled": true
+        }
+      ],
+      "preferred_products": [
+        {
+          "product_id": "BINDU_FIZZ_250",
+          "preferred_rank": 1,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "THUMSUP_250",
+          "preferred_rank": 2,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "COCACOLA_250",
+          "preferred_rank": 3,
+          "preferred_facings": 2
+        },
+        {
+          "product_id": "COCACOLA_250",
+          "preferred_rank": 4,
+          "preferred_facings": 2,
+          "notes": "Second facing of same SKU"
+        },
+        {
+          "product_id": "APPY_FIZZ_250",
+          "preferred_rank": 5,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "FANTA_250",
+          "preferred_rank": 6,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "SPRITE_250",
+          "preferred_rank": 7,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "LIMCA_250",
+          "preferred_rank": 8,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": null,
+          "preferred_rank": 9,
+          "preferred_facings": 1,
+          "rule_list_name": "Ninth preferred position not explicitly specified in supplied list",
+          "notes": "Do not invent a SKU; resolve from approved planogram/product list."
+        }
+      ],
+      "analysis_notes": [
+        "The supplied merchandising list contains 8 named positions plus an implied ninth capacity.",
+        "Current expected_map_BTM_CH01 has COCACOLA_ZERO_300 at slot 8 and does not match this supplied preferred list; this rules file follows the supplied merchandising rule, not the old expected map.",
+        "Fast-moving products may take a second facing, but the extra facing must be evaluated against shelf capacity and missing-product opportunities."
+      ],
+      "package_placement_rule": {
+        "corner_only": false,
+        "package_types": [],
+        "positions": []
+      },
+      "preferred_order_is_soft_preference": true,
+      "exact_slot_is_not_mandatory": true
+    },
+    "4": {
+      "shelf_name": "Milk Beverages",
+      "allowed_commodities": [
+        "milk_beverage"
+      ],
+      "capacity_units": 9,
+      "price_rule": {
+        "type": "preferred_group",
+        "value": 20,
+        "label": "₹20 pack",
+        "hard": false,
+        "allow_approved_price_exceptions": true,
+        "violation_action": "review_only"
+      },
+      "colour_sequence": {
+        "enabled": true,
+        "order": [
+          "brown",
+          "pink",
+          "yellow",
+          "green",
+          "light_blue"
+        ],
+        "hard": false
+      },
+      "facing_rule": {
+        "standard_facings": 1,
+        "max_facings": 2,
+        "extra_facing_allowed": false,
+        "fast_moving_status_source": "unavailable",
+        "unknown_fast_moving_policy": "Do not remove an extra facing solely because fast-moving status is unknown. Flag for review when a second facing requires fast-moving justification."
+      },
+      "special_rules": [
+        {
+          "rule_id": "S4_FLAVOUR_GROUP",
+          "type": "group_same_flavour",
+          "hard": false,
+          "enabled": true
+        }
+      ],
+      "preferred_products": [
+        {
+          "product_id": "AMUL_KOOL_CAFE_180",
+          "preferred_rank": 1,
+          "preferred_facings": 2,
+          "rule_list_name": "Amul Kool Cafe Milk 'n' Coffee Drink, 200ml",
+          "notes": "Catalog lists 180ml; merchandising source says 200ml."
+        },
+        {
+          "product_id": "AMUL_KOOL_CAFE_180",
+          "preferred_rank": 2,
+          "preferred_facings": 2,
+          "rule_list_name": "Amul Kool Cafe Milk 'n' Coffee Drink, 200ml",
+          "notes": "Second facing of same SKU."
+        },
+        {
+          "product_id": "MAX_PROTEIN_CHOCO_BURST_250",
+          "preferred_rank": 3,
+          "preferred_facings": 1,
+          "rule_list_name": "RiteBite Max Protein Choco Burst, 250ml"
+        },
+        {
+          "product_id": "MAX_PROTEIN_BERRY_BLUSH_250",
+          "preferred_rank": 4,
+          "preferred_facings": 1,
+          "rule_list_name": "RiteBite Max Protein Berry Blush, 250ml"
+        },
+        {
+          "product_id": "NANDINI_CHOCOLATE_MILKSHAKE_180",
+          "preferred_rank": 5,
+          "preferred_facings": 1,
+          "rule_list_name": "Nandini Good Life Chocolate Milkshake, 180ml"
+        },
+        {
+          "product_id": "NANDINI_MANGO_LASSI_180",
+          "preferred_rank": 6,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+          "preferred_rank": 7,
+          "preferred_facings": 1,
+          "rule_list_name": "Nandini Good Life Flavoured Milk, Strawberry, 180ml",
+          "notes": "Catalog lists 200ml; merchandising source says 180ml."
+        },
+        {
+          "product_id": "NANDINI_PISTA_FLAVOURED_MILK_180",
+          "preferred_rank": 8,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "AMUL_PREMIUM_BUTTERMILK_200",
+          "preferred_rank": 9,
+          "preferred_facings": 1
+        }
+      ],
+      "analysis_notes": [
+        "Preferred list is soft order; flavour grouping can override it."
+      ],
+      "package_placement_rule": {
+        "corner_only": false,
+        "package_types": [],
+        "positions": []
+      },
+      "preferred_order_is_soft_preference": true,
+      "exact_slot_is_not_mandatory": true
+    },
+    "5": {
+      "shelf_name": "Soft Drinks (small bottles)",
+      "allowed_commodities": [
+        "soft_drink",
+        "fruit_beverage"
+      ],
+      "capacity_units": 10,
+      "price_rule": {
+        "type": "preferred_group",
+        "value": 10,
+        "label": "₹10 pack",
+        "hard": false,
+        "allow_approved_price_exceptions": true,
+        "violation_action": "review_only"
+      },
+      "colour_sequence": {
+        "enabled": true,
+        "order": [
+          "black",
+          "orange",
+          "yellow",
+          "white",
+          "green"
+        ],
+        "hard": false
+      },
+      "facing_rule": {
+        "standard_facings": 1,
+        "max_facings": 1,
+        "extra_facing_allowed": false,
+        "fast_moving_status_source": "unavailable",
+        "unknown_fast_moving_policy": "Do not remove an extra facing solely because fast-moving status is unknown. Flag for review when a second facing requires fast-moving justification."
+      },
+      "special_rules": [
+        {
+          "rule_id": "S5_FLAVOUR_GROUP",
+          "type": "group_same_flavour",
+          "hard": false,
+          "enabled": true
+        },
+        {
+          "rule_id": "S5_TETRA_CORNERS",
+          "type": "tetra_pack_corner_only",
+          "hard": true,
+          "allowed_positions": [
+            "first",
+            "last"
+          ]
+        }
+      ],
+      "preferred_products": [
+        {
+          "product_id": "CAMPA_COLA_250",
+          "preferred_rank": 1,
+          "preferred_facings": 1,
+          "rule_list_name": "Campa Soft Drink, Cola, 500ml Bottle",
+          "notes": "Catalog ID is 250ml; merchandising source says 500ml. Product master needs confirmation."
+        },
+        {
+          "product_id": "CAMPA_ENERGY_BERRY_250",
+          "preferred_rank": 2,
+          "preferred_facings": 1,
+          "rule_list_name": "Campa Energy Drink, Berry Kick, 150ml Bottle",
+          "notes": "Catalog lists 250ml; merchandising source says 150ml."
+        },
+        {
+          "product_id": "POP_ORANGE_250",
+          "preferred_rank": 3,
+          "preferred_facings": 1,
+          "rule_list_name": "Bisleri Pop Soft Drink, Orange, 160ml Bottle, MRP 10",
+          "notes": "Catalog lists 250ml; merchandising source says 160ml."
+        },
+        {
+          "product_id": "DAILEE_MANGO_180",
+          "preferred_rank": 4,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "FROOTI_200",
+          "preferred_rank": 5,
+          "preferred_facings": 1,
+          "rule_list_name": "Frooti Mango Drink, Rs.10 Bottle"
+        },
+        {
+          "product_id": "RASKIK_MANGO_150",
+          "preferred_rank": 6,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "RASKIK_NIMBU_PANI_160",
+          "preferred_rank": 7,
+          "preferred_facings": 1,
+          "rule_list_name": "Raskik Nimbu Paani, 150ml Bottle",
+          "notes": "Catalog lists 160ml; merchandising source says 150ml."
+        },
+        {
+          "product_id": "LIMONATA_160",
+          "preferred_rank": 8,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "SWING_MIXED_FRUIT_200",
+          "preferred_rank": 9,
+          "preferred_facings": 1,
+          "rule_list_name": "Paper Boat Mixed Fruit Juice, with Vitamin D, 150ml Spout Pouch",
+          "notes": "Catalog lists 200ml pouch; merchandising source says 150ml."
+        },
+        {
+          "product_id": null,
+          "preferred_rank": 10,
+          "preferred_facings": 1,
+          "rule_list_name": "Tenth preferred position not explicitly specified in supplied list",
+          "notes": "Do not invent a SKU; resolve from approved planogram/product list."
+        }
+      ],
+      "analysis_notes": [
+        "Shelf 5 is named Soft Drinks (small bottles), but the supplied product list contains fruit_beverage SKUs; both are therefore allowed commodities for this shelf.",
+        "Tetra/pouch corner rule must be checked before exact preferred order.",
+        "A full shelf with a missing SKU requires root-cause analysis before ADD."
+      ],
+      "package_placement_rule": {
+        "corner_only": false,
+        "package_types": [],
+        "positions": []
+      },
+      "preferred_order_is_soft_preference": true,
+      "exact_slot_is_not_mandatory": true
+    },
+    "6": {
+      "shelf_name": "Large Bottles (750 ml+ / 1 L)",
+      "allowed_commodities": [
+        "soft_drink",
+        "water",
+        "fruit_beverage"
+      ],
+      "capacity_units": 6,
+      "price_rule": {
+        "type": "preferred_group",
+        "minimum_pack_size_ml": 750,
+        "hard": false,
+        "allow_approved_price_exceptions": true,
+        "violation_action": "review_only"
+      },
+      "colour_sequence": {
+        "enabled": true,
+        "order": [
+          "black",
+          "green",
+          "white"
+        ],
+        "hard": false
+      },
+      "facing_rule": {
+        "standard_facings": 1,
+        "max_facings": 1,
+        "extra_facing_allowed": false,
+        "fast_moving_status_source": "unavailable",
+        "unknown_fast_moving_policy": "Do not remove an extra facing solely because fast-moving status is unknown. Flag for review when a second facing requires fast-moving justification."
+      },
+      "special_rules": [
+        {
+          "rule_id": "S6_BRAND_FLAVOUR_GROUP",
+          "type": "group_same_brand_or_flavour",
+          "hard": false,
+          "enabled": true
+        }
+      ],
+      "preferred_products": [
+        {
+          "product_id": "PEPSI_1250",
+          "preferred_rank": 1,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "THUMSUP_1250",
+          "preferred_rank": 2,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "COCACOLA_1250",
+          "preferred_rank": 3,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "SEVENUP_1250",
+          "preferred_rank": 4,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "MOUNTAINDEW_1250",
+          "preferred_rank": 5,
+          "preferred_facings": 1
+        },
+        {
+          "product_id": "BISLERI_WATER_1000",
+          "preferred_rank": 6,
+          "preferred_facings": 1
+        }
+      ],
+      "analysis_notes": [
+        "The supplied product list also contains Slice 1.2L, but the supplied preferred list names six products and does not include Slice.",
+        "Use the preferred list as the normal arrangement, not as an absolute SKU requirement."
+      ],
+      "package_placement_rule": {
+        "corner_only": false,
+        "package_types": [],
+        "positions": []
+      },
+      "preferred_order_is_soft_preference": true,
+      "exact_slot_is_not_mandatory": true
+    }
+  },
+  "version": "2.0",
+  "constraint_model": {
+    "hard_constraints": [
+      "category",
+      "shelf_capacity",
+      "approved_product_for_shelf",
+      "hard_pack_size_requirement",
+      "corner_only_package_rule"
+    ],
+    "soft_preferences": [
+      "preferred_price_group",
+      "colour_sequence",
+      "same_flavour_grouping",
+      "same_brand_grouping",
+      "facing_optimization",
+      "preferred_product_order",
+      "exact_position"
+    ],
+    "rule_priority": [
+      "category",
+      "shelf_capacity",
+      "approved_product_for_shelf",
+      "hard_pack_size_requirement",
+      "corner_only_package_rule",
+      "preferred_price_group",
+      "colour_sequence",
+      "same_flavour_grouping",
+      "same_brand_grouping",
+      "facing_optimization",
+      "preferred_product_order",
+      "exact_position"
+    ]
+  },
+  "recommendation_engine": {
+    "analyze_before_action": true,
+    "candidate_actions": [
+      "NO_ACTION",
+      "VERIFY",
+      "MOVE",
+      "SWAP",
+      "SHIFT_SEQUENCE",
+      "REDUCE_FACING",
+      "INCREASE_FACING",
+      "ADD",
+      "REMOVE",
+      "SUBSTITUTE",
+      "MARK_OOS"
+    ],
+    "action_selection": {
+      "primary_objective": "maximize_overall_merchandising_compliance",
+      "secondary_objective": "minimize_physical_movements",
+      "tertiary_objective": "preserve_preferred_order"
+    },
+    "missing_product_policy": [
+      "Do not automatically recommend ADD.",
+      "Check whether shelf capacity is available.",
+      "Check whether the expected position is occupied.",
+      "Check whether another product has excess facings.",
+      "Check whether the product may be detected elsewhere.",
+      "Check OOS status when available.",
+      "Only recommend ADD when the physical shelf can accommodate it without violating higher-priority rules."
+    ],
+    "extra_facing_policy": [
+      "A second facing can be legitimate for a fast-moving product.",
+      "Fast-moving status is currently unknown.",
+      "Unknown fast-moving status must not automatically trigger removal.",
+      "Use VERIFY/review when a facing decision depends on unavailable sales data."
+    ]
+  },
+  "data_quality": {
+    "required_product_attributes": [
+      "product_id",
+      "product_name",
+      "commodity",
+      "price_point",
+      "pack_size_ml",
+      "colour_tone",
+      "package_type"
+    ],
+    "optional_product_attributes": [
+      "is_fast_moving"
+    ],
+    "missing_fast_moving_means": "unknown",
+    "do_not_infer_fast_moving": true,
+    "do_not_infer_missing_product_from_ai_absence_alone": true,
+    "master_data_conflicts": "flag_for_review"
+  },
+  "business_decisions_confirmed": {
+    "price_group": "Preferred price group. A shelf marked ₹20 or ₹10 is intended primarily for that price group, but approved products with other price points may remain.",
+    "fast_moving": "No reliable fast-moving data is currently available. Treat status as unknown.",
+    "corner_only_packaging": "Both tetra and pouch products are corner-only on shelves where the original rule says tetra packs go in the corners.",
+    "preferred_product_order": "Product lists represent preferred normal arrangement, not mandatory exact slots."
+  }
+}

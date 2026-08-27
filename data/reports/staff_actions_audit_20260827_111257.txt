@@ -1,0 +1,37 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 CHILLER PLANOGRAM ACTIONS
+Rack: BTM-CH01
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔧 ACTIONS TO DO
+
+1. Swap PAPER_BOAT_COCONUT_200 at Shelf 2 • Slot 6 with REDBULL_250 at Shelf 1 • Slot 8.
+   1) Remove PAPER_BOAT_COCONUT_200 from Shelf 2 • Slot 6.
+   2) Remove REDBULL_250 from Shelf 1 • Slot 8.
+   3) Place PAPER_BOAT_COCONUT_200 at Shelf 1 • Slot 8.
+   4) Place REDBULL_250 at Shelf 2 • Slot 6.
+
+2. Swap SWING_GUAVA_270 at Shelf 5 • Slot 9 with SWING_MIXED_FRUIT_200 at Shelf 1 • Slot 9.
+   1) Remove SWING_GUAVA_270 from Shelf 5 • Slot 9.
+   2) Remove SWING_MIXED_FRUIT_200 from Shelf 1 • Slot 9.
+   3) Place SWING_GUAVA_270 at Shelf 1 • Slot 9.
+   4) Place SWING_MIXED_FRUIT_200 at Shelf 5 • Slot 9.
+
+⚠️ MANUAL REVIEW
+
+1. AMUL_KOOL_CAFE_180
+   Occurrence role is resolved, but no safe dependency or direct swap was proven.
+
+2. CAMPA_ENERGY_gold_185
+   Occurrence role is resolved, but no safe dependency or direct swap was proven.
+
+3. NANDINI_STRAWBERRY_FLAVOURED_MILK_200
+   Occurrence role is resolved, but no safe dependency or direct swap was proven.
+
+4. RASKIK_MANGO_150
+   Multiple expected-map occurrences exist for this product; the correct expected location cannot be uniquely resolved.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📸 After completing the actions,
+take a new photo and run the audit again.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━

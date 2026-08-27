@@ -2,53 +2,41 @@
 DETAILED CHILLER AUDIT REPORT
 ======================================================================
 Rack ID:      BTM-CH01
-Date:         14 August 2026, 18:59
+Date:         22 August 2026, 14:29
 Source:       data\actual_maps\actual_map_shelfmessing.json
 
-OVERALL SCORE: 9.8/10 — 🌟 EXCELLENT
+OVERALL SCORE: 9.6/10 — 🌟 EXCELLENT
 Status:       Rack meets high standards
 
-Total issues: 13
-  🔴 High:    1
+Total issues: 9
+  🔴 High:    2
   🟡 Medium:  1
-  🟢 Low:     10
-  ℹ️  Info:    1
+  🟢 Low:     6
+  ℹ️  Info:    0
 
 ----------------------------------------------------------------------
-📦 Missing Products  (1 issues, -10 points each)
+📦 Missing Products  (2 issues, -10 points each)
 ----------------------------------------------------------------------
-  • Maaza 150ml mango not detected — expected on Shelf 1
-    → Verify Maaza 150ml mango on Shelf 1 (left zone). If missing, add it. If out of stock, mark as OOS.
+  • Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle not detected — expected on Shelf 5
+    → Verify Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle on Shelf 5 (left zone). If missing, add it. If out of stock, mark as OOS.
+  • Thums Up 250ml not detected — expected on Shelf 3
+    → Verify Thums Up 250ml on Shelf 3 (left zone). If missing, add it. If out of stock, mark as OOS.
 
 ----------------------------------------------------------------------
-expected_but_out_of_stock  (1 issues, -0 points each)
+position_minor_shift  (6 issues, -0 points each)
 ----------------------------------------------------------------------
-  • Thums Up 250ml is out of stock (marked by staff)
-    → ⚠️ Thums Up 250ml is OOS — consider substitution on Shelf 3
-
-----------------------------------------------------------------------
-position_minor_shift  (10 issues, -0 points each)
-----------------------------------------------------------------------
-  • Maaza 270ml mango slightly off position on Shelf 1
-    → Verify Maaza 270ml mango on Shelf 1 (at slot 2, expected slot 3)
-  • Frooti Mango 300ml slightly off position on Shelf 1
-    → Verify Frooti Mango 300ml on Shelf 1 (at slot 4, expected slot 5)
-  • Swing lychee 270ml slightly off position on Shelf 1
-    → Verify Swing lychee 270ml on Shelf 1 (at slot 6, expected slot 7)
-  • Paper boat coconut 200ml slightly off position on Shelf 1
-    → Verify Paper boat coconut 200ml on Shelf 1 (at slot 7, expected slot 8)
   • Nandini GoodLife Pista Flavoured Milk 180ml slightly off position on Shelf 4
     → Verify Nandini GoodLife Pista Flavoured Milk 180ml on Shelf 4 (at slot 6, expected slot 7)
-  • Raskik 150ml mango slightly off position on Shelf 1
-    → Verify Raskik 150ml mango on Shelf 1 (at slot 1, expected slot 2)
-  • Swing guava 270ml slightly off position on Shelf 1
-    → Verify Swing guava 270ml on Shelf 1 (at slot 8, expected slot 9)
-  • Minute Maid Orange 250ml slightly off position on Shelf 1
-    → Verify Minute Maid Orange 250ml on Shelf 1 (at slot 3, expected slot 4)
-  • Swing pomegranate 270ml slightly off position on Shelf 1
-    → Verify Swing pomegranate 270ml on Shelf 1 (at slot 5, expected slot 6)
+  • Paper Boat Swing Mixed Fruit Medley 200ml slightly off position on Shelf 5
+    → Verify Paper Boat Swing Mixed Fruit Medley 200ml on Shelf 5 (at slot 8, expected slot 9)
+  • Bisleri Limonata 160ml slightly off position on Shelf 5
+    → Verify Bisleri Limonata 160ml on Shelf 5 (at slot 6, expected slot 7)
   • Amul Premium Spiced Buttermilk 200ml slightly off position on Shelf 4
     → Verify Amul Premium Spiced Buttermilk 200ml on Shelf 4 (at slot 9, expected slot 8)
+  • Raskik Nimbu Pani 160ml slightly off position on Shelf 5
+    → Verify Raskik Nimbu Pani 160ml on Shelf 5 (at slot 5, expected slot 6)
+  • Raskik 150ml mango slightly off position on Shelf 5
+    → Verify Raskik 150ml mango on Shelf 5 (at slot 4, expected slot 5)
 
 ----------------------------------------------------------------------
 wrong_position  (1 issues, -0 points each)

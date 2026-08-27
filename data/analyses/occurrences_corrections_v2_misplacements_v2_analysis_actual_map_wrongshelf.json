@@ -1,0 +1,335 @@
+{
+  "engine": "occurrence_resolver",
+  "engine_version": "1.0",
+  "rack": "BTM-CH01",
+  "sources": {
+    "source": "C:\\smart-planogram-planner\\data\\analyses\\corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+    "actual": "C:\\smart-planogram-planner\\data\\actual_maps\\actual_map_wrongshelf.json",
+    "expected": "C:\\smart-planogram-planner\\data\\expected_map_BTM_CH01.json",
+    "rules": "C:\\smart-planogram-planner\\data\\merchandising_rules_v2.json"
+  },
+  "summary": {
+    "products_reconciled": 9,
+    "correct_occurrences": 1,
+    "extra_occurrence_cases": 1,
+    "misplaced_occurrences": 7,
+    "missing_expected_occurrences": 0,
+    "ambiguous_occurrences": 1,
+    "status_counts": {
+      "MISPLACED_OCCURRENCE": 7,
+      "CORRECT_OCCURRENCE": 1,
+      "AMBIGUOUS": 1
+    }
+  },
+  "resolutions": [
+    {
+      "product_id": "amul_kool_cafe_180",
+      "product_name": "AMUL_KOOL_CAFE_180",
+      "status": "MISPLACED_OCCURRENCE",
+      "reason": "Exactly one actual occurrence exists, but it is not at the expected shelf and slot.",
+      "expected_occurrence": {
+        "shelf": 4,
+        "slot_start": 1,
+        "slot_end": 2,
+        "slots": [
+          1,
+          2
+        ],
+        "facings": 2
+      },
+      "misplaced_occurrence": {
+        "shelf": 2,
+        "slot_start": 1,
+        "slot_end": 1,
+        "slots": [
+          1
+        ],
+        "facings": 1
+      }
+    },
+    {
+      "product_id": "bindu_fizz_250",
+      "product_name": "BINDU_FIZZ_250",
+      "status": "CORRECT_OCCURRENCE",
+      "reason": "Exactly one actual occurrence matches the expected shelf and slot.",
+      "expected_occurrence": {
+        "shelf": 3,
+        "slot_start": 1,
+        "slot_end": 1,
+        "slots": [
+          1
+        ],
+        "facings": 1
+      },
+      "correct_occurrence": {
+        "shelf": 3,
+        "slot_start": 1,
+        "slot_end": 1,
+        "slots": [
+          1
+        ],
+        "facings": 1
+      },
+      "extra_occurrences": [
+        {
+          "shelf": 1,
+          "slot_start": 2,
+          "slot_end": 2,
+          "slots": [
+            2
+          ],
+          "facings": 1
+        },
+        {
+          "shelf": 4,
+          "slot_start": 6,
+          "slot_end": 6,
+          "slots": [
+            6
+          ],
+          "facings": 1
+        }
+      ],
+      "secondary_status": "EXTRA_OCCURRENCE_PRESENT"
+    },
+    {
+      "product_id": "campa_energy_gold_185",
+      "product_name": "CAMPA_ENERGY_gold_185",
+      "status": "MISPLACED_OCCURRENCE",
+      "reason": "Exactly one actual occurrence exists, but it is not at the expected shelf and slot.",
+      "expected_occurrence": {
+        "shelf": 2,
+        "slot_start": 1,
+        "slot_end": 1,
+        "slots": [
+          1
+        ],
+        "facings": 1
+      },
+      "misplaced_occurrence": {
+        "shelf": 4,
+        "slot_start": 2,
+        "slot_end": 2,
+        "slots": [
+          2
+        ],
+        "facings": 1
+      }
+    },
+    {
+      "product_id": "nandini_strawberry_flavoured_milk_200",
+      "product_name": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+      "status": "MISPLACED_OCCURRENCE",
+      "reason": "Exactly one actual occurrence exists, but it is not at the expected shelf and slot.",
+      "expected_occurrence": {
+        "shelf": 4,
+        "slot_start": 6,
+        "slot_end": 6,
+        "slots": [
+          6
+        ],
+        "facings": 1
+      },
+      "misplaced_occurrence": {
+        "shelf": 3,
+        "slot_start": 5,
+        "slot_end": 5,
+        "slots": [
+          5
+        ],
+        "facings": 1
+      }
+    },
+    {
+      "product_id": "paper_boat_coconut_200",
+      "product_name": "PAPER_BOAT_COCONUT_200",
+      "status": "MISPLACED_OCCURRENCE",
+      "reason": "Exactly one actual occurrence exists, but it is not at the expected shelf and slot.",
+      "expected_occurrence": {
+        "shelf": 1,
+        "slot_start": 8,
+        "slot_end": 8,
+        "slots": [
+          8
+        ],
+        "facings": 1
+      },
+      "misplaced_occurrence": {
+        "shelf": 2,
+        "slot_start": 6,
+        "slot_end": 6,
+        "slots": [
+          6
+        ],
+        "facings": 1
+      }
+    },
+    {
+      "product_id": "raskik_mango_150",
+      "product_name": "RASKIK_MANGO_150",
+      "status": "AMBIGUOUS",
+      "reason": "Multiple expected-map occurrences exist for this product; the correct expected location cannot be uniquely resolved.",
+      "expected_occurrences": [
+        {
+          "shelf": 1,
+          "slot_start": 2,
+          "slot_end": 2,
+          "slots": [
+            2
+          ],
+          "facings": 1
+        },
+        {
+          "shelf": 5,
+          "slot_start": 5,
+          "slot_end": 5,
+          "slots": [
+            5
+          ],
+          "facings": 1
+        }
+      ],
+      "actual_occurrences": [
+        {
+          "shelf": 3,
+          "slot_start": 2,
+          "slot_end": 2,
+          "slots": [
+            2
+          ],
+          "facings": 1
+        },
+        {
+          "shelf": 5,
+          "slot_start": 4,
+          "slot_end": 5,
+          "slots": [
+            4,
+            5
+          ],
+          "facings": 2
+        }
+      ]
+    },
+    {
+      "product_id": "redbull_250",
+      "product_name": "REDBULL_250",
+      "status": "MISPLACED_OCCURRENCE",
+      "reason": "Exactly one actual occurrence exists, but it is not at the expected shelf and slot.",
+      "expected_occurrence": {
+        "shelf": 2,
+        "slot_start": 6,
+        "slot_end": 6,
+        "slots": [
+          6
+        ],
+        "facings": 1
+      },
+      "misplaced_occurrence": {
+        "shelf": 1,
+        "slot_start": 8,
+        "slot_end": 8,
+        "slots": [
+          8
+        ],
+        "facings": 1
+      }
+    },
+    {
+      "product_id": "swing_guava_270",
+      "product_name": "SWING_GUAVA_270",
+      "status": "MISPLACED_OCCURRENCE",
+      "reason": "Exactly one actual occurrence exists, but it is not at the expected shelf and slot.",
+      "expected_occurrence": {
+        "shelf": 1,
+        "slot_start": 9,
+        "slot_end": 9,
+        "slots": [
+          9
+        ],
+        "facings": 1
+      },
+      "misplaced_occurrence": {
+        "shelf": 5,
+        "slot_start": 9,
+        "slot_end": 9,
+        "slots": [
+          9
+        ],
+        "facings": 1
+      }
+    },
+    {
+      "product_id": "swing_mixed_fruit_200",
+      "product_name": "SWING_MIXED_FRUIT_200",
+      "status": "MISPLACED_OCCURRENCE",
+      "reason": "Exactly one actual occurrence exists, but it is not at the expected shelf and slot.",
+      "expected_occurrence": {
+        "shelf": 5,
+        "slot_start": 9,
+        "slot_end": 9,
+        "slots": [
+          9
+        ],
+        "facings": 1
+      },
+      "misplaced_occurrence": {
+        "shelf": 1,
+        "slot_start": 9,
+        "slot_end": 9,
+        "slots": [
+          9
+        ],
+        "facings": 1
+      }
+    }
+  ],
+  "extra_occurrence_cases": [
+    {
+      "product_id": "bindu_fizz_250",
+      "product_name": "BINDU_FIZZ_250",
+      "status": "CORRECT_OCCURRENCE",
+      "reason": "Exactly one actual occurrence matches the expected shelf and slot.",
+      "expected_occurrence": {
+        "shelf": 3,
+        "slot_start": 1,
+        "slot_end": 1,
+        "slots": [
+          1
+        ],
+        "facings": 1
+      },
+      "correct_occurrence": {
+        "shelf": 3,
+        "slot_start": 1,
+        "slot_end": 1,
+        "slots": [
+          1
+        ],
+        "facings": 1
+      },
+      "extra_occurrences": [
+        {
+          "shelf": 1,
+          "slot_start": 2,
+          "slot_end": 2,
+          "slots": [
+            2
+          ],
+          "facings": 1
+        },
+        {
+          "shelf": 4,
+          "slot_start": 6,
+          "slot_end": 6,
+          "slots": [
+            6
+          ],
+          "facings": 1
+        }
+      ],
+      "secondary_status": "EXTRA_OCCURRENCE_PRESENT"
+    }
+  ],
+  "safety_boundary": "This resolver only reconciles evidence. It does not authorize moves, removals, swaps, or cycle rotations. Ambiguous occurrences remain explicitly unresolved."
+}

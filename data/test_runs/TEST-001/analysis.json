@@ -1,0 +1,1978 @@
+{
+  "rack_id": "BTM-CH01",
+  "analyzer_version": "1.3",
+  "analysis_type": "whole_shelf_merchandising",
+  "principles": {
+    "analysis_mode": "whole_shelf",
+    "product_order_mode": "preferred",
+    "objective": "maximize_overall_merchandising_compliance",
+    "correction_principle": "Recommend the minimum physically executable set of actions that improves overall shelf compliance without creating a higher-priority violation.",
+    "never_add_product_without_valid_space": true,
+    "never_recommend_action_that_creates_a_higher_priority_violation": true,
+    "prefer_minimum_physical_movements": true,
+    "analyze_whole_shelf_before_recommending": true,
+    "do_not_treat_preferred_order_as_exact_slot_order": true,
+    "unknown_data_policy": "When required catalog or sales data is unavailable, mark the condition as unknown/review rather than inventing a value or forcing a correction."
+  },
+  "summary": {
+    "shelves_analyzed": 6,
+    "compliant": 0,
+    "soft_deviation": 5,
+    "review": 1,
+    "needs_action": 0
+  },
+  "shelves": [
+    {
+      "shelf_number": 1,
+      "shelf_name": "Fruit Beverages",
+      "status": "soft_deviation",
+      "diagnostic_score": 0.9,
+      "hard_failures": [],
+      "soft_deviations": [
+        "preferred_price_group",
+        "preferred_order"
+      ],
+      "reviews_required": [],
+      "category": {
+        "status": "pass",
+        "allowed_commodities": [
+          "fruit_beverage"
+        ],
+        "details": [
+          {
+            "product_id": "MAAZA_MANGO_150",
+            "product_name": "Maaza 150ml mango",
+            "catalog_commodity": "fruit_beverage",
+            "allowed_commodities": [
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "RASKIK_MANGO_150",
+            "product_name": "Raskik 150ml mango",
+            "catalog_commodity": "fruit_beverage",
+            "allowed_commodities": [
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "MAAZA_MANGO_270",
+            "product_name": "Maaza 270ml mango",
+            "catalog_commodity": "fruit_beverage",
+            "allowed_commodities": [
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "MINUTE_MAID_ORANGE_250",
+            "product_name": "Minute Maid Orange 250ml",
+            "catalog_commodity": "fruit_beverage",
+            "allowed_commodities": [
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "FROOTI_300",
+            "product_name": "Frooti Mango 300ml",
+            "catalog_commodity": "fruit_beverage",
+            "allowed_commodities": [
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "SWING_POMEGRANATE_270",
+            "product_name": "Swing pomegranate 270ml",
+            "catalog_commodity": "fruit_beverage",
+            "allowed_commodities": [
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "SWING_LYCHEE_270",
+            "product_name": "Swing lychee 270ml",
+            "catalog_commodity": "fruit_beverage",
+            "allowed_commodities": [
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "PAPER_BOAT_COCONUT_200",
+            "product_name": "Paper boat coconut 200ml",
+            "catalog_commodity": "fruit_beverage",
+            "allowed_commodities": [
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "SWING_GUAVA_270",
+            "product_name": "Swing guava 270ml",
+            "catalog_commodity": "fruit_beverage",
+            "allowed_commodities": [
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          }
+        ],
+        "failure_count": 0,
+        "unknown_count": 0
+      },
+      "capacity": {
+        "status": "unknown",
+        "capacity": null,
+        "occupied_slots": 9,
+        "remaining_slots": null
+      },
+      "price_group": {
+        "status": "pass_with_preferred_exceptions",
+        "hard": false,
+        "rule": {
+          "type": "preferred_group",
+          "value": 20,
+          "label": "₹20 pack",
+          "hard": false,
+          "exception": "Do not force a ₹20-only correction when the catalog/reference explicitly contains another price point; flag data/rule conflict for review.",
+          "allow_approved_price_exceptions": true,
+          "violation_action": "review_only"
+        },
+        "details": [
+          {
+            "product_id": "MAAZA_MANGO_150",
+            "product_name": "Maaza 150ml mango",
+            "catalog_price": 10.0,
+            "status": "exception"
+          },
+          {
+            "product_id": "RASKIK_MANGO_150",
+            "product_name": "Raskik 150ml mango",
+            "catalog_price": 10.0,
+            "status": "exception"
+          },
+          {
+            "product_id": "MAAZA_MANGO_270",
+            "product_name": "Maaza 270ml mango",
+            "catalog_price": 20.0,
+            "status": "preferred"
+          },
+          {
+            "product_id": "MINUTE_MAID_ORANGE_250",
+            "product_name": "Minute Maid Orange 250ml",
+            "catalog_price": 25.0,
+            "status": "exception"
+          },
+          {
+            "product_id": "FROOTI_300",
+            "product_name": "Frooti Mango 300ml",
+            "catalog_price": 20.0,
+            "status": "preferred"
+          },
+          {
+            "product_id": "SWING_POMEGRANATE_270",
+            "product_name": "Swing pomegranate 270ml",
+            "catalog_price": 20.0,
+            "status": "preferred"
+          },
+          {
+            "product_id": "SWING_LYCHEE_270",
+            "product_name": "Swing lychee 270ml",
+            "catalog_price": 20.0,
+            "status": "preferred"
+          },
+          {
+            "product_id": "PAPER_BOAT_COCONUT_200",
+            "product_name": "Paper boat coconut 200ml",
+            "catalog_price": 50.0,
+            "status": "exception"
+          },
+          {
+            "product_id": "SWING_GUAVA_270",
+            "product_name": "Swing guava 270ml",
+            "catalog_price": 10.0,
+            "status": "exception"
+          }
+        ],
+        "preferred_count": 4,
+        "exception_count": 5
+      },
+      "colour_sequence": {
+        "status": "data_limitation",
+        "reason": "catalog_colour_granularity_insufficient",
+        "configured_sequence": [
+          "orange",
+          "red",
+          "white"
+        ],
+        "hard": false,
+        "available_catalog_colours": [
+          "dark",
+          "light"
+        ],
+        "details": [
+          {
+            "product_id": "MAAZA_MANGO_150",
+            "product_name": "Maaza 150ml mango",
+            "slot_start": 1,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "RASKIK_MANGO_150",
+            "product_name": "Raskik 150ml mango",
+            "slot_start": 2,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "MAAZA_MANGO_270",
+            "product_name": "Maaza 270ml mango",
+            "slot_start": 3,
+            "colour": "dark",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "MINUTE_MAID_ORANGE_250",
+            "product_name": "Minute Maid Orange 250ml",
+            "slot_start": 4,
+            "colour": "dark",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "FROOTI_300",
+            "product_name": "Frooti Mango 300ml",
+            "slot_start": 5,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "SWING_POMEGRANATE_270",
+            "product_name": "Swing pomegranate 270ml",
+            "slot_start": 6,
+            "colour": "dark",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "SWING_LYCHEE_270",
+            "product_name": "Swing lychee 270ml",
+            "slot_start": 7,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "PAPER_BOAT_COCONUT_200",
+            "product_name": "Paper boat coconut 200ml",
+            "slot_start": 8,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "SWING_GUAVA_270",
+            "product_name": "Swing guava 270ml",
+            "slot_start": 9,
+            "colour": "light",
+            "sequence_rank": null
+          }
+        ]
+      },
+      "package_placement": {
+        "status": "not_applicable",
+        "details": []
+      },
+      "grouping": {
+        "status": "not_applicable",
+        "details": []
+      },
+      "facings": {
+        "status": "pass",
+        "details": [
+          {
+            "product_id": "MAAZA_MANGO_150",
+            "product_name": "Maaza 150ml mango",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "RASKIK_MANGO_150",
+            "product_name": "Raskik 150ml mango",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "MAAZA_MANGO_270",
+            "product_name": "Maaza 270ml mango",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "MINUTE_MAID_ORANGE_250",
+            "product_name": "Minute Maid Orange 250ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "FROOTI_300",
+            "product_name": "Frooti Mango 300ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "SWING_POMEGRANATE_270",
+            "product_name": "Swing pomegranate 270ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "SWING_LYCHEE_270",
+            "product_name": "Swing lychee 270ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "PAPER_BOAT_COCONUT_200",
+            "product_name": "Paper boat coconut 200ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "SWING_GUAVA_270",
+            "product_name": "Swing guava 270ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          }
+        ],
+        "excess_facing_count": 0,
+        "insufficient_facing_count": 0,
+        "unknown_fast_moving_count": 9
+      },
+      "preferred_order": {
+        "status": "soft_deviation",
+        "score": 0.972,
+        "inversion_count": 1,
+        "comparisons": 36
+      },
+      "missing_products": {
+        "missing_count": 0,
+        "potential_excess_facing_conflicts": 0,
+        "details": []
+      },
+      "root_cause_candidates": [],
+      "actual_product_count": 9,
+      "actual_physical_facings": 9,
+      "preferred_product_count": 9,
+      "out_of_stock_products": [],
+      "oos_product_count": 0
+    },
+    {
+      "shelf_number": 2,
+      "shelf_name": "Energy Drinks",
+      "status": "soft_deviation",
+      "diagnostic_score": 0.95,
+      "hard_failures": [],
+      "soft_deviations": [
+        "preferred_price_group"
+      ],
+      "reviews_required": [],
+      "category": {
+        "status": "pass",
+        "allowed_commodities": [
+          "energy_drink"
+        ],
+        "details": [
+          {
+            "product_id": "CAMPA_ENERGY_gold_185",
+            "product_name": "Campa Energy Gold 185ml",
+            "catalog_commodity": "energy_drink",
+            "allowed_commodities": [
+              "energy_drink"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "THUMSUP_XFORCE_300",
+            "product_name": "Thums up xforce 300ml",
+            "catalog_commodity": "energy_drink",
+            "allowed_commodities": [
+              "energy_drink"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "MONSTER_CAN_350",
+            "product_name": "Monster Energy Can 350ml",
+            "catalog_commodity": "energy_drink",
+            "allowed_commodities": [
+              "energy_drink"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "MONSTER_ULTRA_350",
+            "product_name": "Monster Ultra Can 350ml",
+            "catalog_commodity": "energy_drink",
+            "allowed_commodities": [
+              "energy_drink"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "REDBULL_SUGARFREE_250",
+            "product_name": "Red Bull Sugarfree 250ml",
+            "catalog_commodity": "energy_drink",
+            "allowed_commodities": [
+              "energy_drink"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "REDBULL_250",
+            "product_name": "Red Bull Energy Drink 250ml",
+            "catalog_commodity": "energy_drink",
+            "allowed_commodities": [
+              "energy_drink"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "POWERHORSE_250",
+            "product_name": "Power Horse 250ml",
+            "catalog_commodity": "energy_drink",
+            "allowed_commodities": [
+              "energy_drink"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "STING_250",
+            "product_name": "Sting Energy 250ml",
+            "catalog_commodity": "energy_drink",
+            "allowed_commodities": [
+              "energy_drink"
+            ],
+            "status": "pass"
+          }
+        ],
+        "failure_count": 0,
+        "unknown_count": 0
+      },
+      "capacity": {
+        "status": "unknown",
+        "capacity": null,
+        "occupied_slots": 8,
+        "remaining_slots": null
+      },
+      "price_group": {
+        "status": "review",
+        "hard": false,
+        "rule": {
+          "type": "preferred_group",
+          "hard": false,
+          "allow_approved_price_exceptions": true,
+          "violation_action": "review_only"
+        },
+        "details": [
+          {
+            "product_id": "CAMPA_ENERGY_gold_185",
+            "product_name": "Campa Energy Gold 185ml",
+            "catalog_price": 30.0,
+            "status": "unknown"
+          },
+          {
+            "product_id": "THUMSUP_XFORCE_300",
+            "product_name": "Thums up xforce 300ml",
+            "catalog_price": 40.0,
+            "status": "unknown"
+          },
+          {
+            "product_id": "MONSTER_CAN_350",
+            "product_name": "Monster Energy Can 350ml",
+            "catalog_price": 125.0,
+            "status": "unknown"
+          },
+          {
+            "product_id": "MONSTER_ULTRA_350",
+            "product_name": "Monster Ultra Can 350ml",
+            "catalog_price": 125.0,
+            "status": "unknown"
+          },
+          {
+            "product_id": "REDBULL_SUGARFREE_250",
+            "product_name": "Red Bull Sugarfree 250ml",
+            "catalog_price": 125.0,
+            "status": "unknown"
+          },
+          {
+            "product_id": "REDBULL_250",
+            "product_name": "Red Bull Energy Drink 250ml",
+            "catalog_price": 125.0,
+            "status": "unknown"
+          },
+          {
+            "product_id": "POWERHORSE_250",
+            "product_name": "Power Horse 250ml",
+            "catalog_price": 110.0,
+            "status": "unknown"
+          },
+          {
+            "product_id": "STING_250",
+            "product_name": "Sting Energy 250ml",
+            "catalog_price": 20.0,
+            "status": "unknown"
+          }
+        ],
+        "preferred_count": 0,
+        "exception_count": 0
+      },
+      "colour_sequence": {
+        "status": "data_limitation",
+        "reason": "catalog_colour_granularity_insufficient",
+        "configured_sequence": [
+          "black",
+          "red",
+          "silver",
+          "blue",
+          "red"
+        ],
+        "hard": false,
+        "available_catalog_colours": [
+          "dark",
+          "light"
+        ],
+        "details": [
+          {
+            "product_id": "CAMPA_ENERGY_gold_185",
+            "product_name": "Campa Energy Gold 185ml",
+            "slot_start": 1,
+            "colour": "dark",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "THUMSUP_XFORCE_300",
+            "product_name": "Thums up xforce 300ml",
+            "slot_start": 2,
+            "colour": "dark",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "MONSTER_CAN_350",
+            "product_name": "Monster Energy Can 350ml",
+            "slot_start": 3,
+            "colour": "dark",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "MONSTER_ULTRA_350",
+            "product_name": "Monster Ultra Can 350ml",
+            "slot_start": 4,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "REDBULL_SUGARFREE_250",
+            "product_name": "Red Bull Sugarfree 250ml",
+            "slot_start": 5,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "REDBULL_250",
+            "product_name": "Red Bull Energy Drink 250ml",
+            "slot_start": 6,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "POWERHORSE_250",
+            "product_name": "Power Horse 250ml",
+            "slot_start": 7,
+            "colour": "dark",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "STING_250",
+            "product_name": "Sting Energy 250ml",
+            "slot_start": 8,
+            "colour": "dark",
+            "sequence_rank": null
+          }
+        ]
+      },
+      "package_placement": {
+        "status": "not_applicable",
+        "details": []
+      },
+      "grouping": {
+        "status": "not_applicable",
+        "details": []
+      },
+      "facings": {
+        "status": "pass",
+        "details": [
+          {
+            "product_id": "CAMPA_ENERGY_gold_185",
+            "product_name": "Campa Energy Gold 185ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "THUMSUP_XFORCE_300",
+            "product_name": "Thums up xforce 300ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "MONSTER_CAN_350",
+            "product_name": "Monster Energy Can 350ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "MONSTER_ULTRA_350",
+            "product_name": "Monster Ultra Can 350ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "REDBULL_SUGARFREE_250",
+            "product_name": "Red Bull Sugarfree 250ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "REDBULL_250",
+            "product_name": "Red Bull Energy Drink 250ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "POWERHORSE_250",
+            "product_name": "Power Horse 250ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "STING_250",
+            "product_name": "Sting Energy 250ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          }
+        ],
+        "excess_facing_count": 0,
+        "insufficient_facing_count": 0,
+        "unknown_fast_moving_count": 8
+      },
+      "preferred_order": {
+        "status": "pass",
+        "score": 1.0,
+        "inversion_count": 0,
+        "comparisons": 28
+      },
+      "missing_products": {
+        "missing_count": 0,
+        "potential_excess_facing_conflicts": 0,
+        "details": []
+      },
+      "root_cause_candidates": [],
+      "actual_product_count": 8,
+      "actual_physical_facings": 8,
+      "preferred_product_count": 9,
+      "out_of_stock_products": [],
+      "oos_product_count": 0
+    },
+    {
+      "shelf_number": 3,
+      "shelf_name": "Soft Drinks",
+      "status": "review",
+      "diagnostic_score": 0.87,
+      "hard_failures": [],
+      "soft_deviations": [
+        "preferred_price_group",
+        "missing_expected_products"
+      ],
+      "reviews_required": [
+        "missing_destination_root_cause_review"
+      ],
+      "category": {
+        "status": "pass",
+        "allowed_commodities": [
+          "soft_drink"
+        ],
+        "details": [
+          {
+            "product_id": "BINDU_FIZZ_250",
+            "product_name": "Bindu Fizz Jeera Masala 250ml",
+            "catalog_commodity": "soft_drink",
+            "allowed_commodities": [
+              "soft_drink"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "COCACOLA_250",
+            "product_name": "Coca-Cola 250ml",
+            "catalog_commodity": "soft_drink",
+            "allowed_commodities": [
+              "soft_drink"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "APPY_FIZZ_250",
+            "product_name": "Appy Fizz 250ml",
+            "catalog_commodity": "soft_drink",
+            "allowed_commodities": [
+              "soft_drink"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "FANTA_250",
+            "product_name": "Fanta Orange 250ml",
+            "catalog_commodity": "soft_drink",
+            "allowed_commodities": [
+              "soft_drink"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "SPRITE_250",
+            "product_name": "Sprite 250ml",
+            "catalog_commodity": "soft_drink",
+            "allowed_commodities": [
+              "soft_drink"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "COCACOLA_ZERO_300",
+            "product_name": "Coca-Cola Coke, 330ml Can",
+            "catalog_commodity": "soft_drink",
+            "allowed_commodities": [
+              "soft_drink"
+            ],
+            "status": "pass"
+          }
+        ],
+        "failure_count": 0,
+        "unknown_count": 0
+      },
+      "capacity": {
+        "status": "unknown",
+        "capacity": null,
+        "occupied_slots": 8,
+        "remaining_slots": null
+      },
+      "price_group": {
+        "status": "pass_with_preferred_exceptions",
+        "hard": false,
+        "rule": {
+          "type": "preferred_group",
+          "value": 20,
+          "label": "₹20 pack",
+          "hard": false,
+          "allow_approved_price_exceptions": true,
+          "violation_action": "review_only"
+        },
+        "details": [
+          {
+            "product_id": "BINDU_FIZZ_250",
+            "product_name": "Bindu Fizz Jeera Masala 250ml",
+            "catalog_price": 20.0,
+            "status": "preferred"
+          },
+          {
+            "product_id": "COCACOLA_250",
+            "product_name": "Coca-Cola 250ml",
+            "catalog_price": 20.0,
+            "status": "preferred"
+          },
+          {
+            "product_id": "APPY_FIZZ_250",
+            "product_name": "Appy Fizz 250ml",
+            "catalog_price": 20.0,
+            "status": "preferred"
+          },
+          {
+            "product_id": "FANTA_250",
+            "product_name": "Fanta Orange 250ml",
+            "catalog_price": 20.0,
+            "status": "preferred"
+          },
+          {
+            "product_id": "SPRITE_250",
+            "product_name": "Sprite 250ml",
+            "catalog_price": 20.0,
+            "status": "preferred"
+          },
+          {
+            "product_id": "COCACOLA_ZERO_300",
+            "product_name": "Coca-Cola Coke, 330ml Can",
+            "catalog_price": 40.0,
+            "status": "exception"
+          }
+        ],
+        "preferred_count": 5,
+        "exception_count": 1
+      },
+      "colour_sequence": {
+        "status": "data_limitation",
+        "reason": "catalog_colour_granularity_insufficient",
+        "configured_sequence": [
+          "black",
+          "orange",
+          "green",
+          "white"
+        ],
+        "hard": false,
+        "available_catalog_colours": [
+          "dark",
+          "light"
+        ],
+        "details": [
+          {
+            "product_id": "BINDU_FIZZ_250",
+            "product_name": "Bindu Fizz Jeera Masala 250ml",
+            "slot_start": 1,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "COCACOLA_250",
+            "product_name": "Coca-Cola 250ml",
+            "slot_start": 3,
+            "colour": "dark",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "APPY_FIZZ_250",
+            "product_name": "Appy Fizz 250ml",
+            "slot_start": 5,
+            "colour": "dark",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "FANTA_250",
+            "product_name": "Fanta Orange 250ml",
+            "slot_start": 6,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "SPRITE_250",
+            "product_name": "Sprite 250ml",
+            "slot_start": 7,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "COCACOLA_ZERO_300",
+            "product_name": "Coca-Cola Coke, 330ml Can",
+            "slot_start": 8,
+            "colour": "dark",
+            "sequence_rank": null
+          }
+        ]
+      },
+      "package_placement": {
+        "status": "not_applicable",
+        "details": []
+      },
+      "grouping": {
+        "status": "not_applicable",
+        "details": []
+      },
+      "facings": {
+        "status": "review",
+        "details": [
+          {
+            "product_id": "BINDU_FIZZ_250",
+            "product_name": "Bindu Fizz Jeera Masala 250ml",
+            "expected_facings": 1,
+            "actual_facings": 2,
+            "fast_moving_status": "unknown",
+            "status": "review"
+          },
+          {
+            "product_id": "COCACOLA_250",
+            "product_name": "Coca-Cola 250ml",
+            "expected_facings": 2,
+            "actual_facings": 2,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "APPY_FIZZ_250",
+            "product_name": "Appy Fizz 250ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "FANTA_250",
+            "product_name": "Fanta Orange 250ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "SPRITE_250",
+            "product_name": "Sprite 250ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "COCACOLA_ZERO_300",
+            "product_name": "Coca-Cola Coke, 330ml Can",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          }
+        ],
+        "excess_facing_count": 0,
+        "insufficient_facing_count": 0,
+        "unknown_fast_moving_count": 6
+      },
+      "preferred_order": {
+        "status": "pass",
+        "score": 1.0,
+        "inversion_count": 0,
+        "comparisons": 10
+      },
+      "missing_products": {
+        "missing_count": 1,
+        "potential_excess_facing_conflicts": 1,
+        "details": [
+          {
+            "product_id": "THUMSUP_250",
+            "product_name": "Thums Up 250ml",
+            "expected_slot": 2,
+            "expected_facings": 1,
+            "destination_occupant": "BINDU_FIZZ_250",
+            "destination_occupant_name": "Bindu Fizz Jeera Masala 250ml",
+            "occupant_actual_facings": 2,
+            "occupant_expected_facings": 1,
+            "potential_excess_facing": true,
+            "occupant_fast_moving_status": "unknown",
+            "diagnosis": "potential_excess_facing_blocks_preferred_position"
+          }
+        ]
+      },
+      "root_cause_candidates": [
+        {
+          "type": "potential_excess_facing_conflict",
+          "product_id": "BINDU_FIZZ_250",
+          "product_name": "Bindu Fizz Jeera Masala 250ml",
+          "actual_facings": 2,
+          "expected_facings": 1,
+          "fast_moving_status": "unknown",
+          "confidence": "medium",
+          "reason": "potential_excess_facing_blocks_preferred_position"
+        }
+      ],
+      "actual_product_count": 6,
+      "actual_physical_facings": 8,
+      "preferred_product_count": 8,
+      "out_of_stock_products": [],
+      "oos_product_count": 0
+    },
+    {
+      "shelf_number": 4,
+      "shelf_name": "Milk Beverages",
+      "status": "soft_deviation",
+      "diagnostic_score": 0.9,
+      "hard_failures": [],
+      "soft_deviations": [
+        "preferred_price_group",
+        "preferred_order"
+      ],
+      "reviews_required": [],
+      "category": {
+        "status": "pass",
+        "allowed_commodities": [
+          "milk_beverage"
+        ],
+        "details": [
+          {
+            "product_id": "AMUL_KOOL_CAFE_180",
+            "product_name": "Amul Kool Cafe 180ml",
+            "catalog_commodity": "milk_beverage",
+            "allowed_commodities": [
+              "milk_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "NANDINI_MANGO_LASSI_180",
+            "product_name": "Nandini GoodLife Mango Lassi 180ml",
+            "catalog_commodity": "milk_beverage",
+            "allowed_commodities": [
+              "milk_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "MAX_PROTEIN_CHOCO_BURST_250",
+            "product_name": "RiteBite Max Protein Choco Burst 250ml",
+            "catalog_commodity": "milk_beverage",
+            "allowed_commodities": [
+              "milk_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "MAX_PROTEIN_BERRY_BLUSH_250",
+            "product_name": "RiteBite Max Protein Berry Blush 250ml",
+            "catalog_commodity": "milk_beverage",
+            "allowed_commodities": [
+              "milk_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "NANDINI_PISTA_FLAVOURED_MILK_180",
+            "product_name": "Nandini GoodLife Pista Flavoured Milk 180ml",
+            "catalog_commodity": "milk_beverage",
+            "allowed_commodities": [
+              "milk_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "NANDINI_MANGO_LASSI_180",
+            "product_name": "Nandini GoodLife Mango Lassi 180ml",
+            "catalog_commodity": "milk_beverage",
+            "allowed_commodities": [
+              "milk_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+            "product_name": "Nandini GoodLife Strawberry Flavoured Milk 200ml",
+            "catalog_commodity": "milk_beverage",
+            "allowed_commodities": [
+              "milk_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "AMUL_PREMIUM_BUTTERMILK_200",
+            "product_name": "Amul Premium Spiced Buttermilk 200ml",
+            "catalog_commodity": "milk_beverage",
+            "allowed_commodities": [
+              "milk_beverage"
+            ],
+            "status": "pass"
+          }
+        ],
+        "failure_count": 0,
+        "unknown_count": 0
+      },
+      "capacity": {
+        "status": "unknown",
+        "capacity": null,
+        "occupied_slots": 9,
+        "remaining_slots": null
+      },
+      "price_group": {
+        "status": "pass_with_preferred_exceptions",
+        "hard": false,
+        "rule": {
+          "type": "preferred_group",
+          "value": 20,
+          "label": "₹20 pack",
+          "hard": false,
+          "allow_approved_price_exceptions": true,
+          "violation_action": "review_only"
+        },
+        "details": [
+          {
+            "product_id": "AMUL_KOOL_CAFE_180",
+            "product_name": "Amul Kool Cafe 180ml",
+            "catalog_price": 20.0,
+            "status": "preferred"
+          },
+          {
+            "product_id": "NANDINI_MANGO_LASSI_180",
+            "product_name": "Nandini GoodLife Mango Lassi 180ml",
+            "catalog_price": 25.0,
+            "status": "exception"
+          },
+          {
+            "product_id": "MAX_PROTEIN_CHOCO_BURST_250",
+            "product_name": "RiteBite Max Protein Choco Burst 250ml",
+            "catalog_price": 120.0,
+            "status": "exception"
+          },
+          {
+            "product_id": "MAX_PROTEIN_BERRY_BLUSH_250",
+            "product_name": "RiteBite Max Protein Berry Blush 250ml",
+            "catalog_price": 120.0,
+            "status": "exception"
+          },
+          {
+            "product_id": "NANDINI_PISTA_FLAVOURED_MILK_180",
+            "product_name": "Nandini GoodLife Pista Flavoured Milk 180ml",
+            "catalog_price": 25.0,
+            "status": "exception"
+          },
+          {
+            "product_id": "NANDINI_MANGO_LASSI_180",
+            "product_name": "Nandini GoodLife Mango Lassi 180ml",
+            "catalog_price": 25.0,
+            "status": "exception"
+          },
+          {
+            "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+            "product_name": "Nandini GoodLife Strawberry Flavoured Milk 200ml",
+            "catalog_price": 25.0,
+            "status": "exception"
+          },
+          {
+            "product_id": "AMUL_PREMIUM_BUTTERMILK_200",
+            "product_name": "Amul Premium Spiced Buttermilk 200ml",
+            "catalog_price": 10.0,
+            "status": "exception"
+          }
+        ],
+        "preferred_count": 1,
+        "exception_count": 7
+      },
+      "colour_sequence": {
+        "status": "data_limitation",
+        "reason": "catalog_colour_granularity_insufficient",
+        "configured_sequence": [
+          "brown",
+          "pink",
+          "yellow",
+          "green",
+          "light_blue"
+        ],
+        "hard": false,
+        "available_catalog_colours": [
+          "dark",
+          "light"
+        ],
+        "details": [
+          {
+            "product_id": "AMUL_KOOL_CAFE_180",
+            "product_name": "Amul Kool Cafe 180ml",
+            "slot_start": 1,
+            "colour": "dark",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "NANDINI_MANGO_LASSI_180",
+            "product_name": "Nandini GoodLife Mango Lassi 180ml",
+            "slot_start": 3,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "MAX_PROTEIN_CHOCO_BURST_250",
+            "product_name": "RiteBite Max Protein Choco Burst 250ml",
+            "slot_start": 4,
+            "colour": "dark",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "MAX_PROTEIN_BERRY_BLUSH_250",
+            "product_name": "RiteBite Max Protein Berry Blush 250ml",
+            "slot_start": 5,
+            "colour": "dark",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "NANDINI_PISTA_FLAVOURED_MILK_180",
+            "product_name": "Nandini GoodLife Pista Flavoured Milk 180ml",
+            "slot_start": 6,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "NANDINI_MANGO_LASSI_180",
+            "product_name": "Nandini GoodLife Mango Lassi 180ml",
+            "slot_start": 7,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+            "product_name": "Nandini GoodLife Strawberry Flavoured Milk 200ml",
+            "slot_start": 8,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "AMUL_PREMIUM_BUTTERMILK_200",
+            "product_name": "Amul Premium Spiced Buttermilk 200ml",
+            "slot_start": 9,
+            "colour": "light",
+            "sequence_rank": null
+          }
+        ]
+      },
+      "package_placement": {
+        "status": "not_applicable",
+        "details": []
+      },
+      "grouping": {
+        "status": "not_applicable",
+        "details": []
+      },
+      "facings": {
+        "status": "pass",
+        "details": [
+          {
+            "product_id": "AMUL_KOOL_CAFE_180",
+            "product_name": "Amul Kool Cafe 180ml",
+            "expected_facings": 2,
+            "actual_facings": 2,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "NANDINI_MANGO_LASSI_180",
+            "product_name": "Nandini GoodLife Mango Lassi 180ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "MAX_PROTEIN_CHOCO_BURST_250",
+            "product_name": "RiteBite Max Protein Choco Burst 250ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "MAX_PROTEIN_BERRY_BLUSH_250",
+            "product_name": "RiteBite Max Protein Berry Blush 250ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "NANDINI_PISTA_FLAVOURED_MILK_180",
+            "product_name": "Nandini GoodLife Pista Flavoured Milk 180ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "NANDINI_MANGO_LASSI_180",
+            "product_name": "Nandini GoodLife Mango Lassi 180ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+            "product_name": "Nandini GoodLife Strawberry Flavoured Milk 200ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "AMUL_PREMIUM_BUTTERMILK_200",
+            "product_name": "Amul Premium Spiced Buttermilk 200ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          }
+        ],
+        "excess_facing_count": 0,
+        "insufficient_facing_count": 0,
+        "unknown_fast_moving_count": 8
+      },
+      "preferred_order": {
+        "status": "soft_deviation",
+        "score": 0.857,
+        "inversion_count": 4,
+        "comparisons": 28
+      },
+      "missing_products": {
+        "missing_count": 0,
+        "potential_excess_facing_conflicts": 0,
+        "details": []
+      },
+      "root_cause_candidates": [],
+      "actual_product_count": 8,
+      "actual_physical_facings": 9,
+      "preferred_product_count": 9,
+      "out_of_stock_products": [],
+      "oos_product_count": 0
+    },
+    {
+      "shelf_number": 5,
+      "shelf_name": "Soft Drinks (small bottles)",
+      "status": "soft_deviation",
+      "diagnostic_score": 0.9,
+      "hard_failures": [],
+      "soft_deviations": [
+        "preferred_price_group",
+        "missing_expected_products"
+      ],
+      "reviews_required": [],
+      "category": {
+        "status": "pass",
+        "allowed_commodities": [
+          "soft_drink",
+          "fruit_beverage"
+        ],
+        "details": [
+          {
+            "product_id": "CAMPA_COLA_250",
+            "product_name": "Campa Cola 250ml",
+            "catalog_commodity": "soft_drink",
+            "allowed_commodities": [
+              "soft_drink",
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "CAMPA_ENERGY_BERRY_250",
+            "product_name": "Campa Energy Berry Kick 250ml",
+            "catalog_commodity": "soft_drink",
+            "allowed_commodities": [
+              "soft_drink",
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "POP_ORANGE_250",
+            "product_name": "Bisleri Pop Orange 250ml",
+            "catalog_commodity": "fruit_beverage",
+            "allowed_commodities": [
+              "soft_drink",
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "RASKIK_MANGO_150",
+            "product_name": "Raskik 150ml mango",
+            "catalog_commodity": "fruit_beverage",
+            "allowed_commodities": [
+              "soft_drink",
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "RASKIK_NIMBU_PANI_160",
+            "product_name": "Raskik Nimbu Pani 160ml",
+            "catalog_commodity": "fruit_beverage",
+            "allowed_commodities": [
+              "soft_drink",
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "LIMONATA_160",
+            "product_name": "Bisleri Limonata 160ml",
+            "catalog_commodity": "fruit_beverage",
+            "allowed_commodities": [
+              "soft_drink",
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "SWING_MIXED_FRUIT_200",
+            "product_name": "Paper Boat Swing Mixed Fruit Medley 200ml",
+            "catalog_commodity": "fruit_beverage",
+            "allowed_commodities": [
+              "soft_drink",
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          }
+        ],
+        "failure_count": 0,
+        "unknown_count": 0
+      },
+      "capacity": {
+        "status": "unknown",
+        "capacity": null,
+        "occupied_slots": 8,
+        "remaining_slots": null
+      },
+      "price_group": {
+        "status": "pass_with_preferred_exceptions",
+        "hard": false,
+        "rule": {
+          "type": "preferred_group",
+          "value": 10,
+          "label": "₹10 pack",
+          "hard": false,
+          "allow_approved_price_exceptions": true,
+          "violation_action": "review_only"
+        },
+        "details": [
+          {
+            "product_id": "CAMPA_COLA_250",
+            "product_name": "Campa Cola 250ml",
+            "catalog_price": 20.0,
+            "status": "exception"
+          },
+          {
+            "product_id": "CAMPA_ENERGY_BERRY_250",
+            "product_name": "Campa Energy Berry Kick 250ml",
+            "catalog_price": 10.0,
+            "status": "preferred"
+          },
+          {
+            "product_id": "POP_ORANGE_250",
+            "product_name": "Bisleri Pop Orange 250ml",
+            "catalog_price": 10.0,
+            "status": "preferred"
+          },
+          {
+            "product_id": "RASKIK_MANGO_150",
+            "product_name": "Raskik 150ml mango",
+            "catalog_price": 10.0,
+            "status": "preferred"
+          },
+          {
+            "product_id": "RASKIK_NIMBU_PANI_160",
+            "product_name": "Raskik Nimbu Pani 160ml",
+            "catalog_price": 10.0,
+            "status": "preferred"
+          },
+          {
+            "product_id": "LIMONATA_160",
+            "product_name": "Bisleri Limonata 160ml",
+            "catalog_price": 10.0,
+            "status": "preferred"
+          },
+          {
+            "product_id": "SWING_MIXED_FRUIT_200",
+            "product_name": "Paper Boat Swing Mixed Fruit Medley 200ml",
+            "catalog_price": 10.0,
+            "status": "preferred"
+          }
+        ],
+        "preferred_count": 6,
+        "exception_count": 1
+      },
+      "colour_sequence": {
+        "status": "data_limitation",
+        "reason": "catalog_colour_granularity_insufficient",
+        "configured_sequence": [
+          "black",
+          "orange",
+          "yellow",
+          "white",
+          "green"
+        ],
+        "hard": false,
+        "available_catalog_colours": [
+          "dark",
+          "light"
+        ],
+        "details": [
+          {
+            "product_id": "CAMPA_COLA_250",
+            "product_name": "Campa Cola 250ml",
+            "slot_start": 1,
+            "colour": "dark",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "CAMPA_ENERGY_BERRY_250",
+            "product_name": "Campa Energy Berry Kick 250ml",
+            "slot_start": 2,
+            "colour": "dark",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "POP_ORANGE_250",
+            "product_name": "Bisleri Pop Orange 250ml",
+            "slot_start": 3,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "RASKIK_MANGO_150",
+            "product_name": "Raskik 150ml mango",
+            "slot_start": 4,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "RASKIK_NIMBU_PANI_160",
+            "product_name": "Raskik Nimbu Pani 160ml",
+            "slot_start": 5,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "LIMONATA_160",
+            "product_name": "Bisleri Limonata 160ml",
+            "slot_start": 6,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "SWING_MIXED_FRUIT_200",
+            "product_name": "Paper Boat Swing Mixed Fruit Medley 200ml",
+            "slot_start": 8,
+            "colour": "light",
+            "sequence_rank": null
+          }
+        ]
+      },
+      "package_placement": {
+        "status": "not_applicable",
+        "details": []
+      },
+      "grouping": {
+        "status": "not_applicable",
+        "details": []
+      },
+      "facings": {
+        "status": "pass",
+        "details": [
+          {
+            "product_id": "CAMPA_COLA_250",
+            "product_name": "Campa Cola 250ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "CAMPA_ENERGY_BERRY_250",
+            "product_name": "Campa Energy Berry Kick 250ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "POP_ORANGE_250",
+            "product_name": "Bisleri Pop Orange 250ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "RASKIK_MANGO_150",
+            "product_name": "Raskik 150ml mango",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "RASKIK_NIMBU_PANI_160",
+            "product_name": "Raskik Nimbu Pani 160ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "LIMONATA_160",
+            "product_name": "Bisleri Limonata 160ml",
+            "expected_facings": 2,
+            "actual_facings": 2,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "SWING_MIXED_FRUIT_200",
+            "product_name": "Paper Boat Swing Mixed Fruit Medley 200ml",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          }
+        ],
+        "excess_facing_count": 0,
+        "insufficient_facing_count": 0,
+        "unknown_fast_moving_count": 7
+      },
+      "preferred_order": {
+        "status": "pass",
+        "score": 1.0,
+        "inversion_count": 0,
+        "comparisons": 21
+      },
+      "missing_products": {
+        "missing_count": 1,
+        "potential_excess_facing_conflicts": 0,
+        "details": [
+          {
+            "product_id": "DAILEE_MANGO_180",
+            "product_name": "Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle",
+            "expected_slot": 4,
+            "expected_facings": 1,
+            "destination_occupant": "RASKIK_MANGO_150",
+            "destination_occupant_name": "Raskik 150ml mango",
+            "occupant_actual_facings": 1,
+            "occupant_expected_facings": 1,
+            "potential_excess_facing": false,
+            "occupant_fast_moving_status": "unknown",
+            "diagnosis": "expected_product_missing_destination_occupied"
+          }
+        ]
+      },
+      "root_cause_candidates": [],
+      "actual_product_count": 7,
+      "actual_physical_facings": 8,
+      "preferred_product_count": 9,
+      "out_of_stock_products": [],
+      "oos_product_count": 0
+    },
+    {
+      "shelf_number": 6,
+      "shelf_name": "Large Bottles (750 ml+ / 1 L)",
+      "status": "soft_deviation",
+      "diagnostic_score": 0.95,
+      "hard_failures": [],
+      "soft_deviations": [
+        "preferred_price_group"
+      ],
+      "reviews_required": [],
+      "category": {
+        "status": "pass",
+        "allowed_commodities": [
+          "soft_drink",
+          "water",
+          "fruit_beverage"
+        ],
+        "details": [
+          {
+            "product_id": "PEPSI_1250",
+            "product_name": "Pepsi 1.25L",
+            "catalog_commodity": "soft_drink",
+            "allowed_commodities": [
+              "soft_drink",
+              "water",
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "COCACOLA_1250",
+            "product_name": "Coca-Cola Soft Drink 1.25L",
+            "catalog_commodity": "soft_drink",
+            "allowed_commodities": [
+              "soft_drink",
+              "water",
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "SEVENUP_1250",
+            "product_name": "7Up Soft Drink 1.25L",
+            "catalog_commodity": "soft_drink",
+            "allowed_commodities": [
+              "soft_drink",
+              "water",
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "MOUNTAINDEW_1250",
+            "product_name": "Mountain Dew 1.25L",
+            "catalog_commodity": "soft_drink",
+            "allowed_commodities": [
+              "soft_drink",
+              "water",
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "SLICE_MANGO_1250",
+            "product_name": "Slice Mango Drink, 1.2L Bottle",
+            "catalog_commodity": "fruit_beverage",
+            "allowed_commodities": [
+              "soft_drink",
+              "water",
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          },
+          {
+            "product_id": "BISLERI_WATER_1000",
+            "product_name": "Bisleri Mineral Water, 1L Bottle",
+            "catalog_commodity": "water",
+            "allowed_commodities": [
+              "soft_drink",
+              "water",
+              "fruit_beverage"
+            ],
+            "status": "pass"
+          }
+        ],
+        "failure_count": 0,
+        "unknown_count": 0
+      },
+      "capacity": {
+        "status": "unknown",
+        "capacity": null,
+        "occupied_slots": 6,
+        "remaining_slots": null
+      },
+      "price_group": {
+        "status": "review",
+        "hard": false,
+        "rule": {
+          "type": "preferred_group",
+          "minimum_pack_size_ml": 750,
+          "hard": false,
+          "allow_approved_price_exceptions": true,
+          "violation_action": "review_only"
+        },
+        "details": [
+          {
+            "product_id": "PEPSI_1250",
+            "product_name": "Pepsi 1.25L",
+            "catalog_price": NaN,
+            "status": "unknown"
+          },
+          {
+            "product_id": "COCACOLA_1250",
+            "product_name": "Coca-Cola Soft Drink 1.25L",
+            "catalog_price": NaN,
+            "status": "unknown"
+          },
+          {
+            "product_id": "SEVENUP_1250",
+            "product_name": "7Up Soft Drink 1.25L",
+            "catalog_price": NaN,
+            "status": "unknown"
+          },
+          {
+            "product_id": "MOUNTAINDEW_1250",
+            "product_name": "Mountain Dew 1.25L",
+            "catalog_price": 60.0,
+            "status": "unknown"
+          },
+          {
+            "product_id": "SLICE_MANGO_1250",
+            "product_name": "Slice Mango Drink, 1.2L Bottle",
+            "catalog_price": 70.0,
+            "status": "unknown"
+          },
+          {
+            "product_id": "BISLERI_WATER_1000",
+            "product_name": "Bisleri Mineral Water, 1L Bottle",
+            "catalog_price": 20.0,
+            "status": "unknown"
+          }
+        ],
+        "preferred_count": 0,
+        "exception_count": 0
+      },
+      "colour_sequence": {
+        "status": "data_limitation",
+        "reason": "catalog_colour_granularity_insufficient",
+        "configured_sequence": [
+          "black",
+          "green",
+          "white"
+        ],
+        "hard": false,
+        "available_catalog_colours": [
+          "dark",
+          "light"
+        ],
+        "details": [
+          {
+            "product_id": "PEPSI_1250",
+            "product_name": "Pepsi 1.25L",
+            "slot_start": 1,
+            "colour": "dark",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "COCACOLA_1250",
+            "product_name": "Coca-Cola Soft Drink 1.25L",
+            "slot_start": 2,
+            "colour": "dark",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "SEVENUP_1250",
+            "product_name": "7Up Soft Drink 1.25L",
+            "slot_start": 3,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "MOUNTAINDEW_1250",
+            "product_name": "Mountain Dew 1.25L",
+            "slot_start": 4,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "SLICE_MANGO_1250",
+            "product_name": "Slice Mango Drink, 1.2L Bottle",
+            "slot_start": 5,
+            "colour": "light",
+            "sequence_rank": null
+          },
+          {
+            "product_id": "BISLERI_WATER_1000",
+            "product_name": "Bisleri Mineral Water, 1L Bottle",
+            "slot_start": 6,
+            "colour": "light",
+            "sequence_rank": null
+          }
+        ]
+      },
+      "package_placement": {
+        "status": "not_applicable",
+        "details": []
+      },
+      "grouping": {
+        "status": "not_applicable",
+        "details": []
+      },
+      "facings": {
+        "status": "pass",
+        "details": [
+          {
+            "product_id": "PEPSI_1250",
+            "product_name": "Pepsi 1.25L",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "COCACOLA_1250",
+            "product_name": "Coca-Cola Soft Drink 1.25L",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "SEVENUP_1250",
+            "product_name": "7Up Soft Drink 1.25L",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "MOUNTAINDEW_1250",
+            "product_name": "Mountain Dew 1.25L",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "SLICE_MANGO_1250",
+            "product_name": "Slice Mango Drink, 1.2L Bottle",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          },
+          {
+            "product_id": "BISLERI_WATER_1000",
+            "product_name": "Bisleri Mineral Water, 1L Bottle",
+            "expected_facings": 1,
+            "actual_facings": 1,
+            "fast_moving_status": "unknown",
+            "status": "pass"
+          }
+        ],
+        "excess_facing_count": 0,
+        "insufficient_facing_count": 0,
+        "unknown_fast_moving_count": 6
+      },
+      "preferred_order": {
+        "status": "pass",
+        "score": 1.0,
+        "inversion_count": 0,
+        "comparisons": 10
+      },
+      "missing_products": {
+        "missing_count": 0,
+        "potential_excess_facing_conflicts": 0,
+        "details": []
+      },
+      "root_cause_candidates": [],
+      "actual_product_count": 6,
+      "actual_physical_facings": 6,
+      "preferred_product_count": 6,
+      "out_of_stock_products": [],
+      "oos_product_count": 0
+    }
+  ],
+  "oos": {
+    "selected_product_ids": [],
+    "selected_count": 0,
+    "excluded_from_missing_check": true,
+    "excluded_from_correction": true,
+    "preferred_positions_preserved": true
+  },
+  "note": "This is a diagnostic layer. It intentionally does not emit final MOVE/ADD/REMOVE recommendations. The correction engine must compare candidate actions against all shelf constraints before recommending action."
+}

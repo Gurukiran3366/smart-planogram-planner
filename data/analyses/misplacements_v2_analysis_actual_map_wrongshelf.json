@@ -1,0 +1,214 @@
+{
+  "detector": "misplacement_detector_v2",
+  "detector_version": "2.0",
+  "rack": "BTM-CH01",
+  "sources": {
+    "analysis": "C:\\smart-planogram-planner\\data\\analyses\\analysis_actual_map_wrongshelf.json",
+    "actual": "C:\\smart-planogram-planner\\data\\actual_maps\\actual_map_wrongshelf.json",
+    "expected": "C:\\smart-planogram-planner\\data\\expected_map_BTM_CH01.json",
+    "rules": "C:\\smart-planogram-planner\\data\\merchandising_rules_v2.json"
+  },
+  "oos_products": [],
+  "summary": {
+    "shelves_analyzed": 6,
+    "misplaced_products": 9,
+    "oos_excluded": 0,
+    "classification_rule": "Only products whose actual shelf differs from their expected-map shelf are classified as MISPLACED."
+  },
+  "misplaced_products": [
+    {
+      "product_id": "BINDU_FIZZ_250",
+      "product_name": "BINDU_FIZZ_250",
+      "current_shelf": 1,
+      "current_slot": null,
+      "expected_shelf": 3,
+      "expected_slot": null,
+      "status": "MISPLACED",
+      "evidence": [
+        {
+          "type": "expected_map",
+          "reason": "Current shelf is 1; expected shelf is 3."
+        },
+        {
+          "type": "analyzer",
+          "reason": "Analyzer product-level category evidence."
+        },
+        {
+          "type": "expected_map",
+          "reason": "Current shelf is 4; expected shelf is 3."
+        }
+      ],
+      "correction_authorized": false,
+      "correction_note": "Detection only. A physical move must be validated by correction_engine_v2."
+    },
+    {
+      "product_id": "REDBULL_250",
+      "product_name": "REDBULL_250",
+      "current_shelf": 1,
+      "current_slot": null,
+      "expected_shelf": 2,
+      "expected_slot": null,
+      "status": "MISPLACED",
+      "evidence": [
+        {
+          "type": "expected_map",
+          "reason": "Current shelf is 1; expected shelf is 2."
+        },
+        {
+          "type": "analyzer",
+          "reason": "Analyzer product-level category evidence."
+        }
+      ],
+      "correction_authorized": false,
+      "correction_note": "Detection only. A physical move must be validated by correction_engine_v2."
+    },
+    {
+      "product_id": "SWING_MIXED_FRUIT_200",
+      "product_name": "SWING_MIXED_FRUIT_200",
+      "current_shelf": 1,
+      "current_slot": null,
+      "expected_shelf": 5,
+      "expected_slot": null,
+      "status": "MISPLACED",
+      "evidence": [
+        {
+          "type": "expected_map",
+          "reason": "Current shelf is 1; expected shelf is 5."
+        },
+        {
+          "type": "analyzer",
+          "reason": "Analyzer product-level category evidence."
+        }
+      ],
+      "correction_authorized": false,
+      "correction_note": "Detection only. A physical move must be validated by correction_engine_v2."
+    },
+    {
+      "product_id": "AMUL_KOOL_CAFE_180",
+      "product_name": "AMUL_KOOL_CAFE_180",
+      "current_shelf": 2,
+      "current_slot": null,
+      "expected_shelf": 4,
+      "expected_slot": null,
+      "status": "MISPLACED",
+      "evidence": [
+        {
+          "type": "expected_map",
+          "reason": "Current shelf is 2; expected shelf is 4."
+        },
+        {
+          "type": "analyzer",
+          "reason": "Analyzer product-level category evidence."
+        }
+      ],
+      "correction_authorized": false,
+      "correction_note": "Detection only. A physical move must be validated by correction_engine_v2."
+    },
+    {
+      "product_id": "PAPER_BOAT_COCONUT_200",
+      "product_name": "PAPER_BOAT_COCONUT_200",
+      "current_shelf": 2,
+      "current_slot": null,
+      "expected_shelf": 1,
+      "expected_slot": null,
+      "status": "MISPLACED",
+      "evidence": [
+        {
+          "type": "expected_map",
+          "reason": "Current shelf is 2; expected shelf is 1."
+        },
+        {
+          "type": "analyzer",
+          "reason": "Analyzer product-level category evidence."
+        }
+      ],
+      "correction_authorized": false,
+      "correction_note": "Detection only. A physical move must be validated by correction_engine_v2."
+    },
+    {
+      "product_id": "RASKIK_MANGO_150",
+      "product_name": "RASKIK_MANGO_150",
+      "current_shelf": 3,
+      "current_slot": null,
+      "expected_shelf": 5,
+      "expected_slot": null,
+      "status": "MISPLACED",
+      "evidence": [
+        {
+          "type": "expected_map",
+          "reason": "Current shelf is 3; expected shelf is 5."
+        },
+        {
+          "type": "analyzer",
+          "reason": "Analyzer product-level category evidence."
+        }
+      ],
+      "correction_authorized": false,
+      "correction_note": "Detection only. A physical move must be validated by correction_engine_v2."
+    },
+    {
+      "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+      "product_name": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+      "current_shelf": 3,
+      "current_slot": null,
+      "expected_shelf": 4,
+      "expected_slot": null,
+      "status": "MISPLACED",
+      "evidence": [
+        {
+          "type": "expected_map",
+          "reason": "Current shelf is 3; expected shelf is 4."
+        },
+        {
+          "type": "analyzer",
+          "reason": "Analyzer product-level category evidence."
+        }
+      ],
+      "correction_authorized": false,
+      "correction_note": "Detection only. A physical move must be validated by correction_engine_v2."
+    },
+    {
+      "product_id": "CAMPA_ENERGY_gold_185",
+      "product_name": "CAMPA_ENERGY_gold_185",
+      "current_shelf": 4,
+      "current_slot": null,
+      "expected_shelf": 2,
+      "expected_slot": null,
+      "status": "MISPLACED",
+      "evidence": [
+        {
+          "type": "expected_map",
+          "reason": "Current shelf is 4; expected shelf is 2."
+        },
+        {
+          "type": "analyzer",
+          "reason": "Analyzer product-level category evidence."
+        }
+      ],
+      "correction_authorized": false,
+      "correction_note": "Detection only. A physical move must be validated by correction_engine_v2."
+    },
+    {
+      "product_id": "SWING_GUAVA_270",
+      "product_name": "SWING_GUAVA_270",
+      "current_shelf": 5,
+      "current_slot": null,
+      "expected_shelf": 1,
+      "expected_slot": null,
+      "status": "MISPLACED",
+      "evidence": [
+        {
+          "type": "expected_map",
+          "reason": "Current shelf is 5; expected shelf is 1."
+        },
+        {
+          "type": "analyzer",
+          "reason": "Analyzer product-level category evidence."
+        }
+      ],
+      "correction_authorized": false,
+      "correction_note": "Detection only. A physical move must be validated by correction_engine_v2."
+    }
+  ],
+  "safety_boundary": "This detector identifies product-level misplacement. It does not recommend or authorize a physical movement."
+}

@@ -1,0 +1,163 @@
+{
+  "engine": "final_recommendation_engine",
+  "engine_version": "1.0",
+  "rack": "BTM-CH01",
+  "decision": "ACTION_RECOMMENDED",
+  "summary": {
+    "safe_actions": 2,
+    "review_items": 7,
+    "do_not_change": 2,
+    "ambiguous_products": 2
+  },
+  "staff_recommendation": {
+    "do_these_actions": [
+      {
+        "type": "REMOVE_EXTRA_OCCURRENCE",
+        "status": "SAFE",
+        "product_id": "bindu_fizz_250",
+        "product_name": "BINDU_FIZZ_250",
+        "remove_location": {
+          "shelf": 1,
+          "slot_start": 2,
+          "slot_end": 2,
+          "slots": [
+            2
+          ],
+          "facings": 1
+        },
+        "keep_location": {
+          "shelf": 3,
+          "slot_start": 1,
+          "slot_end": 1,
+          "slots": [
+            1
+          ],
+          "facings": 1
+        },
+        "action": "Remove extra BINDU_FIZZ_250 from Shelf 1 slots [2]. Keep the correct occurrence on Shelf 3 slots [1].",
+        "evidence": "Occurrence resolver found exactly one correct occurrence and explicitly identified the other occurrence as extra."
+      },
+      {
+        "type": "REMOVE_EXTRA_OCCURRENCE",
+        "status": "SAFE",
+        "product_id": "swing_mixed_fruit_200",
+        "product_name": "SWING_MIXED_FRUIT_200",
+        "remove_location": {
+          "shelf": 1,
+          "slot_start": 9,
+          "slot_end": 9,
+          "slots": [
+            9
+          ],
+          "facings": 1
+        },
+        "keep_location": {
+          "shelf": 5,
+          "slot_start": 9,
+          "slot_end": 9,
+          "slots": [
+            9
+          ],
+          "facings": 1
+        },
+        "action": "Remove extra SWING_MIXED_FRUIT_200 from Shelf 1 slots [9]. Keep the correct occurrence on Shelf 5 slots [9].",
+        "evidence": "Occurrence resolver found exactly one correct occurrence and explicitly identified the other occurrence as extra."
+      }
+    ],
+    "review_required": [
+      {
+        "type": "OCCURRENCE_AMBIGUITY",
+        "priority": "HIGH",
+        "product_id": "amul_kool_cafe_180",
+        "product_name": "AMUL_KOOL_CAFE_180",
+        "reason": "Multiple actual occurrences exist and none matches the expected shelf and slot.",
+        "instruction": "Manually verify AMUL_KOOL_CAFE_180 before moving anything."
+      },
+      {
+        "type": "OCCURRENCE_AMBIGUITY",
+        "priority": "HIGH",
+        "product_id": "raskik_mango_150",
+        "product_name": "RASKIK_MANGO_150",
+        "reason": "Multiple expected-map occurrences exist for this product; the correct expected location cannot be uniquely resolved.",
+        "instruction": "Manually verify RASKIK_MANGO_150 before moving anything."
+      },
+      {
+        "type": "CYCLE_REVIEW",
+        "priority": "MEDIUM",
+        "product_id": "appy_fizz_250",
+        "product_name": null,
+        "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized.",
+        "instruction": "Review appy_fizz_250 manually; no safe multi-product cycle was proven."
+      },
+      {
+        "type": "CYCLE_REVIEW",
+        "priority": "MEDIUM",
+        "product_id": "campa_energy_gold_185",
+        "product_name": null,
+        "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized.",
+        "instruction": "Review campa_energy_gold_185 manually; no safe multi-product cycle was proven."
+      },
+      {
+        "type": "CYCLE_REVIEW",
+        "priority": "MEDIUM",
+        "product_id": "nandini_strawberry_flavoured_milk_200",
+        "product_name": null,
+        "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized.",
+        "instruction": "Review nandini_strawberry_flavoured_milk_200 manually; no safe multi-product cycle was proven."
+      },
+      {
+        "type": "CYCLE_REVIEW",
+        "priority": "MEDIUM",
+        "product_id": "paper_boat_coconut_200",
+        "product_name": null,
+        "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized.",
+        "instruction": "Review paper_boat_coconut_200 manually; no safe multi-product cycle was proven."
+      },
+      {
+        "type": "CYCLE_REVIEW",
+        "priority": "MEDIUM",
+        "product_id": "redbull_250",
+        "product_name": null,
+        "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized.",
+        "instruction": "Review redbull_250 manually; no safe multi-product cycle was proven."
+      }
+    ],
+    "do_not_change": [
+      {
+        "product_id": "bindu_fizz_250",
+        "product_name": "BINDU_FIZZ_250",
+        "location": {
+          "shelf": 3,
+          "slot_start": 1,
+          "slot_end": 1,
+          "slots": [
+            1
+          ],
+          "facings": 1
+        },
+        "instruction": "Keep BINDU_FIZZ_250 at Shelf 3 slots [1]."
+      },
+      {
+        "product_id": "swing_mixed_fruit_200",
+        "product_name": "SWING_MIXED_FRUIT_200",
+        "location": {
+          "shelf": 5,
+          "slot_start": 9,
+          "slot_end": 9,
+          "slots": [
+            9
+          ],
+          "facings": 1
+        },
+        "instruction": "Keep SWING_MIXED_FRUIT_200 at Shelf 5 slots [9]."
+      }
+    ]
+  },
+  "source_reports": {
+    "corrections": "C:\\smart-planogram-planner\\data\\analyses\\corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+    "occurrences": "C:\\smart-planogram-planner\\data\\analyses\\occurrences_corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+    "rearrangements": "C:\\smart-planogram-planner\\data\\analyses\\rearrangements_corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+    "cycles": "C:\\smart-planogram-planner\\data\\analyses\\cycles_corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json"
+  },
+  "safety_boundary": "Only actions already proven by upstream structured evidence are presented as safe. Ambiguous products are routed to manual review. This layer never invents a shelf, slot, capacity assumption, or movement."
+}

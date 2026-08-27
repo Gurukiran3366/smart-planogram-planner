@@ -1,0 +1,169 @@
+{
+  "engine": "physical_action_planner",
+  "engine_version": "2.0",
+  "rack": "BTM-CH01",
+  "sources": {
+    "corrections": "data\\analyses\\corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+    "occurrences": "data\\analyses\\occurrences_corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+    "rearrangements": "data\\analyses\\rearrangements_corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+    "cycles": "data\\analyses\\cycles_corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json"
+  },
+  "summary": {
+    "safe_actions": 4,
+    "remove_extra": 2,
+    "moves": 0,
+    "swaps": 2,
+    "rearrangements": 0,
+    "review_required": 3
+  },
+  "decision": "ACTION_RECOMMENDED",
+  "safe_actions": [
+    {
+      "action_type": "REMOVE_EXTRA",
+      "status": "SAFE",
+      "priority": "HIGH",
+      "product_id": "bindu_fizz_250",
+      "product_name": "BINDU_FIZZ_250",
+      "from": {
+        "shelf": 1,
+        "slots": [
+          2
+        ]
+      },
+      "keep": {
+        "shelf": 3,
+        "slots": [
+          1
+        ]
+      },
+      "destination": "DESIGNATED_BACKSTOCK",
+      "instruction": "Remove the extra BINDU_FIZZ_250 from Shelf 1 • Slot 2. Keep the correct BINDU_FIZZ_250 already at Shelf 3 • Slot 1. Do not place the extra unit into the occupied correct slot; move it to the store's designated backstock/return area.",
+      "evidence": [
+        "Occurrence resolver identified an extra occurrence.",
+        "A separate correct occurrence was identified."
+      ]
+    },
+    {
+      "action_type": "REMOVE_EXTRA",
+      "status": "SAFE",
+      "priority": "HIGH",
+      "product_id": "swing_mixed_fruit_200",
+      "product_name": "SWING_MIXED_FRUIT_200",
+      "from": {
+        "shelf": 1,
+        "slots": [
+          9
+        ]
+      },
+      "keep": {
+        "shelf": 5,
+        "slots": [
+          9
+        ]
+      },
+      "destination": "DESIGNATED_BACKSTOCK",
+      "instruction": "Remove the extra SWING_MIXED_FRUIT_200 from Shelf 1 • Slot 9. Keep the correct SWING_MIXED_FRUIT_200 already at Shelf 5 • Slot 9. Do not place the extra unit into the occupied correct slot; move it to the store's designated backstock/return area.",
+      "evidence": [
+        "Occurrence resolver identified an extra occurrence.",
+        "A separate correct occurrence was identified."
+      ]
+    },
+    {
+      "action_type": "SWAP",
+      "status": "SAFE",
+      "priority": "HIGH",
+      "products": [
+        {
+          "product_id": "APPY_FIZZ_250",
+          "product_name": "APPY_FIZZ_250",
+          "from": "Shelf 4 • Slot 6",
+          "to": "Shelf 3 • Slot 5"
+        },
+        {
+          "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+          "product_name": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+          "from": "Shelf 3 • Slot 5",
+          "to": "Shelf 4 • Slot 6"
+        }
+      ],
+      "instruction": "Swap APPY_FIZZ_250 at Shelf 4 • Slot 6 with NANDINI_STRAWBERRY_FLAVOURED_MILK_200 at Shelf 3 • Slot 5. After the swap, place APPY_FIZZ_250 at Shelf 3 • Slot 5 and NANDINI_STRAWBERRY_FLAVOURED_MILK_200 at Shelf 4 • Slot 6.",
+      "steps": [
+        "Remove APPY_FIZZ_250 from Shelf 4 • Slot 6.",
+        "Remove NANDINI_STRAWBERRY_FLAVOURED_MILK_200 from Shelf 3 • Slot 5.",
+        "Place APPY_FIZZ_250 at Shelf 3 • Slot 5.",
+        "Place NANDINI_STRAWBERRY_FLAVOURED_MILK_200 at Shelf 4 • Slot 6."
+      ],
+      "evidence": [
+        "Product A currently occupies Product B's exact expected location.",
+        "Product B currently occupies Product A's exact expected location.",
+        "Both products are individually confirmed as misplaced.",
+        "The proposed correction is a direct two-product swap; no additional destination is invented."
+      ]
+    },
+    {
+      "action_type": "SWAP",
+      "status": "SAFE",
+      "priority": "HIGH",
+      "products": [
+        {
+          "product_id": "PAPER_BOAT_COCONUT_200",
+          "product_name": "PAPER_BOAT_COCONUT_200",
+          "from": "Shelf 2 • Slot 6",
+          "to": "Shelf 1 • Slot 8"
+        },
+        {
+          "product_id": "REDBULL_250",
+          "product_name": "REDBULL_250",
+          "from": "Shelf 1 • Slot 8",
+          "to": "Shelf 2 • Slot 6"
+        }
+      ],
+      "instruction": "Swap PAPER_BOAT_COCONUT_200 at Shelf 2 • Slot 6 with REDBULL_250 at Shelf 1 • Slot 8. After the swap, place PAPER_BOAT_COCONUT_200 at Shelf 1 • Slot 8 and REDBULL_250 at Shelf 2 • Slot 6.",
+      "steps": [
+        "Remove PAPER_BOAT_COCONUT_200 from Shelf 2 • Slot 6.",
+        "Remove REDBULL_250 from Shelf 1 • Slot 8.",
+        "Place PAPER_BOAT_COCONUT_200 at Shelf 1 • Slot 8.",
+        "Place REDBULL_250 at Shelf 2 • Slot 6."
+      ],
+      "evidence": [
+        "Product A currently occupies Product B's exact expected location.",
+        "Product B currently occupies Product A's exact expected location.",
+        "Both products are individually confirmed as misplaced.",
+        "The proposed correction is a direct two-product swap; no additional destination is invented."
+      ]
+    }
+  ],
+  "review_required": [
+    {
+      "action_type": "REVIEW",
+      "status": "REVIEW",
+      "priority": "MEDIUM",
+      "product_id": "AMUL_KOOL_CAFE_180",
+      "product_name": "AMUL_KOOL_CAFE_180",
+      "instruction": "Manually verify AMUL_KOOL_CAFE_180 before moving anything. Do not change the product until the location is confirmed.",
+      "reason": "No direct two-product swap was proven from the actual and expected maps. A more complex rearrangement would require additional planning and is not automatically authorized.",
+      "source": "rearrangement_planner"
+    },
+    {
+      "action_type": "REVIEW",
+      "status": "REVIEW",
+      "priority": "MEDIUM",
+      "product_id": "RASKIK_MANGO_150",
+      "product_name": "RASKIK_MANGO_150",
+      "instruction": "Manually verify RASKIK_MANGO_150 before moving anything. Do not change the product until the location is confirmed.",
+      "reason": "No direct two-product swap was proven from the actual and expected maps. A more complex rearrangement would require additional planning and is not automatically authorized.",
+      "source": "rearrangement_planner"
+    },
+    {
+      "action_type": "REVIEW",
+      "status": "REVIEW",
+      "priority": "MEDIUM",
+      "product_id": "CAMPA_ENERGY_gold_185",
+      "product_name": "CAMPA_ENERGY_gold_185",
+      "instruction": "Manually verify CAMPA_ENERGY_gold_185 before moving anything. Do not change the product until the location is confirmed.",
+      "reason": "No direct two-product swap was proven from the actual and expected maps. A more complex rearrangement would require additional planning and is not automatically authorized.",
+      "source": "rearrangement_planner"
+    }
+  ],
+  "safety_boundary": "Only actions explicitly proven by upstream structured reports are converted into SAFE physical instructions. Unknown destinations, ambiguous occurrences, occupied targets without a proven reciprocal swap, and unproven longer rearrangements remain REVIEW."
+}

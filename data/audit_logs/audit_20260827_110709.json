@@ -1,0 +1,9 @@
+{
+  "audit_id": "20260827_110709",
+  "timestamp": "2026-08-27T11:07:48.432567",
+  "image_path": "temp_uploads\\audit_20260827_110702.jpg",
+  "status": "ERROR",
+  "actual_map_file": "C:\\smart-planogram-planner\\data\\actual_maps\\actual_map_wrongshelf.json",
+  "comparison_file": "C:\\smart-planogram-planner\\data\\comparisons\\comparison_audit_20260827_110702.json",
+  "error_message": "Comparison file not created: C:\\smart-planogram-planner\\data\\comparisons\\comparison_audit_20260827_110702.json"
+}

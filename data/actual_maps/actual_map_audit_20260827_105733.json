@@ -1,0 +1,445 @@
+{
+  "rack_id": "BTM-CH01",
+  "source_image": "C:\\smart-planogram-planner\\temp_uploads\\audit_20260827_105733.jpg",
+  "processed_at": "2026-08-27T10:58:19.439412",
+  "model_used": "gemini-3.6-flash",
+  "api_calls_used": 1,
+  "shelves": [
+    {
+      "shelf_number": 1,
+      "products": [
+        {
+          "product_id": "MAAZA_MANGO_150",
+          "slot_start": 1,
+          "slot_end": 1,
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "BINDU_FIZZ_250",
+          "slot_start": 2,
+          "slot_end": 2,
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MAAZA_MANGO_270",
+          "slot_start": 3,
+          "slot_end": 3,
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MINUTE_MAID_ORANGE_250",
+          "slot_start": 4,
+          "slot_end": 4,
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "FROOTI_300",
+          "slot_start": 5,
+          "slot_end": 5,
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SWING_POMEGRANATE_270",
+          "slot_start": 6,
+          "slot_end": 6,
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SWING_LYCHEE_270",
+          "slot_start": 7,
+          "slot_end": 7,
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "REDBULL_250",
+          "slot_start": 8,
+          "slot_end": 8,
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SWING_MIXED_FRUIT_200",
+          "slot_start": 9,
+          "slot_end": 9,
+          "zone": "right",
+          "facings": 1,
+          "confidence": "medium"
+        }
+      ],
+      "unknown_items": [],
+      "empty_zones": [],
+      "notes": "shelf contains fruit beverages and one misplaced energy drink",
+      "expected_commodities": [
+        "fruit_beverage"
+      ]
+    },
+    {
+      "shelf_number": 2,
+      "products": [
+        {
+          "product_id": "AMUL_KOOL_CAFE_180",
+          "slot_start": 1,
+          "slot_end": 1,
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "THUMSUP_XFORCE_300",
+          "slot_start": 2,
+          "slot_end": 2,
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MONSTER_CAN_350",
+          "slot_start": 3,
+          "slot_end": 3,
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MONSTER_ULTRA_350",
+          "slot_start": 4,
+          "slot_end": 4,
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "REDBULL_SUGARFREE_250",
+          "slot_start": 5,
+          "slot_end": 5,
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "PAPER_BOAT_COCONUT_200",
+          "slot_start": 6,
+          "slot_end": 6,
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "POWERHORSE_250",
+          "slot_start": 7,
+          "slot_end": 7,
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "STING_250",
+          "slot_start": 8,
+          "slot_end": 8,
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        }
+      ],
+      "unknown_items": [],
+      "empty_zones": [],
+      "notes": "primarily energy drinks with coffee and coconut water",
+      "expected_commodities": [
+        "energy_drink"
+      ]
+    },
+    {
+      "shelf_number": 3,
+      "products": [
+        {
+          "product_id": "BINDU_FIZZ_250",
+          "slot_start": 1,
+          "slot_end": 1,
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "RASKIK_MANGO_150",
+          "slot_start": 2,
+          "slot_end": 2,
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "COCACOLA_250",
+          "slot_start": 3,
+          "slot_end": 3,
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SPRITE_250",
+          "slot_start": 4,
+          "slot_end": 4,
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+          "slot_start": 5,
+          "slot_end": 5,
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "FANTA_250",
+          "slot_start": 6,
+          "slot_end": 6,
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "COCACOLA_250",
+          "slot_start": 7,
+          "slot_end": 7,
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "COCACOLA_ZERO_300",
+          "slot_start": 8,
+          "slot_end": 8,
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        }
+      ],
+      "unknown_items": [],
+      "empty_zones": [],
+      "notes": "soft drinks and fruit/milk beverages",
+      "expected_commodities": [
+        "soft_drink"
+      ]
+    },
+    {
+      "shelf_number": 4,
+      "products": [
+        {
+          "product_id": "AMUL_KOOL_CAFE_180",
+          "slot_start": 1,
+          "slot_end": 1,
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "CAMPA_ENERGY_gold_185",
+          "slot_start": 2,
+          "slot_end": 2,
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "NANDINI_MANGO_LASSI_180",
+          "slot_start": 3,
+          "slot_end": 3,
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MAX_PROTEIN_CHOCO_BURST_250",
+          "slot_start": 4,
+          "slot_end": 4,
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MAX_PROTEIN_BERRY_BLUSH_250",
+          "slot_start": 5,
+          "slot_end": 5,
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "APPY_FIZZ_250",
+          "slot_start": 6,
+          "slot_end": 6,
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "NANDINI_PISTA_FLAVOURED_MILK_180",
+          "slot_start": 7,
+          "slot_end": 7,
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "AMUL_PREMIUM_BUTTERMILK_200",
+          "slot_start": 8,
+          "slot_end": 9,
+          "zone": "right",
+          "facings": 2,
+          "confidence": "high"
+        }
+      ],
+      "unknown_items": [],
+      "empty_zones": [],
+      "notes": "shelf contains milk beverages, protein drinks, and energy drink",
+      "expected_commodities": [
+        "milk_beverage"
+      ]
+    },
+    {
+      "shelf_number": 5,
+      "products": [
+        {
+          "product_id": "CAMPA_COLA_250",
+          "slot_start": 1,
+          "slot_end": 1,
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "CAMPA_ENERGY_BERRY_250",
+          "slot_start": 2,
+          "slot_end": 2,
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "POP_ORANGE_250",
+          "slot_start": 3,
+          "slot_end": 3,
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "RASKIK_MANGO_150",
+          "slot_start": 4,
+          "slot_end": 4,
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "RASKIK_NIMBU_PANI_160",
+          "slot_start": 5,
+          "slot_end": 6,
+          "zone": "center",
+          "facings": 2,
+          "confidence": "high"
+        },
+        {
+          "product_id": "LIMONATA_160",
+          "slot_start": 7,
+          "slot_end": 8,
+          "zone": "right",
+          "facings": 2,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SWING_MIXED_FRUIT_200",
+          "slot_start": 9,
+          "slot_end": 9,
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        }
+      ],
+      "unknown_items": [],
+      "empty_zones": [],
+      "notes": "mixed fruit beverages and soft drinks",
+      "expected_commodities": [
+        "fruit_beverage",
+        "soft_drink"
+      ]
+    },
+    {
+      "shelf_number": 6,
+      "products": [
+        {
+          "product_id": "BISLERI_WATER_1000",
+          "slot_start": 1,
+          "slot_end": 1,
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SLICE_MANGO_1250",
+          "slot_start": 2,
+          "slot_end": 2,
+          "zone": "left",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "COCACOLA_1250",
+          "slot_start": 3,
+          "slot_end": 3,
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "MOUNTAINDEW_1250",
+          "slot_start": 4,
+          "slot_end": 4,
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SEVENUP_1250",
+          "slot_start": 5,
+          "slot_end": 5,
+          "zone": "center",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "PEPSI_1250",
+          "slot_start": 6,
+          "slot_end": 6,
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        }
+      ],
+      "unknown_items": [],
+      "empty_zones": [],
+      "notes": "large 1L+ bottles of soft drinks, fruit beverage, and water",
+      "expected_commodities": [
+        "soft_drink",
+        "water"
+      ]
+    }
+  ]
+}

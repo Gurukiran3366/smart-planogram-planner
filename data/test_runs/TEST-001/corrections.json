@@ -1,0 +1,296 @@
+{
+  "engine_version": "1.1",
+  "analyzer_version": "1.3",
+  "rack_id": "BTM-CH01",
+  "principles": {
+    "minimum_physical_movements": true,
+    "never_add_without_proven_space": true,
+    "never_remove_non_excess_facing": true,
+    "never_correct_oos_products": true,
+    "unknown_capacity_means_review": true,
+    "preferred_order_is_not_exact_slot_order": true
+  },
+  "summary": {
+    "shelves_analyzed": 6,
+    "candidates_generated": 1,
+    "feasible_candidates": 1,
+    "blocked_diagnostics": 2,
+    "decision": "ACTION_RECOMMENDED"
+  },
+  "shelves": [
+    {
+      "shelf_number": 1,
+      "shelf_name": "Fruit Beverages",
+      "candidates": [],
+      "blocked_diagnostics": []
+    },
+    {
+      "shelf_number": 2,
+      "shelf_name": "Energy Drinks",
+      "candidates": [],
+      "blocked_diagnostics": []
+    },
+    {
+      "shelf_number": 3,
+      "shelf_name": "Soft Drinks",
+      "candidates": [
+        {
+          "shelf_number": 3,
+          "shelf_name": "Soft Drinks",
+          "decision": "SAFE_REDUCE_OCCUPANT",
+          "action": {
+            "type": "reduce_excess_facing_and_place",
+            "remove_product_id": "BINDU_FIZZ_250",
+            "remove_product_name": "Bindu Fizz Jeera Masala 250ml",
+            "target_product_id": "THUMSUP_250",
+            "target_product_name": "Thums Up 250ml",
+            "target_slot": 2
+          },
+          "reason": [
+            "physical_space_not_proven"
+          ]
+        }
+      ],
+      "blocked_diagnostics": [
+        {
+          "product_id": "THUMSUP_250",
+          "product_name": "Thums Up 250ml",
+          "expected_slot": 2,
+          "decision": "SAFE_REDUCE_OCCUPANT",
+          "safe_action": true,
+          "checks": [
+            {
+              "check": "oos_status",
+              "result": "pass",
+              "detail": "Product is not marked OOS."
+            },
+            {
+              "check": "destination_occupancy",
+              "result": "occupied",
+              "detail": "Expected slot 2 is occupied by Bindu Fizz Jeera Masala 250ml."
+            },
+            {
+              "check": "destination_occupant_facing",
+              "product_id": "BINDU_FIZZ_250",
+              "product_name": "Bindu Fizz Jeera Masala 250ml",
+              "actual_facings": 2,
+              "expected_facings": 1,
+              "excess_facing_available": true,
+              "result": "pass"
+            },
+            {
+              "check": "physical_capacity",
+              "result": "unknown",
+              "capacity": null,
+              "occupied_slots": 8,
+              "remaining_slots": null,
+              "detail": "Shelf capacity is not known sufficiently to prove that an additional physical position exists."
+            }
+          ],
+          "reasons": [
+            "physical_space_not_proven"
+          ],
+          "action": {
+            "type": "reduce_excess_facing_and_place",
+            "remove_product_id": "BINDU_FIZZ_250",
+            "remove_product_name": "Bindu Fizz Jeera Masala 250ml",
+            "target_product_id": "THUMSUP_250",
+            "target_product_name": "Thums Up 250ml",
+            "target_slot": 2
+          }
+        }
+      ]
+    },
+    {
+      "shelf_number": 4,
+      "shelf_name": "Milk Beverages",
+      "candidates": [],
+      "blocked_diagnostics": []
+    },
+    {
+      "shelf_number": 5,
+      "shelf_name": "Soft Drinks (small bottles)",
+      "candidates": [],
+      "blocked_diagnostics": [
+        {
+          "product_id": "DAILEE_MANGO_180",
+          "product_name": "Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle",
+          "expected_slot": 4,
+          "decision": "REVIEW_NO_SAFE_ACTION",
+          "safe_action": false,
+          "checks": [
+            {
+              "check": "oos_status",
+              "result": "pass",
+              "detail": "Product is not marked OOS."
+            },
+            {
+              "check": "destination_occupancy",
+              "result": "occupied",
+              "detail": "Expected slot 4 is occupied by Raskik 150ml mango."
+            },
+            {
+              "check": "destination_occupant_facing",
+              "product_id": "RASKIK_MANGO_150",
+              "product_name": "Raskik 150ml mango",
+              "actual_facings": 1,
+              "expected_facings": 1,
+              "excess_facing_available": false,
+              "result": "blocked"
+            },
+            {
+              "check": "physical_capacity",
+              "result": "unknown",
+              "capacity": null,
+              "occupied_slots": 8,
+              "remaining_slots": null,
+              "detail": "Shelf capacity is not known sufficiently to prove that an additional physical position exists."
+            }
+          ],
+          "reasons": [
+            "destination_occupant_has_no_excess_facing",
+            "physical_space_not_proven"
+          ]
+        }
+      ]
+    },
+    {
+      "shelf_number": 6,
+      "shelf_name": "Large Bottles (750 ml+ / 1 L)",
+      "candidates": [],
+      "blocked_diagnostics": []
+    }
+  ],
+  "candidates": [
+    {
+      "shelf_number": 3,
+      "shelf_name": "Soft Drinks",
+      "decision": "SAFE_REDUCE_OCCUPANT",
+      "action": {
+        "type": "reduce_excess_facing_and_place",
+        "remove_product_id": "BINDU_FIZZ_250",
+        "remove_product_name": "Bindu Fizz Jeera Masala 250ml",
+        "target_product_id": "THUMSUP_250",
+        "target_product_name": "Thums Up 250ml",
+        "target_slot": 2
+      },
+      "reason": [
+        "physical_space_not_proven"
+      ]
+    }
+  ],
+  "feasible_candidates": [
+    {
+      "shelf_number": 3,
+      "shelf_name": "Soft Drinks",
+      "decision": "SAFE_REDUCE_OCCUPANT",
+      "action": {
+        "type": "reduce_excess_facing_and_place",
+        "remove_product_id": "BINDU_FIZZ_250",
+        "remove_product_name": "Bindu Fizz Jeera Masala 250ml",
+        "target_product_id": "THUMSUP_250",
+        "target_product_name": "Thums Up 250ml",
+        "target_slot": 2
+      },
+      "reason": [
+        "physical_space_not_proven"
+      ]
+    }
+  ],
+  "blocked_corrections": [
+    {
+      "product_id": "THUMSUP_250",
+      "product_name": "Thums Up 250ml",
+      "expected_slot": 2,
+      "decision": "SAFE_REDUCE_OCCUPANT",
+      "safe_action": true,
+      "checks": [
+        {
+          "check": "oos_status",
+          "result": "pass",
+          "detail": "Product is not marked OOS."
+        },
+        {
+          "check": "destination_occupancy",
+          "result": "occupied",
+          "detail": "Expected slot 2 is occupied by Bindu Fizz Jeera Masala 250ml."
+        },
+        {
+          "check": "destination_occupant_facing",
+          "product_id": "BINDU_FIZZ_250",
+          "product_name": "Bindu Fizz Jeera Masala 250ml",
+          "actual_facings": 2,
+          "expected_facings": 1,
+          "excess_facing_available": true,
+          "result": "pass"
+        },
+        {
+          "check": "physical_capacity",
+          "result": "unknown",
+          "capacity": null,
+          "occupied_slots": 8,
+          "remaining_slots": null,
+          "detail": "Shelf capacity is not known sufficiently to prove that an additional physical position exists."
+        }
+      ],
+      "reasons": [
+        "physical_space_not_proven"
+      ],
+      "action": {
+        "type": "reduce_excess_facing_and_place",
+        "remove_product_id": "BINDU_FIZZ_250",
+        "remove_product_name": "Bindu Fizz Jeera Masala 250ml",
+        "target_product_id": "THUMSUP_250",
+        "target_product_name": "Thums Up 250ml",
+        "target_slot": 2
+      }
+    },
+    {
+      "product_id": "DAILEE_MANGO_180",
+      "product_name": "Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle",
+      "expected_slot": 4,
+      "decision": "REVIEW_NO_SAFE_ACTION",
+      "safe_action": false,
+      "checks": [
+        {
+          "check": "oos_status",
+          "result": "pass",
+          "detail": "Product is not marked OOS."
+        },
+        {
+          "check": "destination_occupancy",
+          "result": "occupied",
+          "detail": "Expected slot 4 is occupied by Raskik 150ml mango."
+        },
+        {
+          "check": "destination_occupant_facing",
+          "product_id": "RASKIK_MANGO_150",
+          "product_name": "Raskik 150ml mango",
+          "actual_facings": 1,
+          "expected_facings": 1,
+          "excess_facing_available": false,
+          "result": "blocked"
+        },
+        {
+          "check": "physical_capacity",
+          "result": "unknown",
+          "capacity": null,
+          "occupied_slots": 8,
+          "remaining_slots": null,
+          "detail": "Shelf capacity is not known sufficiently to prove that an additional physical position exists."
+        }
+      ],
+      "reasons": [
+        "destination_occupant_has_no_excess_facing",
+        "physical_space_not_proven"
+      ]
+    }
+  ],
+  "recommendation": {
+    "decision": "ACTION_RECOMMENDED",
+    "summary": "1 physically feasible correction candidate(s) identified.",
+    "details": [
+      "1 physically feasible correction candidate(s) identified."
+    ]
+  }
+}

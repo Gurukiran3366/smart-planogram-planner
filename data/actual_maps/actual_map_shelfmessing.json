@@ -1,7 +1,7 @@
 {
   "rack_id": "BTM-CH01",
   "source_image": "images/staff_uploads/shelfmessing.jpeg",
-  "processed_at": "2026-08-14T18:59:38.744291",
+  "processed_at": "2026-08-22T14:29:35.317378",
   "model_used": "gemini-3.6-flash",
   "api_calls_used": 1,
   "shelves": [
@@ -9,7 +9,7 @@
       "shelf_number": 1,
       "products": [
         {
-          "product_id": "RASKIK_MANGO_150",
+          "product_id": "MAAZA_MANGO_150",
           "slot_start": 1,
           "slot_end": 1,
           "zone": "left",
@@ -17,7 +17,7 @@
           "confidence": "high"
         },
         {
-          "product_id": "MAAZA_MANGO_270",
+          "product_id": "RASKIK_MANGO_150",
           "slot_start": 2,
           "slot_end": 2,
           "zone": "left",
@@ -25,7 +25,7 @@
           "confidence": "high"
         },
         {
-          "product_id": "MINUTE_MAID_ORANGE_250",
+          "product_id": "MAAZA_MANGO_270",
           "slot_start": 3,
           "slot_end": 3,
           "zone": "left",
@@ -33,7 +33,7 @@
           "confidence": "high"
         },
         {
-          "product_id": "FROOTI_300",
+          "product_id": "MINUTE_MAID_ORANGE_250",
           "slot_start": 4,
           "slot_end": 4,
           "zone": "center",
@@ -41,7 +41,7 @@
           "confidence": "high"
         },
         {
-          "product_id": "SWING_POMEGRANATE_270",
+          "product_id": "FROOTI_300",
           "slot_start": 5,
           "slot_end": 5,
           "zone": "center",
@@ -49,15 +49,15 @@
           "confidence": "high"
         },
         {
-          "product_id": "SWING_LYCHEE_270",
+          "product_id": "SWING_POMEGRANATE_270",
           "slot_start": 6,
           "slot_end": 6,
-          "zone": "right",
+          "zone": "center",
           "facings": 1,
           "confidence": "high"
         },
         {
-          "product_id": "PAPER_BOAT_COCONUT_200",
+          "product_id": "SWING_LYCHEE_270",
           "slot_start": 7,
           "slot_end": 7,
           "zone": "right",
@@ -65,9 +65,17 @@
           "confidence": "high"
         },
         {
-          "product_id": "SWING_GUAVA_270",
+          "product_id": "PAPER_BOAT_COCONUT_200",
           "slot_start": 8,
           "slot_end": 8,
+          "zone": "right",
+          "facings": 1,
+          "confidence": "high"
+        },
+        {
+          "product_id": "SWING_GUAVA_270",
+          "slot_start": 9,
+          "slot_end": 9,
           "zone": "right",
           "facings": 1,
           "confidence": "high"
@@ -103,7 +111,7 @@
           "product_id": "MONSTER_CAN_350",
           "slot_start": 3,
           "slot_end": 3,
-          "zone": "left",
+          "zone": "center",
           "facings": 1,
           "confidence": "high"
         },
@@ -127,7 +135,7 @@
           "product_id": "REDBULL_250",
           "slot_start": 6,
           "slot_end": 6,
-          "zone": "center",
+          "zone": "right",
           "facings": 1,
           "confidence": "high"
         },
@@ -317,7 +325,7 @@
           "confidence": "high"
         },
         {
-          "product_id": "DAILEE_MANGO_180",
+          "product_id": "RASKIK_MANGO_150",
           "slot_start": 4,
           "slot_end": 4,
           "zone": "center",
@@ -325,7 +333,7 @@
           "confidence": "high"
         },
         {
-          "product_id": "RASKIK_MANGO_150",
+          "product_id": "RASKIK_NIMBU_PANI_160",
           "slot_start": 5,
           "slot_end": 5,
           "zone": "center",
@@ -333,25 +341,17 @@
           "confidence": "high"
         },
         {
-          "product_id": "RASKIK_NIMBU_PANI_160",
-          "slot_start": 6,
-          "slot_end": 6,
-          "zone": "center",
-          "facings": 1,
-          "confidence": "high"
-        },
-        {
           "product_id": "LIMONATA_160",
-          "slot_start": 7,
-          "slot_end": 8,
+          "slot_start": 6,
+          "slot_end": 7,
           "zone": "right",
           "facings": 2,
           "confidence": "high"
         },
         {
           "product_id": "SWING_MIXED_FRUIT_200",
-          "slot_start": 9,
-          "slot_end": 9,
+          "slot_start": 8,
+          "slot_end": 8,
           "zone": "right",
           "facings": 1,
           "confidence": "high"
@@ -404,7 +404,7 @@
           "product_id": "SLICE_MANGO_1250",
           "slot_start": 5,
           "slot_end": 5,
-          "zone": "center",
+          "zone": "right",
           "facings": 1,
           "confidence": "high"
         },
@@ -412,14 +412,6 @@
           "product_id": "BISLERI_WATER_1000",
           "slot_start": 6,
           "slot_end": 6,
-          "zone": "right",
-          "facings": 1,
-          "confidence": "high"
-        },
-        {
-          "product_id": "TATA_COPPER_PLUS_1000",
-          "slot_start": 7,
-          "slot_end": 7,
           "zone": "right",
           "facings": 1,
           "confidence": "high"

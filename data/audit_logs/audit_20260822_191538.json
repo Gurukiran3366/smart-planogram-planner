@@ -1,0 +1,17 @@
+{
+  "audit_id": "20260822_191538",
+  "timestamp": "2026-08-22T19:16:24.047461",
+  "image_path": "images/staff_uploads/wrongshelf.jpeg",
+  "status": "SUCCESS",
+  "actual_map_file": "data\\actual_maps\\actual_map_wrongshelf.json",
+  "comparison_file": "data\\comparisons\\comparison_wrongshelf.json",
+  "score": 7.1,
+  "score_status": "🟡 NEEDS ATTENTION",
+  "violation_counts": {
+    "high": 14,
+    "medium": 5,
+    "low": 2,
+    "info": 0,
+    "total": 21
+  }
+}

@@ -1,26 +1,26 @@
 {
   "rack_id": "BTM-CH01",
-  "compared_at": "2026-08-14T18:59:38.795496",
+  "compared_at": "2026-08-22T14:29:35.396791",
   "expected_source": "data/expected_map_BTM_CH01.json",
   "actual_source": "data\\actual_maps\\actual_map_shelfmessing.json",
   "violation_counts": {
-    "high": 1,
+    "high": 2,
     "medium": 1,
-    "low": 10,
-    "info": 1,
-    "total": 13
+    "low": 6,
+    "info": 0,
+    "total": 9
   },
   "violations": [
     {
       "type": "position_minor_shift",
       "severity": "low",
-      "product_id": "MAAZA_MANGO_270",
-      "product_name": "Maaza 270ml mango",
-      "shelf_number": 1,
-      "expected_slot": 3,
-      "actual_slot": 2,
-      "description": "Maaza 270ml mango slightly off position on Shelf 1",
-      "correction": "Verify Maaza 270ml mango on Shelf 1 (at slot 2, expected slot 3)"
+      "product_id": "NANDINI_PISTA_FLAVOURED_MILK_180",
+      "product_name": "Nandini GoodLife Pista Flavoured Milk 180ml",
+      "shelf_number": 4,
+      "expected_slot": 7,
+      "actual_slot": 6,
+      "description": "Nandini GoodLife Pista Flavoured Milk 180ml slightly off position on Shelf 4",
+      "correction": "Verify Nandini GoodLife Pista Flavoured Milk 180ml on Shelf 4 (at slot 6, expected slot 7)"
     },
     {
       "type": "wrong_position",
@@ -34,114 +34,48 @@
       "correction": "Move Nandini GoodLife Strawberry Flavoured Milk 200ml on Shelf 4 from slot 8 to slot 6 (right by 2 slots)"
     },
     {
-      "type": "expected_but_out_of_stock",
-      "severity": "info",
+      "type": "missing_product",
+      "severity": "high",
+      "product_id": "DAILEE_MANGO_180",
+      "product_name": "Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle",
+      "expected_shelves": [
+        5
+      ],
+      "description": "Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle not detected — expected on Shelf 5",
+      "correction": "Verify Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle on Shelf 5 (left zone). If missing, add it. If out of stock, mark as OOS."
+    },
+    {
+      "type": "position_minor_shift",
+      "severity": "low",
+      "product_id": "SWING_MIXED_FRUIT_200",
+      "product_name": "Paper Boat Swing Mixed Fruit Medley 200ml",
+      "shelf_number": 5,
+      "expected_slot": 9,
+      "actual_slot": 8,
+      "description": "Paper Boat Swing Mixed Fruit Medley 200ml slightly off position on Shelf 5",
+      "correction": "Verify Paper Boat Swing Mixed Fruit Medley 200ml on Shelf 5 (at slot 8, expected slot 9)"
+    },
+    {
+      "type": "position_minor_shift",
+      "severity": "low",
+      "product_id": "LIMONATA_160",
+      "product_name": "Bisleri Limonata 160ml",
+      "shelf_number": 5,
+      "expected_slot": 7,
+      "actual_slot": 6,
+      "description": "Bisleri Limonata 160ml slightly off position on Shelf 5",
+      "correction": "Verify Bisleri Limonata 160ml on Shelf 5 (at slot 6, expected slot 7)"
+    },
+    {
+      "type": "missing_product",
+      "severity": "high",
       "product_id": "THUMSUP_250",
       "product_name": "Thums Up 250ml",
       "expected_shelves": [
         3
       ],
-      "description": "Thums Up 250ml is out of stock (marked by staff)",
-      "correction": "⚠️ Thums Up 250ml is OOS — consider substitution on Shelf 3"
-    },
-    {
-      "type": "position_minor_shift",
-      "severity": "low",
-      "product_id": "FROOTI_300",
-      "product_name": "Frooti Mango 300ml",
-      "shelf_number": 1,
-      "expected_slot": 5,
-      "actual_slot": 4,
-      "description": "Frooti Mango 300ml slightly off position on Shelf 1",
-      "correction": "Verify Frooti Mango 300ml on Shelf 1 (at slot 4, expected slot 5)"
-    },
-    {
-      "type": "position_minor_shift",
-      "severity": "low",
-      "product_id": "SWING_LYCHEE_270",
-      "product_name": "Swing lychee 270ml",
-      "shelf_number": 1,
-      "expected_slot": 7,
-      "actual_slot": 6,
-      "description": "Swing lychee 270ml slightly off position on Shelf 1",
-      "correction": "Verify Swing lychee 270ml on Shelf 1 (at slot 6, expected slot 7)"
-    },
-    {
-      "type": "position_minor_shift",
-      "severity": "low",
-      "product_id": "PAPER_BOAT_COCONUT_200",
-      "product_name": "Paper boat coconut 200ml",
-      "shelf_number": 1,
-      "expected_slot": 8,
-      "actual_slot": 7,
-      "description": "Paper boat coconut 200ml slightly off position on Shelf 1",
-      "correction": "Verify Paper boat coconut 200ml on Shelf 1 (at slot 7, expected slot 8)"
-    },
-    {
-      "type": "position_minor_shift",
-      "severity": "low",
-      "product_id": "NANDINI_PISTA_FLAVOURED_MILK_180",
-      "product_name": "Nandini GoodLife Pista Flavoured Milk 180ml",
-      "shelf_number": 4,
-      "expected_slot": 7,
-      "actual_slot": 6,
-      "description": "Nandini GoodLife Pista Flavoured Milk 180ml slightly off position on Shelf 4",
-      "correction": "Verify Nandini GoodLife Pista Flavoured Milk 180ml on Shelf 4 (at slot 6, expected slot 7)"
-    },
-    {
-      "type": "position_minor_shift",
-      "severity": "low",
-      "product_id": "RASKIK_MANGO_150",
-      "product_name": "Raskik 150ml mango",
-      "shelf_number": 1,
-      "expected_slot": 2,
-      "actual_slot": 1,
-      "description": "Raskik 150ml mango slightly off position on Shelf 1",
-      "correction": "Verify Raskik 150ml mango on Shelf 1 (at slot 1, expected slot 2)"
-    },
-    {
-      "type": "position_minor_shift",
-      "severity": "low",
-      "product_id": "SWING_GUAVA_270",
-      "product_name": "Swing guava 270ml",
-      "shelf_number": 1,
-      "expected_slot": 9,
-      "actual_slot": 8,
-      "description": "Swing guava 270ml slightly off position on Shelf 1",
-      "correction": "Verify Swing guava 270ml on Shelf 1 (at slot 8, expected slot 9)"
-    },
-    {
-      "type": "missing_product",
-      "severity": "high",
-      "product_id": "MAAZA_MANGO_150",
-      "product_name": "Maaza 150ml mango",
-      "expected_shelves": [
-        1
-      ],
-      "description": "Maaza 150ml mango not detected — expected on Shelf 1",
-      "correction": "Verify Maaza 150ml mango on Shelf 1 (left zone). If missing, add it. If out of stock, mark as OOS."
-    },
-    {
-      "type": "position_minor_shift",
-      "severity": "low",
-      "product_id": "MINUTE_MAID_ORANGE_250",
-      "product_name": "Minute Maid Orange 250ml",
-      "shelf_number": 1,
-      "expected_slot": 4,
-      "actual_slot": 3,
-      "description": "Minute Maid Orange 250ml slightly off position on Shelf 1",
-      "correction": "Verify Minute Maid Orange 250ml on Shelf 1 (at slot 3, expected slot 4)"
-    },
-    {
-      "type": "position_minor_shift",
-      "severity": "low",
-      "product_id": "SWING_POMEGRANATE_270",
-      "product_name": "Swing pomegranate 270ml",
-      "shelf_number": 1,
-      "expected_slot": 6,
-      "actual_slot": 5,
-      "description": "Swing pomegranate 270ml slightly off position on Shelf 1",
-      "correction": "Verify Swing pomegranate 270ml on Shelf 1 (at slot 5, expected slot 6)"
+      "description": "Thums Up 250ml not detected — expected on Shelf 3",
+      "correction": "Verify Thums Up 250ml on Shelf 3 (left zone). If missing, add it. If out of stock, mark as OOS."
     },
     {
       "type": "position_minor_shift",
@@ -153,6 +87,28 @@
       "actual_slot": 9,
       "description": "Amul Premium Spiced Buttermilk 200ml slightly off position on Shelf 4",
       "correction": "Verify Amul Premium Spiced Buttermilk 200ml on Shelf 4 (at slot 9, expected slot 8)"
+    },
+    {
+      "type": "position_minor_shift",
+      "severity": "low",
+      "product_id": "RASKIK_NIMBU_PANI_160",
+      "product_name": "Raskik Nimbu Pani 160ml",
+      "shelf_number": 5,
+      "expected_slot": 6,
+      "actual_slot": 5,
+      "description": "Raskik Nimbu Pani 160ml slightly off position on Shelf 5",
+      "correction": "Verify Raskik Nimbu Pani 160ml on Shelf 5 (at slot 5, expected slot 6)"
+    },
+    {
+      "type": "position_minor_shift",
+      "severity": "low",
+      "product_id": "RASKIK_MANGO_150",
+      "product_name": "Raskik 150ml mango",
+      "shelf_number": 5,
+      "expected_slot": 5,
+      "actual_slot": 4,
+      "description": "Raskik 150ml mango slightly off position on Shelf 5",
+      "correction": "Verify Raskik 150ml mango on Shelf 5 (at slot 4, expected slot 5)"
     }
   ]
 }

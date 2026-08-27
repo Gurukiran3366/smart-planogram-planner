@@ -1,0 +1,48 @@
+{
+  "rack_id": "BTM-CH01",
+  "audit_date": "2026-08-27T11:13:51.425897",
+  "score": 7.5,
+  "status": "✅ GOOD",
+  "status_description": "Minor improvements needed",
+  "violation_counts": {
+    "high": 14,
+    "medium": 3,
+    "low": 2,
+    "info": 1,
+    "total": 20
+  },
+  "total_expected_products": 45,
+  "top_fixes": [
+    {
+      "priority": 1,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Verify Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle on Shelf 5 (left zone). If missing, add it. If out of stock, mark as OOS."
+    },
+    {
+      "priority": 2,
+      "type": "missing_product",
+      "severity": "high",
+      "correction": "Verify Appy Fizz 250ml on Shelf 3 (center zone). If missing, add it. If out of stock, mark as OOS."
+    },
+    {
+      "priority": 3,
+      "type": "wrong_shelf",
+      "severity": "high",
+      "correction": "Move Red Bull Energy Drink 250ml from Shelf 1 to Shelf 2 (right zone)"
+    },
+    {
+      "priority": 4,
+      "type": "wrong_shelf",
+      "severity": "high",
+      "correction": "Move Nandini GoodLife Strawberry Flavoured Milk 200ml from Shelf 3 to Shelf 4 (center zone)"
+    },
+    {
+      "priority": 5,
+      "type": "wrong_shelf",
+      "severity": "high",
+      "correction": "Move Amul Kool Cafe 180ml from Shelf 2 to Shelf 4 (left zone)"
+    }
+  ],
+  "source_comparison": "C:\\smart-planogram-planner\\data\\comparisons\\comparison_wrongshelf.json"
+}

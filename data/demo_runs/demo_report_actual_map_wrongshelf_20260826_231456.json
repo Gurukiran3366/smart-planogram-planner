@@ -1,0 +1,3081 @@
+{
+  "generated_at": "2026-08-26T23:14:56",
+  "actual_map": "C:\\smart-planogram-planner\\data\\actual_maps\\actual_map_wrongshelf.json",
+  "analysis": "C:\\smart-planogram-planner\\data\\analyses\\analysis_actual_map_wrongshelf.json",
+  "misplacements": "C:\\smart-planogram-planner\\data\\analyses\\misplacements_v2_analysis_actual_map_wrongshelf.json",
+  "corrections": "C:\\smart-planogram-planner\\data\\analyses\\corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+  "occurrences": "C:\\smart-planogram-planner\\data\\analyses\\occurrences_corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+  "rearrangements": "C:\\smart-planogram-planner\\data\\analyses\\rearrangements_corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+  "cycles": "C:\\smart-planogram-planner\\data\\analyses\\cycles_corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+  "final_recommendation": "C:\\smart-planogram-planner\\data\\analyses\\final_recommendations_corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+  "analysis_data": {
+    "rack_id": "BTM-CH01",
+    "analyzer_version": "1.3",
+    "analysis_type": "whole_shelf_merchandising",
+    "principles": {
+      "analysis_mode": "whole_shelf",
+      "product_order_mode": "preferred",
+      "objective": "maximize_overall_merchandising_compliance",
+      "correction_principle": "Recommend the minimum physically executable set of actions that improves overall shelf compliance without creating a higher-priority violation.",
+      "never_add_product_without_valid_space": true,
+      "never_recommend_action_that_creates_a_higher_priority_violation": true,
+      "prefer_minimum_physical_movements": true,
+      "analyze_whole_shelf_before_recommending": true,
+      "do_not_treat_preferred_order_as_exact_slot_order": true,
+      "unknown_data_policy": "When required catalog or sales data is unavailable, mark the condition as unknown/review rather than inventing a value or forcing a correction."
+    },
+    "summary": {
+      "shelves_analyzed": 6,
+      "compliant": 0,
+      "soft_deviation": 1,
+      "review": 1,
+      "needs_action": 4
+    },
+    "shelves": [
+      {
+        "shelf_number": 1,
+        "shelf_name": "Fruit Beverages",
+        "status": "needs_action",
+        "diagnostic_score": 0.65,
+        "hard_failures": [
+          "category"
+        ],
+        "soft_deviations": [
+          "preferred_price_group",
+          "preferred_order",
+          "missing_expected_products"
+        ],
+        "reviews_required": [],
+        "category": {
+          "status": "fail",
+          "allowed_commodities": [
+            "fruit_beverage"
+          ],
+          "details": [
+            {
+              "product_id": "MAAZA_MANGO_150",
+              "product_name": "Maaza 150ml mango",
+              "catalog_commodity": "fruit_beverage",
+              "allowed_commodities": [
+                "fruit_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "BINDU_FIZZ_250",
+              "product_name": "Bindu Fizz Jeera Masala 250ml",
+              "catalog_commodity": "soft_drink",
+              "allowed_commodities": [
+                "fruit_beverage"
+              ],
+              "status": "fail"
+            },
+            {
+              "product_id": "MAAZA_MANGO_270",
+              "product_name": "Maaza 270ml mango",
+              "catalog_commodity": "fruit_beverage",
+              "allowed_commodities": [
+                "fruit_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "MINUTE_MAID_ORANGE_250",
+              "product_name": "Minute Maid Orange 250ml",
+              "catalog_commodity": "fruit_beverage",
+              "allowed_commodities": [
+                "fruit_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "FROOTI_300",
+              "product_name": "Frooti Mango 300ml",
+              "catalog_commodity": "fruit_beverage",
+              "allowed_commodities": [
+                "fruit_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "SWING_POMEGRANATE_270",
+              "product_name": "Swing pomegranate 270ml",
+              "catalog_commodity": "fruit_beverage",
+              "allowed_commodities": [
+                "fruit_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "SWING_LYCHEE_270",
+              "product_name": "Swing lychee 270ml",
+              "catalog_commodity": "fruit_beverage",
+              "allowed_commodities": [
+                "fruit_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "REDBULL_250",
+              "product_name": "Red Bull Energy Drink 250ml",
+              "catalog_commodity": "energy_drink",
+              "allowed_commodities": [
+                "fruit_beverage"
+              ],
+              "status": "fail"
+            }
+          ],
+          "failure_count": 2,
+          "unknown_count": 0
+        },
+        "capacity": {
+          "status": "unknown",
+          "capacity": null,
+          "occupied_slots": 8,
+          "remaining_slots": null
+        },
+        "price_group": {
+          "status": "pass_with_preferred_exceptions",
+          "hard": false,
+          "rule": {
+            "type": "preferred_group",
+            "value": 20,
+            "label": "₹20 pack",
+            "hard": false,
+            "exception": "Do not force a ₹20-only correction when the catalog/reference explicitly contains another price point; flag data/rule conflict for review.",
+            "allow_approved_price_exceptions": true,
+            "violation_action": "review_only"
+          },
+          "details": [
+            {
+              "product_id": "MAAZA_MANGO_150",
+              "product_name": "Maaza 150ml mango",
+              "catalog_price": 10.0,
+              "status": "exception"
+            },
+            {
+              "product_id": "BINDU_FIZZ_250",
+              "product_name": "Bindu Fizz Jeera Masala 250ml",
+              "catalog_price": 20.0,
+              "status": "preferred"
+            },
+            {
+              "product_id": "MAAZA_MANGO_270",
+              "product_name": "Maaza 270ml mango",
+              "catalog_price": 20.0,
+              "status": "preferred"
+            },
+            {
+              "product_id": "MINUTE_MAID_ORANGE_250",
+              "product_name": "Minute Maid Orange 250ml",
+              "catalog_price": 25.0,
+              "status": "exception"
+            },
+            {
+              "product_id": "FROOTI_300",
+              "product_name": "Frooti Mango 300ml",
+              "catalog_price": 20.0,
+              "status": "preferred"
+            },
+            {
+              "product_id": "SWING_POMEGRANATE_270",
+              "product_name": "Swing pomegranate 270ml",
+              "catalog_price": 20.0,
+              "status": "preferred"
+            },
+            {
+              "product_id": "SWING_LYCHEE_270",
+              "product_name": "Swing lychee 270ml",
+              "catalog_price": 20.0,
+              "status": "preferred"
+            },
+            {
+              "product_id": "REDBULL_250",
+              "product_name": "Red Bull Energy Drink 250ml",
+              "catalog_price": 125.0,
+              "status": "exception"
+            }
+          ],
+          "preferred_count": 5,
+          "exception_count": 3
+        },
+        "colour_sequence": {
+          "status": "data_limitation",
+          "reason": "catalog_colour_granularity_insufficient",
+          "configured_sequence": [
+            "orange",
+            "red",
+            "white"
+          ],
+          "hard": false,
+          "available_catalog_colours": [
+            "dark",
+            "light"
+          ],
+          "details": [
+            {
+              "product_id": "MAAZA_MANGO_150",
+              "product_name": "Maaza 150ml mango",
+              "slot_start": 1,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "BINDU_FIZZ_250",
+              "product_name": "Bindu Fizz Jeera Masala 250ml",
+              "slot_start": 2,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "MAAZA_MANGO_270",
+              "product_name": "Maaza 270ml mango",
+              "slot_start": 3,
+              "colour": "dark",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "MINUTE_MAID_ORANGE_250",
+              "product_name": "Minute Maid Orange 250ml",
+              "slot_start": 4,
+              "colour": "dark",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "FROOTI_300",
+              "product_name": "Frooti Mango 300ml",
+              "slot_start": 5,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "SWING_POMEGRANATE_270",
+              "product_name": "Swing pomegranate 270ml",
+              "slot_start": 6,
+              "colour": "dark",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "SWING_LYCHEE_270",
+              "product_name": "Swing lychee 270ml",
+              "slot_start": 7,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "REDBULL_250",
+              "product_name": "Red Bull Energy Drink 250ml",
+              "slot_start": 8,
+              "colour": "light",
+              "sequence_rank": null
+            }
+          ]
+        },
+        "package_placement": {
+          "status": "not_applicable",
+          "details": []
+        },
+        "grouping": {
+          "status": "not_applicable",
+          "details": []
+        },
+        "facings": {
+          "status": "pass",
+          "details": [
+            {
+              "product_id": "MAAZA_MANGO_150",
+              "product_name": "Maaza 150ml mango",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "BINDU_FIZZ_250",
+              "product_name": "Bindu Fizz Jeera Masala 250ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "MAAZA_MANGO_270",
+              "product_name": "Maaza 270ml mango",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "MINUTE_MAID_ORANGE_250",
+              "product_name": "Minute Maid Orange 250ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "FROOTI_300",
+              "product_name": "Frooti Mango 300ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "SWING_POMEGRANATE_270",
+              "product_name": "Swing pomegranate 270ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "SWING_LYCHEE_270",
+              "product_name": "Swing lychee 270ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "REDBULL_250",
+              "product_name": "Red Bull Energy Drink 250ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            }
+          ],
+          "excess_facing_count": 0,
+          "insufficient_facing_count": 0,
+          "unknown_fast_moving_count": 8
+        },
+        "preferred_order": {
+          "status": "soft_deviation",
+          "score": 0.933,
+          "inversion_count": 1,
+          "comparisons": 15
+        },
+        "missing_products": {
+          "missing_count": 3,
+          "potential_excess_facing_conflicts": 0,
+          "details": [
+            {
+              "product_id": "RASKIK_MANGO_150",
+              "product_name": "Raskik 150ml mango",
+              "expected_slot": 2,
+              "expected_facings": 1,
+              "destination_occupant": "BINDU_FIZZ_250",
+              "destination_occupant_name": "Bindu Fizz Jeera Masala 250ml",
+              "occupant_actual_facings": 1,
+              "occupant_expected_facings": null,
+              "potential_excess_facing": false,
+              "occupant_fast_moving_status": "unknown",
+              "diagnosis": "expected_product_missing_destination_occupied"
+            },
+            {
+              "product_id": "PAPER_BOAT_COCONUT_200",
+              "product_name": "Paper boat coconut 200ml",
+              "expected_slot": 8,
+              "expected_facings": 1,
+              "destination_occupant": "REDBULL_250",
+              "destination_occupant_name": "Red Bull Energy Drink 250ml",
+              "occupant_actual_facings": 1,
+              "occupant_expected_facings": null,
+              "potential_excess_facing": false,
+              "occupant_fast_moving_status": "unknown",
+              "diagnosis": "expected_product_missing_destination_occupied"
+            },
+            {
+              "product_id": "SWING_GUAVA_270",
+              "product_name": "Swing guava 270ml",
+              "expected_slot": 9,
+              "expected_facings": 1,
+              "destination_occupant": null,
+              "destination_occupant_name": null,
+              "occupant_actual_facings": null,
+              "occupant_expected_facings": null,
+              "potential_excess_facing": false,
+              "occupant_fast_moving_status": "unknown",
+              "diagnosis": "expected_product_missing_destination_empty_or_unknown"
+            }
+          ]
+        },
+        "root_cause_candidates": [],
+        "actual_product_count": 8,
+        "actual_physical_facings": 8,
+        "preferred_product_count": 9,
+        "out_of_stock_products": [],
+        "oos_product_count": 0
+      },
+      {
+        "shelf_number": 2,
+        "shelf_name": "Energy Drinks",
+        "status": "needs_action",
+        "diagnostic_score": 0.7,
+        "hard_failures": [
+          "category"
+        ],
+        "soft_deviations": [
+          "preferred_price_group",
+          "missing_expected_products"
+        ],
+        "reviews_required": [],
+        "category": {
+          "status": "fail",
+          "allowed_commodities": [
+            "energy_drink"
+          ],
+          "details": [
+            {
+              "product_id": "AMUL_KOOL_CAFE_180",
+              "product_name": "Amul Kool Cafe 180ml",
+              "catalog_commodity": "milk_beverage",
+              "allowed_commodities": [
+                "energy_drink"
+              ],
+              "status": "fail"
+            },
+            {
+              "product_id": "THUMSUP_XFORCE_300",
+              "product_name": "Thums up xforce 300ml",
+              "catalog_commodity": "energy_drink",
+              "allowed_commodities": [
+                "energy_drink"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "MONSTER_CAN_350",
+              "product_name": "Monster Energy Can 350ml",
+              "catalog_commodity": "energy_drink",
+              "allowed_commodities": [
+                "energy_drink"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "MONSTER_ULTRA_350",
+              "product_name": "Monster Ultra Can 350ml",
+              "catalog_commodity": "energy_drink",
+              "allowed_commodities": [
+                "energy_drink"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "REDBULL_SUGARFREE_250",
+              "product_name": "Red Bull Sugarfree 250ml",
+              "catalog_commodity": "energy_drink",
+              "allowed_commodities": [
+                "energy_drink"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "PAPER_BOAT_COCONUT_200",
+              "product_name": "Paper boat coconut 200ml",
+              "catalog_commodity": "fruit_beverage",
+              "allowed_commodities": [
+                "energy_drink"
+              ],
+              "status": "fail"
+            },
+            {
+              "product_id": "POWERHORSE_250",
+              "product_name": "Power Horse 250ml",
+              "catalog_commodity": "energy_drink",
+              "allowed_commodities": [
+                "energy_drink"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "STING_250",
+              "product_name": "Sting Energy 250ml",
+              "catalog_commodity": "energy_drink",
+              "allowed_commodities": [
+                "energy_drink"
+              ],
+              "status": "pass"
+            }
+          ],
+          "failure_count": 2,
+          "unknown_count": 0
+        },
+        "capacity": {
+          "status": "unknown",
+          "capacity": null,
+          "occupied_slots": 8,
+          "remaining_slots": null
+        },
+        "price_group": {
+          "status": "review",
+          "hard": false,
+          "rule": {
+            "type": "preferred_group",
+            "hard": false,
+            "allow_approved_price_exceptions": true,
+            "violation_action": "review_only"
+          },
+          "details": [
+            {
+              "product_id": "AMUL_KOOL_CAFE_180",
+              "product_name": "Amul Kool Cafe 180ml",
+              "catalog_price": 20.0,
+              "status": "unknown"
+            },
+            {
+              "product_id": "THUMSUP_XFORCE_300",
+              "product_name": "Thums up xforce 300ml",
+              "catalog_price": 40.0,
+              "status": "unknown"
+            },
+            {
+              "product_id": "MONSTER_CAN_350",
+              "product_name": "Monster Energy Can 350ml",
+              "catalog_price": 125.0,
+              "status": "unknown"
+            },
+            {
+              "product_id": "MONSTER_ULTRA_350",
+              "product_name": "Monster Ultra Can 350ml",
+              "catalog_price": 125.0,
+              "status": "unknown"
+            },
+            {
+              "product_id": "REDBULL_SUGARFREE_250",
+              "product_name": "Red Bull Sugarfree 250ml",
+              "catalog_price": 125.0,
+              "status": "unknown"
+            },
+            {
+              "product_id": "PAPER_BOAT_COCONUT_200",
+              "product_name": "Paper boat coconut 200ml",
+              "catalog_price": 50.0,
+              "status": "unknown"
+            },
+            {
+              "product_id": "POWERHORSE_250",
+              "product_name": "Power Horse 250ml",
+              "catalog_price": 110.0,
+              "status": "unknown"
+            },
+            {
+              "product_id": "STING_250",
+              "product_name": "Sting Energy 250ml",
+              "catalog_price": 20.0,
+              "status": "unknown"
+            }
+          ],
+          "preferred_count": 0,
+          "exception_count": 0
+        },
+        "colour_sequence": {
+          "status": "data_limitation",
+          "reason": "catalog_colour_granularity_insufficient",
+          "configured_sequence": [
+            "black",
+            "red",
+            "silver",
+            "blue",
+            "red"
+          ],
+          "hard": false,
+          "available_catalog_colours": [
+            "dark",
+            "light"
+          ],
+          "details": [
+            {
+              "product_id": "AMUL_KOOL_CAFE_180",
+              "product_name": "Amul Kool Cafe 180ml",
+              "slot_start": 1,
+              "colour": "dark",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "THUMSUP_XFORCE_300",
+              "product_name": "Thums up xforce 300ml",
+              "slot_start": 2,
+              "colour": "dark",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "MONSTER_CAN_350",
+              "product_name": "Monster Energy Can 350ml",
+              "slot_start": 3,
+              "colour": "dark",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "MONSTER_ULTRA_350",
+              "product_name": "Monster Ultra Can 350ml",
+              "slot_start": 4,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "REDBULL_SUGARFREE_250",
+              "product_name": "Red Bull Sugarfree 250ml",
+              "slot_start": 5,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "PAPER_BOAT_COCONUT_200",
+              "product_name": "Paper boat coconut 200ml",
+              "slot_start": 6,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "POWERHORSE_250",
+              "product_name": "Power Horse 250ml",
+              "slot_start": 7,
+              "colour": "dark",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "STING_250",
+              "product_name": "Sting Energy 250ml",
+              "slot_start": 8,
+              "colour": "dark",
+              "sequence_rank": null
+            }
+          ]
+        },
+        "package_placement": {
+          "status": "not_applicable",
+          "details": []
+        },
+        "grouping": {
+          "status": "not_applicable",
+          "details": []
+        },
+        "facings": {
+          "status": "pass",
+          "details": [
+            {
+              "product_id": "AMUL_KOOL_CAFE_180",
+              "product_name": "Amul Kool Cafe 180ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "THUMSUP_XFORCE_300",
+              "product_name": "Thums up xforce 300ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "MONSTER_CAN_350",
+              "product_name": "Monster Energy Can 350ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "MONSTER_ULTRA_350",
+              "product_name": "Monster Ultra Can 350ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "REDBULL_SUGARFREE_250",
+              "product_name": "Red Bull Sugarfree 250ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "PAPER_BOAT_COCONUT_200",
+              "product_name": "Paper boat coconut 200ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "POWERHORSE_250",
+              "product_name": "Power Horse 250ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "STING_250",
+              "product_name": "Sting Energy 250ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            }
+          ],
+          "excess_facing_count": 0,
+          "insufficient_facing_count": 0,
+          "unknown_fast_moving_count": 8
+        },
+        "preferred_order": {
+          "status": "pass",
+          "score": 1.0,
+          "inversion_count": 0,
+          "comparisons": 15
+        },
+        "missing_products": {
+          "missing_count": 2,
+          "potential_excess_facing_conflicts": 0,
+          "details": [
+            {
+              "product_id": "CAMPA_ENERGY_gold_185",
+              "product_name": "Campa Energy Gold 185ml",
+              "expected_slot": 1,
+              "expected_facings": 1,
+              "destination_occupant": "AMUL_KOOL_CAFE_180",
+              "destination_occupant_name": "Amul Kool Cafe 180ml",
+              "occupant_actual_facings": 1,
+              "occupant_expected_facings": null,
+              "potential_excess_facing": false,
+              "occupant_fast_moving_status": "unknown",
+              "diagnosis": "expected_product_missing_destination_occupied"
+            },
+            {
+              "product_id": "REDBULL_250",
+              "product_name": "Red Bull Energy Drink 250ml",
+              "expected_slot": 6,
+              "expected_facings": 1,
+              "destination_occupant": "PAPER_BOAT_COCONUT_200",
+              "destination_occupant_name": "Paper boat coconut 200ml",
+              "occupant_actual_facings": 1,
+              "occupant_expected_facings": null,
+              "potential_excess_facing": false,
+              "occupant_fast_moving_status": "unknown",
+              "diagnosis": "expected_product_missing_destination_occupied"
+            }
+          ]
+        },
+        "root_cause_candidates": [],
+        "actual_product_count": 8,
+        "actual_physical_facings": 8,
+        "preferred_product_count": 9,
+        "out_of_stock_products": [],
+        "oos_product_count": 0
+      },
+      {
+        "shelf_number": 3,
+        "shelf_name": "Soft Drinks",
+        "status": "needs_action",
+        "diagnostic_score": 0.6,
+        "hard_failures": [
+          "category"
+        ],
+        "soft_deviations": [
+          "preferred_price_group",
+          "facings",
+          "preferred_order",
+          "missing_expected_products"
+        ],
+        "reviews_required": [],
+        "category": {
+          "status": "fail",
+          "allowed_commodities": [
+            "soft_drink"
+          ],
+          "details": [
+            {
+              "product_id": "BINDU_FIZZ_250",
+              "product_name": "Bindu Fizz Jeera Masala 250ml",
+              "catalog_commodity": "soft_drink",
+              "allowed_commodities": [
+                "soft_drink"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "RASKIK_MANGO_150",
+              "product_name": "Raskik 150ml mango",
+              "catalog_commodity": "fruit_beverage",
+              "allowed_commodities": [
+                "soft_drink"
+              ],
+              "status": "fail"
+            },
+            {
+              "product_id": "COCACOLA_250",
+              "product_name": "Coca-Cola 250ml",
+              "catalog_commodity": "soft_drink",
+              "allowed_commodities": [
+                "soft_drink"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "SPRITE_250",
+              "product_name": "Sprite 250ml",
+              "catalog_commodity": "soft_drink",
+              "allowed_commodities": [
+                "soft_drink"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+              "product_name": "Nandini GoodLife Strawberry Flavoured Milk 200ml",
+              "catalog_commodity": "milk_beverage",
+              "allowed_commodities": [
+                "soft_drink"
+              ],
+              "status": "fail"
+            },
+            {
+              "product_id": "FANTA_250",
+              "product_name": "Fanta Orange 250ml",
+              "catalog_commodity": "soft_drink",
+              "allowed_commodities": [
+                "soft_drink"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "COCACOLA_250",
+              "product_name": "Coca-Cola 250ml",
+              "catalog_commodity": "soft_drink",
+              "allowed_commodities": [
+                "soft_drink"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "COCACOLA_ZERO_300",
+              "product_name": "Coca-Cola Coke, 330ml Can",
+              "catalog_commodity": "soft_drink",
+              "allowed_commodities": [
+                "soft_drink"
+              ],
+              "status": "pass"
+            }
+          ],
+          "failure_count": 2,
+          "unknown_count": 0
+        },
+        "capacity": {
+          "status": "unknown",
+          "capacity": null,
+          "occupied_slots": 8,
+          "remaining_slots": null
+        },
+        "price_group": {
+          "status": "pass_with_preferred_exceptions",
+          "hard": false,
+          "rule": {
+            "type": "preferred_group",
+            "value": 20,
+            "label": "₹20 pack",
+            "hard": false,
+            "allow_approved_price_exceptions": true,
+            "violation_action": "review_only"
+          },
+          "details": [
+            {
+              "product_id": "BINDU_FIZZ_250",
+              "product_name": "Bindu Fizz Jeera Masala 250ml",
+              "catalog_price": 20.0,
+              "status": "preferred"
+            },
+            {
+              "product_id": "RASKIK_MANGO_150",
+              "product_name": "Raskik 150ml mango",
+              "catalog_price": 10.0,
+              "status": "exception"
+            },
+            {
+              "product_id": "COCACOLA_250",
+              "product_name": "Coca-Cola 250ml",
+              "catalog_price": 20.0,
+              "status": "preferred"
+            },
+            {
+              "product_id": "SPRITE_250",
+              "product_name": "Sprite 250ml",
+              "catalog_price": 20.0,
+              "status": "preferred"
+            },
+            {
+              "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+              "product_name": "Nandini GoodLife Strawberry Flavoured Milk 200ml",
+              "catalog_price": 25.0,
+              "status": "exception"
+            },
+            {
+              "product_id": "FANTA_250",
+              "product_name": "Fanta Orange 250ml",
+              "catalog_price": 20.0,
+              "status": "preferred"
+            },
+            {
+              "product_id": "COCACOLA_250",
+              "product_name": "Coca-Cola 250ml",
+              "catalog_price": 20.0,
+              "status": "preferred"
+            },
+            {
+              "product_id": "COCACOLA_ZERO_300",
+              "product_name": "Coca-Cola Coke, 330ml Can",
+              "catalog_price": 40.0,
+              "status": "exception"
+            }
+          ],
+          "preferred_count": 5,
+          "exception_count": 3
+        },
+        "colour_sequence": {
+          "status": "data_limitation",
+          "reason": "catalog_colour_granularity_insufficient",
+          "configured_sequence": [
+            "black",
+            "orange",
+            "green",
+            "white"
+          ],
+          "hard": false,
+          "available_catalog_colours": [
+            "dark",
+            "light"
+          ],
+          "details": [
+            {
+              "product_id": "BINDU_FIZZ_250",
+              "product_name": "Bindu Fizz Jeera Masala 250ml",
+              "slot_start": 1,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "RASKIK_MANGO_150",
+              "product_name": "Raskik 150ml mango",
+              "slot_start": 2,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "COCACOLA_250",
+              "product_name": "Coca-Cola 250ml",
+              "slot_start": 3,
+              "colour": "dark",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "SPRITE_250",
+              "product_name": "Sprite 250ml",
+              "slot_start": 4,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+              "product_name": "Nandini GoodLife Strawberry Flavoured Milk 200ml",
+              "slot_start": 5,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "FANTA_250",
+              "product_name": "Fanta Orange 250ml",
+              "slot_start": 6,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "COCACOLA_250",
+              "product_name": "Coca-Cola 250ml",
+              "slot_start": 7,
+              "colour": "dark",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "COCACOLA_ZERO_300",
+              "product_name": "Coca-Cola Coke, 330ml Can",
+              "slot_start": 8,
+              "colour": "dark",
+              "sequence_rank": null
+            }
+          ]
+        },
+        "package_placement": {
+          "status": "not_applicable",
+          "details": []
+        },
+        "grouping": {
+          "status": "not_applicable",
+          "details": []
+        },
+        "facings": {
+          "status": "fail",
+          "details": [
+            {
+              "product_id": "BINDU_FIZZ_250",
+              "product_name": "Bindu Fizz Jeera Masala 250ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "RASKIK_MANGO_150",
+              "product_name": "Raskik 150ml mango",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "COCACOLA_250",
+              "product_name": "Coca-Cola 250ml",
+              "expected_facings": 2,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "insufficient_facing"
+            },
+            {
+              "product_id": "SPRITE_250",
+              "product_name": "Sprite 250ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+              "product_name": "Nandini GoodLife Strawberry Flavoured Milk 200ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "FANTA_250",
+              "product_name": "Fanta Orange 250ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "COCACOLA_250",
+              "product_name": "Coca-Cola 250ml",
+              "expected_facings": 2,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "insufficient_facing"
+            },
+            {
+              "product_id": "COCACOLA_ZERO_300",
+              "product_name": "Coca-Cola Coke, 330ml Can",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            }
+          ],
+          "excess_facing_count": 0,
+          "insufficient_facing_count": 2,
+          "unknown_fast_moving_count": 8
+        },
+        "preferred_order": {
+          "status": "soft_deviation",
+          "score": 0.7,
+          "inversion_count": 3,
+          "comparisons": 10
+        },
+        "missing_products": {
+          "missing_count": 2,
+          "potential_excess_facing_conflicts": 0,
+          "details": [
+            {
+              "product_id": "THUMSUP_250",
+              "product_name": "Thums Up 250ml",
+              "expected_slot": 2,
+              "expected_facings": 1,
+              "destination_occupant": "RASKIK_MANGO_150",
+              "destination_occupant_name": "Raskik 150ml mango",
+              "occupant_actual_facings": 1,
+              "occupant_expected_facings": null,
+              "potential_excess_facing": false,
+              "occupant_fast_moving_status": "unknown",
+              "diagnosis": "expected_product_missing_destination_occupied"
+            },
+            {
+              "product_id": "APPY_FIZZ_250",
+              "product_name": "Appy Fizz 250ml",
+              "expected_slot": 5,
+              "expected_facings": 1,
+              "destination_occupant": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+              "destination_occupant_name": "Nandini GoodLife Strawberry Flavoured Milk 200ml",
+              "occupant_actual_facings": 1,
+              "occupant_expected_facings": null,
+              "potential_excess_facing": false,
+              "occupant_fast_moving_status": "unknown",
+              "diagnosis": "expected_product_missing_destination_occupied"
+            }
+          ]
+        },
+        "root_cause_candidates": [],
+        "actual_product_count": 8,
+        "actual_physical_facings": 8,
+        "preferred_product_count": 8,
+        "out_of_stock_products": [],
+        "oos_product_count": 0
+      },
+      {
+        "shelf_number": 4,
+        "shelf_name": "Milk Beverages",
+        "status": "needs_action",
+        "diagnostic_score": 0.6,
+        "hard_failures": [
+          "category"
+        ],
+        "soft_deviations": [
+          "preferred_price_group",
+          "facings",
+          "preferred_order",
+          "missing_expected_products"
+        ],
+        "reviews_required": [],
+        "category": {
+          "status": "fail",
+          "allowed_commodities": [
+            "milk_beverage"
+          ],
+          "details": [
+            {
+              "product_id": "AMUL_KOOL_CAFE_180",
+              "product_name": "Amul Kool Cafe 180ml",
+              "catalog_commodity": "milk_beverage",
+              "allowed_commodities": [
+                "milk_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "CAMPA_ENERGY_gold_185",
+              "product_name": "Campa Energy Gold 185ml",
+              "catalog_commodity": "energy_drink",
+              "allowed_commodities": [
+                "milk_beverage"
+              ],
+              "status": "fail"
+            },
+            {
+              "product_id": "NANDINI_MANGO_LASSI_180",
+              "product_name": "Nandini GoodLife Mango Lassi 180ml",
+              "catalog_commodity": "milk_beverage",
+              "allowed_commodities": [
+                "milk_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "MAX_PROTEIN_CHOCO_BURST_250",
+              "product_name": "RiteBite Max Protein Choco Burst 250ml",
+              "catalog_commodity": "milk_beverage",
+              "allowed_commodities": [
+                "milk_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "MAX_PROTEIN_BERRY_BLUSH_250",
+              "product_name": "RiteBite Max Protein Berry Blush 250ml",
+              "catalog_commodity": "milk_beverage",
+              "allowed_commodities": [
+                "milk_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "APPY_FIZZ_250",
+              "product_name": "Appy Fizz 250ml",
+              "catalog_commodity": "soft_drink",
+              "allowed_commodities": [
+                "milk_beverage"
+              ],
+              "status": "fail"
+            },
+            {
+              "product_id": "NANDINI_PISTA_FLAVOURED_MILK_180",
+              "product_name": "Nandini GoodLife Pista Flavoured Milk 180ml",
+              "catalog_commodity": "milk_beverage",
+              "allowed_commodities": [
+                "milk_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "AMUL_PREMIUM_BUTTERMILK_200",
+              "product_name": "Amul Premium Spiced Buttermilk 200ml",
+              "catalog_commodity": "milk_beverage",
+              "allowed_commodities": [
+                "milk_beverage"
+              ],
+              "status": "pass"
+            }
+          ],
+          "failure_count": 2,
+          "unknown_count": 0
+        },
+        "capacity": {
+          "status": "unknown",
+          "capacity": null,
+          "occupied_slots": 8,
+          "remaining_slots": null
+        },
+        "price_group": {
+          "status": "pass_with_preferred_exceptions",
+          "hard": false,
+          "rule": {
+            "type": "preferred_group",
+            "value": 20,
+            "label": "₹20 pack",
+            "hard": false,
+            "allow_approved_price_exceptions": true,
+            "violation_action": "review_only"
+          },
+          "details": [
+            {
+              "product_id": "AMUL_KOOL_CAFE_180",
+              "product_name": "Amul Kool Cafe 180ml",
+              "catalog_price": 20.0,
+              "status": "preferred"
+            },
+            {
+              "product_id": "CAMPA_ENERGY_gold_185",
+              "product_name": "Campa Energy Gold 185ml",
+              "catalog_price": 30.0,
+              "status": "exception"
+            },
+            {
+              "product_id": "NANDINI_MANGO_LASSI_180",
+              "product_name": "Nandini GoodLife Mango Lassi 180ml",
+              "catalog_price": 25.0,
+              "status": "exception"
+            },
+            {
+              "product_id": "MAX_PROTEIN_CHOCO_BURST_250",
+              "product_name": "RiteBite Max Protein Choco Burst 250ml",
+              "catalog_price": 120.0,
+              "status": "exception"
+            },
+            {
+              "product_id": "MAX_PROTEIN_BERRY_BLUSH_250",
+              "product_name": "RiteBite Max Protein Berry Blush 250ml",
+              "catalog_price": 120.0,
+              "status": "exception"
+            },
+            {
+              "product_id": "APPY_FIZZ_250",
+              "product_name": "Appy Fizz 250ml",
+              "catalog_price": 20.0,
+              "status": "preferred"
+            },
+            {
+              "product_id": "NANDINI_PISTA_FLAVOURED_MILK_180",
+              "product_name": "Nandini GoodLife Pista Flavoured Milk 180ml",
+              "catalog_price": 25.0,
+              "status": "exception"
+            },
+            {
+              "product_id": "AMUL_PREMIUM_BUTTERMILK_200",
+              "product_name": "Amul Premium Spiced Buttermilk 200ml",
+              "catalog_price": 10.0,
+              "status": "exception"
+            }
+          ],
+          "preferred_count": 2,
+          "exception_count": 6
+        },
+        "colour_sequence": {
+          "status": "data_limitation",
+          "reason": "catalog_colour_granularity_insufficient",
+          "configured_sequence": [
+            "brown",
+            "pink",
+            "yellow",
+            "green",
+            "light_blue"
+          ],
+          "hard": false,
+          "available_catalog_colours": [
+            "dark",
+            "light"
+          ],
+          "details": [
+            {
+              "product_id": "AMUL_KOOL_CAFE_180",
+              "product_name": "Amul Kool Cafe 180ml",
+              "slot_start": 1,
+              "colour": "dark",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "CAMPA_ENERGY_gold_185",
+              "product_name": "Campa Energy Gold 185ml",
+              "slot_start": 2,
+              "colour": "dark",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "NANDINI_MANGO_LASSI_180",
+              "product_name": "Nandini GoodLife Mango Lassi 180ml",
+              "slot_start": 3,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "MAX_PROTEIN_CHOCO_BURST_250",
+              "product_name": "RiteBite Max Protein Choco Burst 250ml",
+              "slot_start": 4,
+              "colour": "dark",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "MAX_PROTEIN_BERRY_BLUSH_250",
+              "product_name": "RiteBite Max Protein Berry Blush 250ml",
+              "slot_start": 5,
+              "colour": "dark",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "APPY_FIZZ_250",
+              "product_name": "Appy Fizz 250ml",
+              "slot_start": 6,
+              "colour": "dark",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "NANDINI_PISTA_FLAVOURED_MILK_180",
+              "product_name": "Nandini GoodLife Pista Flavoured Milk 180ml",
+              "slot_start": 7,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "AMUL_PREMIUM_BUTTERMILK_200",
+              "product_name": "Amul Premium Spiced Buttermilk 200ml",
+              "slot_start": 8,
+              "colour": "light",
+              "sequence_rank": null
+            }
+          ]
+        },
+        "package_placement": {
+          "status": "not_applicable",
+          "details": []
+        },
+        "grouping": {
+          "status": "not_applicable",
+          "details": []
+        },
+        "facings": {
+          "status": "fail",
+          "details": [
+            {
+              "product_id": "AMUL_KOOL_CAFE_180",
+              "product_name": "Amul Kool Cafe 180ml",
+              "expected_facings": 2,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "insufficient_facing"
+            },
+            {
+              "product_id": "CAMPA_ENERGY_gold_185",
+              "product_name": "Campa Energy Gold 185ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "NANDINI_MANGO_LASSI_180",
+              "product_name": "Nandini GoodLife Mango Lassi 180ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "MAX_PROTEIN_CHOCO_BURST_250",
+              "product_name": "RiteBite Max Protein Choco Burst 250ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "MAX_PROTEIN_BERRY_BLUSH_250",
+              "product_name": "RiteBite Max Protein Berry Blush 250ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "APPY_FIZZ_250",
+              "product_name": "Appy Fizz 250ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "NANDINI_PISTA_FLAVOURED_MILK_180",
+              "product_name": "Nandini GoodLife Pista Flavoured Milk 180ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "AMUL_PREMIUM_BUTTERMILK_200",
+              "product_name": "Amul Premium Spiced Buttermilk 200ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            }
+          ],
+          "excess_facing_count": 0,
+          "insufficient_facing_count": 1,
+          "unknown_fast_moving_count": 8
+        },
+        "preferred_order": {
+          "status": "soft_deviation",
+          "score": 0.867,
+          "inversion_count": 2,
+          "comparisons": 15
+        },
+        "missing_products": {
+          "missing_count": 1,
+          "potential_excess_facing_conflicts": 0,
+          "details": [
+            {
+              "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+              "product_name": "Nandini GoodLife Strawberry Flavoured Milk 200ml",
+              "expected_slot": 6,
+              "expected_facings": 1,
+              "destination_occupant": "APPY_FIZZ_250",
+              "destination_occupant_name": "Appy Fizz 250ml",
+              "occupant_actual_facings": 1,
+              "occupant_expected_facings": null,
+              "potential_excess_facing": false,
+              "occupant_fast_moving_status": "unknown",
+              "diagnosis": "expected_product_missing_destination_occupied"
+            }
+          ]
+        },
+        "root_cause_candidates": [],
+        "actual_product_count": 8,
+        "actual_physical_facings": 8,
+        "preferred_product_count": 9,
+        "out_of_stock_products": [],
+        "oos_product_count": 0
+      },
+      {
+        "shelf_number": 5,
+        "shelf_name": "Soft Drinks (small bottles)",
+        "status": "review",
+        "diagnostic_score": 0.87,
+        "hard_failures": [],
+        "soft_deviations": [
+          "preferred_price_group",
+          "missing_expected_products"
+        ],
+        "reviews_required": [
+          "missing_destination_root_cause_review"
+        ],
+        "category": {
+          "status": "pass",
+          "allowed_commodities": [
+            "soft_drink",
+            "fruit_beverage"
+          ],
+          "details": [
+            {
+              "product_id": "CAMPA_COLA_250",
+              "product_name": "Campa Cola 250ml",
+              "catalog_commodity": "soft_drink",
+              "allowed_commodities": [
+                "soft_drink",
+                "fruit_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "CAMPA_ENERGY_BERRY_250",
+              "product_name": "Campa Energy Berry Kick 250ml",
+              "catalog_commodity": "soft_drink",
+              "allowed_commodities": [
+                "soft_drink",
+                "fruit_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "POP_ORANGE_250",
+              "product_name": "Bisleri Pop Orange 250ml",
+              "catalog_commodity": "fruit_beverage",
+              "allowed_commodities": [
+                "soft_drink",
+                "fruit_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "RASKIK_MANGO_150",
+              "product_name": "Raskik 150ml mango",
+              "catalog_commodity": "fruit_beverage",
+              "allowed_commodities": [
+                "soft_drink",
+                "fruit_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "RASKIK_NIMBU_PANI_160",
+              "product_name": "Raskik Nimbu Pani 160ml",
+              "catalog_commodity": "fruit_beverage",
+              "allowed_commodities": [
+                "soft_drink",
+                "fruit_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "LIMONATA_160",
+              "product_name": "Bisleri Limonata 160ml",
+              "catalog_commodity": "fruit_beverage",
+              "allowed_commodities": [
+                "soft_drink",
+                "fruit_beverage"
+              ],
+              "status": "pass"
+            }
+          ],
+          "failure_count": 0,
+          "unknown_count": 0
+        },
+        "capacity": {
+          "status": "unknown",
+          "capacity": null,
+          "occupied_slots": 8,
+          "remaining_slots": null
+        },
+        "price_group": {
+          "status": "pass_with_preferred_exceptions",
+          "hard": false,
+          "rule": {
+            "type": "preferred_group",
+            "value": 10,
+            "label": "₹10 pack",
+            "hard": false,
+            "allow_approved_price_exceptions": true,
+            "violation_action": "review_only"
+          },
+          "details": [
+            {
+              "product_id": "CAMPA_COLA_250",
+              "product_name": "Campa Cola 250ml",
+              "catalog_price": 20.0,
+              "status": "exception"
+            },
+            {
+              "product_id": "CAMPA_ENERGY_BERRY_250",
+              "product_name": "Campa Energy Berry Kick 250ml",
+              "catalog_price": 10.0,
+              "status": "preferred"
+            },
+            {
+              "product_id": "POP_ORANGE_250",
+              "product_name": "Bisleri Pop Orange 250ml",
+              "catalog_price": 10.0,
+              "status": "preferred"
+            },
+            {
+              "product_id": "RASKIK_MANGO_150",
+              "product_name": "Raskik 150ml mango",
+              "catalog_price": 10.0,
+              "status": "preferred"
+            },
+            {
+              "product_id": "RASKIK_NIMBU_PANI_160",
+              "product_name": "Raskik Nimbu Pani 160ml",
+              "catalog_price": 10.0,
+              "status": "preferred"
+            },
+            {
+              "product_id": "LIMONATA_160",
+              "product_name": "Bisleri Limonata 160ml",
+              "catalog_price": 10.0,
+              "status": "preferred"
+            }
+          ],
+          "preferred_count": 5,
+          "exception_count": 1
+        },
+        "colour_sequence": {
+          "status": "data_limitation",
+          "reason": "catalog_colour_granularity_insufficient",
+          "configured_sequence": [
+            "black",
+            "orange",
+            "yellow",
+            "white",
+            "green"
+          ],
+          "hard": false,
+          "available_catalog_colours": [
+            "dark",
+            "light"
+          ],
+          "details": [
+            {
+              "product_id": "CAMPA_COLA_250",
+              "product_name": "Campa Cola 250ml",
+              "slot_start": 1,
+              "colour": "dark",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "CAMPA_ENERGY_BERRY_250",
+              "product_name": "Campa Energy Berry Kick 250ml",
+              "slot_start": 2,
+              "colour": "dark",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "POP_ORANGE_250",
+              "product_name": "Bisleri Pop Orange 250ml",
+              "slot_start": 3,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "RASKIK_MANGO_150",
+              "product_name": "Raskik 150ml mango",
+              "slot_start": 4,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "RASKIK_NIMBU_PANI_160",
+              "product_name": "Raskik Nimbu Pani 160ml",
+              "slot_start": 6,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "LIMONATA_160",
+              "product_name": "Bisleri Limonata 160ml",
+              "slot_start": 7,
+              "colour": "light",
+              "sequence_rank": null
+            }
+          ]
+        },
+        "package_placement": {
+          "status": "not_applicable",
+          "details": []
+        },
+        "grouping": {
+          "status": "not_applicable",
+          "details": []
+        },
+        "facings": {
+          "status": "review",
+          "details": [
+            {
+              "product_id": "CAMPA_COLA_250",
+              "product_name": "Campa Cola 250ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "CAMPA_ENERGY_BERRY_250",
+              "product_name": "Campa Energy Berry Kick 250ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "POP_ORANGE_250",
+              "product_name": "Bisleri Pop Orange 250ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "RASKIK_MANGO_150",
+              "product_name": "Raskik 150ml mango",
+              "expected_facings": 1,
+              "actual_facings": 2,
+              "fast_moving_status": "unknown",
+              "status": "review"
+            },
+            {
+              "product_id": "RASKIK_NIMBU_PANI_160",
+              "product_name": "Raskik Nimbu Pani 160ml",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "LIMONATA_160",
+              "product_name": "Bisleri Limonata 160ml",
+              "expected_facings": 2,
+              "actual_facings": 2,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            }
+          ],
+          "excess_facing_count": 0,
+          "insufficient_facing_count": 0,
+          "unknown_fast_moving_count": 6
+        },
+        "preferred_order": {
+          "status": "pass",
+          "score": 1.0,
+          "inversion_count": 0,
+          "comparisons": 15
+        },
+        "missing_products": {
+          "missing_count": 2,
+          "potential_excess_facing_conflicts": 1,
+          "details": [
+            {
+              "product_id": "DAILEE_MANGO_180",
+              "product_name": "Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle",
+              "expected_slot": 4,
+              "expected_facings": 1,
+              "destination_occupant": "RASKIK_MANGO_150",
+              "destination_occupant_name": "Raskik 150ml mango",
+              "occupant_actual_facings": 2,
+              "occupant_expected_facings": 1,
+              "potential_excess_facing": true,
+              "occupant_fast_moving_status": "unknown",
+              "diagnosis": "potential_excess_facing_blocks_preferred_position"
+            },
+            {
+              "product_id": "SWING_MIXED_FRUIT_200",
+              "product_name": "Paper Boat Swing Mixed Fruit Medley 200ml",
+              "expected_slot": 9,
+              "expected_facings": 1,
+              "destination_occupant": null,
+              "destination_occupant_name": null,
+              "occupant_actual_facings": null,
+              "occupant_expected_facings": null,
+              "potential_excess_facing": false,
+              "occupant_fast_moving_status": "unknown",
+              "diagnosis": "expected_product_missing_destination_empty_or_unknown"
+            }
+          ]
+        },
+        "root_cause_candidates": [
+          {
+            "type": "potential_excess_facing_conflict",
+            "product_id": "RASKIK_MANGO_150",
+            "product_name": "Raskik 150ml mango",
+            "actual_facings": 2,
+            "expected_facings": 1,
+            "fast_moving_status": "unknown",
+            "confidence": "medium",
+            "reason": "potential_excess_facing_blocks_preferred_position"
+          }
+        ],
+        "actual_product_count": 6,
+        "actual_physical_facings": 8,
+        "preferred_product_count": 9,
+        "out_of_stock_products": [],
+        "oos_product_count": 0
+      },
+      {
+        "shelf_number": 6,
+        "shelf_name": "Large Bottles (750 ml+ / 1 L)",
+        "status": "soft_deviation",
+        "diagnostic_score": 0.9,
+        "hard_failures": [],
+        "soft_deviations": [
+          "preferred_price_group",
+          "preferred_order"
+        ],
+        "reviews_required": [],
+        "category": {
+          "status": "pass",
+          "allowed_commodities": [
+            "soft_drink",
+            "water",
+            "fruit_beverage"
+          ],
+          "details": [
+            {
+              "product_id": "BISLERI_WATER_1000",
+              "product_name": "Bisleri Mineral Water, 1L Bottle",
+              "catalog_commodity": "water",
+              "allowed_commodities": [
+                "soft_drink",
+                "water",
+                "fruit_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "SLICE_MANGO_1250",
+              "product_name": "Slice Mango Drink, 1.2L Bottle",
+              "catalog_commodity": "fruit_beverage",
+              "allowed_commodities": [
+                "soft_drink",
+                "water",
+                "fruit_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "COCACOLA_1250",
+              "product_name": "Coca-Cola Soft Drink 1.25L",
+              "catalog_commodity": "soft_drink",
+              "allowed_commodities": [
+                "soft_drink",
+                "water",
+                "fruit_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "MOUNTAINDEW_1250",
+              "product_name": "Mountain Dew 1.25L",
+              "catalog_commodity": "soft_drink",
+              "allowed_commodities": [
+                "soft_drink",
+                "water",
+                "fruit_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "SEVENUP_1250",
+              "product_name": "7Up Soft Drink 1.25L",
+              "catalog_commodity": "soft_drink",
+              "allowed_commodities": [
+                "soft_drink",
+                "water",
+                "fruit_beverage"
+              ],
+              "status": "pass"
+            },
+            {
+              "product_id": "PEPSI_1250",
+              "product_name": "Pepsi 1.25L",
+              "catalog_commodity": "soft_drink",
+              "allowed_commodities": [
+                "soft_drink",
+                "water",
+                "fruit_beverage"
+              ],
+              "status": "pass"
+            }
+          ],
+          "failure_count": 0,
+          "unknown_count": 0
+        },
+        "capacity": {
+          "status": "unknown",
+          "capacity": null,
+          "occupied_slots": 6,
+          "remaining_slots": null
+        },
+        "price_group": {
+          "status": "review",
+          "hard": false,
+          "rule": {
+            "type": "preferred_group",
+            "minimum_pack_size_ml": 750,
+            "hard": false,
+            "allow_approved_price_exceptions": true,
+            "violation_action": "review_only"
+          },
+          "details": [
+            {
+              "product_id": "BISLERI_WATER_1000",
+              "product_name": "Bisleri Mineral Water, 1L Bottle",
+              "catalog_price": 20.0,
+              "status": "unknown"
+            },
+            {
+              "product_id": "SLICE_MANGO_1250",
+              "product_name": "Slice Mango Drink, 1.2L Bottle",
+              "catalog_price": 70.0,
+              "status": "unknown"
+            },
+            {
+              "product_id": "COCACOLA_1250",
+              "product_name": "Coca-Cola Soft Drink 1.25L",
+              "catalog_price": NaN,
+              "status": "unknown"
+            },
+            {
+              "product_id": "MOUNTAINDEW_1250",
+              "product_name": "Mountain Dew 1.25L",
+              "catalog_price": 60.0,
+              "status": "unknown"
+            },
+            {
+              "product_id": "SEVENUP_1250",
+              "product_name": "7Up Soft Drink 1.25L",
+              "catalog_price": NaN,
+              "status": "unknown"
+            },
+            {
+              "product_id": "PEPSI_1250",
+              "product_name": "Pepsi 1.25L",
+              "catalog_price": NaN,
+              "status": "unknown"
+            }
+          ],
+          "preferred_count": 0,
+          "exception_count": 0
+        },
+        "colour_sequence": {
+          "status": "data_limitation",
+          "reason": "catalog_colour_granularity_insufficient",
+          "configured_sequence": [
+            "black",
+            "green",
+            "white"
+          ],
+          "hard": false,
+          "available_catalog_colours": [
+            "dark",
+            "light"
+          ],
+          "details": [
+            {
+              "product_id": "BISLERI_WATER_1000",
+              "product_name": "Bisleri Mineral Water, 1L Bottle",
+              "slot_start": 1,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "SLICE_MANGO_1250",
+              "product_name": "Slice Mango Drink, 1.2L Bottle",
+              "slot_start": 2,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "COCACOLA_1250",
+              "product_name": "Coca-Cola Soft Drink 1.25L",
+              "slot_start": 3,
+              "colour": "dark",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "MOUNTAINDEW_1250",
+              "product_name": "Mountain Dew 1.25L",
+              "slot_start": 4,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "SEVENUP_1250",
+              "product_name": "7Up Soft Drink 1.25L",
+              "slot_start": 5,
+              "colour": "light",
+              "sequence_rank": null
+            },
+            {
+              "product_id": "PEPSI_1250",
+              "product_name": "Pepsi 1.25L",
+              "slot_start": 6,
+              "colour": "dark",
+              "sequence_rank": null
+            }
+          ]
+        },
+        "package_placement": {
+          "status": "not_applicable",
+          "details": []
+        },
+        "grouping": {
+          "status": "not_applicable",
+          "details": []
+        },
+        "facings": {
+          "status": "pass",
+          "details": [
+            {
+              "product_id": "BISLERI_WATER_1000",
+              "product_name": "Bisleri Mineral Water, 1L Bottle",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "SLICE_MANGO_1250",
+              "product_name": "Slice Mango Drink, 1.2L Bottle",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "COCACOLA_1250",
+              "product_name": "Coca-Cola Soft Drink 1.25L",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "MOUNTAINDEW_1250",
+              "product_name": "Mountain Dew 1.25L",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "SEVENUP_1250",
+              "product_name": "7Up Soft Drink 1.25L",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            },
+            {
+              "product_id": "PEPSI_1250",
+              "product_name": "Pepsi 1.25L",
+              "expected_facings": 1,
+              "actual_facings": 1,
+              "fast_moving_status": "unknown",
+              "status": "pass"
+            }
+          ],
+          "excess_facing_count": 0,
+          "insufficient_facing_count": 0,
+          "unknown_fast_moving_count": 6
+        },
+        "preferred_order": {
+          "status": "soft_deviation",
+          "score": 0.2,
+          "inversion_count": 8,
+          "comparisons": 10
+        },
+        "missing_products": {
+          "missing_count": 0,
+          "potential_excess_facing_conflicts": 0,
+          "details": []
+        },
+        "root_cause_candidates": [],
+        "actual_product_count": 6,
+        "actual_physical_facings": 6,
+        "preferred_product_count": 6,
+        "out_of_stock_products": [],
+        "oos_product_count": 0
+      }
+    ],
+    "oos": {
+      "selected_product_ids": [],
+      "selected_count": 0,
+      "excluded_from_missing_check": true,
+      "excluded_from_correction": true,
+      "preferred_positions_preserved": true
+    },
+    "note": "This is a diagnostic layer. It intentionally does not emit final MOVE/ADD/REMOVE recommendations. The correction engine must compare candidate actions against all shelf constraints before recommending action."
+  },
+  "misplacements_data": {
+    "detector": "misplacement_detector_v2",
+    "detector_version": "2.0",
+    "rack": "BTM-CH01",
+    "sources": {
+      "analysis": "C:\\smart-planogram-planner\\data\\analyses\\analysis_actual_map_wrongshelf.json",
+      "actual": "C:\\smart-planogram-planner\\data\\actual_maps\\actual_map_wrongshelf.json",
+      "expected": "C:\\smart-planogram-planner\\data\\expected_map_BTM_CH01.json",
+      "rules": "C:\\smart-planogram-planner\\data\\merchandising_rules_v2.json"
+    },
+    "oos_products": [],
+    "summary": {
+      "shelves_analyzed": 6,
+      "misplaced_products": 8,
+      "oos_excluded": 0,
+      "classification_rule": "Only products whose actual shelf differs from their expected-map shelf are classified as MISPLACED."
+    },
+    "misplaced_products": [
+      {
+        "product_id": "BINDU_FIZZ_250",
+        "product_name": "BINDU_FIZZ_250",
+        "current_shelf": 1,
+        "current_slot": null,
+        "expected_shelf": 3,
+        "expected_slot": null,
+        "status": "MISPLACED",
+        "evidence": [
+          {
+            "type": "expected_map",
+            "reason": "Current shelf is 1; expected shelf is 3."
+          },
+          {
+            "type": "analyzer",
+            "reason": "Analyzer product-level category evidence."
+          }
+        ],
+        "correction_authorized": false,
+        "correction_note": "Detection only. A physical move must be validated by correction_engine_v2."
+      },
+      {
+        "product_id": "REDBULL_250",
+        "product_name": "REDBULL_250",
+        "current_shelf": 1,
+        "current_slot": null,
+        "expected_shelf": 2,
+        "expected_slot": null,
+        "status": "MISPLACED",
+        "evidence": [
+          {
+            "type": "expected_map",
+            "reason": "Current shelf is 1; expected shelf is 2."
+          },
+          {
+            "type": "analyzer",
+            "reason": "Analyzer product-level category evidence."
+          }
+        ],
+        "correction_authorized": false,
+        "correction_note": "Detection only. A physical move must be validated by correction_engine_v2."
+      },
+      {
+        "product_id": "AMUL_KOOL_CAFE_180",
+        "product_name": "AMUL_KOOL_CAFE_180",
+        "current_shelf": 2,
+        "current_slot": null,
+        "expected_shelf": 4,
+        "expected_slot": null,
+        "status": "MISPLACED",
+        "evidence": [
+          {
+            "type": "expected_map",
+            "reason": "Current shelf is 2; expected shelf is 4."
+          },
+          {
+            "type": "analyzer",
+            "reason": "Analyzer product-level category evidence."
+          }
+        ],
+        "correction_authorized": false,
+        "correction_note": "Detection only. A physical move must be validated by correction_engine_v2."
+      },
+      {
+        "product_id": "PAPER_BOAT_COCONUT_200",
+        "product_name": "PAPER_BOAT_COCONUT_200",
+        "current_shelf": 2,
+        "current_slot": null,
+        "expected_shelf": 1,
+        "expected_slot": null,
+        "status": "MISPLACED",
+        "evidence": [
+          {
+            "type": "expected_map",
+            "reason": "Current shelf is 2; expected shelf is 1."
+          },
+          {
+            "type": "analyzer",
+            "reason": "Analyzer product-level category evidence."
+          }
+        ],
+        "correction_authorized": false,
+        "correction_note": "Detection only. A physical move must be validated by correction_engine_v2."
+      },
+      {
+        "product_id": "RASKIK_MANGO_150",
+        "product_name": "RASKIK_MANGO_150",
+        "current_shelf": 3,
+        "current_slot": null,
+        "expected_shelf": 5,
+        "expected_slot": null,
+        "status": "MISPLACED",
+        "evidence": [
+          {
+            "type": "expected_map",
+            "reason": "Current shelf is 3; expected shelf is 5."
+          },
+          {
+            "type": "analyzer",
+            "reason": "Analyzer product-level category evidence."
+          }
+        ],
+        "correction_authorized": false,
+        "correction_note": "Detection only. A physical move must be validated by correction_engine_v2."
+      },
+      {
+        "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+        "product_name": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+        "current_shelf": 3,
+        "current_slot": null,
+        "expected_shelf": 4,
+        "expected_slot": null,
+        "status": "MISPLACED",
+        "evidence": [
+          {
+            "type": "expected_map",
+            "reason": "Current shelf is 3; expected shelf is 4."
+          },
+          {
+            "type": "analyzer",
+            "reason": "Analyzer product-level category evidence."
+          }
+        ],
+        "correction_authorized": false,
+        "correction_note": "Detection only. A physical move must be validated by correction_engine_v2."
+      },
+      {
+        "product_id": "CAMPA_ENERGY_gold_185",
+        "product_name": "CAMPA_ENERGY_gold_185",
+        "current_shelf": 4,
+        "current_slot": null,
+        "expected_shelf": 2,
+        "expected_slot": null,
+        "status": "MISPLACED",
+        "evidence": [
+          {
+            "type": "expected_map",
+            "reason": "Current shelf is 4; expected shelf is 2."
+          },
+          {
+            "type": "analyzer",
+            "reason": "Analyzer product-level category evidence."
+          }
+        ],
+        "correction_authorized": false,
+        "correction_note": "Detection only. A physical move must be validated by correction_engine_v2."
+      },
+      {
+        "product_id": "APPY_FIZZ_250",
+        "product_name": "APPY_FIZZ_250",
+        "current_shelf": 4,
+        "current_slot": null,
+        "expected_shelf": 3,
+        "expected_slot": null,
+        "status": "MISPLACED",
+        "evidence": [
+          {
+            "type": "expected_map",
+            "reason": "Current shelf is 4; expected shelf is 3."
+          },
+          {
+            "type": "analyzer",
+            "reason": "Analyzer product-level category evidence."
+          }
+        ],
+        "correction_authorized": false,
+        "correction_note": "Detection only. A physical move must be validated by correction_engine_v2."
+      }
+    ],
+    "safety_boundary": "This detector identifies product-level misplacement. It does not recommend or authorize a physical movement."
+  },
+  "corrections_data": {
+    "engine": "correction_engine_v2",
+    "engine_version": "2.2",
+    "rack": "BTM-CH01",
+    "sources": {
+      "misplacements": "C:\\smart-planogram-planner\\data\\analyses\\misplacements_v2_analysis_actual_map_wrongshelf.json",
+      "actual": "C:\\smart-planogram-planner\\data\\actual_maps\\actual_map_wrongshelf.json",
+      "expected": "C:\\smart-planogram-planner\\data\\expected_map_BTM_CH01.json",
+      "rules": "C:\\smart-planogram-planner\\data\\merchandising_rules_v2.json"
+    },
+    "summary": {
+      "misplacements_received": 8,
+      "candidates_generated": 8,
+      "feasible_candidates": 1,
+      "blocked_candidates": 7,
+      "correction_types": {
+        "REMOVE_EXTRA_OCCURRENCE": 1,
+        "REARRANGEMENT_REQUIRED": 7
+      }
+    },
+    "decision": "ACTION_RECOMMENDED",
+    "recommendation": "SAFE PHYSICAL CORRECTION",
+    "feasible_corrections": [
+      {
+        "type": "REMOVE_EXTRA_OCCURRENCE",
+        "status": "FEASIBLE",
+        "product_id": "BINDU_FIZZ_250",
+        "product_name": "BINDU_FIZZ_250",
+        "current_shelf": 1,
+        "current_slot_start": 2,
+        "current_slot_end": 2,
+        "correct_shelf": 3,
+        "correct_slot_start": 1,
+        "correct_slot_end": 1,
+        "action": "Remove extra BINDU_FIZZ_250 from Shelf 1 slot(s) 2-2. Keep the correct occurrence on Shelf 3 slot(s) 1-1.",
+        "evidence": [
+          "Product already exists at its expected shelf and slot.",
+          "A second occurrence exists outside the expected location."
+        ]
+      }
+    ],
+    "blocked_corrections": [
+      {
+        "type": "REARRANGEMENT_REQUIRED",
+        "status": "BLOCKED",
+        "product_id": "REDBULL_250",
+        "product_name": "REDBULL_250",
+        "current_shelf": 1,
+        "current_slot_start": 8,
+        "current_slot_end": 8,
+        "target_shelf": 2,
+        "target_slot_start": 6,
+        "target_slot_end": 6,
+        "blocked_reasons": [
+          "Expected destination slot is occupied by: PAPER_BOAT_COCONUT_200 (PAPER_BOAT_COCONUT_200).",
+          "A swap/rearrangement plan is required; the engine will not invent one."
+        ]
+      },
+      {
+        "type": "REARRANGEMENT_REQUIRED",
+        "status": "BLOCKED",
+        "product_id": "AMUL_KOOL_CAFE_180",
+        "product_name": "AMUL_KOOL_CAFE_180",
+        "current_shelf": 2,
+        "current_slot_start": 1,
+        "current_slot_end": 1,
+        "target_shelf": 4,
+        "target_slot_start": 1,
+        "target_slot_end": 2,
+        "blocked_reasons": [
+          "Expected destination slot is occupied by: CAMPA_ENERGY_gold_185 (CAMPA_ENERGY_gold_185).",
+          "A swap/rearrangement plan is required; the engine will not invent one."
+        ]
+      },
+      {
+        "type": "REARRANGEMENT_REQUIRED",
+        "status": "BLOCKED",
+        "product_id": "PAPER_BOAT_COCONUT_200",
+        "product_name": "PAPER_BOAT_COCONUT_200",
+        "current_shelf": 2,
+        "current_slot_start": 6,
+        "current_slot_end": 6,
+        "target_shelf": 1,
+        "target_slot_start": 8,
+        "target_slot_end": 8,
+        "blocked_reasons": [
+          "Expected destination slot is occupied by: REDBULL_250 (REDBULL_250).",
+          "A swap/rearrangement plan is required; the engine will not invent one."
+        ]
+      },
+      {
+        "type": "REARRANGEMENT_REQUIRED",
+        "status": "BLOCKED",
+        "product_id": "RASKIK_MANGO_150",
+        "product_name": "RASKIK_MANGO_150",
+        "current_shelf": 3,
+        "current_slot_start": 2,
+        "current_slot_end": 2,
+        "target_shelf": 1,
+        "target_slot_start": 2,
+        "target_slot_end": 2,
+        "blocked_reasons": [
+          "Expected destination slot is occupied by: BINDU_FIZZ_250 (BINDU_FIZZ_250).",
+          "A swap/rearrangement plan is required; the engine will not invent one."
+        ]
+      },
+      {
+        "type": "REARRANGEMENT_REQUIRED",
+        "status": "BLOCKED",
+        "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+        "product_name": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+        "current_shelf": 3,
+        "current_slot_start": 5,
+        "current_slot_end": 5,
+        "target_shelf": 4,
+        "target_slot_start": 6,
+        "target_slot_end": 6,
+        "blocked_reasons": [
+          "Expected destination slot is occupied by: APPY_FIZZ_250 (APPY_FIZZ_250).",
+          "A swap/rearrangement plan is required; the engine will not invent one."
+        ]
+      },
+      {
+        "type": "REARRANGEMENT_REQUIRED",
+        "status": "BLOCKED",
+        "product_id": "CAMPA_ENERGY_gold_185",
+        "product_name": "CAMPA_ENERGY_gold_185",
+        "current_shelf": 4,
+        "current_slot_start": 2,
+        "current_slot_end": 2,
+        "target_shelf": 2,
+        "target_slot_start": 1,
+        "target_slot_end": 1,
+        "blocked_reasons": [
+          "Expected destination slot is occupied by: AMUL_KOOL_CAFE_180 (AMUL_KOOL_CAFE_180).",
+          "A swap/rearrangement plan is required; the engine will not invent one."
+        ]
+      },
+      {
+        "type": "REARRANGEMENT_REQUIRED",
+        "status": "BLOCKED",
+        "product_id": "APPY_FIZZ_250",
+        "product_name": "APPY_FIZZ_250",
+        "current_shelf": 4,
+        "current_slot_start": 6,
+        "current_slot_end": 6,
+        "target_shelf": 3,
+        "target_slot_start": 5,
+        "target_slot_end": 5,
+        "blocked_reasons": [
+          "Expected destination slot is occupied by: NANDINI_STRAWBERRY_FLAVOURED_MILK_200 (NANDINI_STRAWBERRY_FLAVOURED_MILK_200).",
+          "A swap/rearrangement plan is required; the engine will not invent one."
+        ]
+      }
+    ],
+    "safety_boundary": "A product already present at its expected shelf/slot is treated as a correct occurrence; an additional occurrence elsewhere is classified as REMOVE_EXTRA_OCCURRENCE. Moves are allowed only when the verified expected slot is not occupied by another product. Occupied target slots are REARRANGEMENT_REQUIRED rather than automatically overwritten."
+  },
+  "occurrences_data": {
+    "engine": "occurrence_resolver",
+    "engine_version": "1.0",
+    "rack": "BTM-CH01",
+    "sources": {
+      "source": "C:\\smart-planogram-planner\\data\\analyses\\corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+      "actual": "C:\\smart-planogram-planner\\data\\actual_maps\\actual_map_wrongshelf.json",
+      "expected": "C:\\smart-planogram-planner\\data\\expected_map_BTM_CH01.json",
+      "rules": "C:\\smart-planogram-planner\\data\\merchandising_rules_v2.json"
+    },
+    "summary": {
+      "products_reconciled": 8,
+      "correct_occurrences": 1,
+      "extra_occurrence_cases": 1,
+      "misplaced_occurrences": 5,
+      "missing_expected_occurrences": 0,
+      "ambiguous_occurrences": 2,
+      "status_counts": {
+        "AMBIGUOUS": 2,
+        "MISPLACED_OCCURRENCE": 5,
+        "CORRECT_OCCURRENCE": 1
+      }
+    },
+    "resolutions": [
+      {
+        "product_id": "amul_kool_cafe_180",
+        "product_name": "AMUL_KOOL_CAFE_180",
+        "status": "AMBIGUOUS",
+        "reason": "Multiple actual occurrences exist and none matches the expected shelf and slot.",
+        "expected_occurrence": {
+          "shelf": 4,
+          "slot_start": 1,
+          "slot_end": 2,
+          "slots": [
+            1,
+            2
+          ],
+          "facings": 2
+        },
+        "misplaced_occurrences": [
+          {
+            "shelf": 2,
+            "slot_start": 1,
+            "slot_end": 1,
+            "slots": [
+              1
+            ],
+            "facings": 1
+          },
+          {
+            "shelf": 4,
+            "slot_start": 1,
+            "slot_end": 1,
+            "slots": [
+              1
+            ],
+            "facings": 1
+          }
+        ]
+      },
+      {
+        "product_id": "appy_fizz_250",
+        "product_name": "APPY_FIZZ_250",
+        "status": "MISPLACED_OCCURRENCE",
+        "reason": "Exactly one actual occurrence exists, but it is not at the expected shelf and slot.",
+        "expected_occurrence": {
+          "shelf": 3,
+          "slot_start": 5,
+          "slot_end": 5,
+          "slots": [
+            5
+          ],
+          "facings": 1
+        },
+        "misplaced_occurrence": {
+          "shelf": 4,
+          "slot_start": 6,
+          "slot_end": 6,
+          "slots": [
+            6
+          ],
+          "facings": 1
+        }
+      },
+      {
+        "product_id": "bindu_fizz_250",
+        "product_name": "BINDU_FIZZ_250",
+        "status": "CORRECT_OCCURRENCE",
+        "reason": "Exactly one actual occurrence matches the expected shelf and slot.",
+        "expected_occurrence": {
+          "shelf": 3,
+          "slot_start": 1,
+          "slot_end": 1,
+          "slots": [
+            1
+          ],
+          "facings": 1
+        },
+        "correct_occurrence": {
+          "shelf": 3,
+          "slot_start": 1,
+          "slot_end": 1,
+          "slots": [
+            1
+          ],
+          "facings": 1
+        },
+        "extra_occurrences": [
+          {
+            "shelf": 1,
+            "slot_start": 2,
+            "slot_end": 2,
+            "slots": [
+              2
+            ],
+            "facings": 1
+          }
+        ],
+        "secondary_status": "EXTRA_OCCURRENCE_PRESENT"
+      },
+      {
+        "product_id": "campa_energy_gold_185",
+        "product_name": "CAMPA_ENERGY_gold_185",
+        "status": "MISPLACED_OCCURRENCE",
+        "reason": "Exactly one actual occurrence exists, but it is not at the expected shelf and slot.",
+        "expected_occurrence": {
+          "shelf": 2,
+          "slot_start": 1,
+          "slot_end": 1,
+          "slots": [
+            1
+          ],
+          "facings": 1
+        },
+        "misplaced_occurrence": {
+          "shelf": 4,
+          "slot_start": 2,
+          "slot_end": 2,
+          "slots": [
+            2
+          ],
+          "facings": 1
+        }
+      },
+      {
+        "product_id": "nandini_strawberry_flavoured_milk_200",
+        "product_name": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+        "status": "MISPLACED_OCCURRENCE",
+        "reason": "Exactly one actual occurrence exists, but it is not at the expected shelf and slot.",
+        "expected_occurrence": {
+          "shelf": 4,
+          "slot_start": 6,
+          "slot_end": 6,
+          "slots": [
+            6
+          ],
+          "facings": 1
+        },
+        "misplaced_occurrence": {
+          "shelf": 3,
+          "slot_start": 5,
+          "slot_end": 5,
+          "slots": [
+            5
+          ],
+          "facings": 1
+        }
+      },
+      {
+        "product_id": "paper_boat_coconut_200",
+        "product_name": "PAPER_BOAT_COCONUT_200",
+        "status": "MISPLACED_OCCURRENCE",
+        "reason": "Exactly one actual occurrence exists, but it is not at the expected shelf and slot.",
+        "expected_occurrence": {
+          "shelf": 1,
+          "slot_start": 8,
+          "slot_end": 8,
+          "slots": [
+            8
+          ],
+          "facings": 1
+        },
+        "misplaced_occurrence": {
+          "shelf": 2,
+          "slot_start": 6,
+          "slot_end": 6,
+          "slots": [
+            6
+          ],
+          "facings": 1
+        }
+      },
+      {
+        "product_id": "raskik_mango_150",
+        "product_name": "RASKIK_MANGO_150",
+        "status": "AMBIGUOUS",
+        "reason": "Multiple expected-map occurrences exist for this product; the correct expected location cannot be uniquely resolved.",
+        "expected_occurrences": [
+          {
+            "shelf": 1,
+            "slot_start": 2,
+            "slot_end": 2,
+            "slots": [
+              2
+            ],
+            "facings": 1
+          },
+          {
+            "shelf": 5,
+            "slot_start": 5,
+            "slot_end": 5,
+            "slots": [
+              5
+            ],
+            "facings": 1
+          }
+        ],
+        "actual_occurrences": [
+          {
+            "shelf": 3,
+            "slot_start": 2,
+            "slot_end": 2,
+            "slots": [
+              2
+            ],
+            "facings": 1
+          },
+          {
+            "shelf": 5,
+            "slot_start": 4,
+            "slot_end": 5,
+            "slots": [
+              4,
+              5
+            ],
+            "facings": 2
+          }
+        ]
+      },
+      {
+        "product_id": "redbull_250",
+        "product_name": "REDBULL_250",
+        "status": "MISPLACED_OCCURRENCE",
+        "reason": "Exactly one actual occurrence exists, but it is not at the expected shelf and slot.",
+        "expected_occurrence": {
+          "shelf": 2,
+          "slot_start": 6,
+          "slot_end": 6,
+          "slots": [
+            6
+          ],
+          "facings": 1
+        },
+        "misplaced_occurrence": {
+          "shelf": 1,
+          "slot_start": 8,
+          "slot_end": 8,
+          "slots": [
+            8
+          ],
+          "facings": 1
+        }
+      }
+    ],
+    "extra_occurrence_cases": [
+      {
+        "product_id": "bindu_fizz_250",
+        "product_name": "BINDU_FIZZ_250",
+        "status": "CORRECT_OCCURRENCE",
+        "reason": "Exactly one actual occurrence matches the expected shelf and slot.",
+        "expected_occurrence": {
+          "shelf": 3,
+          "slot_start": 1,
+          "slot_end": 1,
+          "slots": [
+            1
+          ],
+          "facings": 1
+        },
+        "correct_occurrence": {
+          "shelf": 3,
+          "slot_start": 1,
+          "slot_end": 1,
+          "slots": [
+            1
+          ],
+          "facings": 1
+        },
+        "extra_occurrences": [
+          {
+            "shelf": 1,
+            "slot_start": 2,
+            "slot_end": 2,
+            "slots": [
+              2
+            ],
+            "facings": 1
+          }
+        ],
+        "secondary_status": "EXTRA_OCCURRENCE_PRESENT"
+      }
+    ],
+    "safety_boundary": "This resolver only reconciles evidence. It does not authorize moves, removals, swaps, or cycle rotations. Ambiguous occurrences remain explicitly unresolved."
+  },
+  "rearrangements_data": {
+    "engine": "rearrangement_planner",
+    "engine_version": "1.0",
+    "rack": "BTM-CH01",
+    "sources": {
+      "corrections": "C:\\smart-planogram-planner\\data\\analyses\\corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+      "actual": "C:\\smart-planogram-planner\\data\\actual_maps\\actual_map_wrongshelf.json",
+      "expected": "C:\\smart-planogram-planner\\data\\expected_map_BTM_CH01.json",
+      "rules": "C:\\smart-planogram-planner\\data\\merchandising_rules_v2.json"
+    },
+    "summary": {
+      "rearrangement_candidates_received": 7,
+      "direct_swaps_generated": 2,
+      "unresolved_rearrangements": 3
+    },
+    "decision": "ACTION_RECOMMENDED",
+    "safe_rearrangements": [
+      {
+        "type": "DIRECT_SWAP",
+        "status": "FEASIBLE",
+        "products": [
+          {
+            "product_id": "APPY_FIZZ_250",
+            "product_name": "APPY_FIZZ_250",
+            "current_shelf": 4,
+            "current_slots": [
+              6
+            ],
+            "target_shelf": 3,
+            "target_slots": [
+              5
+            ]
+          },
+          {
+            "product_id": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+            "product_name": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+            "current_shelf": 3,
+            "current_slots": [
+              5
+            ],
+            "target_shelf": 4,
+            "target_slots": [
+              6
+            ]
+          }
+        ],
+        "action": "Swap APPY_FIZZ_250 (Shelf 4 slots [6]) with NANDINI_STRAWBERRY_FLAVOURED_MILK_200 (Shelf 3 slots [5]).",
+        "evidence": [
+          "Product A currently occupies Product B's exact expected location.",
+          "Product B currently occupies Product A's exact expected location.",
+          "Both products are individually confirmed as misplaced.",
+          "The proposed correction is a direct two-product swap; no additional destination is invented."
+        ]
+      },
+      {
+        "type": "DIRECT_SWAP",
+        "status": "FEASIBLE",
+        "products": [
+          {
+            "product_id": "PAPER_BOAT_COCONUT_200",
+            "product_name": "PAPER_BOAT_COCONUT_200",
+            "current_shelf": 2,
+            "current_slots": [
+              6
+            ],
+            "target_shelf": 1,
+            "target_slots": [
+              8
+            ]
+          },
+          {
+            "product_id": "REDBULL_250",
+            "product_name": "REDBULL_250",
+            "current_shelf": 1,
+            "current_slots": [
+              8
+            ],
+            "target_shelf": 2,
+            "target_slots": [
+              6
+            ]
+          }
+        ],
+        "action": "Swap PAPER_BOAT_COCONUT_200 (Shelf 2 slots [6]) with REDBULL_250 (Shelf 1 slots [8]).",
+        "evidence": [
+          "Product A currently occupies Product B's exact expected location.",
+          "Product B currently occupies Product A's exact expected location.",
+          "Both products are individually confirmed as misplaced.",
+          "The proposed correction is a direct two-product swap; no additional destination is invented."
+        ]
+      }
+    ],
+    "unresolved_rearrangements": [
+      {
+        "product_id": "AMUL_KOOL_CAFE_180",
+        "product_name": "AMUL_KOOL_CAFE_180",
+        "type": "REVIEW_REARRANGEMENT",
+        "status": "BLOCKED",
+        "reason": "No direct two-product swap was proven from the actual and expected maps. A more complex rearrangement would require additional planning and is not automatically authorized."
+      },
+      {
+        "product_id": "RASKIK_MANGO_150",
+        "product_name": "RASKIK_MANGO_150",
+        "type": "REVIEW_REARRANGEMENT",
+        "status": "BLOCKED",
+        "reason": "No direct two-product swap was proven from the actual and expected maps. A more complex rearrangement would require additional planning and is not automatically authorized."
+      },
+      {
+        "product_id": "CAMPA_ENERGY_gold_185",
+        "product_name": "CAMPA_ENERGY_gold_185",
+        "type": "REVIEW_REARRANGEMENT",
+        "status": "BLOCKED",
+        "reason": "No direct two-product swap was proven from the actual and expected maps. A more complex rearrangement would require additional planning and is not automatically authorized."
+      }
+    ],
+    "safety_boundary": "Only exact two-product swaps are automatically recommended. Longer cycles, ambiguous duplicate products, occupied target locations without a reciprocal swap, and capacity-dependent moves remain REVIEW."
+  },
+  "cycles_data": {
+    "engine": "cycle_planner",
+    "engine_version": "1.0",
+    "rack": "BTM-CH01",
+    "sources": {
+      "corrections": "C:\\smart-planogram-planner\\data\\analyses\\corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+      "actual": "C:\\smart-planogram-planner\\data\\actual_maps\\actual_map_wrongshelf.json",
+      "expected": "C:\\smart-planogram-planner\\data\\expected_map_BTM_CH01.json",
+      "rules": "C:\\smart-planogram-planner\\data\\merchandising_rules_v2.json"
+    },
+    "summary": {
+      "rearrangement_candidates_received": 7,
+      "graph_edges_proven": 4,
+      "safe_cycles": 0,
+      "rejected_cycles": 0,
+      "unresolved_products": 7
+    },
+    "decision": "REVIEW_NO_SAFE_CYCLE",
+    "recommendation": "REVIEW / NO SAFE CYCLE PROVEN",
+    "safe_cycles": [],
+    "rejected_cycles": [],
+    "graph_issues": [
+      {
+        "product_id": "raskik_mango_150",
+        "reason": "Expected-map occurrence is missing or ambiguous."
+      },
+      {
+        "product_id": "amul_kool_cafe_180",
+        "reason": "Actual occurrence is missing or duplicated; cycle cannot be proven."
+      },
+      {
+        "product_id": "raskik_mango_150",
+        "reason": "Actual occurrence is missing or duplicated; cycle cannot be proven."
+      }
+    ],
+    "unresolved_products": [
+      {
+        "product_id": "amul_kool_cafe_180",
+        "type": "REVIEW_REARRANGEMENT",
+        "status": "BLOCKED",
+        "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized."
+      },
+      {
+        "product_id": "appy_fizz_250",
+        "type": "REVIEW_REARRANGEMENT",
+        "status": "BLOCKED",
+        "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized."
+      },
+      {
+        "product_id": "campa_energy_gold_185",
+        "type": "REVIEW_REARRANGEMENT",
+        "status": "BLOCKED",
+        "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized."
+      },
+      {
+        "product_id": "nandini_strawberry_flavoured_milk_200",
+        "type": "REVIEW_REARRANGEMENT",
+        "status": "BLOCKED",
+        "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized."
+      },
+      {
+        "product_id": "paper_boat_coconut_200",
+        "type": "REVIEW_REARRANGEMENT",
+        "status": "BLOCKED",
+        "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized."
+      },
+      {
+        "product_id": "raskik_mango_150",
+        "type": "REVIEW_REARRANGEMENT",
+        "status": "BLOCKED",
+        "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized."
+      },
+      {
+        "product_id": "redbull_250",
+        "type": "REVIEW_REARRANGEMENT",
+        "status": "BLOCKED",
+        "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized."
+      }
+    ],
+    "safety_boundary": "Only exact 3+ product cycles are automatically recommended. Every edge must map a product's current location exactly to the next product's expected location. Direct swaps remain the responsibility of rearrangement_planner.py. Ambiguous duplicates, partial chains, and cycles requiring a new destination remain REVIEW."
+  },
+  "final_recommendation_data": {
+    "engine": "final_recommendation_engine",
+    "engine_version": "1.0",
+    "rack": "BTM-CH01",
+    "decision": "ACTION_RECOMMENDED",
+    "summary": {
+      "safe_actions": 1,
+      "review_items": 7,
+      "do_not_change": 1,
+      "ambiguous_products": 2
+    },
+    "staff_recommendation": {
+      "do_these_actions": [
+        {
+          "type": "REMOVE_EXTRA_OCCURRENCE",
+          "status": "SAFE",
+          "product_id": "bindu_fizz_250",
+          "product_name": "BINDU_FIZZ_250",
+          "remove_location": {
+            "shelf": 1,
+            "slot_start": 2,
+            "slot_end": 2,
+            "slots": [
+              2
+            ],
+            "facings": 1
+          },
+          "keep_location": {
+            "shelf": 3,
+            "slot_start": 1,
+            "slot_end": 1,
+            "slots": [
+              1
+            ],
+            "facings": 1
+          },
+          "action": "Remove extra BINDU_FIZZ_250 from Shelf 1 slots [2]. Keep the correct occurrence on Shelf 3 slots [1].",
+          "evidence": "Occurrence resolver found exactly one correct occurrence and explicitly identified the other occurrence as extra."
+        }
+      ],
+      "review_required": [
+        {
+          "type": "OCCURRENCE_AMBIGUITY",
+          "priority": "HIGH",
+          "product_id": "amul_kool_cafe_180",
+          "product_name": "AMUL_KOOL_CAFE_180",
+          "reason": "Multiple actual occurrences exist and none matches the expected shelf and slot.",
+          "instruction": "Manually verify AMUL_KOOL_CAFE_180 before moving anything."
+        },
+        {
+          "type": "OCCURRENCE_AMBIGUITY",
+          "priority": "HIGH",
+          "product_id": "raskik_mango_150",
+          "product_name": "RASKIK_MANGO_150",
+          "reason": "Multiple expected-map occurrences exist for this product; the correct expected location cannot be uniquely resolved.",
+          "instruction": "Manually verify RASKIK_MANGO_150 before moving anything."
+        },
+        {
+          "type": "CYCLE_REVIEW",
+          "priority": "MEDIUM",
+          "product_id": "appy_fizz_250",
+          "product_name": null,
+          "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized.",
+          "instruction": "Review appy_fizz_250 manually; no safe multi-product cycle was proven."
+        },
+        {
+          "type": "CYCLE_REVIEW",
+          "priority": "MEDIUM",
+          "product_id": "campa_energy_gold_185",
+          "product_name": null,
+          "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized.",
+          "instruction": "Review campa_energy_gold_185 manually; no safe multi-product cycle was proven."
+        },
+        {
+          "type": "CYCLE_REVIEW",
+          "priority": "MEDIUM",
+          "product_id": "nandini_strawberry_flavoured_milk_200",
+          "product_name": null,
+          "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized.",
+          "instruction": "Review nandini_strawberry_flavoured_milk_200 manually; no safe multi-product cycle was proven."
+        },
+        {
+          "type": "CYCLE_REVIEW",
+          "priority": "MEDIUM",
+          "product_id": "paper_boat_coconut_200",
+          "product_name": null,
+          "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized.",
+          "instruction": "Review paper_boat_coconut_200 manually; no safe multi-product cycle was proven."
+        },
+        {
+          "type": "CYCLE_REVIEW",
+          "priority": "MEDIUM",
+          "product_id": "redbull_250",
+          "product_name": null,
+          "reason": "Product is not part of a proven 3+ product cycle. A more complex or partial rearrangement is not automatically authorized.",
+          "instruction": "Review redbull_250 manually; no safe multi-product cycle was proven."
+        }
+      ],
+      "do_not_change": [
+        {
+          "product_id": "bindu_fizz_250",
+          "product_name": "BINDU_FIZZ_250",
+          "location": {
+            "shelf": 3,
+            "slot_start": 1,
+            "slot_end": 1,
+            "slots": [
+              1
+            ],
+            "facings": 1
+          },
+          "instruction": "Keep BINDU_FIZZ_250 at Shelf 3 slots [1]."
+        }
+      ]
+    },
+    "source_reports": {
+      "corrections": "C:\\smart-planogram-planner\\data\\analyses\\corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+      "occurrences": "C:\\smart-planogram-planner\\data\\analyses\\occurrences_corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+      "rearrangements": "C:\\smart-planogram-planner\\data\\analyses\\rearrangements_corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json",
+      "cycles": "C:\\smart-planogram-planner\\data\\analyses\\cycles_corrections_v2_misplacements_v2_analysis_actual_map_wrongshelf.json"
+    },
+    "safety_boundary": "Only actions already proven by upstream structured evidence are presented as safe. Ambiguous products are routed to manual review. This layer never invents a shelf, slot, capacity assumption, or movement."
+  }
+}

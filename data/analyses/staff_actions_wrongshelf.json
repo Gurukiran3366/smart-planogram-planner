@@ -1,0 +1,89 @@
+{
+  "engine": "staff_action_normalizer",
+  "engine_version": "1.1",
+  "rack": "BTM-CH01",
+  "generated_at": "2026-08-27T11:11:00",
+  "summary": {
+    "safe_actions": 4,
+    "review_required": 3,
+    "total_actions": 7,
+    "decision": "ACTION_RECOMMENDED"
+  },
+  "safe_actions": [
+    {
+      "priority": 1,
+      "type": "REMOVE_EXTRA",
+      "product_id": "bindu_fizz_250",
+      "product_name": "BINDU_FIZZ_250",
+      "title": "Remove extra BINDU_FIZZ_250",
+      "action": "Remove the extra BINDU_FIZZ_250 from the identified extra location. Keep the correct BINDU_FIZZ_250 at the correct planogram location.",
+      "steps": [
+        "Remove BINDU_FIZZ_250 from the identified extra location.",
+        "Keep the correct BINDU_FIZZ_250 at the correct planogram location."
+      ]
+    },
+    {
+      "priority": 1,
+      "type": "REMOVE_EXTRA",
+      "product_id": "swing_mixed_fruit_200",
+      "product_name": "SWING_MIXED_FRUIT_200",
+      "title": "Remove extra SWING_MIXED_FRUIT_200",
+      "action": "Remove the extra SWING_MIXED_FRUIT_200 from the identified extra location. Keep the correct SWING_MIXED_FRUIT_200 at the correct planogram location.",
+      "steps": [
+        "Remove SWING_MIXED_FRUIT_200 from the identified extra location.",
+        "Keep the correct SWING_MIXED_FRUIT_200 at the correct planogram location."
+      ]
+    },
+    {
+      "priority": 2,
+      "type": "SWAP",
+      "product_id": "appy_fizz_250",
+      "product_name": "APPY_FIZZ_250",
+      "title": "Swap APPY_FIZZ_250 and NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+      "action": "Swap APPY_FIZZ_250 at Shelf 4 • Slot 6 with NANDINI_STRAWBERRY_FLAVOURED_MILK_200 at Shelf 3 • Slot 5.",
+      "steps": [
+        "Remove APPY_FIZZ_250 from Shelf 4 • Slot 6.",
+        "Remove NANDINI_STRAWBERRY_FLAVOURED_MILK_200 from Shelf 3 • Slot 5.",
+        "Place APPY_FIZZ_250 at Shelf 3 • Slot 5.",
+        "Place NANDINI_STRAWBERRY_FLAVOURED_MILK_200 at Shelf 4 • Slot 6."
+      ]
+    },
+    {
+      "priority": 2,
+      "type": "SWAP",
+      "product_id": "paper_boat_coconut_200",
+      "product_name": "PAPER_BOAT_COCONUT_200",
+      "title": "Swap PAPER_BOAT_COCONUT_200 and REDBULL_250",
+      "action": "Swap PAPER_BOAT_COCONUT_200 at Shelf 2 • Slot 6 with REDBULL_250 at Shelf 1 • Slot 8.",
+      "steps": [
+        "Remove PAPER_BOAT_COCONUT_200 from Shelf 2 • Slot 6.",
+        "Remove REDBULL_250 from Shelf 1 • Slot 8.",
+        "Place PAPER_BOAT_COCONUT_200 at Shelf 1 • Slot 8.",
+        "Place REDBULL_250 at Shelf 2 • Slot 6."
+      ]
+    }
+  ],
+  "review_required": [
+    {
+      "priority": 4,
+      "type": "REVIEW",
+      "product_name": "AMUL_KOOL_CAFE_180",
+      "title": "Review AMUL_KOOL_CAFE_180",
+      "action": "Multiple actual occurrences exist and none matches the expected shelf and slot."
+    },
+    {
+      "priority": 4,
+      "type": "REVIEW",
+      "product_name": "CAMPA_ENERGY_gold_185",
+      "title": "Review CAMPA_ENERGY_gold_185",
+      "action": "Occurrence role is resolved, but no safe dependency or direct swap was proven."
+    },
+    {
+      "priority": 4,
+      "type": "REVIEW",
+      "product_name": "RASKIK_MANGO_150",
+      "title": "Review RASKIK_MANGO_150",
+      "action": "Multiple expected-map occurrences exist for this product; the correct expected location cannot be uniquely resolved."
+    }
+  ]
+}

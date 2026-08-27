@@ -1,0 +1,46 @@
+{
+  "detector": "misplacement_detector",
+  "detector_version": "1.0",
+  "rack": "BTM-CH01",
+  "source_analysis": "data\\analyses\\analysis_actual_map_wrongshelf.json",
+  "oos_products": [],
+  "summary": {
+    "shelves_analyzed": 6,
+    "misplaced_products": 0,
+    "oos_excluded": 0
+  },
+  "misplaced_products": [],
+  "shelf_summary": [
+    {
+      "shelf": 1,
+      "misplaced_count": 0,
+      "products": []
+    },
+    {
+      "shelf": 2,
+      "misplaced_count": 0,
+      "products": []
+    },
+    {
+      "shelf": 3,
+      "misplaced_count": 0,
+      "products": []
+    },
+    {
+      "shelf": 4,
+      "misplaced_count": 0,
+      "products": []
+    },
+    {
+      "shelf": 5,
+      "misplaced_count": 0,
+      "products": []
+    },
+    {
+      "shelf": 6,
+      "misplaced_count": 0,
+      "products": []
+    }
+  ],
+  "important_boundary": "This detector identifies misplaced products only. It does not authorize or recommend physical movement. Correction safety belongs to correction_engine_v2."
+}

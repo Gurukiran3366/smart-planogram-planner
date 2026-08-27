@@ -1,0 +1,274 @@
+{
+  "engine_version": "1.3",
+  "analyzer_version": "1.3",
+  "rack_id": "BTM-CH01",
+  "principles": {
+    "shelf_analyzer_frozen": true,
+    "never_correct_oos": true,
+    "never_remove_required_facing": true,
+    "never_assume_capacity": true,
+    "never_create_physical_space": true,
+    "hard_constraints_dominate_soft_preferences": true,
+    "unknown_colour_sequence_is_not_optimized_as_exact": true,
+    "rearrangement_is_simulated_before_recommendation": true,
+    "rearrangement_preserves_total_facings": true,
+    "rearrangement_requires_measurable_improvement": true
+  },
+  "summary": {
+    "shelves_analyzed": 6,
+    "candidates_generated": 1,
+    "blocked_corrections": 1,
+    "rearrangement_candidates": 0,
+    "decision": "ACTION_RECOMMENDED"
+  },
+  "primary_recommendation": {
+    "shelf_number": 3,
+    "source": "missing_product",
+    "product_id": "THUMSUP_250",
+    "product_name": "Thums Up 250ml",
+    "decision": "ACTION_RECOMMENDED",
+    "safe_action": true,
+    "checks": [
+      {
+        "check": "destination",
+        "status": "occupied",
+        "product_id": "BINDU_FIZZ_250",
+        "product_name": "Bindu Fizz Jeera Masala 250ml",
+        "slot": 2
+      },
+      {
+        "check": "destination_facing",
+        "status": "excess_available"
+      }
+    ],
+    "action": {
+      "type": "reduce_excess_facing_and_place",
+      "remove_product_id": "BINDU_FIZZ_250",
+      "remove_product_name": "Bindu Fizz Jeera Masala 250ml",
+      "target_product_id": "THUMSUP_250",
+      "target_product_name": "Thums Up 250ml",
+      "target_slot": 2
+    }
+  },
+  "candidates": [
+    {
+      "shelf_number": 3,
+      "source": "missing_product",
+      "product_id": "THUMSUP_250",
+      "product_name": "Thums Up 250ml",
+      "decision": "ACTION_RECOMMENDED",
+      "safe_action": true,
+      "checks": [
+        {
+          "check": "destination",
+          "status": "occupied",
+          "product_id": "BINDU_FIZZ_250",
+          "product_name": "Bindu Fizz Jeera Masala 250ml",
+          "slot": 2
+        },
+        {
+          "check": "destination_facing",
+          "status": "excess_available"
+        }
+      ],
+      "action": {
+        "type": "reduce_excess_facing_and_place",
+        "remove_product_id": "BINDU_FIZZ_250",
+        "remove_product_name": "Bindu Fizz Jeera Masala 250ml",
+        "target_product_id": "THUMSUP_250",
+        "target_product_name": "Thums Up 250ml",
+        "target_slot": 2
+      }
+    }
+  ],
+  "blocked_corrections": [
+    {
+      "shelf_number": 5,
+      "product_id": "DAILEE_MANGO_180",
+      "product_name": "Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle",
+      "decision": "REVIEW_NO_SAFE_ACTION",
+      "safe_action": false,
+      "checks": [
+        {
+          "check": "destination",
+          "status": "occupied",
+          "product_id": "RASKIK_MANGO_150",
+          "product_name": "Raskik 150ml mango",
+          "slot": 4
+        },
+        {
+          "check": "destination_facing",
+          "status": "no_excess_available"
+        },
+        {
+          "check": "physical_capacity",
+          "status": "not_proven"
+        }
+      ],
+      "reasons": [
+        "destination_occupant_has_no_excess_facing",
+        "physical_space_not_proven"
+      ]
+    }
+  ],
+  "shelves": [
+    {
+      "shelf_number": 1,
+      "shelf_name": "Fruit Beverages",
+      "physical_occupied_slots": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "proven_free_slots": [],
+      "missing_diagnostics": [],
+      "rearrangement_candidates": []
+    },
+    {
+      "shelf_number": 2,
+      "shelf_name": "Energy Drinks",
+      "physical_occupied_slots": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "proven_free_slots": [],
+      "missing_diagnostics": [],
+      "rearrangement_candidates": []
+    },
+    {
+      "shelf_number": 3,
+      "shelf_name": "Soft Drinks",
+      "physical_occupied_slots": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "proven_free_slots": [],
+      "missing_diagnostics": [
+        {
+          "product_id": "THUMSUP_250",
+          "product_name": "Thums Up 250ml",
+          "decision": "ACTION_RECOMMENDED",
+          "safe_action": true,
+          "checks": [
+            {
+              "check": "destination",
+              "status": "occupied",
+              "product_id": "BINDU_FIZZ_250",
+              "product_name": "Bindu Fizz Jeera Masala 250ml",
+              "slot": 2
+            },
+            {
+              "check": "destination_facing",
+              "status": "excess_available"
+            }
+          ],
+          "action": {
+            "type": "reduce_excess_facing_and_place",
+            "remove_product_id": "BINDU_FIZZ_250",
+            "remove_product_name": "Bindu Fizz Jeera Masala 250ml",
+            "target_product_id": "THUMSUP_250",
+            "target_product_name": "Thums Up 250ml",
+            "target_slot": 2
+          }
+        }
+      ],
+      "rearrangement_candidates": []
+    },
+    {
+      "shelf_number": 4,
+      "shelf_name": "Milk Beverages",
+      "physical_occupied_slots": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "proven_free_slots": [],
+      "missing_diagnostics": [],
+      "rearrangement_candidates": []
+    },
+    {
+      "shelf_number": 5,
+      "shelf_name": "Soft Drinks (small bottles)",
+      "physical_occupied_slots": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "proven_free_slots": [],
+      "missing_diagnostics": [
+        {
+          "product_id": "DAILEE_MANGO_180",
+          "product_name": "Dailee Enrich Alphonso Fruit Drink, Mango, 180ml Bottle",
+          "decision": "REVIEW_NO_SAFE_ACTION",
+          "safe_action": false,
+          "checks": [
+            {
+              "check": "destination",
+              "status": "occupied",
+              "product_id": "RASKIK_MANGO_150",
+              "product_name": "Raskik 150ml mango",
+              "slot": 4
+            },
+            {
+              "check": "destination_facing",
+              "status": "no_excess_available"
+            },
+            {
+              "check": "physical_capacity",
+              "status": "not_proven"
+            }
+          ],
+          "reasons": [
+            "destination_occupant_has_no_excess_facing",
+            "physical_space_not_proven"
+          ]
+        }
+      ],
+      "rearrangement_candidates": []
+    },
+    {
+      "shelf_number": 6,
+      "shelf_name": "Large Bottles (750 ml+ / 1 L)",
+      "physical_occupied_slots": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "proven_free_slots": [],
+      "missing_diagnostics": [],
+      "rearrangement_candidates": []
+    }
+  ]
+}

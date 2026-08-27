@@ -1,0 +1,72 @@
+{
+  "engine": "staff_action_normalizer",
+  "engine_version": "1.1",
+  "rack": "BTM-CH01",
+  "generated_at": "2026-08-27T11:13:51",
+  "summary": {
+    "safe_actions": 2,
+    "review_required": 4,
+    "total_actions": 6,
+    "decision": "ACTION_RECOMMENDED"
+  },
+  "safe_actions": [
+    {
+      "priority": 2,
+      "type": "SWAP",
+      "product_id": "paper_boat_coconut_200",
+      "product_name": "PAPER_BOAT_COCONUT_200",
+      "title": "Swap PAPER_BOAT_COCONUT_200 and REDBULL_250",
+      "action": "Swap PAPER_BOAT_COCONUT_200 at Shelf 2 • Slot 6 with REDBULL_250 at Shelf 1 • Slot 8.",
+      "steps": [
+        "Remove PAPER_BOAT_COCONUT_200 from Shelf 2 • Slot 6.",
+        "Remove REDBULL_250 from Shelf 1 • Slot 8.",
+        "Place PAPER_BOAT_COCONUT_200 at Shelf 1 • Slot 8.",
+        "Place REDBULL_250 at Shelf 2 • Slot 6."
+      ]
+    },
+    {
+      "priority": 2,
+      "type": "SWAP",
+      "product_id": "swing_guava_270",
+      "product_name": "SWING_GUAVA_270",
+      "title": "Swap SWING_GUAVA_270 and SWING_MIXED_FRUIT_200",
+      "action": "Swap SWING_GUAVA_270 at Shelf 5 • Slot 9 with SWING_MIXED_FRUIT_200 at Shelf 1 • Slot 9.",
+      "steps": [
+        "Remove SWING_GUAVA_270 from Shelf 5 • Slot 9.",
+        "Remove SWING_MIXED_FRUIT_200 from Shelf 1 • Slot 9.",
+        "Place SWING_GUAVA_270 at Shelf 1 • Slot 9.",
+        "Place SWING_MIXED_FRUIT_200 at Shelf 5 • Slot 9."
+      ]
+    }
+  ],
+  "review_required": [
+    {
+      "priority": 4,
+      "type": "REVIEW",
+      "product_name": "AMUL_KOOL_CAFE_180",
+      "title": "Review AMUL_KOOL_CAFE_180",
+      "action": "Occurrence role is resolved, but no safe dependency or direct swap was proven."
+    },
+    {
+      "priority": 4,
+      "type": "REVIEW",
+      "product_name": "CAMPA_ENERGY_gold_185",
+      "title": "Review CAMPA_ENERGY_gold_185",
+      "action": "Occurrence role is resolved, but no safe dependency or direct swap was proven."
+    },
+    {
+      "priority": 4,
+      "type": "REVIEW",
+      "product_name": "NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+      "title": "Review NANDINI_STRAWBERRY_FLAVOURED_MILK_200",
+      "action": "Occurrence role is resolved, but no safe dependency or direct swap was proven."
+    },
+    {
+      "priority": 4,
+      "type": "REVIEW",
+      "product_name": "RASKIK_MANGO_150",
+      "title": "Review RASKIK_MANGO_150",
+      "action": "Multiple expected-map occurrences exist for this product; the correct expected location cannot be uniquely resolved."
+    }
+  ]
+}

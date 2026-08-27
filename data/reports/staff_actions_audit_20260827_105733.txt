@@ -1,0 +1,42 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 CHILLER PLANOGRAM ACTIONS
+Rack: BTM-CH01
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔧 ACTIONS TO DO
+
+1. Remove the extra BINDU_FIZZ_250 from the identified extra location. Keep the correct BINDU_FIZZ_250 at the correct planogram location.
+   1) Remove BINDU_FIZZ_250 from the identified extra location.
+   2) Keep the correct BINDU_FIZZ_250 at the correct planogram location.
+
+2. Remove the extra SWING_MIXED_FRUIT_200 from the identified extra location. Keep the correct SWING_MIXED_FRUIT_200 at the correct planogram location.
+   1) Remove SWING_MIXED_FRUIT_200 from the identified extra location.
+   2) Keep the correct SWING_MIXED_FRUIT_200 at the correct planogram location.
+
+3. Swap APPY_FIZZ_250 at Shelf 4 • Slot 6 with NANDINI_STRAWBERRY_FLAVOURED_MILK_200 at Shelf 3 • Slot 5.
+   1) Remove APPY_FIZZ_250 from Shelf 4 • Slot 6.
+   2) Remove NANDINI_STRAWBERRY_FLAVOURED_MILK_200 from Shelf 3 • Slot 5.
+   3) Place APPY_FIZZ_250 at Shelf 3 • Slot 5.
+   4) Place NANDINI_STRAWBERRY_FLAVOURED_MILK_200 at Shelf 4 • Slot 6.
+
+4. Swap PAPER_BOAT_COCONUT_200 at Shelf 2 • Slot 6 with REDBULL_250 at Shelf 1 • Slot 8.
+   1) Remove PAPER_BOAT_COCONUT_200 from Shelf 2 • Slot 6.
+   2) Remove REDBULL_250 from Shelf 1 • Slot 8.
+   3) Place PAPER_BOAT_COCONUT_200 at Shelf 1 • Slot 8.
+   4) Place REDBULL_250 at Shelf 2 • Slot 6.
+
+⚠️ MANUAL REVIEW
+
+1. AMUL_KOOL_CAFE_180
+   Multiple actual occurrences exist and none matches the expected shelf and slot.
+
+2. CAMPA_ENERGY_gold_185
+   Occurrence role is resolved, but no safe dependency or direct swap was proven.
+
+3. RASKIK_MANGO_150
+   Multiple expected-map occurrences exist for this product; the correct expected location cannot be uniquely resolved.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📸 After completing the actions,
+take a new photo and run the audit again.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━

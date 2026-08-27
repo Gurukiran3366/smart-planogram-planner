@@ -655,124 +655,277 @@ def page_rejected():
 # ============================================================
 def page_result():
     show_header()
-    
+
     result = st.session_state.get("audit_result", {})
-    
+
     if not result or result.get("status") != "SUCCESS":
         st.error("No audit results available")
         if st.button("← Back"):
             st.session_state.page = "home"
             st.rerun()
         return
-    
+
+    # ------------------------------------------------------------
+    # SCORE
+    # ------------------------------------------------------------
     score_raw = result.get("score", 5.0)
-    score_pct = int(score_raw * 10)
+    score_pct = int(float(score_raw) * 10)
     score_class = get_score_class(score_pct)
     score_label = get_score_label(score_pct)
-    
+
     st.markdown(f"""
     <div style="text-align:center; padding:20px 0;">
         <p class="big-score {score_class}">{score_pct}%</p>
         <p class="status-text">{score_label}</p>
     </div>
     """, unsafe_allow_html=True)
-    
-    st.progress(score_pct / 100)
-    
+
+    st.progress(max(0, min(100, score_pct)) / 100)
+
     oos_count = get_today_oos_count()
     if oos_count > 0:
-        st.info(f"📦 Note: {oos_count} products were marked as out-of-stock — not counted as issues")
-    
+        st.info(
+            f"📦 Note: {oos_count} products were marked as out-of-stock — "
+            "not counted as issues"
+        )
+
+    # ------------------------------------------------------------
+    # NEW STAFF ACTION OUTPUT
+    #
+    # audit_chiller.py now returns:
+    #   staff_actions   -> proven SAFE physical actions
+    #   review_required -> actions that must be manually verified
+    #
+    # We deliberately show these before the legacy top_fixes list.
+    # ------------------------------------------------------------
+    safe_actions = result.get("staff_actions", [])
+    review_required = result.get("review_required", [])
+
+    if not isinstance(safe_actions, list):
+        safe_actions = []
+    if not isinstance(review_required, list):
+        review_required = []
+
     st.divider()
-    
-    counts = result.get("violation_counts", {})
-    total = counts.get("total", 0)
-    high = counts.get("high", 0)
-    medium = counts.get("medium", 0)
-    low = counts.get("low", 0)
-    info = counts.get("info", 0)
-    
-    col1, col2, col3, col4 = st.columns(4)
+
+    # Summary metrics
+    col1, col2, col3 = st.columns(3)
     with col1:
-        st.metric("📊 Total Issues", total - info)
+        st.metric("🔧 Safe Actions", len(safe_actions))
     with col2:
-        st.metric("🔴 Critical", high)
+        st.metric("⚠️ Manual Review", len(review_required))
     with col3:
-        st.metric("🟡 Moderate", medium + low)
-    with col4:
-        st.metric("📦 OOS Items", info)
-    
+        st.metric("📦 OOS Items", oos_count)
+
     st.divider()
-    
-    st.markdown("### 🎯 Priority Fixes")
-    
-    top_fixes = result.get("top_fixes", [])
-    priority_fixes = [f for f in top_fixes if f.get("type") != "expected_but_out_of_stock"][:5]
-    oos_items = [f for f in top_fixes if f.get("type") == "expected_but_out_of_stock"]
-    
-    if priority_fixes:
-        for i, fix in enumerate(priority_fixes, 1):
-            severity = fix.get("severity", "medium")
-            if severity == "high":
-                icon = "🔴"
+
+    # ------------------------------------------------------------
+    # SAFE PHYSICAL ACTIONS
+    # ------------------------------------------------------------
+    st.markdown("### 🔧 Actions To Do")
+
+    if safe_actions:
+        for i, action in enumerate(safe_actions, 1):
+            action_type = str(
+                action.get("type")
+                or action.get("action_type")
+                or "ACTION"
+            ).upper()
+
+            product_name = action.get("product_name", "Product")
+            title = action.get("title") or action.get("action") or action.get("instruction")
+
+            if action_type == "REMOVE_EXTRA":
+                icon = "🗑️"
                 card_class = "fix-card"
-            elif severity == "info":
-                icon = "ℹ️"
-                card_class = "fix-card-info"
-            else:
-                icon = "🟡"
+                label = "REMOVE EXTRA"
+            elif action_type == "SWAP":
+                icon = "🔄"
                 card_class = "fix-card-medium"
-            
-            correction = fix.get("correction", "")
-            fix_type = fix.get("type", "").replace("_", " ").title()
-            
+                label = "SWAP"
+            elif action_type == "MOVE":
+                icon = "➡️"
+                card_class = "fix-card"
+                label = "MOVE"
+            elif action_type == "REARRANGE":
+                icon = "🔀"
+                card_class = "fix-card-medium"
+                label = "REARRANGE"
+            else:
+                icon = "🔧"
+                card_class = "fix-card-info"
+                label = action_type.replace("_", " ")
+
+            # New staff_action_normalizer format uses "action" + "steps".
+            # Older physical-action formats use "instruction".
+            if action.get("action"):
+                headline = action["action"]
+            elif action.get("instruction"):
+                headline = action["instruction"]
+            else:
+                headline = str(title or f"Complete action for {product_name}")
+
             st.markdown(f"""
             <div class="{card_class}">
-                <strong>{icon} #{i}</strong> <span style="color:#6B7280; font-size:12px;">{fix_type}</span><br>
-                <span style="font-size:16px;">{correction}</span>
+                <strong>{icon} #{i}</strong>
+                <span style="color:#6B7280; font-size:12px; margin-left:8px;">
+                    {label}
+                </span>
+                <div style="font-size:17px; font-weight:600; margin-top:8px;">
+                    {headline}
+                </div>
             </div>
             """, unsafe_allow_html=True)
-        
-        remaining = total - len(priority_fixes) - info
-        if remaining > 0:
-            st.caption(f"_...plus {remaining} more improvements_")
+
+            # Show ordered physical steps when the action contains them.
+            steps = action.get("steps", [])
+            if isinstance(steps, list) and len(steps) > 0:
+                with st.expander(f"How to do #{i}"):
+                    for step_no, step in enumerate(steps, 1):
+                        st.markdown(f"**{step_no}.** {step}")
+
     else:
-        st.success("✅ No corrections needed! Rack is compliant.")
-    
-    if oos_items:
-        with st.expander(f"📦 Out of Stock Items ({len(oos_items)})"):
-            for item in oos_items:
-                st.markdown(f"• ℹ️ {item.get('correction', '')}")
-    
+        st.success("✅ No proven physical actions are required.")
+
+    # ------------------------------------------------------------
+    # MANUAL REVIEW
+    # ------------------------------------------------------------
+    if review_required:
+        st.divider()
+        st.markdown("### ⚠️ Manual Review Required")
+        st.caption(
+            "These items were deliberately NOT converted into automatic "
+            "physical instructions. Verify the location before moving anything."
+        )
+
+        for i, review in enumerate(review_required, 1):
+            product_name = review.get("product_name", "Product")
+            instruction = (
+                review.get("action")
+                or review.get("instruction")
+                or "Manually verify before moving anything."
+            )
+            reason = review.get("reason", "")
+
+            st.markdown(f"""
+            <div class="fix-card-medium">
+                <strong>⚠️ #{i} {product_name}</strong>
+                <div style="font-size:16px; margin-top:8px;">
+                    {instruction}
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+            if reason:
+                st.caption(f"Reason: {reason}")
+
+    # ------------------------------------------------------------
+    # LEGACY AUDIT DETAIL
+    #
+    # Keep the existing scoring/violation output available because it
+    # is useful for debugging and comparing the new action layer.
+    # ------------------------------------------------------------
     st.divider()
-    
+
+    with st.expander("📊 Audit Details & Legacy Priority Fixes"):
+        counts = result.get("violation_counts", {})
+        total = counts.get("total", 0)
+        high = counts.get("high", 0)
+        medium = counts.get("medium", 0)
+        low = counts.get("low", 0)
+        info = counts.get("info", 0)
+
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Total Issues", max(0, total - info))
+        with col2:
+            st.metric("🔴 Critical", high)
+        with col3:
+            st.metric("🟡 Moderate", medium + low)
+        with col4:
+            st.metric("📦 OOS", info)
+
+        top_fixes = result.get("top_fixes", [])
+        priority_fixes = [
+            f for f in top_fixes
+            if f.get("type") != "expected_but_out_of_stock"
+        ][:5]
+
+        if priority_fixes:
+            st.markdown("#### Previous scoring-engine corrections")
+            for i, fix in enumerate(priority_fixes, 1):
+                severity = fix.get("severity", "medium")
+                if severity == "high":
+                    icon = "🔴"
+                    card_class = "fix-card"
+                elif severity == "info":
+                    icon = "ℹ️"
+                    card_class = "fix-card-info"
+                else:
+                    icon = "🟡"
+                    card_class = "fix-card-medium"
+
+                correction = fix.get("correction", "")
+                fix_type = fix.get("type", "").replace("_", " ").title()
+
+                st.markdown(f"""
+                <div class="{card_class}">
+                    <strong>{icon} #{i}</strong>
+                    <span style="color:#6B7280; font-size:12px;">
+                        {fix_type}
+                    </span><br>
+                    <span style="font-size:15px;">{correction}</span>
+                </div>
+                """, unsafe_allow_html=True)
+
+    # ------------------------------------------------------------
+    # NEXT STEP
+    # ------------------------------------------------------------
+    st.divider()
+
+    if safe_actions or review_required:
+        st.info(
+            "📸 Complete the proven actions first. For manual-review items, "
+            "verify the location before making any change. Then take a new "
+            "photo and run the audit again."
+        )
+
     col_fix, col_done = st.columns(2)
-    
+
     with col_fix:
-        if total - info > 0:
-            if st.button("🔧 FIX RACK & RESCAN", type="primary", width='stretch'):
+        if safe_actions or review_required:
+            if st.button(
+                "🔧 FIX RACK & RESCAN",
+                type="primary",
+                width='stretch'
+            ):
                 st.session_state.first_result = st.session_state.audit_result
                 st.session_state.page = "final_instructions"
                 st.rerun()
-    
+
     with col_done:
         if st.button("✅ DONE", width='stretch'):
             st.session_state.page = "home"
             st.session_state.audit_result = None
             st.rerun()
-    
-    st.divider()
-    
-    whatsapp_msg = result.get("whatsapp_message", "")
+
+    # ------------------------------------------------------------
+    # STAFF MESSAGE
+    # ------------------------------------------------------------
+    whatsapp_msg = result.get("staff_action_message") or result.get("whatsapp_message", "")
     if whatsapp_msg:
-        with st.expander("📱 Copy WhatsApp Message"):
+        with st.expander("📱 Copy Staff / WhatsApp Message"):
             st.code(whatsapp_msg, language=None)
             st.caption("Select all text above → Copy → Paste in WhatsApp")
-    
+
     image_path = st.session_state.get("uploaded_image_path")
     if image_path and Path(image_path).exists():
         with st.expander("📸 View Uploaded Photo"):
-            st.image(image_path, caption="Uploaded chiller photo", width='stretch')
+            st.image(
+                image_path,
+                caption="Uploaded chiller photo",
+                width='stretch'
+            )
 
 
 # ============================================================
@@ -930,16 +1083,19 @@ def page_final_analyzing():
 # ============================================================
 def page_final_result():
     show_header()
-    
+
     result = st.session_state.get("audit_result", {})
     first_result = st.session_state.get("first_result", {})
-    
+
     st.markdown("### 🏆 Audit Complete")
-    
-    final_score = int(result.get("score", 5.0) * 10)
-    initial_score = int(first_result.get("score", 5.0) * 10) if first_result else 0
+
+    final_score = int(float(result.get("score", 5.0)) * 10)
+    initial_score = (
+        int(float(first_result.get("score", 5.0)) * 10)
+        if first_result else 0
+    )
     improvement = final_score - initial_score
-    
+
     score_class = get_score_class(final_score)
     st.markdown(f"""
     <div style="text-align:center; padding:20px 0;">
@@ -947,43 +1103,70 @@ def page_final_result():
         <p class="status-text">{get_score_label(final_score)}</p>
     </div>
     """, unsafe_allow_html=True)
-    
-    st.progress(final_score / 100)
-    
+
+    st.progress(max(0, min(100, final_score)) / 100)
+
     st.divider()
-    
+
     col1, col2, col3 = st.columns(3)
     with col1:
         st.metric("Before", f"{initial_score}%")
     with col2:
         st.metric("After", f"{final_score}%")
     with col3:
-        st.metric("Change", f"{improvement:+d}%", delta=f"{improvement:+d} points")
-    
+        st.metric(
+            "Change",
+            f"{improvement:+d}%",
+            delta=f"{improvement:+d} points"
+        )
+
+    # Use the new staff-action contract for the final verification too.
+    safe_actions = result.get("staff_actions", [])
+    review_required = result.get("review_required", [])
+
+    if not isinstance(safe_actions, list):
+        safe_actions = []
+    if not isinstance(review_required, list):
+        review_required = []
+
     st.divider()
-    
+
+    if not safe_actions and not review_required:
+        st.success("### ✅ Rack is fully compliant!")
+        st.caption("No further physical actions were identified.")
+    else:
+        if safe_actions:
+            st.warning(
+                f"### ⚠️ {len(safe_actions)} physical action(s) still identified"
+            )
+            st.markdown("#### Actions still remaining")
+            for i, action in enumerate(safe_actions[:5], 1):
+                instruction = (
+                    action.get("action")
+                    or action.get("instruction")
+                    or action.get("title")
+                    or "Complete the required action."
+                )
+                st.markdown(f"**{i}.** {instruction}")
+
+        if review_required:
+            st.markdown("#### ⚠️ Manual verification still required")
+            for review in review_required[:5]:
+                name = review.get("product_name", "Product")
+                instruction = (
+                    review.get("action")
+                    or review.get("instruction")
+                    or "Verify manually before moving anything."
+                )
+                st.markdown(f"• **{name}:** {instruction}")
+
     counts = result.get("violation_counts", {})
     info_count = counts.get("info", 0)
-    remaining = counts.get("total", 0) - info_count
-    
-    if remaining == 0:
-        st.success("### ✅ Rack is fully compliant! No corrections required.")
-    elif remaining <= 3:
-        st.warning(f"### ⚠️ {remaining} minor issues remain")
-        top_fixes = [f for f in result.get("top_fixes", []) if f.get("type") != "expected_but_out_of_stock"]
-        for fix in top_fixes[:3]:
-            st.markdown(f"• {fix.get('correction', '')}")
-    else:
-        st.error(f"### 🔴 {remaining} issues still need attention")
-        top_fixes = [f for f in result.get("top_fixes", []) if f.get("type") != "expected_but_out_of_stock"]
-        for fix in top_fixes[:5]:
-            st.markdown(f"• {fix.get('correction', '')}")
-    
     if info_count > 0:
         st.info(f"📦 {info_count} products were out of stock (not counted)")
-    
+
     st.divider()
-    
+
     if st.button("✅ COMPLETE AUDIT", type="primary", width='stretch'):
         st.session_state.page = "home"
         st.session_state.audit_result = None

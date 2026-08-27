@@ -1,0 +1,31 @@
+{
+  "engine": "correction_engine_v2",
+  "engine_version": "2.0",
+  "rack": "BTM-CH01",
+  "rules_file": "data\\merchandising_rules_v2.json",
+  "rules_loaded": true,
+  "oos_products": [],
+  "objective": {
+    "primary": "maximize merchandising improvement",
+    "secondary": "minimize physical movements",
+    "hard_constraints": [
+      "never invent physical capacity",
+      "never remove a required facing",
+      "never move an OOS target product into the shelf",
+      "never auto-approve an unvalidated cross-shelf swap",
+      "do not create a new known hard violation"
+    ]
+  },
+  "summary": {
+    "candidates_generated": 0,
+    "feasible_candidates": 0,
+    "blocked_candidates": 0,
+    "decision": "REVIEW_NO_SAFE_ACTION"
+  },
+  "primary_recommendation": {
+    "decision": "REVIEW_NO_SAFE_ACTION",
+    "message": "No safe physical correction can be proven from the available structured information."
+  },
+  "feasible_plans": [],
+  "blocked_plans": []
+}
